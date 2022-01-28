@@ -3,14 +3,7 @@ import HomePage from "./homePage/homePage";
 import LoginPage from "./loginPage/loginPage";
 import React, { useEffect } from "react";
 
-const title = "ŠCV App"
-
 const RoutePage = () => {
-
-    useEffect(()=>{
-        document.title = title
-    })
-
     return (
         <BrowserRouter>
             <Routes>

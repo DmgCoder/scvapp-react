@@ -7,7 +7,6 @@ import RoutePage from './Route';
 ReactDOM.render(
   <RoutePage />,
   document.getElementById('root'),
-  // document.title = "ŠCV App"
 );
 
 // If you want to start measuring performance in your app, pass a function
