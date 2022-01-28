@@ -1,0 +1,36 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh; 
+}
+
+.loginWindow{
+    background-color: red;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginWindow:after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.loginWindow .content{
+    width: 100%;
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.loginBtn{
+    cursor: pointer;
+}

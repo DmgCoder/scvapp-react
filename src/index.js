@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import RoutePage from './Route';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <RoutePage />,
+  document.getElementById('root'),
+  // document.title = "ŠCV App"
 );
 
 // If you want to start measuring performance in your app, pass a function

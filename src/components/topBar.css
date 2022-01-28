@@ -1,0 +1,36 @@
+.topbar{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    background-color: rgb(5, 68, 104);
+    height: 40px;
+}
+
+.topbar-nav{
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.topbar-nav p{
+    color: white;
+}
+
+.dropdown{
+    position: absolute;
+    top:38px;
+    width: 300px;
+    transform: translateX(-45%);
+    overflow: hidden;
+    background-color: rgb(5, 68, 104);
+}
+
+.menu-item{
+    height: 25px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
