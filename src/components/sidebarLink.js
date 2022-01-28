@@ -4,7 +4,7 @@ class SidebarLink extends React.Component{
     render(){
         return(
             <li>
-                <a href="#">
+                <a href={this.props.href}>
                     <div className="link">
                         <p>{this.props.icon}</p>
                         <span className="item">{this.props.name}</span>

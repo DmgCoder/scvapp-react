@@ -32,7 +32,7 @@ function DropDownMenu(props)
             <DropDownItem>
                 <p>Vaš mail: {props.userData.mail}</p>
             </DropDownItem>
-            <DropDownItem href="">
+            <DropDownItem href={`${process.env.REACT_APP_BACKEND_URL}/user/logout/`}>
                 <p>Odjava</p>
             </DropDownItem>
         </div>

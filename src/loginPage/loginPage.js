@@ -1,23 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 
-import lightLoginBtn from "../pictures/ms_login_btn/ms-symbollockup_signin_light.svg"
+import msLoginBtn from "../pictures/ms-btn_signin_light.png"
+import schoolLogo from "../pictures/school_logo.png"
 
 import './loginPage.css'
 
 
 export default function LoginPage(){
-    function isLoaded(e){
-        console.log(e)
+    //{`${process.env.REACT_APP_BACKEND_URL}/auth/authUrl/`}
+
+    function useWindowSize() {
+        const [size, setSize] = useState([0, 0]);
+        useLayoutEffect(() => {
+          function updateSize() {
+            setSize([window.innerWidth, window.innerHeight]);
+          }
+          window.addEventListener('resize', updateSize);
+          updateSize();
+          return () => window.removeEventListener('resize', updateSize);
+        }, []);
+        return size;
     }
 
-    //{`${process.env.REACT_APP_BACKEND_URL}/auth/authUrl/`}
+    const [widWidth, winHeight] = useWindowSize()
+
+    const [ height, setHeight ] = useState(0)
+
+    let ref = useRef(null);
+
+    useEffect(()=>{
+        setHeight(ref.current.clientWidth)
+    },[widWidth])
+
+  
     return(
         <div className="main">
-            <div className="loginWindow">
+            <div className="loginWindow" ref={ref} style={{height:height}}>
                 <div className="content">
-                    <p>Pozdravljeni v ŠCV App, pred nadaljevanjem se prosim prijavite v aplikacijo</p>
-                    <a className=".loginBtn">
-                        <img src={lightLoginBtn} alt=""></img>
+                    <img src={schoolLogo} className="schoolLogo"></img>
+                    <p>Prijava v sistem <b>ŠCVApp</b></p>
+                    <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/authUrl/`} className="loginBtn">
+                        <img src={msLoginBtn} alt="" className="btnImg"></img>
                     </a>
                 </div>
             </div>
