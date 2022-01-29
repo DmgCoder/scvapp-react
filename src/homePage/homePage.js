@@ -10,7 +10,7 @@ const HomePage = () => {
     async function getUserData(){
         let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/`,{
                 mode:'cors',
-                credentials:'include',
+                credentials:'omit',
                 method:'GET',
             })
         let data = {}
@@ -20,19 +20,19 @@ const HomePage = () => {
         setUserData(data)
         setLoaded(true)
         
-        if(!data.displayName){
-            return window.location.pathname="/login"
-        }
+        // if(!data.displayName){
+        //     return window.location.pathname="/login"
+        // }
     }
 
     useEffect(()=>{
         getUserData()
     },[])
-    if(!userData.displayName && isLoaded){
-        return(
-            <p>Auth Error</p>
-        )
-    }
+    // if(!userData.displayName && isLoaded){
+    //     return(
+    //         <p>Auth Error</p>
+    //     )
+    // }
     return(
         <>
         <SideBar userData={userData}/>,

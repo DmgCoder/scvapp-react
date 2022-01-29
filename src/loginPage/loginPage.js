@@ -38,7 +38,7 @@ export default function LoginPage(){
             <div className="loginWindow" ref={ref} style={{height:height}}>
                 <div className="content">
                     <img src={schoolLogo} className="schoolLogo"></img>
-                    <p>Prijava v sistem <b>ŠCVApp</b></p>
+                    <p className="text">Prijava v sistem <b>ŠCVApp</b></p>
                     <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/authUrl/`} className="loginBtn">
                         <img src={msLoginBtn} alt="" className="btnImg"></img>
                     </a>
