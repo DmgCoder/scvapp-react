@@ -14,26 +14,52 @@ body{
 }
 
 .wrapper .sidebar{
-    background: rgb(5, 68, 104);
+    background: #008DD3;
     position: fixed;
     top: 0;
     left: 0;
-    width: 225px;
+    width: 300px;
     height: 100%;
     padding: 20px 0;
     transition: all 0.5s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upHalf{
+    margin-top: 40px;
+    width: 100%;
+    height: 36%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upHalf img{
+    width: 70%;
+}
+
+.links{
+    width: 100%;
+}
+
+.downHalf{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .wrapper .sidebar ul li a{
     display: block;
     padding: 13px 30px;
-    border-bottom: 1px solid #10558d;
     color: rgb(241, 237, 237);
     font-size: 16px;
     position: relative;
+    color: black;
 }
 
 .wrapper .sidebar ul li a .icon{
@@ -42,11 +68,57 @@ body{
     display: inline-block;
 }
 
+.userProfile{
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: black solid 1px;
+}
+
+.userProfile .profileInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.userProfile .profileInfo p{
+    font-size: 14px;
+    font-weight: bold;
+}
+.userProfile .profileInfo span{
+    font-size: 12px;
+}
+
+.profilePicture{
+    width: 15%;
+    border-radius: 50%;
+}
+
+.sideLink{
+    cursor: pointer;
+}
+
 .link{
     display: flex;
     flex-direction: row;
     width: 60%;
-    justify-content: space-between;
+    text-align: left;
+    height: 30px;
+    align-items: center;
 }
 
+.link .item{
+    font-weight: bold;
+    font-size: 16px;
+    flex: 3.5;
+    width: 100%;
+}
+
+.link .icon{
+    flex: 1;
+}
+
+.active{
+    background-color: #00000017;
+}
 
