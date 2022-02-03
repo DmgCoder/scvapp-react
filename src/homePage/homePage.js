@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import SideBar from "../components/sidebar";
 import MainPage from "../mainPage/mainPage";
 
@@ -12,18 +12,21 @@ const HomePage = () => {
                 mode:'cors',
                 credentials:'include',
                 method:'GET',
+            }).catch(e=>{
+                setLoaded(true)
+                window.location.pathname="/prijava"
             })
         let data = {}
+        setLoaded(true)
         if(json.ok){
             data = await json.json()
         }else{
-            return window.location.pathname="/login"
+            return window.location.pathname="/prijava"
         }
         setUserData(data)
-        setLoaded(true)
         
         if(!data.displayName){
-            return window.location.pathname="/login"
+            return window.location.pathname="/prijava"
         }
     }
 
@@ -52,23 +55,23 @@ const HomePage = () => {
 
     const [ width, setWidth ] = useState(0)
 
-    let ref = useRef(null);
-
     useEffect(()=>{
         getUserData()
         // getUsersSchoolData()
     },[])
     useEffect(()=>{
-        setWidth(winWidth)
+        setWidth(winWidth-300)
     },[winWidth])
     if(!userData.displayName && isLoaded){
         return(
-            <p>Auth Error</p>
+            <>
+                <p>Auth Error</p>
+            </>
         )
     }
     return(
         <main className="main">
-            <SideBar userData={userData}/>
+            <SideBar userData={userData} style={{height:"100%"}}/>
             <MainPage style={{width:width,height:"100%"}}/>
         </main>
     );

@@ -10,7 +10,10 @@ const RoutePage = () => {
             <Routes>
                 <Route path="/">
                     <Route index element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />}/>
+                    <Route path="/domov" element={<HomePage />} />
+                    <Route path="/malice" element={<HomePage />} />
+                    <Route path="/easistent" element={<HomePage />}/>
+                    <Route path="/prijava" element={<LoginPage />}/>
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
             </Routes>
