@@ -125,3 +125,9 @@ body{
     background-color: #00000017;
 }
 
+.statusIcon{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+}

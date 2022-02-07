@@ -23,11 +23,20 @@ const HomePage = () => {
         }else{
             return window.location.pathname="/prijava"
         }
-        setUserData(data)
-        
-        if(!data.displayName){
-            return window.location.pathname="/prijava"
+        json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/status`,{
+            mode:'cors',
+            credentials:'include',
+            method:'GET',
+        })
+        if(json.ok){
+            data.status = await json.json()
+        }else{
+            data.status = {
+                display:"Unknown",
+                color:"#ffffff"
+            }
         }
+        setUserData(data)
     }
 
     async function getUsersSchoolData(){

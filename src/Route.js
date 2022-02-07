@@ -13,6 +13,7 @@ const RoutePage = () => {
                     <Route path="/domov" element={<HomePage />} />
                     <Route path="/malice" element={<HomePage />} />
                     <Route path="/easistent" element={<HomePage />}/>
+                    <Route path="/nastavitve" element={<HomePage />}/>
                     <Route path="/prijava" element={<LoginPage />}/>
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
