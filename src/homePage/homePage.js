@@ -36,15 +36,24 @@ const HomePage = () => {
                 color:"#ffffff"
             }
         }
-        setUserData(data)
-    }
-
-    async function getUsersSchoolData(){
-        let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/school/`,{
+        json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/school`,{
             mode:'cors',
             credentials:'include',
             method:'GET',
         })
+        if(json.ok){
+            data.school = await json.json()
+        }else{
+            data.school = {
+                id:"",
+                urnikUrl:"",
+                color:"",
+                schoolUrl:"",
+                name:""
+            }
+        }
+        data.set = setUserData
+        setUserData(data)
     }
 
     function useWindowSize() {
@@ -66,7 +75,6 @@ const HomePage = () => {
 
     useEffect(()=>{
         getUserData()
-        // getUsersSchoolData()
     },[])
     useEffect(()=>{
         setWidth(winWidth-300)
@@ -81,7 +89,7 @@ const HomePage = () => {
     return(
         <main className="main">
             <SideBar userData={userData} style={{height:"100%"}}/>
-            <MainPage style={{width:width,height:"100%"}}/>
+            <MainPage userData={userData} style={{width:width,height:"100%"}}/>
         </main>
     );
 }

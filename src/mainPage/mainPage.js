@@ -10,7 +10,9 @@ export default function MainPage(props){
     if(location.pathname === "/domov"){
         return (
             <div style={props.style}>
-                <SchoolPage />
+                {
+                <SchoolPage url={props.userData.school&&props.userData.school.schoolUrl}/>
+                }
             </div>
         )
     }else if(location.pathname === "/malice"){
@@ -28,13 +30,13 @@ export default function MainPage(props){
     }else if(location.pathname === "/nastavitve"){
         return(
             <div style={props.style}>
-                <SettingsPage />
+                <SettingsPage userData={props.userData}/>
             </div>
         )
     }
     return (
         <div style={props.style}>
-            <SchoolPage />
+            <SchoolPage url={props.userData.school&&props.userData.school.schoolUrl}/>
         </div>
     )
 }

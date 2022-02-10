@@ -90,7 +90,7 @@ body{
 }
 
 .profilePicture{
-    width: 15%;
+    width: 100%;
     border-radius: 50%;
 }
 
@@ -130,4 +130,14 @@ body{
     height: 10px;
     border-radius: 50%;
     position: absolute;
+    z-index: 10000;
+    right: 0;
+    bottom: 0;
+}
+
+.profilePictureAndIcon{
+    width: 15%;
+    height: 36px;
+    position: relative;
+    display: inline-block;
 }
