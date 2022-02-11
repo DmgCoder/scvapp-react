@@ -71,7 +71,6 @@ const HomePage = () => {
         data.refreshUserStatus = getUserData
         setUserData(data)
         setLoaded(true)
-        console.log(data)
     }
 
     function useWindowSize() {

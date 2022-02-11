@@ -10,6 +10,9 @@ export default function SettingsPage(props){
     const [styleDropdown, setStyleDropdown] = useState({
         display:"none"
     })
+    const [styleDropdownSelector, setStyleDropdownselector] = useState({
+        borderRadius:"10px"
+    })
 
     const statuses = [
         {
@@ -70,9 +73,17 @@ export default function SettingsPage(props){
             setStyleDropdown({
                 display:"flex"
             })
+            setStyleDropdownselector({
+                borderBottomRightRadius:"10px",
+                borderTopLeftRadius:"10px",
+                borderTopRightRadius:"10px"
+            })
         }else{
             setStyleDropdown({
                 display:"none"
+            })
+            setStyleDropdownselector({
+                borderRadius:"10px"
             })
         }
     }
@@ -82,9 +93,6 @@ export default function SettingsPage(props){
         if(!props.userData.status) return
         for(let i = 0;i<statuses.length;i++){
             let s = statuses[i]
-            if(s.id == props.userData.status.id){
-                continue
-            }
             elements.push(
                 <div className="selectStatus" onClick={changeStatus} id={s.id} key={s.id}>
                     <div style={{backgroundColor:s.color}} id={s.id}></div>
@@ -117,7 +125,7 @@ export default function SettingsPage(props){
                 <div className="floatingDiv">
                     <div className="floatingContent">
                         <p>Vaš status:</p>
-                        <div className="statusDropdown">
+                        <div className="statusDropdown" style={styleDropdownSelector}>
                             <div className="statusIconAndText">
                                 {
                                     props.userData.status && <div style={styleStatus}></div>
@@ -153,6 +161,14 @@ export default function SettingsPage(props){
                         <div className="floatingContent">
                             <p>Dodatne informacije o vas:</p>
                             <a href={`https://eur.delve.office.com/?u=${props.userData.id}&v=editprofile`} target="_blank">Kliknite tukaj za odpiranje portala Office</a>
+                        </div>
+                    </div>
+                    <div className="floatingDiv">
+                        <div className="floatingContent">
+                            <p>O aplikaciji ŠCVApp:</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
+                              <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
                         </div>
                     </div>
             </div>

@@ -91,19 +91,20 @@
 
 .statusDropdown{
     background-color: white;
-    max-width: 300px;
+    max-width: 280px;
     max-height: 70%;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black;
     border-right: 1px solid black;
     border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-left: 1px solid black; */
     position: relative;
 }
 
 .statusIconAndText{
     display: flex;
-    justify-content: space-around !important;
+    justify-content: flex-start !important;
     align-items: center;
+    padding-left: 25px;
 }
 
 .statusIconAndText div:first-of-type{
@@ -114,12 +115,13 @@
 
 .statusIconAndText p{
     font-size: 16px !important;
+    padding-left: 10px;
 }
 
 .statusDropdown .arrowDown{
     width: 30px;
     height: 100%;
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,24 +132,26 @@
     display: none;
     flex-direction: column;
     background-color: white;
-    width: 271px;
-    border-bottom: 1px solid black;
+    width: 250px;
+    /* border-bottom: 1px solid black;
     border-right: 1px solid black;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    min-height: 200px;
-    bottom: -200px;
-    left: -1px;
+    border-left: 1px solid black; */
+    border-top: 1px solid rgba(0, 0, 0, 0.271);
+    min-height: 225px;
+    bottom: -225px;
+    left: 0px;
     transition: visibility 200ms linear;
     justify-content: flex-start;
     align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .dropdownContent .selectStatus{
-    height: 30px !important;
+    height: 35px !important;
     width: 80% !important;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     display: flex;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     cursor: pointer;
 }
@@ -159,4 +163,5 @@
 }
 .dropdownContent .selectStatus p{
     font-size: 16px !important;
+    padding-left: 10px;
 }
