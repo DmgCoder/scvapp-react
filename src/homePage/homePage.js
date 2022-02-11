@@ -7,6 +7,23 @@ const HomePage = () => {
     const [ userData, setUserData ] = useState({a:""})
     const [ isLoaded, setLoaded ] = useState(false)
 
+    async function getUserStatus(){
+        let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/status`,{
+            mode:'cors',
+            credentials:'include',
+            method:'GET',
+        })
+        if(json.ok){
+            userData.status = await json.json()
+        }else{
+            userData.status = {
+                display:"Unknown",
+                color:"#ffffff"
+            }
+        }
+        setUserData(userData)
+    }
+
     async function getUserData(){
         let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/`,{
                 mode:'cors',
@@ -17,7 +34,6 @@ const HomePage = () => {
                 window.location.pathname="/prijava"
             })
         let data = {}
-        setLoaded(true)
         if(json.ok){
             data = await json.json()
         }else{
@@ -52,8 +68,10 @@ const HomePage = () => {
                 name:""
             }
         }
-        data.set = setUserData
+        data.refreshUserStatus = getUserData
         setUserData(data)
+        setLoaded(true)
+        console.log(data)
     }
 
     function useWindowSize() {

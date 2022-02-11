@@ -1,3 +1,4 @@
+import React from "react"
 import "./404page.css"
 
 export default function NotFoundPage(){
