@@ -43,6 +43,7 @@ export default function LoginPage(){
                         <img src={msLoginBtn} alt="" className="btnImg"></img>
                     </a>
                 </div>
+                <a className="linkToAbout" href="/o-nas">Kaj je sploh ta spletna stran?</a>
             </div>
         </div>
     );

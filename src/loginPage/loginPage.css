@@ -6,12 +6,12 @@
 }
 
 .loginWindow{
-    background-color: #ece7e7;
+    background-color: #eeebeb;
     width: 650px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 28px;
 }
 
@@ -43,4 +43,12 @@
 
 .text{
     width: 55%;
+}
+
+.linkToAbout{
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-decoration: underline;
+    color: #474646;
+    cursor: pointer;
 }

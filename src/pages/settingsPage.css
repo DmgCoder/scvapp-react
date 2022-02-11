@@ -86,12 +86,12 @@
 .floatingDiv div:first-of-type a:first-of-type{
     font-size: 18px;
     text-decoration: underline;
-    color: #37b6fa;
+    color: #2f89c4;
 }
 
 .statusDropdown{
     background-color: white;
-    max-width: 280px;
+    max-width: 250px;
     max-height: 70%;
     /* border-bottom: 1px solid black;
     border-right: 1px solid black;
@@ -129,7 +129,7 @@
 
 .dropdownContent{
     position: absolute;
-    display: none;
+    display: flex;
     flex-direction: column;
     background-color: white;
     width: 250px;
@@ -145,6 +145,7 @@
     align-items: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    transition: opacity 150ms ease-in-out;
 }
 .dropdownContent .selectStatus{
     height: 35px !important;
@@ -164,4 +165,37 @@
 .dropdownContent .selectStatus p{
     font-size: 16px !important;
     padding-left: 10px;
+}
+
+.aboutSchoolDropdown{
+    position: absolute;
+    background-color: #f0f0f0;
+    height: 300px !important;
+    width: 100%;
+    bottom: -300px;
+    left: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: display 200ms ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -6px #222;
+    opacity: 1;
+    transition: opacity 150ms ease-in-out;
+}
+
+.aboutSchoolDropdown div{
+    width: 90% !important;
+    height: 90% !important;
+    display: block !important;
+    font-size: 18px;
+}
+
+.aboutSchoolDropdown a{
+    font-size: 18px;
+    text-decoration: underline;
+    color: #2f89c4;
 }

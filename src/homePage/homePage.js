@@ -65,7 +65,8 @@ const HomePage = () => {
                 urnikUrl:"",
                 color:"",
                 schoolUrl:"",
-                name:""
+                name:"",
+                razred:""
             }
         }
         data.refreshUserStatus = getUserData
