@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    overflow-x: visible;
 }
 
 .userInfo-Settings{
@@ -52,7 +54,7 @@
 
 .mainSettings{
     width: 100%;
-    height: 100%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +86,7 @@
     font-size: 18px;
 }
 .floatingDiv div:first-of-type a:first-of-type{
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: underline;
     color: #2f89c4;
 }
@@ -195,7 +197,7 @@
 }
 
 .aboutSchoolDropdown a{
-    font-size: 18px;
+    font-size: 18px !important;
     text-decoration: underline;
     color: #2f89c4;
 }

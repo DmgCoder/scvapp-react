@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import ShowAlert from "../components/showAlert";
 import SideBar from "../components/sidebar";
 import MainPage from "../mainPage/mainPage";
 
@@ -7,22 +9,10 @@ const HomePage = () => {
     const [ userData, setUserData ] = useState({a:""})
     const [ isLoaded, setLoaded ] = useState(false)
 
-    async function getUserStatus(){
-        let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/status`,{
-            mode:'cors',
-            credentials:'include',
-            method:'GET',
-        })
-        if(json.ok){
-            userData.status = await json.json()
-        }else{
-            userData.status = {
-                display:"Unknown",
-                color:"#ffffff"
-            }
-        }
-        setUserData(userData)
-    }
+    const [ alertIn, setAlertIn ] = useState(false)
+
+    let location = useLocation()
+    let navigation = useNavigate()
 
     async function getUserData(){
         let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/`,{
@@ -97,6 +87,26 @@ const HomePage = () => {
     useEffect(()=>{
         setWidth(winWidth-300)
     },[winWidth])
+
+    useEffect(()=>{
+        let search = location.search
+        if(userData.displayName && isLoaded){
+            let parameters = search.slice(1).split("&")
+            for(let i = 0;i<parameters.length;i++){
+                let p = parameters[i].split("=")
+                if(p[0]=="success" && p[1]=="signin"){
+                    setAlertIn(true)
+                    setTimeout(()=>{
+                        setAlertIn(false)
+                        navigation({
+                            search:""
+                        })
+                    },5000)
+                }
+            }
+        }
+    })
+
     if(!userData.displayName && isLoaded){
         return(
             <>
@@ -108,6 +118,7 @@ const HomePage = () => {
         <main className="main">
             <SideBar userData={userData} style={{height:"100%"}}/>
             <MainPage userData={userData} style={{width:width,height:"100%"}}/>
+            <ShowAlert show={alertIn} title="Uspešna prijava!" text="Uspešno ste se prijavili v ŠCVApp"/>
         </main>
     );
 }

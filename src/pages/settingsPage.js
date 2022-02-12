@@ -8,6 +8,7 @@ import gim from "../pictures/school/gim.png"
 import ssd from "../pictures/school/ssd.png"
 import ssgo from "../pictures/school/ssgo.png"
 import vss from "../pictures/school/vss.png"
+import mic from "../pictures/school/mic.png"
 import schoolLogo from "../pictures/school_logo.png"
 
 export default function SettingsPage(props){
@@ -108,7 +109,7 @@ export default function SettingsPage(props){
     function dropdownAppInfo(){
         if(styleAppInfo.opacity == "0"){
             setStyleAppInfo({
-                opacity:"1",
+                opacity:"1"
             })
             setStyleAppInfoSelector({
                 borderTopLeftRadius:"10px",
@@ -159,6 +160,12 @@ export default function SettingsPage(props){
                 break;
             case "SSGO":
                 schoolImg = ssgo
+                break;
+            case "VSS":
+                schoolImg = vss
+                break;
+            case "MIC":
+                schoolImg = mic
                 break;
             default:
                 schoolImg = schoolLogo
@@ -235,7 +242,7 @@ export default function SettingsPage(props){
                         </div>
                         <div className="aboutSchoolDropdown" style={styleAppInfo}>
                             <div>
-                                Aplikacija je bila ustvarjena v sklopu raziskovalne naloge, leta 2022. Namenjena je dijakom in zaposlenim na ŠC 
+                                Aplikacija je bila ustvarjena v sklopu raziskovalne naloge, šolskega leta 2021/2022. Namenjena je dijakom in zaposlenim na ŠC 
                                 Velenje. Ustanovitelja aplikacije sta <b title={easterEggText}>Urban Krepel</b> in <b title={easterEggText}>Blaž Osredkar</b>.<br /><br />
                                 Navodila, kako uporabljati aplikacijo, imate <a href="https://www.youtube.com/user/scvvideo">na tej povezavi</a> (YouTube video).<br /><br /><br />
                                 Za več informacij pišite na: <a href="mailto:info.app@scv.si">info.app@scv.si</a>
