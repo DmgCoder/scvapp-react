@@ -11,7 +11,13 @@ import './loginPage.css'
 
 export default function LoginPage(){
 
-    const [ alertIn, setAlertIn ] = useState(false)
+    let defualtAlert = {
+        show:false,
+        title:"",
+        text:"",
+    }
+
+    const [ alertData, setAlertData ] = useState(defualtAlert)
 
     let location = useLocation()
     let navigation = useNavigate()
@@ -22,13 +28,12 @@ export default function LoginPage(){
         for(let i = 0;i<parameters.length;i++){
             let p = parameters[i].split("=")
             if(p[0]=="success" && p[1]=="logout"){
-                setAlertIn(true)
-                setTimeout(()=>{
-                    setAlertIn(false)
-                    navigation({
-                        search:""
-                    })
-                },5000)
+                setAlertData({
+                    show:true,
+                    title:"Uspešna odjava",
+                    text:"Uspešno ste se odjavili iz ŠCVApp",
+                    severity:"success"
+                })
             }
         }
     })
@@ -47,7 +52,7 @@ export default function LoginPage(){
                 <a className="linkToAbout" href="/o-nas">Kaj je sploh ta spletna stran?</a>
             </div>
         </div>
-        <ShowAlert show={alertIn} title="Uspešna odjava!" text="Uspešno ste se odjavili iz ŠCVApp"/>
+        <ShowAlert show={alertData.show} title={alertData.title} text={alertData.text} severity={alertData.severity}/>
         </>
     );
 }

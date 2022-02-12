@@ -26,6 +26,7 @@ export default function SettingsPage(props){
     })
     const [styleAppInfo, setStyleAppInfo] = useState({
         opacity:"0",
+        zIndex:"-10000000"
     })
 
     let easterEggText = ""
@@ -90,7 +91,8 @@ export default function SettingsPage(props){
     function dropdown(){
         if(styleDropdown.opacity == "0"){
             setStyleDropdown({
-                opacity:"1"
+                opacity:"1",
+                zIndex:"1000000"
             })
             setStyleDropdownselector({
                 borderTopLeftRadius:"10px",
@@ -98,7 +100,8 @@ export default function SettingsPage(props){
             })
         }else{
             setStyleDropdown({
-                opacity:"0"
+                opacity:"0",
+                zIndex:"-1000000"
             })
             setStyleDropdownselector({
                 borderRadius:"10px",

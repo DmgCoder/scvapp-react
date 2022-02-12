@@ -98,10 +98,7 @@ const HomePage = () => {
                     setAlertIn(true)
                     setTimeout(()=>{
                         setAlertIn(false)
-                        navigation({
-                            search:""
-                        })
-                    },5000)
+                    })
                 }
             }
         }
