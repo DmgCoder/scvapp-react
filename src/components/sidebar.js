@@ -1,10 +1,11 @@
-import React, { useLayoutEffect,useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./sidebar.css"
 
 import SidebarLink from "./sidebarLink";
 import schoolLogo from "../pictures/school_logo.png"
 import EaSvgLogo from "../pictures/eASvgLogo";
+import StatusIcon from "./statusIcon";
 
 export default function SideBar(props){
         let pathname = useLocation().pathname
@@ -24,7 +25,7 @@ export default function SideBar(props){
             <div className="wrapper">
                 <div className="sidebar" style={props.userData.school&&{backgroundColor:props.userData.school.color}}>
                     <div className="upHalf">
-                        <img src={schoolLogo} title={props.userData.school&&props.userData.school.name}></img>
+                        <img alt="" src={schoolLogo} title={props.userData.school&&props.userData.school.name}></img>
                         <ul className="links">
                             <SidebarLink name="Domača stran" href="/" pathname={pathname} >
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
@@ -46,9 +47,9 @@ export default function SideBar(props){
                     <div className="downHalf">
                         <div className="userProfile">
                             <div className="profilePictureAndIcon">
-                                <img src={`${process.env.REACT_APP_BACKEND_URL}/user/get/profilePicture`} className="profilePicture"></img>
+                                <img alt="" src={`${process.env.REACT_APP_BACKEND_URL}/user/get/profilePicture`} className="profilePicture"></img>
                                 {
-                                    props.userData.status && <div className="statusIcon" style={styleStatus} title={props.userData.status.display}></div>
+                                    props.userData.status && <StatusIcon className="statusIcon" status={props.userData.status} />
                                 }
                             </div>
                             <div className="profileInfo">
@@ -56,7 +57,7 @@ export default function SideBar(props){
                                 <span>{props.userData.mail}</span>
                             </div>
                             <a href={`${process.env.REACT_APP_BACKEND_URL}/user/logout`} title="Odjava">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill={props.userData.school&&props.userData.school.color == "#FFFFFF"?"#ED1164":"#ffffff"} className="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill={props.userData.school&&props.userData.school.color === "#FFFFFF"?"#ED1164":"#ffffff"} className="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                   <path fillRule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
                                   <path fillRule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
                                 </svg>

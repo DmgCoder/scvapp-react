@@ -109,10 +109,10 @@
     padding-left: 25px;
 }
 
-.statusIconAndText div:first-of-type{
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
+.statusIconAndText .statusIconAndText-Icon{
+    border-radius: 50% !important;
+    width: 15px !important;
+    height: 15px !important;
 }
 
 .statusIconAndText p{
@@ -160,7 +160,7 @@
     cursor: pointer;
 }
 
-.dropdownContent .selectStatus div{
+.dropdownContent .selectStatus .selectStatus-Icon{
     border-radius: 50%;
     width: 15px;
     height: 15px;

@@ -96,7 +96,7 @@ const HomePage = () => {
                 let key = a[0] || ""
                 let value = a[1] || ""
 
-                if(key == "success" && value == "signin"){
+                if(key === "success" && value === "signin"){
                     localStorage.setItem("login","success")
                     localStorage.setItem("login-time",new Date().getTime())
                     navigation({
@@ -110,11 +110,11 @@ const HomePage = () => {
         if(userData.displayName && isLoaded){
             let item = localStorage.getItem("login") || ""
             let itemTime = localStorage.getItem("login-time") || 0
-            if(item == "success" && !alertIn){
+            if(item === "success" && !alertIn){
                 setAlertIn(true)
                 let int = setInterval(()=>{
                     let n = new Date().getTime()
-                    if((parseInt(itemTime)+5000)<=n){
+                    if((parseInt(itemTime)+7000)<=n){
                         clearInterval(int)
                         localStorage.removeItem("login")
                         localStorage.removeItem("login-time")
@@ -129,6 +129,11 @@ const HomePage = () => {
         return(
             <>
                 <p>Auth Error</p>
+            </>
+        )
+    }else if(!isLoaded){
+        return(
+            <>
             </>
         )
     }

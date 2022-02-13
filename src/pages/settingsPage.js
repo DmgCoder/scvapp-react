@@ -1,5 +1,4 @@
-import React, {useEffect,useState} from "react";
-import HomePage from "../homePage/homePage";
+import React, {useState} from "react";
 
 import "./settingsPage.css"
 
@@ -10,9 +9,9 @@ import ssgo from "../pictures/school/ssgo.png"
 import vss from "../pictures/school/vss.png"
 import mic from "../pictures/school/mic.png"
 import schoolLogo from "../pictures/school_logo.png"
+import StatusIcon from "../components/statusIcon";
 
 export default function SettingsPage(props){
-    const [styleStatus, setStyleStatus] = useState({})
     const [styleDropdown, setStyleDropdown] = useState({
         opacity:"0"
     })
@@ -67,14 +66,6 @@ export default function SettingsPage(props){
         },
     ]
 
-    useEffect(()=>{
-        if(props.userData.status){
-            setStyleStatus({
-                backgroundColor:props.userData.status.color,
-            })
-        }
-    },[props.userData.status])
-
     async function changeStatus(e){
         let target = e.target
         let id = target.id || ""
@@ -89,7 +80,7 @@ export default function SettingsPage(props){
     }
 
     function dropdown(){
-        if(styleDropdown.opacity == "0"){
+        if(styleDropdown.opacity === "0"){
             setStyleDropdown({
                 opacity:"1",
                 zIndex:"1000000"
@@ -110,7 +101,7 @@ export default function SettingsPage(props){
     }
 
     function dropdownAppInfo(){
-        if(styleAppInfo.opacity == "0"){
+        if(styleAppInfo.opacity === "0"){
             setStyleAppInfo({
                 opacity:"1"
             })
@@ -141,7 +132,7 @@ export default function SettingsPage(props){
             let s = statuses[i]
             elements.push(
                 <div className="selectStatus" onClick={changeStatus} id={s.id} key={s.id}>
-                    <div style={{backgroundColor:s.color}} id={s.id}></div>
+                    <StatusIcon status={s} className="selectStatus-Icon"/>
                     <p id={s.id}>{s.display}</p>
                 </div>
             )
@@ -181,17 +172,17 @@ export default function SettingsPage(props){
             <div className="userInfo-Settings">
                 <div className="profile-Settings">
                     <div className="profilePictureAndIcon-Settings">
-                        <img src={`${process.env.REACT_APP_BACKEND_URL}/user/get/profilePicture`} className="profilePicture-Settings"></img>
+                        <img alt="" src={`${process.env.REACT_APP_BACKEND_URL}/user/get/profilePicture`} className="profilePicture-Settings"></img>
                         {
-                            props.userData.status && <div className="statusIcon-Settings" style={styleStatus} title={props.userData.status.display}></div>
+                            props.userData.status && <StatusIcon className="statusIcon-Settings" status={props.userData.status}/>
                         }
                     </div>
                     <div className="profileInfo-Settings">
-                        <p title={`${props.userData.displayName} - ${props.userData.school && props.userData.school.name}, ${props.userData.school && props.userData.school.razred}`}>{props.userData.displayName}</p>
+                        <p title={`${props.userData.displayName} - ${props.userData.school && props.userData.school.name}${props.userData.school && props.userData.school.razred===""?"":","} ${props.userData.school && props.userData.school.razred}`}>{props.userData.displayName}</p>
                     </div>
                 </div>
                 <div className="schoolLogo-Settings">
-                        <img src={schoolImg} title={props.userData.school&&props.userData.school.name}></img>
+                        <img alt="" src={schoolImg} title={props.userData.school&&props.userData.school.name}></img>
                 </div>
             </div>
             <div className="mainSettings">
@@ -201,12 +192,12 @@ export default function SettingsPage(props){
                         <div className="statusDropdown" style={styleDropdownSelector}>
                             <div className="statusIconAndText">
                                 {
-                                    props.userData.status && <div style={styleStatus}></div>
+                                    props.userData.status && <StatusIcon status={props.userData.status} className="statusIconAndText-Icon"/>
                                 }
                                 <p>{props.userData.status && props.userData.status.display}</p>
                             </div>
                             <div className="arrowDown" onClick={dropdown}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16" style={{transform:styleDropdown.opacity!="0"?"rotate(-180deg)":"",transition: 'transform 150ms ease'}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16" style={{transform:styleDropdown.opacity!=="0"?"rotate(-180deg)":"",transition: 'transform 150ms ease'}}>
                                   <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                 </svg>
                             </div>
@@ -233,13 +224,13 @@ export default function SettingsPage(props){
                     <div className="floatingDiv">
                         <div className="floatingContent">
                             <p>Dodatne informacije o vas:</p>
-                            <a href={`https://eur.delve.office.com/?u=${props.userData.id}&v=editprofile`} target="_blank">Kliknite tukaj za odpiranje portala Office</a>
+                            <a href={`https://eur.delve.office.com/?u=${props.userData.id}&v=editprofile`} target="_blank" rel="noopener noreferrer">Kliknite tukaj za odpiranje portala Office</a>
                         </div>
                     </div>
                     <div className="floatingDiv" style={styleAppInfoSelector}>
                         <div className="floatingContent" onClick={dropdownAppInfo}>
                             <p>O aplikaciji ŠCVApp:</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16" style={{transform:styleAppInfo.opacity=="0"?"rotate(-90deg)":"",transition: 'transform 150ms ease'}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16" style={{transform:styleAppInfo.opacity==="0"?"rotate(-90deg)":"",transition: 'transform 150ms ease'}}>
                                 <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                               </svg>
                         </div>
