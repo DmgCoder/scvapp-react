@@ -30,7 +30,7 @@ export default function LoginPage(){
             if(p[0]=="success" && p[1]=="logout"){
                 setAlertData({
                     show:true,
-                    title:"Uspešna odjava",
+                    title:"Odjava uspešna!",
                     text:"Uspešno ste se odjavili iz ŠCVApp",
                     severity:"success"
                 })

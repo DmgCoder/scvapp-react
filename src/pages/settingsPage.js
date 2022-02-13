@@ -187,7 +187,7 @@ export default function SettingsPage(props){
                         }
                     </div>
                     <div className="profileInfo-Settings">
-                        <p>{props.userData.displayName}</p>
+                        <p title={`${props.userData.displayName} - ${props.userData.school && props.userData.school.name}, ${props.userData.school && props.userData.school.razred}`}>{props.userData.displayName}</p>
                     </div>
                 </div>
                 <div className="schoolLogo-Settings">

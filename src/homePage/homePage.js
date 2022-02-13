@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import ShowAlert from "../components/showAlert";
 import SideBar from "../components/sidebar";
 import MainPage from "../mainPage/mainPage";
@@ -84,22 +84,43 @@ const HomePage = () => {
     useEffect(()=>{
         getUserData()
     },[])
+
     useEffect(()=>{
         setWidth(winWidth-300)
     },[winWidth])
 
     useEffect(()=>{
-        let search = location.search
-        if(userData.displayName && isLoaded){
-            let parameters = search.slice(1).split("&")
-            for(let i = 0;i<parameters.length;i++){
-                let p = parameters[i].split("=")
-                if(p[0]=="success" && p[1]=="signin"){
-                    setAlertIn(true)
-                    setTimeout(()=>{
-                        setAlertIn(false)
+            let search = location.search.slice(1).split("&")
+            search.forEach(s=>{
+                let a = s.split("=")
+                let key = a[0] || ""
+                let value = a[1] || ""
+
+                if(key == "success" && value == "signin"){
+                    localStorage.setItem("login","success")
+                    localStorage.setItem("login-time",new Date().getTime())
+                    navigation({
+                        search:""
                     })
                 }
+            })
+    })
+
+    useEffect(()=>{
+        if(userData.displayName && isLoaded){
+            let item = localStorage.getItem("login") || ""
+            let itemTime = localStorage.getItem("login-time") || 0
+            if(item == "success" && !alertIn){
+                setAlertIn(true)
+                let int = setInterval(()=>{
+                    let n = new Date().getTime()
+                    if((parseInt(itemTime)+5000)<=n){
+                        clearInterval(int)
+                        localStorage.removeItem("login")
+                        localStorage.removeItem("login-time")
+                        setAlertIn(false)
+                    }
+                },1000)
             }
         }
     })
@@ -115,7 +136,7 @@ const HomePage = () => {
         <main className="main">
             <SideBar userData={userData} style={{height:"100%"}}/>
             <MainPage userData={userData} style={{width:width,height:"100%"}}/>
-            <ShowAlert show={alertIn} title="Uspešna prijava!" text="Uspešno ste se prijavili v ŠCVApp"/>
+            <ShowAlert show={alertIn} title="Prijava uspešna!" text="Uspešno ste se prijavili v ŠCVApp"/>
         </main>
     );
 }
