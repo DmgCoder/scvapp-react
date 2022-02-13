@@ -1,11 +1,18 @@
 .settings{
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.settings .main{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    overflow-x: visible;
+    min-height: 900px;
 }
 
 .userInfo-Settings{
@@ -94,6 +101,8 @@
 .statusDropdown{
     background-color: white;
     max-width: 250px;
+    width: 30% !important;
+    min-width: 185px;
     max-height: 70%;
     /* border-bottom: 1px solid black;
     border-right: 1px solid black;
@@ -134,7 +143,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    width: 250px;
+    width: 100%;
     /* border-bottom: 1px solid black;
     border-right: 1px solid black;
     border-left: 1px solid black; */

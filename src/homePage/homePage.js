@@ -64,30 +64,9 @@ const HomePage = () => {
         setLoaded(true)
     }
 
-    function useWindowSize() {
-        const [size, setSize] = useState([0, 0]);
-        useLayoutEffect(() => {
-          function updateSize() {
-            setSize([window.innerWidth, window.innerHeight]);
-          }
-          window.addEventListener('resize', updateSize);
-          updateSize();
-          return () => window.removeEventListener('resize', updateSize);
-        }, []);
-        return size;
-    }
-
-    const [winWidth, winHeight] = useWindowSize()
-
-    const [ width, setWidth ] = useState(0)
-
     useEffect(()=>{
         getUserData()
     },[])
-
-    useEffect(()=>{
-        setWidth(winWidth-300)
-    },[winWidth])
 
     useEffect(()=>{
             let search = location.search.slice(1).split("&")
@@ -140,7 +119,7 @@ const HomePage = () => {
     return(
         <main className="main">
             <SideBar userData={userData} style={{height:"100%"}}/>
-            <MainPage userData={userData} style={{width:width,height:"100%"}}/>
+            <MainPage userData={userData} style={{width:"100%",height:"100%"}}/>
             <ShowAlert show={alertIn} title="Prijava uspešna!" text="Uspešno ste se prijavili v ŠCVApp"/>
         </main>
     );

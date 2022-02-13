@@ -8,7 +8,9 @@ class SidebarLink extends React.Component{
                 <Link to={this.props.href||""}>
                     <div className="link">
                         <div className="icon">{this.props.children}</div>
-                        <span className="item">{this.props.name}</span>
+                        {
+                            this.props.size >= 300 ? <span className="item">{this.props.name}</span> : ""
+                        }
                     </div>
                     </Link>
                 </li>
