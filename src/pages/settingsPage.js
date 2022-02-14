@@ -83,7 +83,7 @@ export default function SettingsPage(props){
         if(styleDropdown.opacity === "0"){
             setStyleDropdown({
                 opacity:"1",
-                zIndex:"1000000"
+                zIndex:"100"
             })
             setStyleDropdownselector({
                 borderTopLeftRadius:"10px",

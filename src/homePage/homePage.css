@@ -1,5 +1,13 @@
 .main{
+    position: relative;
+    top: 0px;
+    left: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+body iframe{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }

@@ -4,6 +4,8 @@ import EasistentPage from "../pages/eAsistentPage";
 import MalicePage from "../pages/malicePage";
 import SchoolPage from "../pages/schoolPage";
 import SettingsPage from "../pages/settingsPage";
+import ArnesUcilnicePage from "../pages/arnesUcilnicePage";
+import SIOMDMPrijava from "../pages/siomdmPrijavaPage";
 
 export default function MainPage(props){
     let location = useLocation()
@@ -31,6 +33,18 @@ export default function MainPage(props){
         return(
             <div style={props.style}>
                 <SettingsPage userData={props.userData}/>
+            </div>
+        )
+    }else if(location.pathname === "/arnes-ucilnice"){
+        return(
+            <div style={props.style}>
+                <ArnesUcilnicePage />
+            </div>
+        )
+    }else if(location.pathname === "/siomdm-prijava"){
+        return(
+            <div style={props.style}>
+                <SIOMDMPrijava />
             </div>
         )
     }

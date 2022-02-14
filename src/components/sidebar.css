@@ -7,6 +7,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 body{
@@ -16,25 +18,40 @@ body{
 
 .wrapper .sidebar{
     background: #008DD3;
-    /* position: fixed; */
+    position: absolute;
     top: 0;
     left: 0;
     width: 300px;
     height: 100vh;
     overflow-y: scroll;
+    overflow-x: scroll;
+    transition: width 0.4s ease-in-out;
+    z-index: 1000;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body ::-webkit-scrollbar {
+    display: none;
+}
+
+.sideBarFix{
+    width: 60px;
+    position: relative;
+    height: 100%;
 }
 
 .sidebar .main{
     width: 100%;
     height: 100%;
     padding: 20px 0;
-    transition: all 0.5s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    min-height: 610px;
+    min-height: 640px;
+    min-width: 60px;
 }
 
 .upHalf{
@@ -71,6 +88,12 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.logoutBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper .sidebar ul li a{
@@ -121,7 +144,7 @@ body{
 .link{
     display: flex;
     flex-direction: row;
-    width: 60%;
+    width: 90%;
     text-align: left;
     height: 30px;
     align-items: center;
@@ -131,9 +154,13 @@ body{
 .link .item{
     font-weight: bold;
     font-size: 16px;
-    flex: 3.5;
     width: 100%;
+    margin-left: 10px;
 }
+
+/* .siomdmLink span{
+    font-size: 14px !important;
+} */
 
 .link .icon{
     display: flex;
@@ -167,7 +194,7 @@ body{
     .upHalf .closeArrow{
         position: absolute;
         top:10px;
-        right: 10px;
+        left: 10px;
         cursor: pointer;
         display: block;
     }
