@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ShowAlert from "../components/showAlert";
 
 import msLoginBtn from "../pictures/ms-login-btn.svg"
-import schoolLogo from "../pictures/school_logo.png"
+import schoolLogo from "../pictures/school_logo.svg"
 
 import './loginPage.css'
 
@@ -28,8 +28,8 @@ export default function LoginPage(){
             let value = a[1] || ""
 
             if(key === "success" && value === "logout"){
-                localStorage.setItem("logout","success")
-                localStorage.setItem("logout-time",new Date().getTime())
+                sessionStorage.setItem("logout","success")
+                sessionStorage.setItem("logout-time",new Date().getTime())
                 navigation({
                     search:""
                 })
@@ -38,8 +38,8 @@ export default function LoginPage(){
     })
 
     useEffect(()=>{
-            let item = localStorage.getItem("logout") || ""
-            let itemTime = localStorage.getItem("logout-time") || 0
+            let item = sessionStorage.getItem("logout") || ""
+            let itemTime = sessionStorage.getItem("logout-time") || 0
             if(item === "success" && !alertData.show){
                 setAlertData({
                     show:true,
@@ -48,8 +48,8 @@ export default function LoginPage(){
                     let n = new Date().getTime()
                     if((parseInt(itemTime)+8000)<=n){
                         clearInterval(int)
-                        localStorage.removeItem("logout")
-                        localStorage.removeItem("logout-time")
+                        sessionStorage.removeItem("logout")
+                        sessionStorage.removeItem("logout-time")
                         setAlertData(defualtAlert)
                     }
                 },1000)

@@ -39,7 +39,8 @@ const HomePage = () => {
         }else{
             data.status = {
                 display:"Unknown",
-                color:"#ffffff"
+                color:"#ffffff",
+                id:"Unknown"
             }
         }
         json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/school`,{

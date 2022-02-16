@@ -17,7 +17,6 @@ const RoutePage = () => {
                     <Route path="/easistent" element={<HomePage />}/>
                     <Route path="/nastavitve" element={<HomePage />}/>
                     <Route path="/arnes-ucilnice" element={<HomePage />}/>
-                    <Route path="/siomdm-prijava" element={<HomePage />}/>
                     <Route path="/prijava" element={<LoginPage />}/>
                     <Route path="/o-nas" element={<AboutPage />} />
                     <Route path="*" element={<NotFoundPage />} />

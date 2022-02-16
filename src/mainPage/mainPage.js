@@ -5,7 +5,6 @@ import MalicePage from "../pages/malicePage";
 import SchoolPage from "../pages/schoolPage";
 import SettingsPage from "../pages/settingsPage";
 import ArnesUcilnicePage from "../pages/arnesUcilnicePage";
-import SIOMDMPrijava from "../pages/siomdmPrijavaPage";
 
 export default function MainPage(props){
     let location = useLocation()
@@ -39,12 +38,6 @@ export default function MainPage(props){
         return(
             <div style={props.style}>
                 <ArnesUcilnicePage />
-            </div>
-        )
-    }else if(location.pathname === "/siomdm-prijava"){
-        return(
-            <div style={props.style}>
-                <SIOMDMPrijava />
             </div>
         )
     }

@@ -2,12 +2,12 @@ import React, {useState} from "react";
 
 import "./settingsPage.css"
 
-import ers from "../pictures/school/ers.png"
-import gim from "../pictures/school/gim.png"
-import ssd from "../pictures/school/ssd.png"
-import ssgo from "../pictures/school/ssgo.png"
-import vss from "../pictures/school/vss.png"
-import mic from "../pictures/school/mic.png"
+import ers from "../pictures/school/ers.svg"
+import gim from "../pictures/school/gim.svg"
+import ssd from "../pictures/school/ssd.svg"
+import ssgo from "../pictures/school/ssgo.svg"
+import vss from "../pictures/school/vss.svg"
+import mic from "../pictures/school/mic.svg"
 import schoolLogo from "../pictures/school_logo.png"
 import StatusIcon from "../components/statusIcon";
 
@@ -16,10 +16,10 @@ export default function SettingsPage(props){
         opacity:"0"
     })
     const [styleDropdownSelector, setStyleDropdownselector] = useState({
-        borderRadius:"10px"
+        borderRadius:"var(--border-radius-for-elements)"
     })
     const [styleAppInfoSelector, setStyleAppInfoSelector] = useState({
-        borderRadius:"10px",
+        borderRadius:"var(--border-radius-for-elements)",
         position:"relative",
         boxShadow:"0 4px 6px -6px #222"
     })
@@ -86,8 +86,8 @@ export default function SettingsPage(props){
                 zIndex:"100"
             })
             setStyleDropdownselector({
-                borderTopLeftRadius:"10px",
-                borderTopRightRadius:"10px"
+                borderTopLeftRadius:"var(--border-radius-for-elements)",
+                borderTopRightRadius:"var(--border-radius-for-elements)"
             })
         }else{
             setStyleDropdown({
@@ -95,7 +95,7 @@ export default function SettingsPage(props){
                 zIndex:"-1000000"
             })
             setStyleDropdownselector({
-                borderRadius:"10px",
+                borderRadius:"var(--border-radius-for-elements)",
             })
         }
     }
@@ -106,8 +106,8 @@ export default function SettingsPage(props){
                 opacity:"1"
             })
             setStyleAppInfoSelector({
-                borderTopLeftRadius:"10px",
-                borderTopRightRadius:"10px",
+                borderTopLeftRadius:"var(--border-radius-for-elements)",
+                borderTopRightRadius:"var(--border-radius-for-elements)",
                 borderBottomRightRadius:"0px",
                 borderBottomLeftRadius:"0px",
                 position:"relative",
@@ -118,7 +118,7 @@ export default function SettingsPage(props){
                 opacity:"0",
             })
             setStyleAppInfoSelector({
-                borderRadius:"10px",
+                borderRadius:"var(--border-radius-for-elements)",
                 position:"relative",
                 boxShadow:"0 4px 6px -6px #222"
             })
@@ -238,7 +238,7 @@ export default function SettingsPage(props){
                             <div className="aboutSchoolDropdown" style={styleAppInfo}>
                                 <div>
                                     Aplikacija je bila ustvarjena v sklopu raziskovalne naloge, šolskega leta 2021/2022. Namenjena je dijakom in zaposlenim na ŠC 
-                                    Velenje. Ustanovitelja aplikacije sta <b title={easterEggText}>Urban Krepel</b> in <b title={easterEggText}>Blaž Osredkar</b>.<br /><br />
+                                    Velenje. Ustanovitelja aplikacije sta <b title={easterEggText}>Urban Krepel</b> in <b title={easterEggText}>Blaž Osredkar</b>.<br /><br /><br />
                                     Navodila, kako uporabljati aplikacijo, imate <a href="https://www.youtube.com/user/scvvideo">na tej povezavi</a> (YouTube video).<br /><br /><br />
                                     Za več informacij pišite na: <a href="mailto:info.app@scv.si">info.app@scv.si</a>
                                 </div>
