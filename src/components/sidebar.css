@@ -136,14 +136,47 @@ body ::-webkit-scrollbar {
     cursor: pointer;
 }
 
-.sideLink-PopMenu .popMenu{
-    position: absolute;
-    background-color: red;
-    width: 300px;
-    height: 100px;
-    left: 250px;
-    z-index: 10000;
-    display: inline-block;
+.popMenu{
+    position: fixed;
+    background-color: #fffffffa;
+    width: 500px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    min-width: 125px;
+    transition: left 0.4s ease-in-out, visibility 0.3s, opacity 0.3s linear;
+    z-index: 100000;
+    -webkit-backface-visibility: hidden;
+    -webkit-box-shadow: 2px 3px 6px 1px #222;
+    -moz-box-shadow: 2px 3px 6px 1px #222;
+    box-shadow: 2px 3px 6px 1px #222;
+}
+
+.popMenu .OfficeAppEl{
+    width: 120px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    text-align: center;
+    cursor: pointer;
+}
+
+.popMenu .OfficeAppEl .icon-office{
+    height:40%;
+}
+.popMenu .OfficeAppEl .name{
+    font-size: 15px;
+    color: black;
+}
+
+.popMenu .OfficeAppEl:hover .name{
+    color:currentColor !important;
+}
+.popMenu .OfficeAppEl .icon-office img{
+    height:100%;
 }
 
 .link{

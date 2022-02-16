@@ -163,8 +163,7 @@
     align-items: center;
     border-bottom-left-radius: var(--border-radius-for-elements);
     border-bottom-right-radius: var(--border-radius-for-elements);
-    transition: opacity 150ms ease-in-out;
-    z-index: -1000000;
+    transition: visibility 150ms, opacity 150ms linear;
 }
 .dropdownContent .selectStatus{
     height: 35px !important;
@@ -195,7 +194,6 @@
     left: 0px;
     border-bottom-left-radius: var(--border-radius-for-elements);
     border-bottom-right-radius: var(--border-radius-for-elements);
-    transition: display 200ms ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -203,7 +201,7 @@
     -moz-box-shadow: 0 4px 6px -6px #222;
     box-shadow: 0 4px 6px -6px #222;
     opacity: 1;
-    transition: opacity 150ms ease-in-out;
+    transition: visibility 150ms, opacity 150ms linear;
 }
 
 .aboutSchoolDropdown div{

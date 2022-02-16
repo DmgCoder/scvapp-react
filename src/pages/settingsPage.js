@@ -13,7 +13,8 @@ import StatusIcon from "../components/statusIcon";
 
 export default function SettingsPage(props){
     const [styleDropdown, setStyleDropdown] = useState({
-        opacity:"0"
+        opacity:"0",
+        visibility:"hidden"
     })
     const [styleDropdownSelector, setStyleDropdownselector] = useState({
         borderRadius:"var(--border-radius-for-elements)"
@@ -25,7 +26,7 @@ export default function SettingsPage(props){
     })
     const [styleAppInfo, setStyleAppInfo] = useState({
         opacity:"0",
-        zIndex:"-10000000"
+        visibility:"hidden"
     })
 
     let easterEggText = ""
@@ -83,7 +84,7 @@ export default function SettingsPage(props){
         if(styleDropdown.opacity === "0"){
             setStyleDropdown({
                 opacity:"1",
-                zIndex:"100"
+                visibility:"visible"
             })
             setStyleDropdownselector({
                 borderTopLeftRadius:"var(--border-radius-for-elements)",
@@ -92,7 +93,7 @@ export default function SettingsPage(props){
         }else{
             setStyleDropdown({
                 opacity:"0",
-                zIndex:"-1000000"
+                visibility:"hidden"
             })
             setStyleDropdownselector({
                 borderRadius:"var(--border-radius-for-elements)",
@@ -103,7 +104,8 @@ export default function SettingsPage(props){
     function dropdownAppInfo(){
         if(styleAppInfo.opacity === "0"){
             setStyleAppInfo({
-                opacity:"1"
+                opacity:"1",
+                visibility:"visible"
             })
             setStyleAppInfoSelector({
                 borderTopLeftRadius:"var(--border-radius-for-elements)",
@@ -116,6 +118,7 @@ export default function SettingsPage(props){
         }else{
             setStyleAppInfo({
                 opacity:"0",
+                visibility:"hidden"
             })
             setStyleAppInfoSelector({
                 borderRadius:"var(--border-radius-for-elements)",
@@ -190,14 +193,14 @@ export default function SettingsPage(props){
                     <div className="floatingDiv">
                         <div className="floatingContent">
                             <p>Vaš status:</p>
-                            <div className="statusDropdown" style={styleDropdownSelector}>
+                            <div className="statusDropdown" style={styleDropdownSelector} onClick={dropdown}>
                                 <div className="statusIconAndText">
                                     {
                                         props.userData.status && <StatusIcon status={props.userData.status} className="statusIconAndText-Icon"/>
                                     }
                                     <p>{props.userData.status && props.userData.status.display}</p>
                                 </div>
-                                <div className="arrowDown" onClick={dropdown}>
+                                <div className="arrowDown">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16" style={{transform:styleDropdown.opacity!=="0"?"rotate(-180deg)":"",transition: 'transform 150ms ease'}}>
                                       <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                     </svg>

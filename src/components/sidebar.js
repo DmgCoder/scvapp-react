@@ -12,18 +12,58 @@ import eAsistent_icon from "../pictures/icons_for_menu/eA.svg"
 import Arnes_icon from "../pictures/icons_for_menu/arnes.svg"
 import StatusIcon from "./statusIcon";
 
+import OfficeWord_icon from "../pictures/office_icons/Word.svg"
+import OfficeExcel_icon from "../pictures/office_icons/Excel.svg"
+import Office365_icon_color from "../pictures/office_icons/Office365.svg"
+import OfficeOneDrive_icon from "../pictures/office_icons/OneDrive.svg"
+import OfficeOneNote_icon from "../pictures/office_icons/OneNote.svg"
+import OfficePowerpoint_icon from "../pictures/office_icons/Powerpoint.svg"
+import OfficeOutlook_icon from "../pictures/office_icons/Outlook.svg"
+import OfficeTeams_icon from "../pictures/office_icons/Teams.svg"
+
 import windowSize from "../classes/getWindowDimensions.js"
+import OfficeAppEl from "./OfficeAppEl";
 
 export default function SideBar(props){
         let pathname = useLocation().pathname
 
         const [sideBarWidth, setSidebarWidth] = useState(300)
 
+        const [officeAppMenu, setOfficeAppMenu] = useState({
+            show:false,
+            width:500
+        })
+
         useEffect(()=>{
             if (window.innerWidth < 1080){
                 setSidebarWidth(60)
             }
         },[])
+
+        useEffect(()=>{
+            let mainContentWidth = window.innerWidth - sideBarWidth
+            if(mainContentWidth <= 260){
+                setOfficeAppMenu({
+                    show:officeAppMenu.show,
+                    width:125
+                })
+            }else if(mainContentWidth <= 385){
+                setOfficeAppMenu({
+                    show:officeAppMenu.show,
+                    width:250
+                })
+            }else if(mainContentWidth <= 510){
+                setOfficeAppMenu({
+                    show:officeAppMenu.show,
+                    width:375
+                })
+            }else{
+                setOfficeAppMenu({
+                    show:officeAppMenu.show,
+                    width:500
+                })
+            }
+        },[window.innerWidth])
 
         function MaxProfileInfo(){
             return(
@@ -57,6 +97,54 @@ export default function SideBar(props){
                 setSidebarWidth(300)
             }
         },[winSize])
+
+        function PopMenuContent(){
+            return(
+                <>
+                <OfficeAppEl name="Word" href={`https://www.office.com/launch/word?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}>
+                    <img alt="" src={OfficeWord_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="Excel" href={`https://www.office.com/launch/excel?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}>
+                    <img alt="" src={OfficeExcel_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="PowerPoint" href={`https://www.office.com/launch/powerpoint?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}>
+                    <img alt="" src={OfficePowerpoint_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="Outlook" href={`https://outlook.office.com/owa/?realm=scv.si&exsvurl=1&ll-cc=1060&modurl=0&login_hint=${props.userData.mail}`}>
+                    <img alt="" src={OfficeOutlook_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="OneDrive" href={`https://scvsi-my.sharepoint.com/personal/${props.userData.mail.replaceAll(".","_").replaceAll("@","_")}/_layouts/15/onedrive.aspx?`}>
+                    <img alt="" src={OfficeOneDrive_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="Teams" href={`https://aka.ms/mstfw?login_hint_safe=${props.userData.mail}`}>
+                    <img alt="" src={OfficeTeams_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="OneNote" href={`https://www.office.com/launch/onenote?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}>
+                    <img alt="" src={OfficeOneNote_icon} />
+                </OfficeAppEl>
+                <OfficeAppEl name="Odpri 365 portal" href={`https://www.office.com/?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}>
+                    <img alt="" src={Office365_icon_color} />
+                </OfficeAppEl>
+                </>
+            )
+        }
+
+        function ocOfficeAppMenu(){
+            if(!officeAppMenu.show){
+                setOfficeAppMenu({
+                    show:true,
+                    width:officeAppMenu.width
+                })
+                if(window.innerWidth <= 530 && sideBarWidth === 300){
+                    closeOrOpenSideMenu()
+                }
+            }else{
+                setOfficeAppMenu({
+                    show:false,
+                    width:officeAppMenu.width
+                })
+            }
+        }
         
         return(
             <>
@@ -108,7 +196,7 @@ export default function SideBar(props){
                                     <SidebarLink name="Arnes učilnice" pathname={pathname} href="/arnes-ucilnice" size={sideBarWidth}>
                                         <img alt="" src={Arnes_icon} />
                                     </SidebarLink>
-                                    <li className="sideLink-PopMenu sideLink">
+                                    <li className="sideLink-PopMenu sideLink" onClick={ocOfficeAppMenu}>
                                         <a target="_blank" rel="noopener noreferrer">
                                             <div className="link">
                                                 <div className="icon">
@@ -119,14 +207,16 @@ export default function SideBar(props){
                                                 }
                                                 {
                                                     sideBarWidth >= 300 ? <div className="arrowIcon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16" style={{transform:officeAppMenu.show?"rotate(-180deg)":"",transition:"transform 0.3s ease-in-out"}}>
                                                       <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                                     </svg>
                                                     </div> : <></>
                                                 }
-                                                <div className="popMenu">
-                                                    testing-testing-testing
-                                                </div>
+                                                {
+                                                    officeAppMenu.width > 125 ? <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:officeAppMenu.width<=125?"absolute":"fixed"}}>
+                                                    <PopMenuContent />
+                                                </div> : <></>
+                                                }
                                             </div>
                                         </a>
                                     </li>
@@ -159,6 +249,9 @@ export default function SideBar(props){
                         </main>
                     </div>
                 </div>
+                {
+                    officeAppMenu.width <= 125 ? <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:officeAppMenu.width<=125?"absolute":"fixed"}}><PopMenuContent /></div> : <></>
+                }
             </>
         )
 }
