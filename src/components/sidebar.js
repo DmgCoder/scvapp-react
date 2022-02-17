@@ -31,7 +31,8 @@ export default function SideBar(props){
 
         const [officeAppMenu, setOfficeAppMenu] = useState({
             show:false,
-            width:500
+            width:500,
+            top:""
         })
 
         useEffect(()=>{
@@ -40,30 +41,8 @@ export default function SideBar(props){
             }
         },[])
 
-        useEffect(()=>{
-            let mainContentWidth = window.innerWidth - sideBarWidth
-            if(mainContentWidth <= 260){
-                setOfficeAppMenu({
-                    show:officeAppMenu.show,
-                    width:125
-                })
-            }else if(mainContentWidth <= 385){
-                setOfficeAppMenu({
-                    show:officeAppMenu.show,
-                    width:250
-                })
-            }else if(mainContentWidth <= 510){
-                setOfficeAppMenu({
-                    show:officeAppMenu.show,
-                    width:375
-                })
-            }else{
-                setOfficeAppMenu({
-                    show:officeAppMenu.show,
-                    width:500
-                })
-            }
-        },[window.innerWidth])
+        let OfficeMenuBtn = useRef()
+        let OfficeMenuPop = useRef()
 
         function MaxProfileInfo(){
             return(
@@ -133,7 +112,8 @@ export default function SideBar(props){
             if(!officeAppMenu.show){
                 setOfficeAppMenu({
                     show:true,
-                    width:officeAppMenu.width
+                    width:officeAppMenu.width,
+                    top:officeAppMenu.top
                 })
                 if(window.innerWidth <= 530 && sideBarWidth === 300){
                     closeOrOpenSideMenu()
@@ -141,10 +121,42 @@ export default function SideBar(props){
             }else{
                 setOfficeAppMenu({
                     show:false,
-                    width:officeAppMenu.width
+                    width:officeAppMenu.width,
+                    top:officeAppMenu.top
                 })
             }
         }
+
+        useEffect(()=>{
+            if(officeAppMenu.show){
+                let newTop = ""
+                let newWidth = officeAppMenu.width
+                
+                let mainContentWidth = window.innerWidth - sideBarWidth
+                if(mainContentWidth <= 260){
+                    newWidth=125
+                }else if(mainContentWidth <= 385){
+                    newWidth=125
+                }else if(mainContentWidth <= 510){
+                    newWidth=375
+                }else{
+                    newWidth=500
+                }
+
+                let calculation = (OfficeMenuBtn.current.offsetTop + OfficeMenuPop.current.clientHeight) >= window.innerHeight
+                
+                if(!calculation){
+                    newTop = `${(OfficeMenuBtn.current.offsetTop)-(OfficeMenuPop.current.clientHeight/2)+(OfficeMenuBtn.current.clientHeight/2)}px`
+                }
+                
+                setOfficeAppMenu({
+                    show:officeAppMenu.show,
+                    width:newWidth,
+                    top:newTop
+                })
+            }
+
+        },[window.innerHeight,window.innerWidth,officeAppMenu.show,sideBarWidth])
         
         return(
             <>
@@ -196,7 +208,7 @@ export default function SideBar(props){
                                     <SidebarLink name="Arnes učilnice" pathname={pathname} href="/arnes-ucilnice" size={sideBarWidth}>
                                         <img alt="" src={Arnes_icon} />
                                     </SidebarLink>
-                                    <li className="sideLink-PopMenu sideLink" onClick={ocOfficeAppMenu}>
+                                    <li className="sideLink-PopMenu sideLink" onClick={ocOfficeAppMenu} ref={OfficeMenuBtn}>
                                         <a target="_blank" rel="noopener noreferrer">
                                             <div className="link">
                                                 <div className="icon">
@@ -211,11 +223,6 @@ export default function SideBar(props){
                                                       <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                                     </svg>
                                                     </div> : <></>
-                                                }
-                                                {
-                                                    officeAppMenu.width > 125 ? <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:officeAppMenu.width<=125?"absolute":"fixed"}}>
-                                                    <PopMenuContent />
-                                                </div> : <></>
                                                 }
                                             </div>
                                         </a>
@@ -249,8 +256,9 @@ export default function SideBar(props){
                         </main>
                     </div>
                 </div>
+                <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:props.userData.school.color=="#FFFFFF"?"#ED1164":props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:officeAppMenu.width<=125?"absolute":"absolute",backgroundColor:`${props.userData.school.color}45`,top:officeAppMenu.top}} ref={OfficeMenuPop}><PopMenuContent /></div>
                 {
-                    officeAppMenu.width <= 125 ? <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:officeAppMenu.width<=125?"absolute":"fixed"}}><PopMenuContent /></div> : <></>
+                    officeAppMenu.show && <div className="closeOfficeMenuBtn" onClick={ocOfficeAppMenu} ></div>
                 }
             </>
         )

@@ -8,7 +8,7 @@ import ssd from "../pictures/school/ssd.svg"
 import ssgo from "../pictures/school/ssgo.svg"
 import vss from "../pictures/school/vss.svg"
 import mic from "../pictures/school/mic.svg"
-import schoolLogo from "../pictures/school_logo.png"
+import schoolLogo from "../pictures/school_logo.svg"
 import StatusIcon from "../components/statusIcon";
 
 export default function SettingsPage(props){
