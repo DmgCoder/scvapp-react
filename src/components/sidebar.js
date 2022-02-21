@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./sidebar.css"
 import { useLocation } from "react-router-dom";
+import { isFirefox } from "react-device-detect";
+
 import SidebarLink from "./sidebarLink";
 import schoolLogo from "../pictures/school_logo.svg"
 import Home_icon from "../pictures/icons_for_menu/Home.svg"
@@ -23,6 +25,8 @@ import OfficeTeams_icon from "../pictures/office_icons/Teams.svg"
 
 import windowSize from "../classes/getWindowDimensions.js"
 import OfficeAppEl from "./OfficeAppEl";
+import ScheduleItem from "./scheduleItem";
+
 
 export default function SideBar(props){
         let pathname = useLocation().pathname
@@ -128,7 +132,7 @@ export default function SideBar(props){
         }
 
         useEffect(()=>{
-            if(officeAppMenu.show){
+            // if(officeAppMenu.show){
                 let newTop = ""
                 let newWidth = officeAppMenu.width
                 
@@ -154,8 +158,7 @@ export default function SideBar(props){
                     width:newWidth,
                     top:newTop
                 })
-            }
-
+            // }
         },[window.innerHeight,window.innerWidth,officeAppMenu.show,sideBarWidth])
         
         return(
@@ -163,7 +166,7 @@ export default function SideBar(props){
                 <div className="sideBarFix" style={{minWidth:winSize.width > 1080?"300px":"60px"}}></div>
                 <div className="wrapper">
                     <div className="sidebar" style={props.userData.school&&{backgroundColor:props.userData.school.color,width:`${sideBarWidth}px`}}>
-                        <main className="main">
+                        <main className="main" style={{minHeight:sideBarWidth>=300?"940px":"750px"}}>
                             <div className="upHalf">
                                 {
                                     sideBarWidth >= 300 ? <div className="closeArrow" onClick={closeOrOpenSideMenu}>
@@ -228,6 +231,9 @@ export default function SideBar(props){
                                         </a>
                                     </li>
                                 </ul>
+                                {
+                                    sideBarWidth >= 300 && <ScheduleItem userData={props.userData}/>
+                                }
                             </div>
                             <div className="downHalf">
                                 {
@@ -256,7 +262,7 @@ export default function SideBar(props){
                         </main>
                     </div>
                 </div>
-                <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:props.userData.school.color=="#FFFFFF"?"#ED1164":props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:officeAppMenu.width<=125?"absolute":"absolute",backgroundColor:`${props.userData.school.color}45`,top:officeAppMenu.top}} ref={OfficeMenuPop}><PopMenuContent /></div>
+                <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:isFirefox?"#ffffff":props.userData.school.color=="#FFFFFF"?"#ED1164":props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:"absolute",backgroundColor:!isFirefox?`${props.userData.school.color}45`:`${props.userData.school.color}c4`,top:officeAppMenu.top}} ref={OfficeMenuPop}><PopMenuContent /></div>
                 {
                     officeAppMenu.show && <div className="closeOfficeMenuBtn" onClick={ocOfficeAppMenu} ></div>
                 }

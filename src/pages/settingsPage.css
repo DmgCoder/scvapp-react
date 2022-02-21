@@ -186,11 +186,14 @@
 }
 
 .aboutSchoolDropdown{
+    box-sizing: border-box;
     position: absolute;
     background-color: #f0f0f0;
     min-height: 300px !important;
     width: 100%;
-    bottom: -300px;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    bottom: 0px;
     left: 0px;
     border-bottom-left-radius: var(--border-radius-for-elements);
     border-bottom-right-radius: var(--border-radius-for-elements);

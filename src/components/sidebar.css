@@ -51,7 +51,7 @@ body ::-webkit-scrollbar {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    min-height: 750px;
+    min-height: 930px;
     min-width: 60px;
 }
 
@@ -143,8 +143,7 @@ body ::-webkit-scrollbar {
 }
 
 .popMenu{
-    position: fixed;
-    background-color: #008DD345;
+    position: absolute;
     backdrop-filter: blur(20px);
     width: 500px;
     height: auto;
@@ -158,6 +157,7 @@ body ::-webkit-scrollbar {
     -moz-box-shadow: 2px 3px 6px 1px #222;
     box-shadow: 2px 3px 6px 1px #222;
     z-index: 103;
+    background: #ffffffc4;
 }
 
 .popMenu .OfficeAppEl{
