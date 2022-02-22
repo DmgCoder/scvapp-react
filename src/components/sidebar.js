@@ -231,9 +231,7 @@ export default function SideBar(props){
                                         </a>
                                     </li>
                                 </ul>
-                                {
-                                    sideBarWidth >= 300 && <ScheduleItem userData={props.userData}/>
-                                }
+                                <ScheduleItem userData={props.userData} style={{display:sideBarWidth >= 300?"":"none"}}/>
                             </div>
                             <div className="downHalf">
                                 {
