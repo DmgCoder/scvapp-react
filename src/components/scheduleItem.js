@@ -34,7 +34,11 @@ export default function ScheduleItem(props){
             if(scheduleData.trenutnoNaUrniku.naslednjaUra.zacetekUreM>=0){
                 let inter = setInterval(()=>{
                     let zdaj = new Date()
-                    let differenc = scheduleData.trenutnoNaUrniku.naslednjaUra.zacetekUreM - zdaj.getTime()
+                    let utcZdaj = Date.UTC(zdaj.getUTCFullYear(),zdaj.getUTCMonth(),zdaj.getUTCDate(),zdaj.getUTCHours(),zdaj.getUTCMinutes(),zdaj.getUTCSeconds())
+                    
+
+                    let differenc = scheduleData.trenutnoNaUrniku.naslednjaUra.zacetekUreM - utcZdaj
+                    console.log(differenc)
                     if(differenc >= 299000 && differenc<= 301000){
                         clearInterval(inter)
                         getScheduleData()

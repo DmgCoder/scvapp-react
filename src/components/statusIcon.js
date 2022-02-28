@@ -32,6 +32,9 @@ export default function StatusIcon(props){
         case "offline":
             statusImg = offline
             break;
+        default:
+            statusImg = unknown
+            break;
     }
     if(statusImg){
         return(

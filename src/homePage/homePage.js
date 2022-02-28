@@ -65,6 +65,17 @@ const HomePage = () => {
         setLoaded(true)
     }
 
+    const [eAUrlLink, seteAUrlLink] = useState("https://www.easistent.com/")
+    const [maliceUrlLink, setMaliceUrlLink] = useState("https://malice.scv.si/students/sign_in")
+
+    async function logOutUser(){
+        seteAUrlLink("https://www.easistent.com/p/get_odjava")
+        // setTimeout(()=>{
+        //     window.location.replace(`${process.env.REACT_APP_BACKEND_URL}/user/logoutUrl/`)
+        // },500)
+        console.log("Odjava")
+    }
+
     useEffect(()=>{
         getUserData()
     },[])
@@ -119,8 +130,8 @@ const HomePage = () => {
     }
     return(
         <main className="main">
-            <SideBar userData={userData} style={{height:"100%"}}/>
-            <MainPage userData={userData} style={{width:"100%",height:"100%"}}/>
+            <SideBar userData={userData} style={{height:"100%"}} logOutUser={logOutUser} />
+            <MainPage eAUrlLink={eAUrlLink} maliceUrlLink={maliceUrlLink} userData={userData} style={{width:"100%",height:"100%"}} />
             <ShowAlert show={alertIn} title="Prijava uspešna!" text="Uspešno ste se prijavili v ŠCVApp"/>
         </main>
     );

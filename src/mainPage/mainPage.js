@@ -19,13 +19,13 @@ export default function MainPage(props){
     }else if(location.pathname === "/malice"){
         return (
             <div style={props.style}>
-                <MalicePage />
+                <MalicePage url={props.maliceUrlLink}/>
             </div>
         )
     }else if(location.pathname === "/easistent"){
         return (
             <div style={props.style}>
-                <EasistentPage />
+                <EasistentPage url={props.eAUrlLink}/>
             </div>
         )
     }else if(location.pathname === "/nastavitve"){
