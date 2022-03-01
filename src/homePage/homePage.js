@@ -70,10 +70,10 @@ const HomePage = () => {
 
     async function logOutUser(){
         seteAUrlLink("https://www.easistent.com/p/get_odjava")
-        // setTimeout(()=>{
-        //     window.location.replace(`${process.env.REACT_APP_BACKEND_URL}/user/logoutUrl/`)
-        // },500)
-        console.log("Odjava")
+        setTimeout(()=>{
+            window.location.replace(`${process.env.REACT_APP_BACKEND_URL}/user/logoutUrl/`)
+        },500)
+        // console.log("Odjava")
     }
 
     useEffect(()=>{

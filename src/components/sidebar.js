@@ -261,7 +261,7 @@ export default function SideBar(props){
                         </main>
                     </div>
                 </div>
-                <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:isFirefox?"#ffffff":props.userData.school.color==="#FFFFFF"?"#ED1164":props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:"absolute",backgroundColor:!isFirefox?`${props.userData.school.color}45`:`${props.userData.school.color}c4`,top:officeAppMenu.top}} ref={OfficeMenuPop}><PopMenuContent /></div>
+                <div className="popMenu" style={props.userData.school&&{opacity:officeAppMenu.show?"1":"0",left:`${sideBarWidth}px`,color:isFirefox?props.userData.school.color==="#FFFFFF"?"#ED1164":"#ffffff":props.userData.school.color==="#FFFFFF"?"#ED1164":props.userData.school.color,width:`${officeAppMenu.width}px`,visibility:officeAppMenu.show?"visible":"hidden",position:"absolute",backgroundColor:!isFirefox?`${props.userData.school.color}45`:`${props.userData.school.color}c4`,top:officeAppMenu.top}} ref={OfficeMenuPop}><PopMenuContent /></div>
                 {
                     officeAppMenu.show && <div className="closeOfficeMenuBtn" onClick={ocOfficeAppMenu} ></div>
                 }
