@@ -11,7 +11,7 @@ export default function NotFoundPage(){
 		    	</div>
 		    	<h2>Oops! Stran ne obstaja!</h2>
 		    	<p>Na žalost ta spletna stran ne obstaja.</p>
-		    	<a href="/">Back to homepage</a>
+		    	<a href="/">Nazaj na domačo stran</a>
 		    </div>
 	    </div>
     )

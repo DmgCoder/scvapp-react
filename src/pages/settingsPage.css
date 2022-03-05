@@ -104,6 +104,13 @@
     text-decoration: underline;
     color: #2f89c4;
 }
+.floatingDiv .floatingContent{
+    cursor: pointer !important;
+}
+
+.floatingDiv .aboutSchoolDropdown{
+    cursor: auto !important;
+}
 
 .statusDropdown{
     background-color: white;
@@ -111,11 +118,8 @@
     width: 30% !important;
     min-width: 185px;
     max-height: 70%;
-    /* border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
-    border-left: 1px solid black; */
     position: relative;
+    cursor: pointer;
 }
 
 .statusIconAndText{
