@@ -16,9 +16,7 @@ export default function MainPage(props){//Prikaz določene komponente glede na s
         case "/domov":
             return (
                 <div style={props.style}>
-                    {
                     <SchoolPage url={props.userData.school&&props.userData.school.schoolUrl}/>
-                    }
                 </div>
             )
 

@@ -76,6 +76,11 @@ const HomePage = () => {
   async function logOutUser(e) {
     e.preventDefault();
     seteAUrlLink("https://www.easistent.com/p/get_odjava");
+    await fetch("https://malice.scv.si/students/sign_out",{
+      mode: "cors",
+      credentials: "include",
+      method:"DELETE"
+    }).catch(e=>console.log(e))
     setTimeout(() => {
       window.location.replace(
         `${process.env.REACT_APP_BACKEND_URL}/user/logoutUrl/`
@@ -104,6 +109,12 @@ const HomePage = () => {
       }
     });
   });
+  
+  function closeAlert(){
+    setAlertIn(false)
+    localStorage.removeItem("login");
+    localStorage.removeItem("login-time");
+  }
 
   useEffect(() => {
     if (userData.displayName && isLoaded) {
@@ -115,14 +126,12 @@ const HomePage = () => {
           let n = new Date().getTime();
           if (parseInt(itemTime) + 7000 <= n) {
             clearInterval(int);
-            localStorage.removeItem("login");
-            localStorage.removeItem("login-time");
-            setAlertIn(false);
+            closeAlert();
           }
         }, 1000);
       }
     }
-  });
+  },[isLoaded]);
 
   if (!userData.displayName && isLoaded) {
     return (
@@ -150,6 +159,7 @@ const HomePage = () => {
         show={alertIn}
         title="Prijava uspešna!"
         text="Uspešno ste se prijavili v ŠCVApp"
+        closeAlert={closeAlert}
       />
     </main>
   );
