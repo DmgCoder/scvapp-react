@@ -39,7 +39,7 @@ export default function SideBar(props) {
   });
 
   useEffect(() => {
-    if (window.innerWidth < 1080) {
+    if (window.innerWidth <= 1080) {
       setSidebarWidth(60);
     }
   }, []);

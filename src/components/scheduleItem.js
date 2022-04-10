@@ -55,9 +55,9 @@ export default function ScheduleItem(props){
     if(scheduleData.trenutnoNaUrniku){
         return(
             <div className="scheduleItem" style={props.style}>
-                <p>Sedaj na urniku</p>
+                <p>Sedaj</p>
                 <ClassInfo trenutnoNaUrniku={scheduleData.trenutnoNaUrniku} userData={props.userData}/>
-                <p>{`Naslednja ura(Čez ${timeLeft}):`}</p>
+                <p>{`Sledi (Čez ${timeLeft}):`}</p>
                 <ClassInfo trenutnoNaUrniku={scheduleData.trenutnoNaUrniku.naslednjaUra} userData={props.userData}/>
             </div>
         )
