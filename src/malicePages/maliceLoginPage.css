@@ -1,0 +1,136 @@
+.maliceLogin{
+    width: 100%;
+    height: 100%;
+    background-color: #E8E8E8;
+    position: relative;
+}
+
+.maliceLogin-LoginWindow{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #FFFFFF;
+    width: 386px;
+    max-width: 386px;
+    height: 557px;
+    max-height: 557px;
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.maliceLogin-LoginWindow img{
+    width: 52%;
+}
+
+.maliceLogin-LoginWindow-Text{
+    font-weight: bolder;
+}
+
+.maliceLogin-LoginWindow-Form{
+    width: 55%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.maliceLogin-LoginWindow-Form-Input{
+    position: relative;
+    width: 100%;
+}
+
+.maliceLogin-LoginWindow-Form-Input span{
+    position: absolute;
+    top:-20%;
+    left: 0px;
+    color:rgb(169, 169, 169);
+    font-size: 16px;
+    z-index: -100;
+}
+
+.maliceLogin-LoginWindow-Form-Input input{
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #000000;
+    font-size: 13px;
+    background-color: transparent;
+}
+
+
+.maliceLogin-LoginWindow-Form-RememberMe{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.maliceLogin-LoginWindow-Form-RememberMe p{
+    font-size: 13px;
+}
+
+.maliceLogin-LoginWindow-Form-RememberMe input[type=checkbox]{
+    width: 15px;
+    height: 15px;
+    border-radius: 0px !important;
+    border: 1px solid black;
+}
+
+.maliceLogin-LoginWindow-Form-SubmitBtn{
+    background-color: #3F87F3;
+    border: none;
+    width: 50%;
+    height: 40px;
+    color: white;
+    font-size: 21px;
+    font-weight: bolder;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
+.maliceLogin-LoginWindow-Link{
+    font-size: 13px;
+    color: #2359C7;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 500px){
+    .maliceLogin{
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+    .maliceLogin-LoginWindow{
+        width: 98%;
+        height: 80%;
+        min-width: 200px;
+        min-height: 369px;
+        max-height: 500px;
+        /* max-width: ; */
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .maliceLogin-LoginWindow-Text{
+        font-size: 14px;
+    }
+
+    .maliceLogin-LoginWindow-Form{
+        width: 90%;
+    }
+
+    .maliceLogin-LoginWindow-Form-SubmitBtn{
+        font-size: 18px;
+    }
+}
