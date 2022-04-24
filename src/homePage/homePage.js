@@ -15,57 +15,96 @@ const HomePage = () => {
 
   async function getUserData() {
     //Funkcija, ki pridobi uporabnikove podatke, ki so potrebni
-    let json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/`, {
-      //URL na katerem se nahajajo osnovni podatki o uporabniku
-      mode: "cors", //Prijemne podatke lahk uporabi tudi iz tujih domen
-      credentials: "include", //Seja uporabnika je vključena
-      method: "GET", //Uporabljena je metoda GET
-    }).catch((e) => {
-      //Če spodleti uporabnika vrne na prijavno stran
+    try {
+      let data = {};
+      const [userDataFetch, userStatusFetch, userSchoolFetch] =
+        await Promise.all([
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/`, {
+            mode: "cors", //Prijemne podatke lahk uporabi tudi iz tujih domen
+            credentials: "include", //Seja uporabnika je vključena
+            method: "GET", //Uporabljena je metoda GET
+          }),
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/status`, {
+            mode: "cors",
+            credentials: "include",
+            method: "GET",
+          }),
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/user/school`, {
+            mode: "cors",
+            credentials: "include",
+            method: "GET",
+          }),
+        ]);
+
+      if (userDataFetch.ok) {
+        if (userStatusFetch.ok && userSchoolFetch.ok) {
+          const [userDataJson, userStatusJson, userSchoolJson] =
+            await Promise.all([
+              userDataFetch.json(),
+              userStatusFetch.json(),
+              userSchoolFetch.json(),
+            ]);
+          data = userDataJson;
+          data.status = userStatusJson;
+          data.school = userSchoolJson;
+          setUserData(data);
+        } else if (userStatusFetch.ok) {
+          const [userDataJson, userStatusJson] = await Promise.all([
+            userDataFetch.json(),
+            userStatusFetch.json(),
+          ]);
+          data = userDataJson;
+          data.status = userStatusJson;
+          data.school = {
+            id: "",
+            urnikUrl: "",
+            color: "",
+            schoolUrl: "",
+            name: "",
+            razred: "",
+          };
+          setUserData(data);
+        } else if (userSchoolFetch.ok) {
+          const [userDataJson, userSchoolJson] = await Promise.all([
+            userDataFetch.json(),
+            userSchoolFetch.json(),
+          ]);
+          data = userDataJson;
+          data.status = {
+            display: "Unknown",
+            color: "#ffffff",
+            id: "Unknown",
+          };
+          data.school = userSchoolJson;
+          setUserData(data);
+        } else {
+          const userDataJson = await userDataFetch.json();
+          data = userDataJson;
+          data.status = {
+            display: "Unknown",
+            color: "#ffffff",
+            id: "Unknown",
+          };
+          data.school = {
+            id: "",
+            urnikUrl: "",
+            color: "",
+            schoolUrl: "",
+            name: "",
+            razred: "",
+          };
+          setUserData(data);
+        }
+
+        setLoaded(true);
+      } else {
+        setLoaded(true);
+        window.location.pathname = "/prijava";
+      }
+    } catch (e) {
       setLoaded(true);
       window.location.pathname = "/prijava";
-    });
-    let data = {};
-    if (json.ok) {
-      //Preverimo ali je zahteva uredu
-      data = await json.json(); //Zahteva je uredo in pretvorimo tip besede v tip predmeta in shranimo v spremenjlivko
-    } else {
-      return (window.location.pathname = "/prijava"); //Uporabnika vrnemo na prijavno stran
     }
-    json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/status`, {
-      mode: "cors",
-      credentials: "include",
-      method: "GET",
-    });
-    if (json.ok) {
-      data.status = await json.json();
-    } else {
-      data.status = {
-        display: "Unknown",
-        color: "#ffffff",
-        id: "Unknown",
-      };
-    }
-    json = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/school`, {
-      mode: "cors",
-      credentials: "include",
-      method: "GET",
-    });
-    if (json.ok) {
-      data.school = await json.json();
-    } else {
-      data.school = {
-        id: "",
-        urnikUrl: "",
-        color: "",
-        schoolUrl: "",
-        name: "",
-        razred: "",
-      };
-    }
-    data.refreshUserStatus = getUserData;
-    setUserData(data);
-    setLoaded(true);
   }
 
   const [eAUrlLink, seteAUrlLink] = useState("https://www.easistent.com/");
@@ -76,11 +115,11 @@ const HomePage = () => {
   async function logOutUser(e) {
     e.preventDefault();
     seteAUrlLink("https://www.easistent.com/p/get_odjava");
-    await fetch("https://malice.scv.si/students/sign_out",{
+    await fetch("https://malice.scv.si/students/sign_out", {
       mode: "cors",
       credentials: "include",
-      method:"DELETE"
-    }).catch(e=>console.log(e))
+      method: "DELETE",
+    }).catch((e) => console.log(e));
     setTimeout(() => {
       window.location.replace(
         `${process.env.REACT_APP_BACKEND_URL}/user/logoutUrl/`
@@ -109,9 +148,9 @@ const HomePage = () => {
       }
     });
   });
-  
-  function closeAlert(){
-    setAlertIn(false)
+
+  function closeAlert() {
+    setAlertIn(false);
     localStorage.removeItem("login");
     localStorage.removeItem("login-time");
   }
@@ -131,7 +170,7 @@ const HomePage = () => {
         }, 1000);
       }
     }
-  },[isLoaded]);
+  }, [isLoaded]);
 
   if (!userData.displayName && isLoaded) {
     return (

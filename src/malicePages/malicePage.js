@@ -14,7 +14,8 @@ import pizzaPicture from "../pictures/slike_malica/pizza.png";
 import pizzaMargeritePicture from "../pictures/slike_malica/pizza_margerite.png";
 import solataPicture from "../pictures/slike_malica/solata.png";
 import brezMalicePicture from "../pictures/slike_malica/brez_malice.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Alert } from "@mui/material";
 
 let jediZaDanes = [];
 
@@ -72,6 +73,22 @@ export default function MalicePage(props) {
   function openCloseMenu() {
     setMenuIsPresented(!menuIsPrisented);
   }
+  const nav = useNavigate();
+  function changeDate(e) {
+    let target = e.target;
+    let i = 0;
+    while ((target.id == "" || !target.id) && i < 3) {
+      target = target.parentNode;
+      i++;
+    }
+    let date = new Date(target.id);
+    let dateString = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()}`;
+    nav({
+      search: `?date=${dateString}`,
+    });
+  }
 
   return (
     <>
@@ -125,48 +142,50 @@ export default function MalicePage(props) {
                   <MenuLiElement title="Profil">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="23"
-                      height="23"
                       fill="currentColor"
-                      className="bi bi-person-circle"
+                      className="bi bi-person-fill"
                       viewBox="0 0 16 16"
                     >
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                      />
+                      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     </svg>
                   </MenuLiElement>
                   <MenuLiElement title="Nastavitve">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="23"
-                      height="23"
                       fill="currentColor"
-                      className="bi bi-gear-fill"
+                      className="bi bi-sliders"
                       viewBox="0 0 16 16"
                     >
-                      <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                      <path
+                        fill-rule="evenodd"
+                        d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"
+                      />
                     </svg>
                   </MenuLiElement>
+                  <MenuLiElement title="Navodila">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      className="bi bi-info-lg"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="m9.708 6.075-3.024.379-.108.502.595.108c.387.093.464.232.38.619l-.975 4.577c-.255 1.183.14 1.74 1.067 1.74.72 0 1.554-.332 1.933-.789l.116-.549c-.263.232-.65.325-.905.325-.363 0-.494-.255-.402-.704l1.323-6.208Zm.091-2.755a1.32 1.32 0 1 1-2.64 0 1.32 1.32 0 0 1 2.64 0Z" />
+                    </svg>
+                  </MenuLiElement>
+                  <div className="maliceMenu-Profile-Menu-List-Line"></div>
                   <MenuLiElement title="Odjava" href="/malice/prijava">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="23"
-                      height="23"
-                      fill="currentColor"
-                      className="bi bi-box-arrow-right"
-                      viewBox="0 0 16 16"
+                      enable-background="new 0 0 24 24"
+                      viewBox="0 0 24 24"
+                      fill="#000000"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                      />
+                      <g>
+                        <path d="M0,0h24v24H0V0z" fill="none" />
+                      </g>
+                      <g>
+                        <path d="M17,8l-1.41,1.41L17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4L17,8z M5,5h7V3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h7v-2H5V5z" />
+                      </g>
                     </svg>
                   </MenuLiElement>
                 </ul>
@@ -174,6 +193,7 @@ export default function MalicePage(props) {
             </div>
           </div>
           <div className="maliceContent">
+            {/* <Alert severity="success">Prijava uspešna!</Alert> */}
             <div className="maliceContent-DateSelect" ref={ref}>
               <button onClick={removeToIzbraniTeden}>
                 <svg
@@ -192,6 +212,7 @@ export default function MalicePage(props) {
               <MaliceSelectingDateBoxes
                 widthOfParent={sizeOfParentDatePicker}
                 izbraniTeden={izbraniTeden}
+                changeDate={changeDate}
               />
               <button onClick={addToIzbraniTeden}>
                 <svg
@@ -238,6 +259,7 @@ function MaliceAlert() {
 
 function MaliceSelectingDateBoxes(props) {
   let boxes = [];
+  let location = useLocation();
   const [hightOfBox, setHightOfBox] = useState(
     getSize(props.widthOfParent * 0.08)
   );
@@ -274,21 +296,50 @@ function MaliceSelectingDateBoxes(props) {
     }
   }, [props.widthOfParent]);
 
+  let selectedDate = new Date(dateNow.getTime());
+
+  let search = location.search.slice(1).split("&");
+  search.forEach((s) => {
+    let a = s.split("=");
+    let key = a[0] || "";
+    let value = a[1] || "";
+
+    if (key === "date") {
+      let dateSplit = value.split("-");
+      if (dateSplit.length === 3) {
+        let sDate = new Date(dateNow.getTime());
+        sDate.setDate(dateSplit[2]);
+        sDate.setMonth(dateSplit[1] - 1);
+        sDate.setFullYear(dateSplit[0]);
+        if (sDate.getTime() >= dateNow.getTime()) {
+          selectedDate = sDate;
+        }
+      }
+    }
+  });
+
+  let danMillis = 86400000;
+
   for (
     let i = numberOfBoxes * props.izbraniTeden;
     i < numberOfBoxes + numberOfBoxes * props.izbraniTeden;
     i++
   ) {
-    let danMillis = 86400000;
     let dan = new Date(dateNow.getTime() + danMillis * i);
+    let selectedBox =
+      dan.getDate() === selectedDate.getDate() &&
+      dan.getMonth() === selectedDate.getMonth() &&
+      dan.getFullYear() === selectedDate.getFullYear();
     boxes.push(
       <MaliceSelectingDateBox
         title={getDateTitle(dateNow, dan)}
-        selected={i === 0 ? true : false}
+        selected={selectedBox}
         day={dneviVTednu[dan.getDay()] ?? ""}
         date={getStringDate(dan)}
         hightOfBox={hightOfBox}
         key={i}
+        clickHandle={props.changeDate}
+        id={dan}
       />
     );
   }
@@ -304,13 +355,14 @@ function MaliceSelectingDateBox(props) {
         width: props.hightOfBox,
         cursor: props.selected ? "" : "pointer",
       }}
-      // key={props.key}
+      onClick={props.clickHandle}
+      id={props.id}
     >
       <div
         className="maliceContent-DateSelect-Box-Content"
         style={{ backgroundColor: props.selected ? "#4AE262" : "" }}
       >
-        <p style={{ color: props.title === "" ? "#ffffff" : "" }}>
+        <p style={{ color: props.title === "" ? "transparent" : "" }}>
           {props.title === "" ? "a" : props.title}
         </p>
         <b>{props.day}</b>
