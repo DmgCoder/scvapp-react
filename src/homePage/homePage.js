@@ -34,7 +34,10 @@ const HomePage = () => {
             credentials: "include",
             method: "GET",
           }),
-        ]);
+        ]).catch(() => {
+          setLoaded(true);
+          window.location.pathname = "/prijava";
+        });
 
       if (userDataFetch.ok) {
         if (userStatusFetch.ok && userSchoolFetch.ok) {

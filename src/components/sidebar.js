@@ -105,56 +105,72 @@ export default function SideBar(props) {
   function PopMenuContent() {
     return (
       <>
-        <OfficeAppEl
-          name="Word"
-          href={`https://www.office.com/launch/word?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
-        >
-          <img alt="" src={OfficeWord_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="Excel"
-          href={`https://www.office.com/launch/excel?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
-        >
-          <img alt="" src={OfficeExcel_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="PowerPoint"
-          href={`https://www.office.com/launch/powerpoint?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
-        >
-          <img alt="" src={OfficePowerpoint_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="Outlook"
-          href={`https://outlook.office.com/owa/?realm=scv.si&exsvurl=1&ll-cc=1060&modurl=0&login_hint=${props.userData.mail}`}
-        >
-          <img alt="" src={OfficeOutlook_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="OneDrive"
-          href={`https://scvsi-my.sharepoint.com/personal/${props.userData.mail
-            .replaceAll(".", "_")
-            .replaceAll("@", "_")}/_layouts/15/onedrive.aspx?`}
-        >
-          <img alt="" src={OfficeOneDrive_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="Teams"
-          href={`https://aka.ms/mstfw?login_hint_safe=${props.userData.mail}`}
-        >
-          <img alt="" src={OfficeTeams_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="OneNote"
-          href={`https://www.office.com/launch/onenote?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
-        >
-          <img alt="" src={OfficeOneNote_icon} />
-        </OfficeAppEl>
-        <OfficeAppEl
-          name="Odpri 365 portal"
-          href={`https://www.office.com/?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
-        >
-          <img alt="" src={Office365_icon_color} />
-        </OfficeAppEl>
+        {props.userData && (
+          <OfficeAppEl
+            name="Word"
+            href={`https://www.office.com/launch/word?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
+          >
+            <img alt="" src={OfficeWord_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData && (
+          <OfficeAppEl
+            name="Excel"
+            href={`https://www.office.com/launch/excel?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
+          >
+            <img alt="" src={OfficeExcel_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData && (
+          <OfficeAppEl
+            name="PowerPoint"
+            href={`https://www.office.com/launch/powerpoint?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
+          >
+            <img alt="" src={OfficePowerpoint_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData && (
+          <OfficeAppEl
+            name="Outlook"
+            href={`https://outlook.office.com/owa/?realm=scv.si&exsvurl=1&ll-cc=1060&modurl=0&login_hint=${props.userData.mail}`}
+          >
+            <img alt="" src={OfficeOutlook_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData.mail && (
+          <OfficeAppEl
+            name="OneDrive"
+            href={`https://scvsi-my.sharepoint.com/personal/${props.userData.mail
+              .replaceAll(".", "_")
+              .replaceAll("@", "_")}/_layouts/15/onedrive.aspx?`}
+          >
+            <img alt="" src={OfficeOneDrive_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData && (
+          <OfficeAppEl
+            name="Teams"
+            href={`https://aka.ms/mstfw?login_hint_safe=${props.userData.mail}`}
+          >
+            <img alt="" src={OfficeTeams_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData && (
+          <OfficeAppEl
+            name="OneNote"
+            href={`https://www.office.com/launch/onenote?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
+          >
+            <img alt="" src={OfficeOneNote_icon} />
+          </OfficeAppEl>
+        )}
+        {props.userData && (
+          <OfficeAppEl
+            name="Odpri 365 portal"
+            href={`https://www.office.com/?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
+          >
+            <img alt="" src={Office365_icon_color} />
+          </OfficeAppEl>
+        )}
       </>
     );
   }
