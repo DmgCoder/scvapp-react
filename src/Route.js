@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFoundPage from "./404page/404page";
 
 import AboutPage from "./aboutPage/aboutPage.js";
+import { AdminRoute } from "./adminPage/route";
 
 const RoutePage = () => {
   return (
@@ -20,6 +21,8 @@ const RoutePage = () => {
           <Route path="/arnes-ucilnice" element={<HomePage />} />
           <Route path="/prijava" element={<LoginPage />} />
           <Route path="/o-nas" element={<AboutPage />} />
+          <Route path="/admin" element={<AdminRoute />} />
+          <Route path="/admin/ureditevUrnikov" element={<AdminRoute />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
