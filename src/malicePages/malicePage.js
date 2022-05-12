@@ -176,7 +176,7 @@ export default function MalicePage(props) {
                   <MenuLiElement title="Odjava" href="/malice/prijava">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      enable-background="new 0 0 24 24"
+                      enableBackground="new 0 0 24 24"
                       viewBox="0 0 24 24"
                       fill="#000000"
                     >
