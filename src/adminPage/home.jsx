@@ -13,7 +13,7 @@ export function AdminHome() {
       <div className="admin-home">
         <div className="admin-home-content">
           <div className="admin-home-title">
-            <img src={userSettingsIcon} />
+            <img alt="" src={userSettingsIcon} />
             <p>NADZORNA PLOŠČA</p>
           </div>
           <p className="admin-home-subtitle">Izberi orodje:</p>
@@ -22,13 +22,13 @@ export function AdminHome() {
               text={"Urejanje urnikov"}
               href={"/admin/ureditevUrnikov"}
             >
-              <img src={calenderIcon} />
+              <img src={calenderIcon} alt="" />
             </ItemToSelect>
             <ItemToSelect text={"Ogled grafov"} href={""}>
-              <img src={graphIcon} />
+              <img src={graphIcon} alt="" />
             </ItemToSelect>
             <ItemToSelect text={"Spremeni šolo"} href={""}>
-              <img src={schoolIcon} />
+              <img src={schoolIcon} alt="" />
             </ItemToSelect>
           </div>
         </div>

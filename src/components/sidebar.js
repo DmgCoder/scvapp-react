@@ -372,7 +372,7 @@ export default function SideBar(props) {
                   onClick={ocOfficeAppMenu}
                   ref={OfficeMenuBtn}
                 >
-                  <a target="_blank" rel="noopener noreferrer">
+                  <a>
                     <div className="link">
                       <div className="icon">
                         <img alt="" src={Office365_icon} />

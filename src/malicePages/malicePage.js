@@ -15,7 +15,6 @@ import pizzaMargeritePicture from "../pictures/slike_malica/pizza_margerite.png"
 import solataPicture from "../pictures/slike_malica/solata.png";
 import brezMalicePicture from "../pictures/slike_malica/brez_malice.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Alert } from "@mui/material";
 
 let jediZaDanes = [];
 
@@ -77,7 +76,7 @@ export default function MalicePage(props) {
   function changeDate(e) {
     let target = e.target;
     let i = 0;
-    while ((target.id == "" || !target.id) && i < 3) {
+    while ((target.id === "" || !target.id) && i < 3) {
       target = target.parentNode;
       i++;
     }
@@ -157,7 +156,7 @@ export default function MalicePage(props) {
                       viewBox="0 0 16 16"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"
                       />
                     </svg>

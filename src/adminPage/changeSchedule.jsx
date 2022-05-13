@@ -1,4 +1,3 @@
-import { containerClasses } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -60,7 +59,7 @@ export function AdminChangeSchedule() {
     selectSchool("ERS");
     setUniLinkInput(
       (
-        scheduleSchoolData.find((e) => e.selected == true) || {
+        scheduleSchoolData.find((e) => e.selected === true) || {
           mainLink: "",
         }
       ).mainLink
@@ -143,7 +142,7 @@ export function AdminChangeSchedule() {
     if (id === "discard") {
       setUniLinkInput(
         (
-          scheduleSchoolData.find((e) => e.selected == true) || {
+          scheduleSchoolData.find((e) => e.selected === true) || {
             mainLink: "",
           }
         ).mainLink
@@ -151,7 +150,7 @@ export function AdminChangeSchedule() {
       showCloseUniLinkPopup();
     } else if (id === "save") {
       let schoolId = (
-        scheduleSchoolData.find((e) => e.selected == true) || {
+        scheduleSchoolData.find((e) => e.selected === true) || {
           id: "---",
         }
       ).id;
@@ -170,7 +169,7 @@ export function AdminChangeSchedule() {
       ).catch((e) => {
         console.log(e);
       });
-      if (res.status == 200) {
+      if (res.status === 200) {
         showCloseUniLinkPopup();
         getScheduleSchoolData();
       }
@@ -179,7 +178,7 @@ export function AdminChangeSchedule() {
 
   function getClasses() {
     let classes = (
-      scheduleSchoolData.find((e) => e.selected == true) || {
+      scheduleSchoolData.find((e) => e.selected === true) || {
         classes: [],
       }
     ).classes;
@@ -211,7 +210,7 @@ export function AdminChangeSchedule() {
 
   function getIdOfSelectedSchool() {
     return (
-      scheduleSchoolData.find((e) => e.selected == true) || {
+      scheduleSchoolData.find((e) => e.selected === true) || {
         id: "---",
       }
     ).id;
@@ -306,7 +305,7 @@ export function AdminChangeSchedule() {
             Univerzalni link:
           </p>
           <div className="admin-schedule-modify-uni-link-edit">
-            <a href={uniLinkInput} target="_blank">
+            <a href={uniLinkInput} target="_blank" rel="noopener noreferrer">
               Klikni tukaj
             </a>
             <svg

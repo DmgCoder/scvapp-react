@@ -27,6 +27,7 @@ export default function MaliceLoginPage() {
     if (username !== "" && password !== "") {
       let res = await fetch("https://malice.scv.si/api/v2/auth", {
         method: "POST",
+        mode: "cors",
         body: formData,
       }).catch((e) => console.log(e));
       if (res.status === 200) {
@@ -79,9 +80,9 @@ export default function MaliceLoginPage() {
     <>
       <div className="maliceLogin">
         <div className="maliceLogin-Wrap">
-          <div className="maliceLogin-LoginWindow-Alert">
+          {/* <div className="maliceLogin-LoginWindow-Alert">
             <p>Pred nadaljevanjem se morate prijaviti!</p>
-          </div>
+          </div> */}
           <div className="maliceLogin-LoginWindow">
             <img src={SCVLogo} alt=""></img>
             <p className="maliceLogin-LoginWindow-Text">
