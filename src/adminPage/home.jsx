@@ -11,7 +11,7 @@ export function AdminHome() {
   return (
     <>
       <div className="admin-home">
-        <div className="admin-home-content">
+        <main className="admin-home-content">
           <div className="admin-home-title">
             <img alt="" src={userSettingsIcon} />
             <p>NADZORNA PLOŠČA</p>
@@ -31,7 +31,7 @@ export function AdminHome() {
               <img src={schoolIcon} alt="" />
             </ItemToSelect>
           </div>
-        </div>
+        </main>
       </div>
     </>
   );

@@ -1,3 +1,8 @@
+* {
+  --green-btn: #56c74e;
+  --red-btn: #db4444;
+}
+
 .admin-schedule {
   overflow-y: scroll;
   overflow-x: scroll;
@@ -156,11 +161,11 @@
 }
 
 .admin-schedule-modify-uni-link-edit-popup-buttons #save {
-  background-color: #649fe3;
+  background-color: var(--green-btn);
 }
 
 .admin-schedule-modify-uni-link-edit-popup-buttons #discard {
-  background-color: #b9bfc7;
+  background-color: var(--red-btn);
 }
 
 .admin-schedule-classes {
@@ -303,7 +308,7 @@
 .admin-schedule-classes-create-class input {
   width: 90%;
   height: 35px;
-  font-size: 16px;
+  font-size: 14px;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -326,9 +331,9 @@
 }
 
 .admin-schedule-classes-create-class-buttons #save {
-  background-color: #8ae39b;
+  background-color: var(--green-btn);
 }
 
 .admin-schedule-classes-create-class-buttons #discard {
-  background-color: #b9bfc7;
+  background-color: var(--red-btn);
 }
