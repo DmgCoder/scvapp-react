@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShowAlert from "../components/showAlert";
@@ -34,7 +35,7 @@ const HomePage = () => {
             credentials: "include",
             method: "GET",
           }),
-        ]).catch(() => {
+        ]).catch((e) => {
           setLoaded(true);
           window.location.pathname = "/prijava";
         });
@@ -176,13 +177,20 @@ const HomePage = () => {
   }, [isLoaded]);
 
   if (!userData.displayName && isLoaded) {
+    return <></>;
+  } else if (!isLoaded) {
     return (
       <>
-        <p>Auth Error</p>
+        <CircularProgress
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+          }}
+        />
       </>
     );
-  } else if (!isLoaded) {
-    return <></>;
   }
   return (
     <main className="main">
