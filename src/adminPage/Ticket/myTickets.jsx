@@ -3,13 +3,16 @@ import "./ticket.css";
 import "./ticket1.css";
 import { Link } from "react-router-dom";
 import SidebarTicket from "./sidebarTicket";
-export function TicketSistem() {
+import arrowIcon from "../../pictures/admin_page/arrow-right.svg";
+
+export function MyTickets() {
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">
           Ticket sistem - ŠCVApp
         </a>
+        <script src="uikit/dist/js/uikit-icons.min.js"></script>
         <button
           className="navbar-toggler position-absolute d-md-none collapsed"
           type="button"
@@ -91,6 +94,7 @@ export function TicketSistem() {
                       <th scope="col">Zadeva</th>
                       <th scope="col">Pošiljatelj</th>
                       <th scope="col">Status</th>
+                      <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -100,6 +104,9 @@ export function TicketSistem() {
                       <td>Aplikacija mi je zel...</td>
                       <td>blaz.osredkar@scv.si</td>
                       <td className="zaprto">Zaprto</td>
+                      <td>
+                        <img src={arrowIcon} alt=""></img>
+                      </td>
                     </tr>
                     <tr>
                       <td>2</td>
@@ -107,63 +114,11 @@ export function TicketSistem() {
                       <td>irrelevant</td>
                       <td>blaz.asdf@scv.si</td>
                       <td className="odprto">Odprto</td>
+                      <td>
+                        <img src={arrowIcon} alt=""></img>
+                      </td>
                     </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Dela!!!</td>
-                      <td>rich</td>
-                      <td>blaz.safsadF@scv.si</td>
-                      <td className="odprto">Odprto</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Problemcici</td>
-                      <td>teste</td>
-                      <td>blaz.ASDASD@scv.si</td>
-                      <td className="odgovorjeno">Odgovorjeno</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>text</td>
-                      <td>random</td>
-                      <td>urbancic.primercic@scv.si</td>
-                      <td className="zaprto">Zaprto</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>dashboard</td>
-                      <td>irrelevant</td>
-                      <td>text</td>
-                      <td className="posredovano">Posredovano</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>dashboard</td>
-                      <td>illustrative</td>
-                      <td>rich</td>
-                      <td className="zaprto">Zaprto</td>
-                    </tr>
-                    <tr>
-                      <td>8</td>
-                      <td>placeholder</td>
-                      <td>tabular</td>
-                      <td>information</td>
-                      <td className="posredovano">Posredovano</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>random</td>
-                      <td>data</td>
-                      <td>beseda</td>
-                      <td className="zaprto">Zaprto</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>placeholder</td>
-                      <td>irrelevant</td>
-                      <td>visual</td>
-                      <td className="odprto">Odprto</td>
-                    </tr>
+            
                   </tbody>
                 </table>
               </div>

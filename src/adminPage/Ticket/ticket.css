@@ -96,13 +96,13 @@
       color: rgb(206, 209, 25) !important;
   }
   .odgovorjeno{
-      color: purple;
+      color: purple !important;
   }
   .zaprto{
       color: rgb(6, 117, 6) !important;
   }
   .posredovano{
-      color: rgb(24, 24, 209);
+      color: rgb(24, 24, 209) !important;
   }
   .bs-body-font-family{
     font-family: bs-font-sans-serif;} 

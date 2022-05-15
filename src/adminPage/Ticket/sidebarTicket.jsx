@@ -23,20 +23,24 @@ export function SidebarTicket() {
         <div className="position-sticky pt-3">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/admin/ticket/home"
+              >
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-home align-text-bottom" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> */}
                 <span data-feather="home" className="align-text-bottom"></span>
                 Nadzorna plošča
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/admin/ticket/my">
                 <span data-feather="file" className="align-text-bottom"></span>
                 Moji ticketi
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/admin/ticket/open">
                 <span data-feather="users" className="align-text-bottom"></span>
                 Odprti ticketi
               </a>

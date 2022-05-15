@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AdminChangeSchedule } from "./changeSchedule.jsx";
-import { TicketSistem } from "./ticketsystem.jsx";
+import { TicketSistem } from "./Ticket/ticketsystem.jsx";
 import { AdminHome } from "./home.jsx";
+import { MyTickets } from "./Ticket/myTickets.jsx";
+import { OpenTickets } from "./Ticket/OpenTickets.jsx";
 
 export function AdminRoute() {
   let location = useLocation(); //Dobimo URL
@@ -56,7 +58,11 @@ export function AdminRoute() {
     case "/ureditevUrnikov":
       return <AdminChangeSchedule />;
     case "/ticket/home":
-      return <TicketSistem/>;
+      return <TicketSistem />;
+    case "/ticket/my":
+      return <MyTickets />;
+    case "/ticket/open":
+      return <OpenTickets/>;
     default:
       return <AdminHome />;
   }
