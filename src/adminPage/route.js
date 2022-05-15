@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AdminChangeSchedule } from "./changeSchedule.jsx";
+import { TicketSistem } from "./ticketsystem.jsx";
 import { AdminHome } from "./home.jsx";
 
 export function AdminRoute() {
@@ -54,6 +55,8 @@ export function AdminRoute() {
       return <AdminHome />;
     case "/ureditevUrnikov":
       return <AdminChangeSchedule />;
+    case "/ticket/home":
+      return <TicketSistem/>;
     default:
       return <AdminHome />;
   }

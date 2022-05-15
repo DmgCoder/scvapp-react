@@ -1,66 +1,67 @@
-body{
-    background-color: white;
+body {
+  background-color: white;
 }
-.main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.loginWindow{
-    width: 650px;
-    height: 650px;
-    max-width: 650px;
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.loginWindow .main{
-    width: 100%;
-    height: 100%;
-    background-color: #eeebeb;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 28px;
+.loginWindow {
+  width: 650px;
+  height: 650px;
+  max-width: 650px;
 }
 
-.content{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    height: 55%;
-    margin-top: 10%;
+.loginWindow .main {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.20));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 28px;
 }
 
-.loginBtn{
-    cursor: pointer;
-    width: 45%;
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 55%;
+  margin-top: 10%;
 }
 
-.loginBtn .btnImg{
-    width: 100%;
+.loginBtn {
+  cursor: pointer;
+  width: 45%;
 }
 
-.schoolLogo{
-    width: 35%;
+.loginBtn .btnImg {
+  width: 100%;
 }
 
-.text{
-    width: 55%;
+.schoolLogo {
+  width: 35%;
 }
 
-.linkToAbout{
-    margin-bottom: 20px;
-    font-size: 18px;
-    text-decoration: underline;
-    color: #474646;
-    cursor: pointer;
+.text {
+  width: 55%;
+}
+
+.linkToAbout {
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-decoration: underline;
+  color: #474646;
+  cursor: pointer;
 }
