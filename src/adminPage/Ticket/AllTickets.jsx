@@ -6,7 +6,7 @@ import SidebarTicket from "./sidebarTicket";
 import arrowIcon from "../../pictures/admin_page/arrow-right.svg";
 import { TicketCard } from "./TicketCard";
 
-export function MyTickets() {
+export function AllTickets() {
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -50,7 +50,7 @@ export function MyTickets() {
           crossOrigin="anonymous"
         ></script>
       </header>
-      <body>
+      <div>
         <div className="container-fluid">
           <div className="row">
             <SidebarTicket />
@@ -99,7 +99,7 @@ export function MyTickets() {
                     </tr>
                   </thead>
                   <tbody>
-                    <TicketCard />
+                    <TicketCard type={"zaprto"} />
                   </tbody>
                 </table>
               </div>
@@ -119,7 +119,7 @@ export function MyTickets() {
           integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
           crossOrigin="anonymous"
         ></script>
-      </body>
+      </div>
     </>
   );
 }

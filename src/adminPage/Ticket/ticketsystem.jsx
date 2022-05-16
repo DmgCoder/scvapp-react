@@ -4,6 +4,7 @@ import "./ticket1.css";
 import { Link } from "react-router-dom";
 import SidebarTicket from "./sidebarTicket";
 import arrowIcon from "../../pictures/admin_page/arrow-right.svg";
+import { TicketCard } from "./TicketCard";
 
 export function TicketSistem() {
   return (
@@ -41,15 +42,15 @@ export function TicketSistem() {
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </header>
-      <body>
+      <div>
         <div className="container-fluid">
           <div className="row">
             <SidebarTicket />
@@ -98,47 +99,34 @@ export function TicketSistem() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>SUPER APP!!!</td>
-                      <td>Aplikacija mi je zel...</td>
-                      <td>blaz.osredkar@scv.si</td>
-                      <td className="zaprto">Zaprto</td>
-                      <td>
-                        <img src={arrowIcon} alt=""></img>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Problem z prijavo</td>
-                      <td>irrelevant</td>
-                      <td>blaz.asdf@scv.si</td>
-                      <td className="odprto">Odprto</td>
-                      <td>
-                        <img src={arrowIcon} alt=""></img>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Problemcici</td>
-                      <td>teste</td>
-                      <td>blaz.ASDASD@scv.si</td>
-                      <td className="odgovorjeno">Odgovorjeno</td>
-                      <td>
-                        <img src={arrowIcon} alt=""></img>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4 </td>
-                      <td>dashboard</td>
-                      <td>irrelevant</td>
-                      <td>text</td>
-                      <td className="posredovano">Posredovano</td>
-                      <td>
-                        <img src={arrowIcon} alt=""></img>
-                      </td>
-                    </tr>
-                    
+                    <TicketCard
+                      type="odprto"
+                      zap_st={"1"}
+                      naslov={"App dela"}
+                      zadeva={"Pač app mi je ful dobr"}
+                      pošiljatelj={"en.random1@scv.si"}
+                    />
+                    <TicketCard
+                      type="zaprto"
+                      zap_st={"2"}
+                      naslov={"App ne naloži tipkovnice"}
+                      zadeva={"Pač app mi je ful dobr"}
+                      pošiljatelj={"en.random2@scv.si"}
+                    />
+                    <TicketCard
+                      type="posredovano"
+                      zap_st={"3"}
+                      naslov={"NUJNO!!!"}
+                      zadeva={"Nekaj stvari ne dela:"}
+                      pošiljatelj={"en.random3@scv.si"}
+                    />
+                    <TicketCard
+                      type="odgovorjeno"
+                      zap_st={"4"}
+                      naslov={"Ne dela login"}
+                      zadeva={"V app se ne morem prijavit"}
+                      pošiljatelj={"en.random4@scv.si"}
+                    />
                   </tbody>
                 </table>
               </div>
@@ -158,7 +146,7 @@ export function TicketSistem() {
           integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
           crossOrigin="anonymous"
         ></script>
-      </body>
+      </div>
     </>
   );
 }

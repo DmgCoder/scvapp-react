@@ -23,9 +23,12 @@ const RoutePage = () => {
           <Route path="/o-nas" element={<AboutPage />} />
           <Route path="/admin" element={<AdminRoute />} />
           <Route path="/admin/ureditevUrnikov" element={<AdminRoute />} />
+          <Route path="/admin/ticket" element={<AdminRoute />} />
           <Route path="/admin/ticket/home" element={<AdminRoute />} />
           <Route path="/admin/ticket/my" element={<AdminRoute />} />
           <Route path="/admin/ticket/open" element={<AdminRoute />} />
+          <Route path="/admin/ticket/closed" element={<AdminRoute />} />
+          <Route path="/admin/ticket/all" element={<AdminRoute />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

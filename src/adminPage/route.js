@@ -5,6 +5,8 @@ import { TicketSistem } from "./Ticket/ticketsystem.jsx";
 import { AdminHome } from "./home.jsx";
 import { MyTickets } from "./Ticket/myTickets.jsx";
 import { OpenTickets } from "./Ticket/OpenTickets.jsx";
+import { ClosedTickets } from "./Ticket/ClosedTickets.jsx";
+import { AllTickets } from "./Ticket/AllTickets.jsx";
 
 export function AdminRoute() {
   let location = useLocation(); //Dobimo URL
@@ -57,12 +59,18 @@ export function AdminRoute() {
       return <AdminHome />;
     case "/ureditevUrnikov":
       return <AdminChangeSchedule />;
+    case "/ticket":
+      return <TicketSistem />;
     case "/ticket/home":
       return <TicketSistem />;
     case "/ticket/my":
       return <MyTickets />;
     case "/ticket/open":
-      return <OpenTickets/>;
+      return <OpenTickets />;
+    case "/ticket/closed":
+      return <ClosedTickets />;
+    case "/ticket/all":
+      return <AllTickets />;
     default:
       return <AdminHome />;
   }

@@ -4,9 +4,8 @@ import "./ticket1.css";
 import { Link } from "react-router-dom";
 import SidebarTicket from "./sidebarTicket";
 import arrowIcon from "../../pictures/admin_page/arrow-right.svg";
-import { TicketCard } from "./TicketCard";
 
-export function MyTickets() {
+export function ClosedTickets() {
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -99,7 +98,17 @@ export function MyTickets() {
                     </tr>
                   </thead>
                   <tbody>
-                    <TicketCard />
+                    <tr>
+                      <td>2</td>
+                      <td>Problem z prijavo</td>
+                      <td>irrelevant</td>
+                      <td>blaz.asdf@scv.si</td>
+                      <td className="odprto">Odprto</td>
+                      <td>
+                        <img src={arrowIcon} alt=""></img>
+                      </td>
+                    </tr>
+            
                   </tbody>
                 </table>
               </div>

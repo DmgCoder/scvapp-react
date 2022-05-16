@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import "./ticket.css";
 import "./ticket1.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 export function SidebarTicket() {
+  const location = useLocation();
+  const pathname = location.pathname;
   return (
     <>
       <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
       />
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
       ></script>
       <nav
         id="sidebarMenu"
@@ -24,7 +26,9 @@ export function SidebarTicket() {
           <ul className="nav flex-column">
             <li className="nav-item">
               <Link
-                className="nav-link active"
+                className={`nav-link ${
+                  pathname == "/admin/ticket/home" ? "active" : ""
+                }`}
                 aria-current="page"
                 to="/admin/ticket/home"
               >
@@ -34,19 +38,34 @@ export function SidebarTicket() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to={"/admin/ticket/my"}>
+              <Link
+                className={`nav-link ${
+                  pathname == "/admin/ticket/my" ? "active" : ""
+                }`}
+                to={"/admin/ticket/my"}
+              >
                 <span data-feather="file" className="align-text-bottom"></span>
                 Moji ticketi
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin/ticket/open">
+              <Link
+                className={`nav-link ${
+                  pathname == "/admin/ticket/open" ? "active" : ""
+                }`}
+                to="/admin/ticket/open"
+              >
                 <span data-feather="users" className="align-text-bottom"></span>
                 Odprti ticketi
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin/ticket/">
+              <Link
+                className={`nav-link ${
+                  pathname == "/admin/ticket/closed" ? "active" : ""
+                }`}
+                to="/admin/ticket/closed"
+              >
                 <span
                   data-feather="bar-chart-2"
                   className="align-text-bottom"
@@ -55,7 +74,12 @@ export function SidebarTicket() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin/ticket/">
+              <Link
+                className={`nav-link ${
+                  pathname == "/admin/ticket/all" ? "active" : ""
+                }`}
+                to="/admin/ticket/all"
+              >
                 <span
                   data-feather="layers"
                   className="align-text-bottom"
