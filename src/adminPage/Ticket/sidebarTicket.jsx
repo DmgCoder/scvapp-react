@@ -23,45 +23,45 @@ export function SidebarTicket() {
         <div className="position-sticky pt-3">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a
+              <Link
                 className="nav-link active"
                 aria-current="page"
-                href="/admin/ticket/home"
+                to="/admin/ticket/home"
               >
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-home align-text-bottom" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> */}
                 <span data-feather="home" className="align-text-bottom"></span>
                 Nadzorna plošča
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/admin/ticket/my">
+              <Link className="nav-link" to={"/admin/ticket/my"}>
                 <span data-feather="file" className="align-text-bottom"></span>
                 Moji ticketi
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/admin/ticket/open">
+              <Link className="nav-link" to="/admin/ticket/open">
                 <span data-feather="users" className="align-text-bottom"></span>
                 Odprti ticketi
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/admin/ticket/">
                 <span
                   data-feather="bar-chart-2"
                   className="align-text-bottom"
                 ></span>
                 Zaprti ticketi
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/admin/ticket/">
                 <span
                   data-feather="layers"
                   className="align-text-bottom"
                 ></span>
                 Vsi ticketi
-              </a>
+              </Link>
             </li>
           </ul>
 

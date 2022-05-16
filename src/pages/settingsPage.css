@@ -75,7 +75,7 @@
 }
 
 .floatingDiv {
-  background-color: #f0f0f0;
+  background-color: #ebebeb;
   width: 80%;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
@@ -192,7 +192,7 @@
 .aboutSchoolDropdown {
   box-sizing: border-box;
   position: absolute;
-  background-color: #f0f0f0;
+  background-color: #ebebeb;
   min-height: 300px !important;
   width: 100%;
   -webkit-transform: translateY(100%);
