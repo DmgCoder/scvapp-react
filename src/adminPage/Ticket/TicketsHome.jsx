@@ -62,13 +62,7 @@ export function TicketsHome({ children }) {
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
                     >
-                      Share
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                    >
-                      Export
+                      Osveži iz pošte
                     </button>
                   </div>
                   <button
@@ -96,13 +90,12 @@ export function TicketsHome({ children }) {
                       <th scope="col"></th>
                     </tr>
                   </thead>
-                  <tbody>{children}</tbody>
+                  <tbody className="ticket-table-tickets">{children}</tbody>
                 </table>
               </div>
             </main>
           </div>
         </div>
-
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
         <script

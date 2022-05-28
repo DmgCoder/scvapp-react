@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { ReactSession } from "react-client-session";
 
 import "./malicePage.css";
 import windowSize from "../classes/getWindowDimensions.js";
@@ -14,7 +16,7 @@ import pizzaPicture from "../pictures/slike_malica/pizza.png";
 import pizzaMargeritePicture from "../pictures/slike_malica/pizza_margerite.png";
 import solataPicture from "../pictures/slike_malica/solata.png";
 import brezMalicePicture from "../pictures/slike_malica/brez_malice.png";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import profilePicture from "../pictures/slike_malica/profilePicture.png";
 
 let jediZaDanes = [];
 
@@ -51,9 +53,12 @@ export default function MalicePage(props) {
   const [sizeOfParentDatePicker, setSizeOfParentDatePicker] = useState(0);
   const [izbraniTeden, setIzbraniTeden] = useState(0);
   const [menuIsPrisented, setMenuIsPresented] = useState(false);
+  const [userMalice, setUserMalice] = useState({});
   let winSize = windowSize();
 
+  let navigation = useNavigate();
   useEffect(() => {
+    getUserMalice();
     setSizeOfParentDatePicker(ref.current.offsetWidth);
   }, []);
   useEffect(() => {
@@ -72,6 +77,16 @@ export default function MalicePage(props) {
   function openCloseMenu() {
     setMenuIsPresented(!menuIsPrisented);
   }
+
+  function getUserMalice() {
+    let user_malice = ReactSession.get("user_malice");
+    if (user_malice && user_malice.access_token) {
+      setUserMalice(user_malice);
+    } else {
+      navigation("/malice/prijava");
+    }
+  }
+
   const nav = useNavigate();
   function changeDate(e) {
     let target = e.target;
@@ -97,20 +112,20 @@ export default function MalicePage(props) {
             <div className="maliceMenu-Info">
               <div className="maliceMenu-Info-Text">
                 <p>PIN koda za današnjo malico:</p>
-                <b>3141</b>
+                <b>{userMalice.student && userMalice.student.pin_number}</b>
               </div>
               <div className="maliceMenu-Info-Text">
                 <p>Stanje na vašem računu:</p>
-                <b>3141,59€</b>
+                <b>{userMalice.student && userMalice.student.budget}</b>
               </div>
             </div>
             {/* <MaliceAlert /> */}
             <div className="maliceMenu-Profile">
-              <img
-                src="https://www.pngitem.com/pimgs/b/150-1503945_user-png.png"
-                alt=""
-              ></img>
-              <b>Urban Krepel</b>
+              <img src={profilePicture} alt=""></img>
+              <b>
+                {userMalice.student && userMalice.student.first_name}{" "}
+                {userMalice.student && userMalice.student.last_name}
+              </b>
               <button
                 className="maliceMenu-Profile-Btn"
                 style={menuIsPrisented ? { transform: "rotate(180deg)" } : {}}

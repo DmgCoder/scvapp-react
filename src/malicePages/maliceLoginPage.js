@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
+import { ReactSession } from "react-client-session";
 
 import "./maliceLoginPage.css";
 
 import SCVLogo from "../pictures/school_logo.png";
 import { useNavigate } from "react-router";
-import { Alert } from "@mui/material";
+import { Alert, CircularProgress } from "@mui/material";
 
 export default function MaliceLoginPage() {
   const [usernameStyle, setUsernameStyle] = useState({
@@ -16,6 +17,10 @@ export default function MaliceLoginPage() {
 
   const [showPassoword, setShowPassword] = useState(false);
 
+  const [error, setError] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+
   let navigation = useNavigate();
   let loginForm = useRef();
 
@@ -25,15 +30,41 @@ export default function MaliceLoginPage() {
     const username = formData.get("email") || "";
     const password = formData.get("password") || "";
     if (username !== "" && password !== "") {
-      let res = await fetch("https://malice.scv.si/api/v2/auth", {
-        method: "POST",
-        mode: "cors",
-        body: formData,
-      }).catch((e) => console.log(e));
-      if (res.status === 200) {
-        console.log(await res.json());
-      } else {
-        console.log(res);
+      setIsLoading(true);
+      try {
+        let res = await fetch("https://malice.scv.si/api/v2/auth", {
+          method: "POST",
+          mode: "cors",
+          body: formData,
+        }).catch((e) => console.log(e));
+        if (res.status === 200) {
+          let data = await res.json();
+          ReactSession.setStoreType("sessionStorage");
+          let user = {
+            access_token: data.access_token,
+            student: {
+              email: data.student.email,
+              first_name: data.student.first_name,
+              last_name: data.student.last_name,
+              pin_number: data.student.pin_number,
+              budget: data.student.budget,
+            },
+          };
+          ReactSession.set("user_malice", user);
+          navigation("/malice");
+        } else {
+          if (res.status === 401) {
+            setError("Napačna e-pošta ali geslo.");
+          } else if (res.status === 500) {
+            setError("Napačna e-pošta ali geslo.");
+          } else {
+            setError("Napaka pri prijavi. Poskusite ponovno.");
+          }
+        }
+        setIsLoading(false);
+      } catch (e) {
+        setError("Napaka pri prijavi. Poskusite ponovno.");
+        setIsLoading(false);
       }
     }
   }
@@ -72,27 +103,36 @@ export default function MaliceLoginPage() {
     }
   }
 
-  function unshowShowPassoword() {
+  function unshowShowPassoword(e) {
+    e.preventDefault();
     setShowPassword(!showPassoword);
+  }
+
+  if (isLoading) {
+    return (
+      <div className="maliceLogin">
+        <div className="maliceLogin-Wrap">
+          <CircularProgress style={{ color: "rgb(237, 17, 100)" }} />
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
       <div className="maliceLogin">
         <div className="maliceLogin-Wrap">
-          {/* <div className="maliceLogin-LoginWindow-Alert">
-            <p>Pred nadaljevanjem se morate prijaviti!</p>
-          </div> */}
+          {error !== "" && (
+            <div className="maliceLogin-LoginWindow-Alert">
+              <p>{error}</p>
+            </div>
+          )}
           <div className="maliceLogin-LoginWindow">
             <img src={SCVLogo} alt=""></img>
             <p className="maliceLogin-LoginWindow-Text">
               Prijava v sistem malic
             </p>
-            <form
-              className="maliceLogin-LoginWindow-Form"
-              onSubmit={loginUser}
-              ref={loginForm}
-            >
+            <form className="maliceLogin-LoginWindow-Form" ref={loginForm}>
               <div className="maliceLogin-LoginWindow-Form-Input">
                 <span style={usernameStyle}>E-pošta</span>
                 <input
@@ -112,6 +152,7 @@ export default function MaliceLoginPage() {
                 ></input>
                 <button
                   className="maliceLogin-LoginWindow-Form-Input-eye"
+                  value={showPassoword}
                   onClick={unshowShowPassoword}
                 >
                   {!showPassoword ? (
@@ -149,6 +190,7 @@ export default function MaliceLoginPage() {
               <button
                 type="submit"
                 className="maliceLogin-LoginWindow-Form-SubmitBtn"
+                onClick={loginUser}
               >
                 Prijava
               </button>

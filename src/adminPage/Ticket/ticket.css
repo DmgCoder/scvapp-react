@@ -1,108 +1,158 @@
+.feather {
+  width: 16px;
+  height: 16px;
+}
 
-  
-  .feather {
-    width: 16px;
-    height: 16px;
-  }
-  
-  /*
+/*
    * Sidebar
    */
-  
-  .admin-ticket-sidebar {
-    position: fixed;
-    top: 0;
-    /* rtl:raw:
+
+.admin-ticket-sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
     right: 0;
     */
-    bottom: 0;
-    /* rtl:remove */
-    left: 0;
-    z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+  .admin-ticket-sidebar {
+    top: 5rem;
   }
-  
-  @media (max-width: 767.98px) {
-    .admin-ticket-sidebar {
-      top: 5rem;
-    }
-  }
-  
-  .admin-ticket-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  }
-  
-  .admin-ticket-sidebar .nav-link {
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .admin-ticket-sidebar .nav-link .feather {
-    margin-right: 4px;
-    color: #727272;
-  }
-  
-  .admin-ticket-sidebar .nav-link.active {
-    color: #2470dc;
-  }
-  
-  .admin-ticket-sidebar .nav-link:hover .feather,
-  .admin-ticket-sidebar .nav-link.active .feather {
-    color: inherit;
-  }
-  
-  .admin-ticket-sidebar-heading {
-    font-size: .75rem;
-  }
-  
-  /*
+}
+
+.admin-ticket-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.admin-ticket-sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.admin-ticket-sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.admin-ticket-sidebar .nav-link.active {
+  color: #2470dc;
+}
+
+.admin-ticket-sidebar .nav-link:hover .feather,
+.admin-ticket-sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.admin-ticket-sidebar-heading {
+  font-size: 0.75rem;
+}
+
+/*
    * Navbar
    */
-  
-  .admin-navbar-brand {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(0, 0, 0, .25);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-  }
-  
-  .admin-navbar .admin-navbar-toggler {
-    top: .25rem;
-    right: 1rem;
-  }
-  
-  .admin-navbar .form-control {
-    padding: .75rem 1rem;
-  }
-  
-  .form-control-dark {
-    color: #fff;
-    background-color: rgba(255, 255, 255, .1);
-    border-color: rgba(255, 255, 255, .1);
-  }
-  
-  .form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-  }
-  
-  .odprto{
-      color: rgb(206, 209, 25) !important;
-  }
-  .odgovorjeno{
-      color: purple !important;
-  }
-  .zaprto{
-      color: rgb(6, 117, 6) !important;
-  }
-  .posredovano{
-      color: rgb(24, 24, 209) !important;
-  }
-  .bs-body-font-family{
-    font-family: bs-font-sans-serif;} 
+
+.admin-navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.admin-navbar .admin-navbar-toggler {
+  top: 0.25rem;
+  right: 1rem;
+}
+
+.admin-navbar .form-control {
+  padding: 0.75rem 1rem;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.odprto {
+  color: rgb(206, 209, 25) !important;
+}
+.odgovorjeno {
+  color: purple !important;
+}
+.zaprto {
+  color: rgb(6, 117, 6) !important;
+}
+.posredovano {
+  color: rgb(24, 24, 209) !important;
+}
+.bs-body-font-family {
+  font-family: bs-font-sans-serif;
+}
+
+.ticket-popup-changing-stage {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.438);
+  z-index: 1000000000;
+}
+
+.ticket-popup-changing-stage-content {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 15px;
+}
+
+.ticket-popup-changing-stage-content-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.ticket-popup-changing-stage-content-buttons button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ticket-popup-changing-stage-content-buttons #save {
+  background-color: rgb(6, 193, 87);
+  color: white;
+}
+.ticket-popup-changing-stage-content-buttons #discard {
+  background-color: rgb(200, 6, 6);
+  color: white;
+}

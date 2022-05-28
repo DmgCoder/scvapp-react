@@ -3,43 +3,58 @@ import "./ticket.css";
 import "./ticket1.css";
 import { TicketsHome } from "./TicketsHome";
 import { ShowTickets } from "./ShowTickets";
+import { CircularProgress } from "@mui/material";
+import { PopUpChangingStage } from "./components/PopUpChangingStage";
 
 export function MainTickets() {
-  let tickets = [
-    {
-      type: "odprto",
-      zap_st: "1",
-      naslov: "App dela",
-      zadeva: "Pač app mi je ful dobr",
-      pošiljatelj: "en.random1@scv.si",
-    },
-    {
-      type: "posredovano",
-      zap_st: "2",
-      naslov: "App ne naloži tipkovnice",
-      zadeva: "App ne naloži tipkovnice",
-      pošiljatelj: "en.random2@scv.si",
-    },
-    {
-      type: "zaprto",
-      zap_st: "3",
-      naslov: "NUJNO!!!",
-      zadeva: "Nekaj stvari ne dela:",
-      pošiljatelj: "en.random3@scv.si",
-    },
-    {
-      type: "odgovorjeno",
-      zap_st: "4",
-      naslov: "Ne dela login",
-      zadeva: "V app se ne morem prijavit",
-      pošiljatelj: "en.random4@scv.si",
-    },
-  ];
+  const [tickets, setTickets] = useState([]);
+  const [showPopUpForChangeStage, setShowPopUpForChangeStage] = useState(false);
+  const [popUpData, setPopUpData] = useState({});
+  async function getTickets() {
+    setTickets([]);
+    let json = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/ticket/all`,
+      {
+        mode: "cors",
+        credentials: "include",
+        method: "GET",
+      }
+    ).catch((e) => {
+      console.log(e);
+    });
+    if (json.status !== 200) {
+      return;
+    }
+    let data = await json.json();
+    setTickets(data);
+  }
+  useEffect(() => {
+    getTickets();
+  }, []);
+
+  function clickedOnStage(e) {
+    let target = e.target;
+    let zap_st = target.dataset.zap_st;
+    let type = target.dataset.type;
+    setPopUpData({ zap_st, type });
+    setShowPopUpForChangeStage(true);
+  }
   return (
     <>
       <TicketsHome>
-        <ShowTickets tickets={tickets} />
+        {tickets.length > 0 ? (
+          <ShowTickets tickets={tickets} clickedOnStage={clickedOnStage} />
+        ) : (
+          <CircularProgress style={{ position: "absolute" }} />
+        )}
       </TicketsHome>
+      <PopUpChangingStage
+        isOpen={showPopUpForChangeStage}
+        setIsOpen={setShowPopUpForChangeStage}
+        ticket_id={popUpData.zap_st}
+        ticket_type={popUpData.type}
+        refresh={getTickets}
+      />
     </>
   );
 }

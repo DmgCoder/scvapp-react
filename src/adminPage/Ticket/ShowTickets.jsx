@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import { TicketCard } from "./TicketCard";
 import { useLocation } from "react-router-dom";
-export function ShowTickets({ tickets }) {
+export function ShowTickets({ tickets, clickedOnStage }) {
   const location = useLocation();
   const [typeOfShowenTicket, setTypeOfShowenTicket] = useState("all");
   useEffect(() => {
@@ -34,9 +34,10 @@ export function ShowTickets({ tickets }) {
         type={ticket.type}
         naslov={ticket.naslov}
         zadeva={ticket.zadeva}
-        zap_st={ticket.zap_st}
-        pošiljatelj={ticket.pošiljatelj}
+        zap_st={ticket.id}
+        pošiljatelj={ticket.sender}
         key={i}
+        clickedOnStage={clickedOnStage}
       />
     );
   });

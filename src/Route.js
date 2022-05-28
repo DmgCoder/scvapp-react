@@ -29,6 +29,10 @@ const RoutePage = () => {
           <Route path="/admin/ticket/open" element={<AdminRoute />} />
           <Route path="/admin/ticket/closed" element={<AdminRoute />} />
           <Route path="/admin/ticket/all" element={<AdminRoute />} />
+          <Route
+            path="/admin/ticket/show/:ticket_id"
+            element={<AdminRoute />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
