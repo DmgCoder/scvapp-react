@@ -116,7 +116,7 @@ export default function MalicePage(props) {
               </div>
               <div className="maliceMenu-Info-Text">
                 <p>Stanje na vašem računu:</p>
-                <b>{userMalice.student && userMalice.student.budget}</b>
+                <b>{userMalice.student && userMalice.student.budget}€</b>
               </div>
             </div>
             {/* <MaliceAlert /> */}
