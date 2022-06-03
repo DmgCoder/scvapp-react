@@ -103,7 +103,6 @@ export default function MalicePage(props) {
       search: `?date=${dateString}`,
     });
   }
-
   return (
     <>
       <div className="mainMalice">
@@ -112,11 +111,21 @@ export default function MalicePage(props) {
             <div className="maliceMenu-Info">
               <div className="maliceMenu-Info-Text">
                 <p>PIN koda za današnjo malico:</p>
-                <b>{userMalice.student && userMalice.student.pin_number}</b>
+                <b>
+                  {userMalice.student &&
+                    [
+                      userMalice.student.pin_number.toString().slice(0, 3),
+                      userMalice.student.pin_number.toString().slice(3),
+                    ].join(" ")}
+                </b>
               </div>
               <div className="maliceMenu-Info-Text">
                 <p>Stanje na vašem računu:</p>
-                <b>{userMalice.student && userMalice.student.budget}€</b>
+                <b>
+                  {userMalice.student &&
+                    parseFloat(userMalice.student.budget).toFixed(2)}
+                  €
+                </b>
               </div>
             </div>
             {/* <MaliceAlert /> */}
