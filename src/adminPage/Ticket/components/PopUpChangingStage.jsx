@@ -56,6 +56,7 @@ export function PopUpChangingStage({
           <option value="posredovano">Posredovano</option>
           <option value="odgovorjeno">Odgovorjeno</option>
         </select>
+        {type === "posredovano" && <select></select>}
         <div className="ticket-popup-changing-stage-content-buttons">
           <button id="save" onClick={saveChanges}>
             Shrani

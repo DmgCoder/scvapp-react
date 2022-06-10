@@ -41,7 +41,7 @@ export function MainTickets() {
   }
   return (
     <>
-      <TicketsHome>
+      <TicketsHome refreshTickets={getTickets}>
         {tickets.length > 0 ? (
           <ShowTickets tickets={tickets} clickedOnStage={clickedOnStage} />
         ) : (

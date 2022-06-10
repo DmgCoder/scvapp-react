@@ -4,7 +4,21 @@ import "./ticket1.css";
 import { Link } from "react-router-dom";
 import SidebarTicket from "./sidebarTicket";
 
-export function TicketsHome({ children }) {
+export function TicketsHome({ children, refreshTickets }) {
+  async function refreshTicketsFromMail() {
+    let res = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/ticket/mail`,
+      {
+        mode: "cors",
+        credentials: "include",
+        method: "GET",
+      }
+    );
+    if (res.status === 200) {
+      refreshTickets();
+    }
+  }
+
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -61,6 +75,7 @@ export function TicketsHome({ children }) {
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-secondary"
+                      onClick={refreshTicketsFromMail}
                     >
                       Osveži iz pošte
                     </button>
@@ -96,18 +111,7 @@ export function TicketsHome({ children }) {
             </main>
           </div>
         </div>
-        <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-        <script
-          src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-          integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-          crossOrigin="anonymous"
-        ></script>
-        <script
-          src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-          integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-          crossOrigin="anonymous"
-        ></script>
+        {/* <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> */}
       </div>
     </>
   );
