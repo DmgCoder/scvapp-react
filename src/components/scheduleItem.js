@@ -150,6 +150,7 @@ function ClassInfo(props) {
     props.trenutnoNaUrniku.ura[indexForUra] &&
     props.trenutnoNaUrniku.ura[indexForUra].dogodek !== ""
   ) {
+    icon_status = icon_dogodek;
     content = (
       <div className="classInfo-content" style={{ backgroundColor: "#FCEDD1" }}>
         <p className="classInfo-krajsava" style={{ fontSize: "80%" }}>
@@ -158,9 +159,7 @@ function ClassInfo(props) {
             : "/"}
         </p>
         <div className="classInfo-ucilnica-ikona">
-          {icon_status !== "" && (
-            <img className="classInfo-ikona" src={icon_status} alt=""></img>
-          )}
+          <img className="classInfo-ikona" src={icon_status} alt=""></img>
         </div>
       </div>
     );
@@ -182,9 +181,7 @@ function ClassInfo(props) {
               ? props.trenutnoNaUrniku.ura[indexForUra].ucilnica || "/"
               : "/"}
           </p>
-          {icon_status !== "" && (
-            <img className="classInfo-ikona" src={icon_status} alt=""></img>
-          )}
+          <img className="classInfo-ikona" src={icon_status} alt=""></img>
         </div>
       </div>
     );
