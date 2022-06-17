@@ -8,10 +8,16 @@ export function PopUpChangingStage({
   refresh,
 }) {
   const [type, setType] = useState(ticket_type);
+  const [canForwardToUsers, setCanForwardToUsers] = useState([]);
+  const [forwardUserId, setForwardUserId] = useState(0);
 
   useEffect(() => {
     setType(ticket_type);
   }, [ticket_type]);
+
+  useEffect(() => {
+    setType(ticket_type);
+  }, [isOpen]);
 
   function closePopUp() {
     setIsOpen(false);
@@ -27,7 +33,11 @@ export function PopUpChangingStage({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ newType: type, id: ticket_id }),
+        body: JSON.stringify({
+          newType: type,
+          id: ticket_id,
+          forward_admin_user_id: forwardUserId,
+        }),
       }
     );
 
@@ -37,8 +47,39 @@ export function PopUpChangingStage({
     }
   }
 
-  function changeType(e) {
+  async function getCanForwardToUsers() {
+    if (canForwardToUsers.length === 0) {
+      let res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/admin/ticket/canForwardToUsers/${ticket_id}`,
+        {
+          mode: "cors",
+          credentials: "include",
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        let data = await res.json();
+        setCanForwardToUsers(data);
+        if(data.length > 0){
+          setForwardUserId(data[0].id);
+        }
+      }
+    }
+  }
+
+  async function changeType(e) {
     setType(e.target.value);
+    if (e.target.value === "posredovano") {
+      await getCanForwardToUsers();
+    }
+  }
+
+  async function selectForwardToUser(e) {
+    setForwardUserId(e.target.value);
   }
 
   return (
@@ -56,7 +97,17 @@ export function PopUpChangingStage({
           <option value="posredovano">Posredovano</option>
           <option value="odgovorjeno">Odgovorjeno</option>
         </select>
-        {type === "posredovano" && <select></select>}
+        {type === "posredovano" && (
+          <select onChange={selectForwardToUser}>
+            {canForwardToUsers.map((user) => {
+              return (
+                <option key={user.id} value={user.id}>
+                  {user.displayName}
+                </option>
+              );
+            })}
+          </select>
+        )}
         <div className="ticket-popup-changing-stage-content-buttons">
           <button id="save" onClick={saveChanges}>
             Shrani

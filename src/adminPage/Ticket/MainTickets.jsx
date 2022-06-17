@@ -41,7 +41,7 @@ export function MainTickets() {
   }
   return (
     <>
-      <TicketsHome refreshTickets={getTickets}>
+      <TicketsHome refreshTickets={getTickets} isLoading={tickets.length === 0}>
         {tickets.length > 0 ? (
           <ShowTickets tickets={tickets} clickedOnStage={clickedOnStage} />
         ) : (

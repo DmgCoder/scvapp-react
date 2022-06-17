@@ -4,7 +4,7 @@ import "./ticket1.css";
 import { Link } from "react-router-dom";
 import SidebarTicket from "./sidebarTicket";
 
-export function TicketsHome({ children, refreshTickets }) {
+export function TicketsHome({ children, refreshTickets, isLoading }) {
   async function refreshTicketsFromMail() {
     let res = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/admin/ticket/mail`,
@@ -94,19 +94,23 @@ export function TicketsHome({ children, refreshTickets }) {
               </div>
 
               <div className="table-responsive">
-                <table className="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th scope="col">Zap. število</th>
-                      <th scope="col">Naslov</th>
-                      <th scope="col">Zadeva</th>
-                      <th scope="col">Pošiljatelj</th>
-                      <th scope="col">Status</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="ticket-table-tickets">{children}</tbody>
-                </table>
+                {!isLoading ? (
+                  <table className="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col">Zap. število</th>
+                        <th scope="col">Naslov</th>
+                        <th scope="col">Zadeva</th>
+                        <th scope="col">Pošiljatelj</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody className="ticket-table-tickets">{children}</tbody>
+                  </table>
+                ) : (
+                  children
+                )}
               </div>
             </main>
           </div>
