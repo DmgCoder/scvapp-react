@@ -11,7 +11,7 @@ const schoolDisplayName = {
   "---": "---",
 };
 
-export function AdminChangeSchedule() {
+export default function AdminChangeSchedule() {
   const [selectSchoolDropdown, setSelectSchoolDropdown] = useState({
     display: "",
     opened: false,

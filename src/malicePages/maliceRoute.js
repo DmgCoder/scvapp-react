@@ -1,7 +1,7 @@
-import React from "react";
-import { useLocation } from "react-router";
-import MaliceLoginPage from "./maliceLoginPage";
-import MalicePage from "./malicePage";
+import React, { lazy, Suspense } from "react";
+import { Routes, useLocation, Route } from "react-router";
+const MaliceLoginPage = lazy(() => import("./maliceLoginPage"));
+const MalicePage = lazy(() => import("./malicePage"));
 
 export default function MaliceRoute(props) {
   let location = useLocation();
@@ -10,13 +10,14 @@ export default function MaliceRoute(props) {
   if (pathname.endsWith("/")) {
     pathname = pathname.slice(0, pathname.length - 1);
   }
-
-  switch (pathname) {
-    case "/malice":
-      return <MalicePage />;
-    case "/malice/prijava":
-      return <MaliceLoginPage />;
-    default:
-      return <MaliceLoginPage />;
-  }
+  return (
+    <>
+      <Suspense fallback={<div></div>}>
+        <Routes>
+          <Route path="/" element={<MalicePage />} />
+          <Route path="/prijava" element={<MaliceLoginPage />} />
+        </Routes>
+      </Suspense>
+    </>
+  );
 }

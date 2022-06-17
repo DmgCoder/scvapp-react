@@ -9,7 +9,7 @@ import exitIcon from "../pictures/admin_page/Izhod.png";
 
 import "./home.css";
 
-export function AdminHome() {
+export default function AdminHome() {
   return (
     <>
       <div className="admin-home">

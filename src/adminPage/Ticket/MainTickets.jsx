@@ -6,7 +6,7 @@ import { ShowTickets } from "./ShowTickets";
 import { CircularProgress } from "@mui/material";
 import { PopUpChangingStage } from "./components/PopUpChangingStage";
 
-export function MainTickets() {
+export default function MainTickets() {
   const [tickets, setTickets] = useState([]);
   const [showPopUpForChangeStage, setShowPopUpForChangeStage] = useState(false);
   const [popUpData, setPopUpData] = useState({});
