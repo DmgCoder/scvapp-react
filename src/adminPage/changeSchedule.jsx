@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 
 import "./changeSchedule.css";
 
+const schoolDisplayName = {
+  ERS: "ERŠ",
+  GIM: "GIM",
+  SSD: "SSD",
+  SSGO: "SŠGO",
+  "---": "---",
+};
+
 export function AdminChangeSchedule() {
   const [selectSchoolDropdown, setSelectSchoolDropdown] = useState({
     display: "",
@@ -22,14 +30,6 @@ export function AdminChangeSchedule() {
   const [uniLinkInput, setUniLinkInput] = useState("");
 
   const [selectEditClasses, setSelectEditClasses] = useState(1);
-
-  let schoolDisplayName = {
-    ERS: "ERŠ",
-    GIM: "GIM",
-    SSD: "SSD",
-    SSGO: "SŠGO",
-    "---": "---",
-  };
 
   const [scheduleSchoolData, setScheduleSchoolData] = useState([]);
 
@@ -351,8 +351,8 @@ export function AdminChangeSchedule() {
                 d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
               />
             </svg>
-            <p>Razred</p>
-            <p>ID razreda</p>
+            <p id="class">Razred</p>
+            <p id="classId">ID razreda</p>
             <CreateNewClass
               style={createClassPopUp}
               closeOpen={showCloseCreateClassPopUp}
@@ -420,7 +420,9 @@ function ClassEdit({ classIdName, classId, schoolId, refreshData }) {
   async function deleteClass() {
     if (
       window.confirm(
-        `Ali res želite izbristati ${classIdName} iz šole ${schoolId}?`
+        `Ali res želite izbristati ${classIdName} iz šole ${
+          schoolDisplayName[schoolId] || schoolId
+        }?`
       )
     ) {
       let res = await fetch(

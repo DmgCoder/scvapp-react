@@ -13,7 +13,6 @@ export function AdminHome() {
   return (
     <>
       <div className="admin-home">
-        
         <main className="admin-home-content">
           <div className="admin-home-title">
             <img alt="" src={userSettingsIcon} />
