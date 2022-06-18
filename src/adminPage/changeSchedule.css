@@ -21,8 +21,6 @@
   align-items: center;
   gap: 50px;
   min-height: fit-content;
-  margin-bottom: 20px;
-  margin-top: 50px;
   min-width: 307px;
 }
 
@@ -35,6 +33,7 @@
   align-items: center;
   justify-content: center;
   color: black;
+  text-decoration: none;
 }
 
 .admin-schedule-backbtn p {
@@ -254,6 +253,8 @@
   align-items: center;
   text-align: center;
   gap: 15px;
+  height: 100%;
+  transform: translateX(25px);
 }
 .admin-schedule-classes-edit-class-id-edit input {
   width: 30%;
@@ -346,7 +347,7 @@
 @media screen and (max-width: 430px) {
   .admin-schedule-content {
     justify-content: center;
-    margin-top: auto;
+    margin-top: 50px;
   }
   .admin-schedule-backbtn p {
     font-size: 16px;

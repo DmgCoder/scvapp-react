@@ -49,7 +49,7 @@ function ItemToSelect({ text, children, href }) {
   return (
     <Link className="admin-home-select-item" to={href}>
       <div className="admin-home-select-item-box">{children}</div>
-      <p className="">{text}</p>
+      <p className="admin-home-select-item-text">{text}</p>
     </Link>
   );
 }

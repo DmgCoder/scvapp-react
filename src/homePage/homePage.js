@@ -5,6 +5,8 @@ import ShowAlert from "../components/showAlert";
 import SideBar from "../components/sidebar";
 import MainPage from "../mainPage/mainPage";
 
+import "./homePage.css";
+
 const HomePage = () => {
   const [userData, setUserData] = useState({ a: "" });
   const [isLoaded, setLoaded] = useState(false);

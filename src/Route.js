@@ -1,22 +1,24 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AboutPage from "./aboutPage/aboutPage.js";
-import { AdminRoute } from "./adminPage/route";
+const AdminRoute = lazy(() => import("./adminPage/route"));
+const HomePage = lazy(() => import("./homePage/homePage"));
 
-import NotFoundPage from "./404page/404page";
-import HomePage from "./homePage/homePage";
-import LoginPage from "./loginPage/loginPage";
+const AboutPage = lazy(() => import("./aboutPage/aboutPage.js"));
+const NotFoundPage = lazy(() => import("./404page/404page"));
+const LoginPage = lazy(() => import("./loginPage/loginPage"));
 
 const RoutePage = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/prijava" element={<LoginPage />} />
-        <Route path="/o-nas" element={<AboutPage />} />
-        <Route path="/admin/*" element={<AdminRoute />} />
-        <Route path="/not-found" element={<NotFoundPage />} />
-        <Route path="*" element={<HomePage />} />
-      </Routes>
+      <Suspense fallback={<div></div>}>
+        <Routes>
+          <Route path="/prijava" element={<LoginPage />} />
+          <Route path="/o-nas" element={<AboutPage />} />
+          <Route path="/admin/*" element={<AdminRoute />} />
+          <Route path="/not-found" element={<NotFoundPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };

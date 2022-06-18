@@ -5,16 +5,17 @@
   overflow-x: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  font-family: "Open Sans", sans-serif;
 }
 
-.admin-home .admin-home-content {
+.admin-home-content {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 0px;
   padding-top: 20px;
   margin-bottom: 90px;
   /* min-width: fit-content; */
@@ -59,6 +60,7 @@
   justify-content: center;
   gap: 15px;
   color: black;
+  text-decoration: none;
   /* flex: 1 1 150px; */
 }
 
@@ -79,12 +81,14 @@
 }
 
 .admin-home-select-item-text {
+  height: 22px;
+  margin: 0px;
   color: black;
   text-decoration: none;
-  font-size: 18px;
+  border: none;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 400px) {
   .admin-home-title {
     flex-direction: column;
   }

@@ -4,7 +4,7 @@ const MainTickets = lazy(() => import("./Ticket/MainTickets.jsx"));
 const AdminChangeSchedule = lazy(() => import("./changeSchedule.jsx"));
 const AdminHome = lazy(() => import("./home.jsx"));
 
-export function AdminRoute() {
+export default function AdminRoute() {
   let location = useLocation(); //Dobimo URL
   const [loaded, setLoaded] = useState(false);
   const [admin, setAdmin] = useState(false);
