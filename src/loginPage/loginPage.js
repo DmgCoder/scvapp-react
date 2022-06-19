@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import ShowAlert from "../components/showAlert";
 
+// FixMe: slovnična napaka v ms-login-btn.svg
+//  "Vpis z Microsoftovim računom" --> "Vpis z računom Microsoft"
 import msLoginBtn from "../pictures/ms-login-btn.svg"
 import schoolLogo from "../pictures/school_logo.svg"
 
@@ -63,16 +65,16 @@ export default function LoginPage(){
                 <main className="main">    
                     <div className="content">
                         <img alt="" src={schoolLogo} className="schoolLogo"></img>
-                        <p className="text">Prijava v sistem <b>ŠCVApp</b></p>
+                        <p className="text">Prijava v portal <strong>ŠCVApp</strong></p>
                         <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/authUrl/`} className="loginBtn">
                             <img src={msLoginBtn} alt="" className="btnImg"></img>
                         </a>
                     </div>
-                    <a className="linkToAbout" href="/o-nas">Kaj je sploh ta spletna stran?</a>
+                    <a className="linkToAbout" href="/o-nas">Kaj je ta spletna stran?</a>
                 </main>
             </div>
         </div>
-        <ShowAlert show={alertData.show} title={"Odjava uspešna!"} text={"Uspešno ste se odjavili iz ŠCVApp-a"} severity={alertData.severity}/>
+        <ShowAlert show={alertData.show} title={"Odjava uspešna!"} text={"Odjavljeni ste iz portala ŠCVApp."} severity={alertData.severity}/>
         </>
     );
 }

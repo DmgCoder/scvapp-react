@@ -10,6 +10,7 @@ import icon_zaposlitev from "../pictures/urnik_icons/zaposlitev.png"
 export default function ScheduleItem(props){
 
     const [scheduleData,setScheduleData] = useState({})
+    // ToDo: check if it would be possible to remove the slashes
     const [timeLeft,setTimeLeft] = useState("/")
 
     async function getScheduleData(){
@@ -55,9 +56,9 @@ export default function ScheduleItem(props){
     if(scheduleData.trenutnoNaUrniku){
         return(
             <div className="scheduleItem" style={props.style}>
-                <p>Sedaj</p>
+                <p>Trenutno na urniku</p>
                 <ClassInfo trenutnoNaUrniku={scheduleData.trenutnoNaUrniku} userData={props.userData}/>
-                <p>{`Sledi (Čez ${timeLeft}):`}</p>
+                <p>{`Sledi (čez ${timeLeft})`}</p>
                 <ClassInfo trenutnoNaUrniku={scheduleData.trenutnoNaUrniku.naslednjaUra} userData={props.userData}/>
             </div>
         )
