@@ -192,7 +192,7 @@ export default function SettingsPage(props){
                 <div className="mainSettings">
                     <div className="floatingDiv">
                         <div className="floatingContent">
-                            <p>Vaš status:</p>
+                            <p>Prikazan status:</p>
                             <div className="statusDropdown" style={styleDropdownSelector} onClick={dropdown}>
                                 <div className="statusIconAndText">
                                     {
@@ -215,7 +215,7 @@ export default function SettingsPage(props){
                     </div>
                         <div className="floatingDiv">
                             <div className="floatingContent">
-                                <p>Vaš e-naslov:</p>
+                                <p>E-poštni naslov:</p>
                                 <p>{props.userData.mail}</p>
                             </div>
                         </div>
@@ -227,8 +227,8 @@ export default function SettingsPage(props){
                         </div>
                         <div className="floatingDiv">
                             <div className="floatingContent">
-                                <p>Dodatne informacije o vas:</p>
-                                <a href={`https://eur.delve.office.com/?u=${props.userData.id}&v=editprofile`} target="_blank" rel="noopener noreferrer">Kliknite tukaj za odpiranje portala Office</a>
+                                <p>Podatki uporabniškega računa:</p>
+                                <a href={`https://eur.delve.office.com/?u=${props.userData.id}&v=editprofile`} target="_blank" rel="noopener noreferrer">Pregled na portalu Office 365</a>
                             </div>
                         </div>
                         <div className="floatingDiv" style={styleAppInfoSelector}>
@@ -240,10 +240,19 @@ export default function SettingsPage(props){
                             </div>
                             <div className="aboutSchoolDropdown" style={styleAppInfo}>
                                 <div>
-                                    Aplikacija je bila ustvarjena v sklopu raziskovalne naloge, šolskega leta 2021/2022. Namenjena je dijakom in zaposlenim na ŠC 
-                                    Velenje. Ustanovitelja aplikacije sta <b title={easterEggText}>Urban Krepel</b> in <b title={easterEggText}>Blaž Osredkar</b>.<br /><br /><br />
-                                    Navodila, kako uporabljati aplikacijo, imate <a href="https://www.youtube.com/user/scvvideo">na tej povezavi</a> (YouTube video).<br /><br /><br />
-                                    Za več informacij pišite na: <a href="mailto:info.app@scv.si">info.app@scv.si</a>
+                                    Aplikacija ŠCVApp je namenjena dijakom in učiteljem Šolskega centra Velenje.
+                                    Ustvarila sta jo <b title={easterEggText}>Urban Krepel</b> in <b title={easterEggText}>Blaž Osredkar</b> v sklopu svoje raziskovalne
+                                    naloge.
+                                    <br/><br/>Aplikacije vsebuje dijakom koristna orodja, kot so:
+                                    <ul>
+                                        <li> • dostop do sistema za prijavo na malico,</li>
+                                        <li> • urnik za obiskovan razred,</li>
+                                        <li> • hiter dostop do domače spletne strani šole,</li>
+                                        <li> • bližnjico do pregleda eAsistenta dijaka ...</li>
+                                    </ul>
+                                    <br/>Video vodič za uporabo aplikacije je na voljo na <a href="https://www.youtube.com/user/scvvideo">tej povezavi</a>.
+                                    <br/><br/>V aplikacijo bomo še naprej dodajali več uporabnih orodij.
+                                    Za vsa vprašanja in pripombe smo na voljo na e-poštnem naslovu <a href="mailto:info.app@scv.si">info.app@scv.si</a>.
                                 </div>
                             </div>
                         </div>
