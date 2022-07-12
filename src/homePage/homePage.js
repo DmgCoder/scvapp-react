@@ -210,7 +210,7 @@ const HomePage = () => {
       <ShowAlert
         show={alertIn}
         title="Prijava uspešna!"
-        text="Uspešno ste se prijavili v ŠCVApp"
+        text="Prijavljeni ste v portal ŠCVApp."
         closeAlert={closeAlert}
       />
     </main>

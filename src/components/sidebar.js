@@ -165,7 +165,7 @@ export default function SideBar(props) {
         )}
         {props.userData && (
           <OfficeAppEl
-            name="Odpri 365 portal"
+            name="Portal Office 365"
             href={`https://www.office.com/?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
           >
             <img alt="" src={Office365_icon_color} />
@@ -352,7 +352,7 @@ export default function SideBar(props) {
                         <img alt="" src={SIOMDM_icon} />
                       </div>
                       {sideBarWidth >= 300 ? (
-                        <span className="item">SIO.MDM Prijava</span>
+                        <span className="item">Prijava SIO.MDM</span>
                       ) : (
                         ""
                       )}
@@ -360,7 +360,7 @@ export default function SideBar(props) {
                   </a>
                 </li>
                 <SidebarLink
-                  name="Arnes učilnice"
+                  name="Spletne učilnice Arnes"
                   pathname={pathname}
                   href="/arnes-ucilnice"
                   size={sideBarWidth}
@@ -378,7 +378,7 @@ export default function SideBar(props) {
                         <img alt="" src={Office365_icon} />
                       </div>
                       {sideBarWidth >= 300 ? (
-                        <span className="item">Office programi</span>
+                        <span className="item">Programi Office</span>
                       ) : (
                         ""
                       )}
