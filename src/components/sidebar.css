@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Arial", sans-serif;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -104,7 +104,7 @@ body ::-webkit-scrollbar {
   color: rgb(241, 237, 237);
   font-size: 16px;
   position: relative;
-  color: black;
+  color: white;
 }
 
 .wrapper .sidebar ul li a .icon {
@@ -215,6 +215,8 @@ body ::-webkit-scrollbar {
 .link .icon img {
   width: 24px !important;
   height: 24px !important;
+  fill: white !important;
+  
 }
 
 .link .arrowIcon {
@@ -225,7 +227,13 @@ body ::-webkit-scrollbar {
 
 .active {
   background-color: #00000017;
+  border-radius: 10px;
+  width: 98%;
+  margin: 3px;
+ 
 }
+
+
 
 .statusIcon {
   width: 10px;
@@ -265,3 +273,14 @@ body ::-webkit-scrollbar {
   height: 100%;
   z-index: 102;
 }
+.presledek {
+  height: 20px;
+}
+
+.barva {
+  fill: white;
+}
+/* 
+.link .icon svg{
+   fill:white !important;
+} */

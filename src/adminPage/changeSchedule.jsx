@@ -1,10 +1,17 @@
-import { containerClasses } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./changeSchedule.css";
 
-export function AdminChangeSchedule() {
+const schoolDisplayName = {
+  ERS: "ERŠ",
+  GIM: "GIM",
+  SSD: "SSD",
+  SSGO: "SŠGO",
+  "---": "---",
+};
+
+export default function AdminChangeSchedule() {
   const [selectSchoolDropdown, setSelectSchoolDropdown] = useState({
     display: "",
     opened: false,
@@ -23,14 +30,6 @@ export function AdminChangeSchedule() {
   const [uniLinkInput, setUniLinkInput] = useState("");
 
   const [selectEditClasses, setSelectEditClasses] = useState(1);
-
-  let schoolDisplayName = {
-    ERS: "ERŠ",
-    GIM: "GIM",
-    SSD: "SSD",
-    SSGO: "SŠGO",
-    "---": "---",
-  };
 
   const [scheduleSchoolData, setScheduleSchoolData] = useState([]);
 
@@ -60,7 +59,7 @@ export function AdminChangeSchedule() {
     selectSchool("ERS");
     setUniLinkInput(
       (
-        scheduleSchoolData.find((e) => e.selected == true) || {
+        scheduleSchoolData.find((e) => e.selected === true) || {
           mainLink: "",
         }
       ).mainLink
@@ -143,7 +142,7 @@ export function AdminChangeSchedule() {
     if (id === "discard") {
       setUniLinkInput(
         (
-          scheduleSchoolData.find((e) => e.selected == true) || {
+          scheduleSchoolData.find((e) => e.selected === true) || {
             mainLink: "",
           }
         ).mainLink
@@ -151,7 +150,7 @@ export function AdminChangeSchedule() {
       showCloseUniLinkPopup();
     } else if (id === "save") {
       let schoolId = (
-        scheduleSchoolData.find((e) => e.selected == true) || {
+        scheduleSchoolData.find((e) => e.selected === true) || {
           id: "---",
         }
       ).id;
@@ -170,7 +169,7 @@ export function AdminChangeSchedule() {
       ).catch((e) => {
         console.log(e);
       });
-      if (res.status == 200) {
+      if (res.status === 200) {
         showCloseUniLinkPopup();
         getScheduleSchoolData();
       }
@@ -179,7 +178,7 @@ export function AdminChangeSchedule() {
 
   function getClasses() {
     let classes = (
-      scheduleSchoolData.find((e) => e.selected == true) || {
+      scheduleSchoolData.find((e) => e.selected === true) || {
         classes: [],
       }
     ).classes;
@@ -211,7 +210,7 @@ export function AdminChangeSchedule() {
 
   function getIdOfSelectedSchool() {
     return (
-      scheduleSchoolData.find((e) => e.selected == true) || {
+      scheduleSchoolData.find((e) => e.selected === true) || {
         id: "---",
       }
     ).id;
@@ -234,7 +233,7 @@ export function AdminChangeSchedule() {
               d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
             />
           </svg>
-          <p>Nazaj</p>
+          <p>Izhod</p>
         </Link>
         <div className="admin-schedule-select-school">
           <p>Izbrana šola:</p>
@@ -306,7 +305,7 @@ export function AdminChangeSchedule() {
             Univerzalni link:
           </p>
           <div className="admin-schedule-modify-uni-link-edit">
-            <a href={uniLinkInput} target="_blank">
+            <a href={uniLinkInput} target="_blank" rel="noopener noreferrer">
               Klikni tukaj
             </a>
             <svg
@@ -352,8 +351,8 @@ export function AdminChangeSchedule() {
                 d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
               />
             </svg>
-            <p>Razred</p>
-            <p>ID razreda</p>
+            <p id="class">Razred</p>
+            <p id="classId">ID razreda</p>
             <CreateNewClass
               style={createClassPopUp}
               closeOpen={showCloseCreateClassPopUp}
@@ -421,7 +420,9 @@ function ClassEdit({ classIdName, classId, schoolId, refreshData }) {
   async function deleteClass() {
     if (
       window.confirm(
-        `Ali res želite izbristati ${classIdName} iz šole ${schoolId}?`
+        `Ali res želite izbristati ${classIdName} iz šole ${
+          schoolDisplayName[schoolId] || schoolId
+        }?`
       )
     ) {
       let res = await fetch(

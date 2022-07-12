@@ -1,75 +1,45 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import EasistentPage from "../pages/eAsistentPage";
-import MalicePage from "../malicePages/malicePage";
-import SchoolPage from "../pages/schoolPage";
-import SettingsPage from "../pages/settingsPage";
-import ArnesUcilnicePage from "../pages/arnesUcilnicePage";
-import MaliceLoginPage from "../malicePages/maliceLoginPage";
-import MaliceRoute from "../malicePages/maliceRoute";
+import React, { lazy, Suspense } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+const EasistentPage = lazy(() => import("../pages/eAsistentPage"));
+const SchoolPage = lazy(() => import("../pages/schoolPage"));
+const SettingsPage = lazy(() => import("../pages/settingsPage"));
+const ArnesUcilnicePage = lazy(() => import("../pages/arnesUcilnicePage"));
+const MaliceRoute = lazy(() => import("../malicePages/maliceRoute"));
 
 export default function MainPage(props) {
-  //Prikaz določene komponente glede na spletno pot
-  let location = useLocation(); //Dobimo URL
-
-  let pathname = location.pathname; //Dobimo pot po imenu domene in porta npr. .../domov
-  if (pathname.endsWith("/")) {
-    pathname = pathname.slice(0, pathname.length - 1);
-  }
-
-  //Preverimo ali se ime poti ujema z besedo in temu ustrezno prikazemo komponento
-  switch (pathname) {
-    case "/domov":
-      return (
-        <div style={props.style}>
-          <SchoolPage
-            url={props.userData.school && props.userData.school.schoolUrl}
+  return (
+    <div style={props.style}>
+      <Suspense fallback={<div></div>}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <SchoolPage
+                url={props.userData.school && props.userData.school.schoolUrl}
+              />
+            }
           />
-        </div>
-      );
-
-    case "/malice":
-      return (
-        <div style={props.style}>
-          <MaliceRoute />
-        </div>
-      );
-
-    case "/malice/prijava":
-      return (
-        <div style={props.style}>
-          <MaliceRoute />
-        </div>
-      );
-
-    case "/easistent":
-      return (
-        <div style={props.style}>
-          <EasistentPage url={props.eAUrlLink} />
-        </div>
-      );
-
-    case "/nastavitve":
-      return (
-        <div style={props.style}>
-          <SettingsPage userData={props.userData} />
-        </div>
-      );
-
-    case "/arnes-ucilnice":
-      return (
-        <div style={props.style}>
-          <ArnesUcilnicePage />
-        </div>
-      );
-
-    default:
-      return (
-        <div style={props.style}>
-          <SchoolPage
-            url={props.userData.school && props.userData.school.schoolUrl}
+          <Route
+            path="/domov"
+            element={
+              <SchoolPage
+                url={props.userData.school && props.userData.school.schoolUrl}
+              />
+            }
           />
-        </div>
-      );
-  }
+          <Route path="/malice/*" element={<MaliceRoute />} />
+          <Route
+            path="/easistent"
+            element={<EasistentPage url={props.eAUrlLink} />}
+          />
+          <Route
+            path="/nastavitve"
+            element={<SettingsPage userData={props.userData} />}
+          />
+          <Route path="/arnes-ucilnice" element={<ArnesUcilnicePage />} />
+          <Route path="*" element={<Navigate to={"/not-found"} />} />
+        </Routes>
+      </Suspense>
+    </div>
+  );
 }

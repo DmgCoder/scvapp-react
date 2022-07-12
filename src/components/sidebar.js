@@ -326,13 +326,13 @@ export default function SideBar(props) {
                 >
                   <img alt="" src={eAsistent_icon} />
                 </SidebarLink>
-                <SidebarLink
-                  name="Iskanje oseb"
+                {/* <SidebarLink
+                  name="Poišči osebo"
                   pathname={pathname}
                   size={sideBarWidth}
                 >
                   <img alt="" src={Find_user_icon} />
-                </SidebarLink>
+                </SidebarLink> */}
                 <SidebarLink
                   name="Nastavitve"
                   pathname={pathname}
@@ -365,14 +365,14 @@ export default function SideBar(props) {
                   href="/arnes-ucilnice"
                   size={sideBarWidth}
                 >
-                  <img alt="" src={Arnes_icon} />
+                  <img alt=""  src={Arnes_icon} />
                 </SidebarLink>
                 <li
                   className="sideLink-PopMenu sideLink"
                   onClick={ocOfficeAppMenu}
                   ref={OfficeMenuBtn}
                 >
-                  <a target="_blank" rel="noopener noreferrer">
+                  <a>
                     <div className="link">
                       <div className="icon">
                         <img alt="" src={Office365_icon} />
@@ -410,6 +410,7 @@ export default function SideBar(props) {
                   </a>
                 </li>
               </ul>
+              <div className="presledek"></div>
               <ScheduleItem
                 userData={props.userData}
                 style={{ display: sideBarWidth >= 300 ? "" : "none" }}

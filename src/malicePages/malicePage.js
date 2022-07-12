@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { ReactSession } from "react-client-session";
 
 import "./malicePage.css";
 import windowSize from "../classes/getWindowDimensions.js";
@@ -14,8 +16,7 @@ import pizzaPicture from "../pictures/slike_malica/pizza.png";
 import pizzaMargeritePicture from "../pictures/slike_malica/pizza_margerite.png";
 import solataPicture from "../pictures/slike_malica/solata.png";
 import brezMalicePicture from "../pictures/slike_malica/brez_malice.png";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Alert } from "@mui/material";
+import profilePicture from "../pictures/slike_malica/profilePicture.png";
 
 let jediZaDanes = [];
 
@@ -52,9 +53,12 @@ export default function MalicePage(props) {
   const [sizeOfParentDatePicker, setSizeOfParentDatePicker] = useState(0);
   const [izbraniTeden, setIzbraniTeden] = useState(0);
   const [menuIsPrisented, setMenuIsPresented] = useState(false);
+  const [userMalice, setUserMalice] = useState({});
   let winSize = windowSize();
 
+  let navigation = useNavigate();
   useEffect(() => {
+    getUserMalice();
     setSizeOfParentDatePicker(ref.current.offsetWidth);
   }, []);
   useEffect(() => {
@@ -73,11 +77,21 @@ export default function MalicePage(props) {
   function openCloseMenu() {
     setMenuIsPresented(!menuIsPrisented);
   }
+
+  function getUserMalice() {
+    let user_malice = ReactSession.get("user_malice");
+    if (user_malice && user_malice.access_token) {
+      setUserMalice(user_malice);
+    } else {
+      navigation("/malice/prijava");
+    }
+  }
+
   const nav = useNavigate();
   function changeDate(e) {
     let target = e.target;
     let i = 0;
-    while ((target.id == "" || !target.id) && i < 3) {
+    while ((target.id === "" || !target.id) && i < 3) {
       target = target.parentNode;
       i++;
     }
@@ -89,7 +103,6 @@ export default function MalicePage(props) {
       search: `?date=${dateString}`,
     });
   }
-
   return (
     <>
       <div className="mainMalice">
@@ -98,20 +111,30 @@ export default function MalicePage(props) {
             <div className="maliceMenu-Info">
               <div className="maliceMenu-Info-Text">
                 <p>PIN koda za današnjo malico:</p>
-                <b>3141</b>
+                <b>
+                  {userMalice.student &&
+                    [
+                      userMalice.student.pin_number.toString().slice(0, 3),
+                      userMalice.student.pin_number.toString().slice(3),
+                    ].join(" ")}
+                </b>
               </div>
               <div className="maliceMenu-Info-Text">
                 <p>Stanje na vašem računu:</p>
-                <b>3141,59€</b>
+                <b>
+                  {userMalice.student &&
+                    parseFloat(userMalice.student.budget).toFixed(2)}
+                  €
+                </b>
               </div>
             </div>
             {/* <MaliceAlert /> */}
             <div className="maliceMenu-Profile">
-              <img
-                src="https://www.pngitem.com/pimgs/b/150-1503945_user-png.png"
-                alt=""
-              ></img>
-              <b>Urban Krepel</b>
+              <img src={profilePicture} alt=""></img>
+              <b>
+                {userMalice.student && userMalice.student.first_name}{" "}
+                {userMalice.student && userMalice.student.last_name}
+              </b>
               <button
                 className="maliceMenu-Profile-Btn"
                 style={menuIsPrisented ? { transform: "rotate(180deg)" } : {}}
@@ -157,7 +180,7 @@ export default function MalicePage(props) {
                       viewBox="0 0 16 16"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"
                       />
                     </svg>
@@ -176,7 +199,7 @@ export default function MalicePage(props) {
                   <MenuLiElement title="Odjava" href="/malice/prijava">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      enable-background="new 0 0 24 24"
+                      enableBackground="new 0 0 24 24"
                       viewBox="0 0 24 24"
                       fill="#000000"
                     >

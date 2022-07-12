@@ -111,20 +111,14 @@
   width: 60%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   text-align: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .maliceLogin-LoginWindow-Form-RememberMe p {
   font-size: 13px;
-}
-
-.maliceLogin-LoginWindow-Form-RememberMe input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  border-radius: 0px !important;
-  border: 1px solid black;
 }
 
 .maliceLogin-LoginWindow-Form-SubmitBtn {
