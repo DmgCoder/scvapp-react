@@ -1,0 +1,64 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.aboutPage-main {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.aboutPage-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 200px;
+}
+
+.aboutPage-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  width: 40%;
+  min-width: 700px;
+}
+
+.aboutPage-container :first-child {
+  transform: translateX(-50%);
+}
+.aboutPage-container :last-child {
+  transform: translateX(50%);
+}
+
+.aboutPage-container-text {
+  text-align: left;
+  font-size: 1.15em;
+  width: 50%;
+  align-items: flex-start;
+}
+
+.aboutPage-container-text-list {
+  flex-direction: column;
+  list-style: circle;
+  text-align: left;
+}
+
+.aboutPage-introText {
+  font-size: 2em;
+  text-align: center;
+  width: auto;
+}
+
+.aboutPage-container-image-phone {
+  width: 20% !important;
+}
+
+.aboutPage-container img {
+  width: 60%;
+}

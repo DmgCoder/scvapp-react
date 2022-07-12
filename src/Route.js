@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const AdminRoute = lazy(() => import("./adminPage/route"));
 const HomePage = lazy(() => import("./homePage/homePage"));
 
-const AboutPage = lazy(() => import("./aboutPage/aboutPage.js"));
+const AboutPage = lazy(() => import("./aboutPage/aboutPage"));
 const NotFoundPage = lazy(() => import("./404page/404page"));
 const LoginPage = lazy(() => import("./loginPage/loginPage"));
 
