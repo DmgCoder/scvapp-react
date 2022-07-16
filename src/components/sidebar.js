@@ -4,24 +4,24 @@ import { useLocation } from "react-router-dom";
 import { isFirefox } from "react-device-detect";
 
 import SidebarLink from "./sidebarLink";
-import schoolLogo from "../pictures/school_logo.svg";
-import Home_icon from "../pictures/icons_for_menu/Home.svg";
-import Find_user_icon from "../pictures/icons_for_menu/Najdi_uporabnika.svg";
-import Settings_icon from "../pictures/icons_for_menu/Nastavitve.svg";
-import SIOMDM_icon from "../pictures/icons_for_menu/Open_out.svg";
-import Office365_icon from "../pictures/icons_for_menu/office_365.svg";
-import eAsistent_icon from "../pictures/icons_for_menu/eA.svg";
-import Arnes_icon from "../pictures/icons_for_menu/arnes.svg";
+import schoolLogo from "../pictures/school_logo.jsx";
+import Home_icon from "../pictures/icons_for_menu/Home.jsx";
+import Find_user_icon from "../pictures/icons_for_menu/Najdi_uporabnika.jsx";
+import Settings_icon from "../pictures/icons_for_menu/Nastavitve.jsx";
+import SIOMDM_icon from "../pictures/icons_for_menu/Open_out.jsx";
+import Office365_icon from "../pictures/icons_for_menu/office_365.jsx";
+import eAsistent_icon from "../pictures/icons_for_menu/eA.jsx";
+import Arnes_icon from "../pictures/icons_for_menu/arnes.jsx";
 import StatusIcon from "./statusIcon";
 
-import OfficeWord_icon from "../pictures/office_icons/Word.svg";
-import OfficeExcel_icon from "../pictures/office_icons/Excel.svg";
-import Office365_icon_color from "../pictures/office_icons/Office365.svg";
-import OfficeOneDrive_icon from "../pictures/office_icons/OneDrive.svg";
-import OfficeOneNote_icon from "../pictures/office_icons/OneNote.svg";
-import OfficePowerpoint_icon from "../pictures/office_icons/Powerpoint.svg";
-import OfficeOutlook_icon from "../pictures/office_icons/Outlook.svg";
-import OfficeTeams_icon from "../pictures/office_icons/Teams.svg";
+import OfficeWord_icon from "../pictures/office_icons/Word.jsx";
+import OfficeExcel_icon from "../pictures/office_icons/Excel.jsx";
+import Office365_icon_color from "../pictures/office_icons/Office365.jsx";
+import OfficeOneDrive_icon from "../pictures/office_icons/OneDrive.jsx";
+import OfficeOneNote_icon from "../pictures/office_icons/OneNote.jsx";
+import OfficePowerpoint_icon from "../pictures/office_icons/Powerpoint.jsx";
+import OfficeOutlook_icon from "../pictures/office_icons/Outlook.jsx";
+import OfficeTeams_icon from "../pictures/office_icons/Teams.jsx";
 
 import windowSize from "../classes/getWindowDimensions.js";
 import OfficeAppEl from "./OfficeAppEl";
@@ -110,7 +110,7 @@ export default function SideBar(props) {
             name="Word"
             href={`https://www.office.com/launch/word?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
           >
-            <img alt="" src={OfficeWord_icon} />
+            <OfficeWord_icon />
           </OfficeAppEl>
         )}
         {props.userData && (
@@ -118,7 +118,7 @@ export default function SideBar(props) {
             name="Excel"
             href={`https://www.office.com/launch/excel?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
           >
-            <img alt="" src={OfficeExcel_icon} />
+            <OfficeExcel_icon />
           </OfficeAppEl>
         )}
         {props.userData && (
@@ -126,7 +126,7 @@ export default function SideBar(props) {
             name="PowerPoint"
             href={`https://www.office.com/launch/powerpoint?auth=2&username=${props.userData.mail}&login_hint=${props.userData.mail}`}
           >
-            <img alt="" src={OfficePowerpoint_icon} />
+            <OfficePowerpoint_icon />
           </OfficeAppEl>
         )}
         {props.userData && (
@@ -299,7 +299,7 @@ export default function SideBar(props) {
                   pathname={pathname}
                   size={sideBarWidth}
                 >
-                  <img alt="" src={Home_icon} />
+                  <Home_icon />
                 </SidebarLink>
                 <SidebarLink
                   name="Malice"
@@ -324,7 +324,7 @@ export default function SideBar(props) {
                   pathname={pathname}
                   size={sideBarWidth}
                 >
-                  <img alt="" src={eAsistent_icon} />
+                  <eAsistent_icon />
                 </SidebarLink>
                 {/* <SidebarLink
                   name="Poišči osebo"
@@ -339,7 +339,7 @@ export default function SideBar(props) {
                   href="/nastavitve"
                   size={sideBarWidth}
                 >
-                  <img alt="" src={Settings_icon} />
+                  <Settings_icon />
                 </SidebarLink>
                 <li className={`sideLink`}>
                   <a
@@ -349,7 +349,7 @@ export default function SideBar(props) {
                   >
                     <div className="link">
                       <div className="icon">
-                        <img alt="" src={SIOMDM_icon} />
+                        <SIOMDM_icon />
                       </div>
                       {sideBarWidth >= 300 ? (
                         <span className="item">Prijava SIO.MDM</span>
@@ -365,7 +365,7 @@ export default function SideBar(props) {
                   href="/arnes-ucilnice"
                   size={sideBarWidth}
                 >
-                  <img alt=""  src={Arnes_icon} />
+                  <Arnes_icon />
                 </SidebarLink>
                 <li
                   className="sideLink-PopMenu sideLink"
@@ -375,7 +375,7 @@ export default function SideBar(props) {
                   <a>
                     <div className="link">
                       <div className="icon">
-                        <img alt="" src={Office365_icon} />
+                        <Office365_icon/>
                       </div>
                       {sideBarWidth >= 300 ? (
                         <span className="item">Programi Office</span>

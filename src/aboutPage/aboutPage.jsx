@@ -8,7 +8,7 @@ import login_screen from "../pictures/about_page/login_screen.png";
 import easistent_screen from "../pictures/about_page/easistent_screen.png";
 import outro_screen from "../pictures/about_page/outro_screen.png";
 import google_play_badge from "../pictures/about_page/google-play-badge.png";
-import app_store_badge from "../pictures/about_page/app-store-badge.svg";
+import app_store_badge from "../pictures/about_page/app-store-badge.jsx";
 
 export default function AboutPage(props) {
   return (

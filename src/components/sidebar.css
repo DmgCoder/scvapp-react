@@ -75,7 +75,8 @@ body ::-webkit-scrollbar {
   height: 32px;
 }
 
-.upHalf img {
+.upHalf img,
+.upHalf svg {
   width: 70%;
 }
 
@@ -183,7 +184,8 @@ body ::-webkit-scrollbar {
 .popMenu .OfficeAppEl:hover .name {
   color: currentColor !important;
 }
-.popMenu .OfficeAppEl .icon-office img {
+.popMenu .OfficeAppEl .icon-office img,
+.popMenu .OfficeAppEl .icon-office svg {
   height: 100%;
 }
 
@@ -212,11 +214,11 @@ body ::-webkit-scrollbar {
   height: 24px;
 }
 
-.link .icon img {
+.link .icon img,
+.link .icon svg {
   width: 24px !important;
   height: 24px !important;
   fill: white !important;
-  
 }
 
 .link .arrowIcon {
@@ -230,10 +232,7 @@ body ::-webkit-scrollbar {
   border-radius: 10px;
   width: 98%;
   margin: 3px;
- 
 }
-
-
 
 .statusIcon {
   width: 10px;

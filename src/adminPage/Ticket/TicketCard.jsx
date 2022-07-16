@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import arrowIcon from "../../pictures/admin_page/arrow-right.svg";
+import arrowIcon from "../../pictures/admin_page/arrow-right.jsx";
 
 export function TicketCard({
   type,
@@ -38,7 +38,10 @@ export function TicketCard({
         onClick={clickedOnStage}
         data-type={type}
         data-zap_st={zap_st}
-        style={{ cursor: "pointer", textDecoration:hoveringType ? "underline" : "none" }}
+        style={{
+          cursor: "pointer",
+          textDecoration: hoveringType ? "underline" : "none",
+        }}
         onMouseEnter={() => setHoveringType(true)}
         onMouseLeave={() => setHoveringType(false)}
       >
