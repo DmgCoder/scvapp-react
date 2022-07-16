@@ -29,10 +29,10 @@
   min-width: 700px;
 }
 
-.aboutPage-container :first-child {
+.aboutPage-container .aboutPage-container-ch-left {
   transform: translateX(-50%);
 }
-.aboutPage-container :last-child {
+.aboutPage-container .aboutPage-container-ch-right {
   transform: translateX(50%);
 }
 
@@ -44,9 +44,21 @@
 }
 
 .aboutPage-container-text-list {
+  display: flex;
   flex-direction: column;
-  list-style: circle;
+  justify-content: center;
+  align-items: flex-start;
   text-align: left;
+}
+
+.aboutPage-container-text-list ul {
+  flex-direction: column;
+  list-style: disc;
+  text-align: left;
+}
+
+.aboutPage-container-text-list ul li {
+  list-style-position: inside;
 }
 
 .aboutPage-introText {
@@ -61,4 +73,54 @@
 
 .aboutPage-container img {
   width: 60%;
+}
+
+.aboutPage-outro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  min-width: 700px;
+  gap: 50px;
+  padding-bottom: 100px;
+}
+
+.aboutPage-outro-downloadimg {
+  width: 100%;
+}
+
+.aboutPage-outro-text-small {
+  width: 80%;
+  font-size: 1em;
+  text-align: center;
+}
+
+.aboutPage-outro-text-big {
+  font-size: 1.2em;
+}
+
+.aboutPage-outro p a {
+  color: #2f89c4;
+  text-decoration: underline;
+}
+
+.aboutPage-outro-badges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+}
+
+.aboutPage-outro-badges-appstore,
+.aboutPage-outro-badges-google {
+  width: 30%;
+}
+
+.aboutPage-outro-badges-appstore img {
+  width: 100%;
+}
+
+.aboutPage-outro-badges-google img {
+  width: 100%;
 }
