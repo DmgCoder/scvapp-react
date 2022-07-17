@@ -1,12 +1,12 @@
 import React from "react";
 
-import away from "../pictures/status_icons/away.jsx";
-import brb from "../pictures/status_icons/brb.jsx";
-import busy from "../pictures/status_icons/busy.jsx";
-import unknown from "../pictures/status_icons/unknown.jsx";
-import available from "../pictures/status_icons/available.jsx";
-import dnd from "../pictures/status_icons/dnd.jsx";
-import offline from "../pictures/status_icons/offline.jsx";
+import away from "../pictures/status_icons/away.svg";
+import brb from "../pictures/status_icons/brb.svg";
+import busy from "../pictures/status_icons/busy.svg";
+import unknown from "../pictures/status_icons/unknown.svg";
+import available from "../pictures/status_icons/available.svg";
+import dnd from "../pictures/status_icons/dnd.svg";
+import offline from "../pictures/status_icons/offline.svg";
 
 export default function StatusIcon(props) {
   let statusImg;
