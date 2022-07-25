@@ -12,6 +12,7 @@ import SIOMDM_icon from "../pictures/icons_for_menu/Open_out.svg";
 import Office365_icon from "../pictures/icons_for_menu/office_365.svg";
 import eAsistent_icon from "../pictures/icons_for_menu/eA.svg";
 import Arnes_icon from "../pictures/icons_for_menu/arnes.svg";
+import Admin_icon from "../pictures/admin_page/user_setting_icon.svg";
 import StatusIcon from "./statusIcon";
 
 import OfficeWord_icon from "../pictures/office_icons/Word.svg";
@@ -365,7 +366,7 @@ export default function SideBar(props) {
                   href="/arnes-ucilnice"
                   size={sideBarWidth}
                 >
-                  <img alt=""  src={Arnes_icon} />
+                  <img alt="" src={Arnes_icon} />
                 </SidebarLink>
                 <li
                   className="sideLink-PopMenu sideLink"
@@ -409,6 +410,16 @@ export default function SideBar(props) {
                     </div>
                   </a>
                 </li>
+                {props.userData && props.userData.isAdmin && (
+                  <SidebarLink
+                    name="Admin plošča"
+                    pathname={pathname}
+                    href="/admin"
+                    size={sideBarWidth}
+                  >
+                    <img alt="" src={Admin_icon} />
+                  </SidebarLink>
+                )}
               </ul>
               <div className="presledek"></div>
               <ScheduleItem

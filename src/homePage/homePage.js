@@ -20,7 +20,7 @@ const HomePage = () => {
     //Funkcija, ki pridobi uporabnikove podatke, ki so potrebni
     try {
       let data = {};
-      const [userDataFetch, userStatusFetch, userSchoolFetch] =
+      const [userDataFetch, userStatusFetch, userSchoolFetch, isUserAdmin] =
         await Promise.all([
           fetch(`${process.env.REACT_APP_BACKEND_URL}/user/get/`, {
             mode: "cors", //Prijemne podatke lahk uporabi tudi iz tujih domen
@@ -37,6 +37,7 @@ const HomePage = () => {
             credentials: "include",
             method: "GET",
           }),
+          chechIfUserAdmin(),
         ]).catch((e) => {
           setLoaded(true);
           window.location.pathname = "/prijava";
@@ -53,6 +54,7 @@ const HomePage = () => {
           data = userDataJson;
           data.status = userStatusJson;
           data.school = userSchoolJson;
+          data.isAdmin = isUserAdmin;
           setUserData(data);
         } else if (userStatusFetch.ok) {
           const [userDataJson, userStatusJson] = await Promise.all([
@@ -60,6 +62,7 @@ const HomePage = () => {
             userStatusFetch.json(),
           ]);
           data = userDataJson;
+          data.isAdmin = isUserAdmin;
           data.status = userStatusJson;
           data.school = {
             id: "",
@@ -76,6 +79,7 @@ const HomePage = () => {
             userSchoolFetch.json(),
           ]);
           data = userDataJson;
+          data.isAdmin = isUserAdmin;
           data.status = {
             display: "Unknown",
             color: "#ffffff",
@@ -86,6 +90,7 @@ const HomePage = () => {
         } else {
           const userDataJson = await userDataFetch.json();
           data = userDataJson;
+          data.isAdmin = isUserAdmin;
           data.status = {
             display: "Unknown",
             color: "#ffffff",
@@ -132,6 +137,23 @@ const HomePage = () => {
       );
     }, 500);
     // console.log("Odjava")
+  }
+
+  async function chechIfUserAdmin() {
+    try {
+      let res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/admin`, {
+        mode: "cors", //Prijemne podatke lahk uporabi tudi iz tujih domen
+        credentials: "include", //Seja uporabnika je vključena
+        method: "GET", //Uporabljena je metoda GET
+      }).catch((e) => console.log(e));
+      if (res.status === 200) {
+        const isAdminJson = await res.json();
+        return isAdminJson.admin;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
   }
 
   useEffect(() => {
