@@ -17,6 +17,7 @@ import pizzaMargeritePicture from "../pictures/slike_malica/pizza_margerite.png"
 import solataPicture from "../pictures/slike_malica/solata.png";
 import brezMalicePicture from "../pictures/slike_malica/brez_malice.png";
 import profilePicture from "../pictures/slike_malica/profilePicture.png";
+import { startTransition } from "react";
 
 let jediZaDanes = [];
 
@@ -66,11 +67,11 @@ export default function MalicePage(props) {
   }, [winSize.width]);
 
   function addToIzbraniTeden() {
-    setIzbraniTeden(izbraniTeden + 1);
+    startTransition(() => setIzbraniTeden(izbraniTeden + 1));
   }
   function removeToIzbraniTeden() {
     if (izbraniTeden - 1 >= 0) {
-      setIzbraniTeden(izbraniTeden - 1);
+      startTransition(() => setIzbraniTeden(izbraniTeden - 1));
     }
   }
 

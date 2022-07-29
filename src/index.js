@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import RoutePage from './Route';
+import React from "react";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.render(
-  <RoutePage />,
-  document.getElementById('root'),
-);
+import "./index.css";
+import RoutePage from "./Route";
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<RoutePage />);

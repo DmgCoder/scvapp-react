@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./aboutPage.css";
 
@@ -14,7 +14,7 @@ export default function AboutPage(props) {
   return (
     <div className="aboutPage-main">
       <div className="aboutPage-content">
-        <section className="aboutPage-container">
+        <div className="aboutPage-container">
           <p className="aboutPage-introText aboutPage-container-text aboutPage-container-ch-left">
             Aplikacija <b>ŠCVApp</b>:<br /> Aplikacija za dijake <br /> šolskega
             centra Velenje
@@ -24,8 +24,8 @@ export default function AboutPage(props) {
             alt=""
             className="aboutPage-container-ch-right"
           ></img>
-        </section>
-        <section className="aboutPage-container aboutPage-container-mini-r">
+        </div>
+        <div className="aboutPage-container aboutPage-container-mini-r">
           <p className="aboutPage-container-text aboutPage-container-ch-left">
             Aplikacijo <b>ŠCVApp</b> sta ustvarila dijaka Blaž Osredkar in Urban
             Krepel v upanju, da bi združila vsa spletna orodja, potrebna za
@@ -36,8 +36,8 @@ export default function AboutPage(props) {
             alt=""
             className="aboutPage-container-image-phone aboutPage-container-ch-right"
           ></img>
-        </section>
-        <section className="aboutPage-container">
+        </div>
+        <div className="aboutPage-container">
           <img
             src={easistent_screen}
             alt=""
@@ -58,8 +58,8 @@ export default function AboutPage(props) {
           {/* <p className="aboutPage-container-text">
             Aplikacija vsebuje večino spletnih orodij, potrebnih za šolanje:
           </p> */}
-        </section>
-        <section className="aboutPage-container aboutPage-container-mini-r">
+        </div>
+        <div className="aboutPage-container aboutPage-container-mini-r">
           <p className="aboutPage-container-text aboutPage-container-ch-left">
             <b>Preprosto, varno</b> <br /> <br /> <br />
             Prijava v aplikacijo poteka preko vpisa z šolskim Microsoft računom
@@ -69,7 +69,7 @@ export default function AboutPage(props) {
             alt=""
             className="aboutPage-container-image-phone aboutPage-container-ch-right"
           ></img>
-        </section>
+        </div>
         <div className="aboutPage-outro">
           <img
             src={outro_screen}
