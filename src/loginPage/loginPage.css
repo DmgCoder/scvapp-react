@@ -69,3 +69,45 @@ body {
   color: #474646;
   cursor: pointer;
 }
+
+@media screen and (max-width: 490px) {
+  .loginWindow {
+    width: 100vw;
+    max-width: none;
+  }
+
+  .loginBtn {
+    width: 80%;
+  }
+  .schoolLogo {
+    min-width: 170px;
+  }
+}
+
+@media screen and (max-width: 213px) {
+  .schoolLogo {
+    min-width: none;
+    width: 80%;
+  }
+}
+
+@media screen and (max-height: 670px) {
+  .loginWindow .main {
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: max(env(safe-area-inset-top), 0px);
+  }
+  .loginWindow {
+    max-height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
+  }
+  .content {
+    justify-content: flex-start;
+    gap: min(30px, 5vh);
+  }
+  .schoolLogo {
+    height: 40%;
+    width: auto;
+  }
+}
