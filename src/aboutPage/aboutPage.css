@@ -4,10 +4,17 @@
   box-sizing: border-box;
 }
 
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 .aboutPage-main {
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-left: env(safe-area-inset-left);
@@ -16,13 +23,16 @@
   padding-top: env(safe-area-inset-top);
 }
 
+.aboutPage-main::-webkit-scrollbar {
+  display: none;
+}
+
 .aboutPage-content {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 200px;
 }
 
 .aboutPage-container {
@@ -30,23 +40,18 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: fit-content;
-  width: 35%;
-  min-width: 600px;
-}
-
-.aboutPage-container .aboutPage-container-ch-left {
-  transform: translateX(-50%);
-}
-.aboutPage-container .aboutPage-container-ch-right {
-  transform: translateX(50%);
+  min-width: 100vw !important;
+  min-height: 100vh !important;
+  scroll-snap-align: start;
+  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .aboutPage-container-text {
   text-align: left;
-  font-size: 1.15em;
-  width: 50%;
+  font-size: 1.7rem;
   align-items: flex-start;
+  width: 40%;
 }
 
 .aboutPage-container-text-list {
@@ -68,16 +73,17 @@
 }
 
 .aboutPage-introText {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
 .aboutPage-container-image-phone {
-  width: 25% !important;
+  height: 50vh;
+  width: auto !important;
 }
 
 .aboutPage-container img {
-  width: 65%;
+  width: 45vw;
 }
 
 .aboutPage-outro {
@@ -85,24 +91,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;
-  min-width: 700px;
+  min-height: 100vh;
+  min-width: 100vw;
   gap: 50px;
   padding-bottom: 100px;
+  scroll-snap-align: start;
 }
 
 .aboutPage-outro-downloadimg {
-  width: 100%;
+  width: 60%;
+  max-width: 1000px;
 }
 
 .aboutPage-outro-text-small {
-  width: 80%;
-  font-size: 1rem;
+  width: 60%;
+  font-size: 1.4rem;
   text-align: center;
+  max-width: 1000px;
 }
 
 .aboutPage-outro-text-big {
-  font-size: 1.2rem;
+  max-width: 1000px;
+  font-size: 1.9rem;
+  text-align: center;
 }
 
 .aboutPage-outro p a {
@@ -114,12 +125,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 65%;
+  width: 60%;
+  max-width: 1000px;
 }
 
 .aboutPage-outro-badges-appstore,
 .aboutPage-outro-badges-google {
-  width: 30%;
+  width: 25%;
+  min-width: 155px;
 }
 
 .aboutPage-outro-badges-appstore img {
@@ -134,12 +147,19 @@
   .aboutPage-introText {
     font-size: 1.5rem;
   }
+  .aboutPage-outro-text-small {
+    font-size: 1.2rem;
+  }
+  .aboutPage-outro-text-big {
+    font-size: 1.5rem;
+  }
+  .aboutPage-container-text {
+    font-size: 1.4rem;
+  }
 }
 
 @media only screen and (max-width: 981px) {
   .aboutPage-container {
-    width: 100%;
-    min-width: fit-content;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -153,32 +173,25 @@
 
   .aboutPage-container-image-phone {
     width: 20% !important;
+    height: auto;
   }
 
   .aboutPage-container img {
     width: 50%;
+    height: auto;
   }
 }
 
 @media only screen and (max-width: 652px) {
   .aboutPage-content {
     gap: 50px;
-    overflow-x: hidden;
-    scroll-snap-type: y mandatory;
   }
   .aboutPage-container {
     flex-direction: column !important;
     justify-content: center;
     gap: 10vh;
-    width: 100vw;
-    height: 100vh !important;
-    scroll-snap-align: start;
     min-width: fit-content;
     min-height: fit-content;
-  }
-
-  .aboutPage-outro {
-    scroll-snap-align: start;
   }
 
   .aboutPage-container-mini-r {
@@ -187,6 +200,7 @@
 
   .aboutPage-container img {
     width: 100%;
+    height: auto;
   }
 
   .aboutPage-container-image-phone {
@@ -234,13 +248,13 @@
 
   .aboutPage-outro-text-small {
     width: 80%;
-    font-size: min(16px, calc(6vh / 3));
+    font-size: 0.9rem;
     text-align: center;
   }
 
   .aboutPage-outro-text-big {
     width: 80%;
-    font-size: min(20px, calc(6vh / 2));
+    font-size: 1.1rem;
     text-align: center;
   }
 }
