@@ -29,7 +29,7 @@
     "react-fetch-hook": "^1.8.5",
     "react-router": "^6.2.1",
     "react-scripts": "^5.0.1",
-    "react-transition-group": "^4.4.4",
+    "react-transition-group": "^4.4.5",
     "requires": "^1.0.2",
     "selfsigned": "^1.10.14",
     "styled-components": "^5.3.3",
