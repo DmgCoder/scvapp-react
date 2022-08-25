@@ -9,7 +9,7 @@
     "@mui/styled-engine": "^5.8.0",
     "@mui/styled-engine-sc": "^5.9.3",
     "@mui/styles": "^5.9.3",
-    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "a": "^2.1.2",
