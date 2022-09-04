@@ -52,6 +52,7 @@ const HomePage = () => {
               userSchoolFetch.json(),
             ]);
           data = userDataJson;
+          data.refreshUserStatus = getUserData;
           data.status = userStatusJson;
           data.school = userSchoolJson;
           data.isAdmin = isUserAdmin;
@@ -62,6 +63,7 @@ const HomePage = () => {
             userStatusFetch.json(),
           ]);
           data = userDataJson;
+          data.refreshUserStatus = getUserData;
           data.isAdmin = isUserAdmin;
           data.status = userStatusJson;
           data.school = {
@@ -79,6 +81,7 @@ const HomePage = () => {
             userSchoolFetch.json(),
           ]);
           data = userDataJson;
+          data.refreshUserStatus = getUserData;
           data.isAdmin = isUserAdmin;
           data.status = {
             display: "Unknown",
@@ -90,6 +93,7 @@ const HomePage = () => {
         } else {
           const userDataJson = await userDataFetch.json();
           data = userDataJson;
+          data.refreshUserStatus = getUserData;
           data.isAdmin = isUserAdmin;
           data.status = {
             display: "Unknown",

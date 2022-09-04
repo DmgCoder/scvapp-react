@@ -7,6 +7,7 @@ import ShowAlert from "../components/showAlert";
 //  "Vpis z Microsoftovim računom" --> "Vpis z računom Microsoft"
 import msLoginBtn from "../pictures/ms-login-btn.svg";
 import schoolLogo from "../pictures/school_logo.svg";
+import FlotingMicrosoftLogo from "./components/flotingMicrsoftLogo";
 
 import "./loginPage.css";
 
@@ -72,10 +73,11 @@ export default function LoginPage() {
               >
                 <img src={msLoginBtn} alt="" className="btnImg"></img>
               </a>
+              <a className="linkToAbout" href="/o-nas">
+                O spletni strani
+              </a>
             </div>
-            <a className="linkToAbout" href="/o-nas">
-              Kaj je ta spletna stran?
-            </a>
+            <FlotingMicrosoftLogo />
           </main>
         </div>
       </div>
