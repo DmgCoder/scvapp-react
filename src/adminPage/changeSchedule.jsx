@@ -30,6 +30,7 @@ export default function AdminChangeSchedule() {
   const [uniLinkInput, setUniLinkInput] = useState("");
 
   const [selectEditClasses, setSelectEditClasses] = useState(1);
+  const [selectedSchoolId, setSelectedSchoolId] = useState("ERS");
 
   const [scheduleSchoolData, setScheduleSchoolData] = useState([]);
 
@@ -48,7 +49,7 @@ export default function AdminChangeSchedule() {
       return;
     }
     let data = await json.json();
-    setScheduleSchoolData(data);
+    selectSchool(selectedSchoolId, data);
   }
 
   useEffect(() => {
@@ -56,7 +57,6 @@ export default function AdminChangeSchedule() {
   }, []);
 
   useEffect(() => {
-    selectSchool("ERS");
     setUniLinkInput(
       (
         scheduleSchoolData.find((e) => e.selected === true) || {
@@ -108,8 +108,11 @@ export default function AdminChangeSchedule() {
     }
   }
 
-  function selectSchool(id) {
-    let newData = scheduleSchoolData;
+  function selectSchool(id, data = undefined) {
+    if (data === undefined) {
+      data = scheduleSchoolData;
+    }
+    let newData = data;
     newData.forEach((school) => {
       if (school.id === id) {
         school.selected = true;
@@ -117,7 +120,15 @@ export default function AdminChangeSchedule() {
         school.selected = false;
       }
     });
+    setSelectedSchoolId(id);
     setScheduleSchoolData(newData);
+    setUniLinkInput(
+      (
+        newData.find((e) => e.selected === true) || {
+          mainLink: "",
+        }
+      ).mainLink
+    );
     if (selectSchoolDropdown.opened) {
       showCloseSelectSchoolDropdown();
     } else {
