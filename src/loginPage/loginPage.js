@@ -5,7 +5,7 @@ import ShowAlert from "../components/showAlert";
 
 // FixMe: slovnična napaka v ms-login-btn.svg
 //  "Vpis z Microsoftovim računom" --> "Vpis z računom Microsoft"
-import msLoginBtn from "../pictures/ms-login-btn.svg";
+import msLoginBtn from "../pictures/ms-login-btn.png";
 import schoolLogo from "../pictures/school_logo.svg";
 import FlotingMicrosoftLogo from "./components/flotingMicrsoftLogo";
 

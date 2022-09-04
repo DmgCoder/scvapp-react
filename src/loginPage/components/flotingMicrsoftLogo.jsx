@@ -6,7 +6,10 @@ import "./floatingMicrosoftLogo.css";
 
 export default function FlotingMicrosoftLogo() {
   return (
-    <div className="floting-microsoft-logo">
+    <div
+      className="floting-microsoft-logo"
+      title="Ta spletna stran podpira prijavo z Microsoft računom"
+    >
       <img src={microsoftLogo} alt="Microsoft Logo" />
     </div>
   );
