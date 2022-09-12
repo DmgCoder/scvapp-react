@@ -154,6 +154,7 @@ body ::-webkit-scrollbar {
   min-width: 125px;
   transition: left 0.4s ease-in-out, visibility 0.3s, opacity 0.3s linear;
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-box-shadow: 2px 3px 6px 1px #222;
   -moz-box-shadow: 2px 3px 6px 1px #222;
   box-shadow: 2px 3px 6px 1px #222;
