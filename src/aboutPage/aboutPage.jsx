@@ -22,7 +22,7 @@ export default function AboutPage(props) {
           <img
             src={intro_picture}
             alt=""
-            className="aboutPage-container-ch-right"
+            className="aboutPage-container-ch-right aboutPage-intro-img"
           ></img>
         </div>
         <div className="aboutPage-container aboutPage-container-mini-r">
