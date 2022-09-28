@@ -28,7 +28,7 @@
     "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.5",
     "requires": "^1.0.2",
-    "selfsigned": "^2.0.1",
+    "selfsigned": "^2.1.1",
     "styled-components": "^5.3.5",
     "transitive": "^0.0.0-pre31",
     "via": "^0.0.1",
