@@ -6,6 +6,7 @@ import "./homePage.css";
 
 const HomePage = () => {
   const theme = useSelector(selectTheme);
+
   return <div className={`${theme} homePage`}></div>;
 };
 

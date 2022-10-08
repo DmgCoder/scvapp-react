@@ -1,4 +1,6 @@
 import React from "react";
+import { selectTheme } from "../../features/theme/themeSlice";
+import { useSelector } from "react-redux";
 
 // FixMe: slovnična napaka v ms-login-btn.svg
 //  "Vpis z Microsoftovim računom" --> "Vpis z računom Microsoft"
@@ -9,11 +11,12 @@ import FlotingMicrosoftLogo from "./components/flotingMicrsoftLogo";
 import "./loginPage.css";
 
 export default function LoginPage() {
+  const theme = useSelector(selectTheme);
   return (
     <>
-      <div className="main">
-        <div className="loginWindow">
-          <main className="main">
+      <div className={`main`}>
+        <div className={`loginWindow`}>
+          <main className={`main`}>
             <div className="content">
               <img alt="" src={schoolLogo} className="schoolLogo"></img>
               <p className="text">

@@ -27,9 +27,7 @@ const LoginRoute = () => {
   }, []);
 
   return (
-    <>
-      {loading ? <LoadingPage /> : !user ? <LoginPage /> : <HomePage />}{" "}
-    </>
+    <>{loading ? <LoadingPage /> : !user ? <LoginPage /> : <HomePage />} </>
   );
 };
 
