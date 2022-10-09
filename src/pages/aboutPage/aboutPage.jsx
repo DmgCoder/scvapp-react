@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../features/theme/themeSlice";
 
 import "./aboutPage.css";
 
@@ -11,9 +13,10 @@ import google_play_badge from "../../assets/about_page/google-play-badge.png";
 import app_store_badge from "../../assets/about_page/app-store-badge.svg";
 
 export default function AboutPage(props) {
+  const theme = useSelector(selectTheme);
   return (
-    <div className="aboutPage-main">
-      <div className="aboutPage-content">
+    <div className={`aboutPage-main ${theme}`}>
+      <div className={`aboutPage-content ${theme}`}>
         <div className="aboutPage-container">
           <p className="aboutPage-introText aboutPage-container-text aboutPage-container-ch-left">
             Aplikacija <b>ŠCVApp</b>:<br /> Aplikacija za dijake <br /> šolskega
