@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setTheme } from "../features/theme/themeSlice";
 import { useSession } from "react-use-session";
 
 const ThemePage = () => {
-  const { session, saveJWT, clear } = useSession("theme", true);
+  const { session, saveJWT } = useSession("theme", true);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!session) {

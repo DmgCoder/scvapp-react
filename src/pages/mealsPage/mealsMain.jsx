@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectTheme } from "../../features/theme/themeSlice";
 
 import "./mealsMain.css";
+import MealSelect from "./components/mealSelect/mealSelect";
 
 const MealsMain = () => {
   const theme = useSelector(selectTheme);
@@ -13,7 +14,7 @@ const MealsMain = () => {
     <div className={`meals-main ${theme}`}>
       <TopMenu />
       <DateSelect />
-      {/*Meal list*/}
+      <MealSelect />
     </div>
   );
 };

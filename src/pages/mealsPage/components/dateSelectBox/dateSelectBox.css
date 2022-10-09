@@ -13,6 +13,12 @@
   box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
 }
 
+.date-select-box-meals.dark-theme {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
 .date-select-box-meals.box-selected {
   background-color: green;
 }
