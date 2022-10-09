@@ -14,7 +14,7 @@ const HomePage = () => {
     <div className={`${theme} homePage`}>
       {/*Side menu*/}
       <Routes path="/">
-        <Route path="malice" element={<MealsPage />} />
+        <Route path="malica" element={<MealsPage />} />
       </Routes>
     </div>
   );

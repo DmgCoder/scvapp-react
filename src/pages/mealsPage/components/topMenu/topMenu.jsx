@@ -1,5 +1,7 @@
 import React from "react";
 import { Alert } from "@mui/material";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../../../features/theme/themeSlice";
 
 import "./topMenu.css";
 
@@ -9,8 +11,9 @@ import { useState } from "react";
 
 const TopMenu = () => {
   const [alertInfo, setAlertInfo] = useState("Nizko stanje na računu");
+  const theme = useSelector(selectTheme);
   return (
-    <div className="top-menu-meals">
+    <div className={`top-menu-meals ${theme}`}>
       <div className="user-info-meals">
         <div>
           <p>PIN koda za današnjo malico:</p>

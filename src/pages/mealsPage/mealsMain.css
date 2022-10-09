@@ -1,3 +1,8 @@
+:root {
+  --dark-theme-secondary: #2f2e2e;
+  --light-theme-secondary: #dfdada;
+}
+
 .meals-main {
   width: 100%;
   height: 100%;

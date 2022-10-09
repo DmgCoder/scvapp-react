@@ -1,5 +1,6 @@
 import React from "react";
 import TopMenu from "./components/topMenu/topMenu";
+import DateSelect from "./components/dateSelect/dateSelect";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../features/theme/themeSlice";
 
@@ -11,7 +12,7 @@ const MealsMain = () => {
   return (
     <div className={`meals-main ${theme}`}>
       <TopMenu />
-      {/*Select date scrool*/}
+      <DateSelect />
       {/*Meal list*/}
     </div>
   );

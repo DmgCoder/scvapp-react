@@ -3,6 +3,11 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  background-color: var(--light-theme-secondary);
+}
+
+.dark-theme.top-menu-meals {
+  background-color: var(--dark-theme-secondary);
 }
 
 .user-info-meals {
