@@ -13,6 +13,10 @@
   box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
 }
 
+.date-select-box-meals.box-selected {
+  background-color: green;
+}
+
 .dark-theme.date-select-box-meals {
   background-color: var(--dark-theme-secondary);
 }

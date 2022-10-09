@@ -50,7 +50,7 @@
   .top-menu-meals {
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
   }
   .user-info-meals {
     width: 100%;

@@ -4,7 +4,7 @@ import { setTheme } from "../features/theme/themeSlice";
 import { useSession } from "react-use-session";
 
 const ThemePage = () => {
-  const { session, saveJWT, clear } = useSession("theme");
+  const { session, saveJWT, clear } = useSession("theme", true);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!session) {
