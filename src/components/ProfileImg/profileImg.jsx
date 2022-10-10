@@ -7,11 +7,11 @@ const ProfileImg = ({ size }) => {
   return (
     <div className="profile-image" style={{ width: size, height: size }}>
       <img
-        src="https://www.w3schools.com/howto/img_avatar.png"
+        src={`${process.env.REACT_APP_BACKEND_URL}/user/get/profilePicture`}
         alt="Profile Picture"
       />
       <div className="profile-image-status">
-        <StatusIcon name="available" />
+        <StatusIcon />
       </div>
     </div>
   );

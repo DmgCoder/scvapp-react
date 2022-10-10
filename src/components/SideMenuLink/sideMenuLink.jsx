@@ -1,4 +1,6 @@
 import React from "react";
+import {useSelector} from "react-redux";
+import {selectUser} from "../../features/user/userSlice";
 
 import HouseIcon from "@mui/icons-material/House";
 
@@ -7,6 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const SideMenuLink = ({ href, title, icon }) => {
+  const user = useSelector(selectUser);
   const [selected, setSelected] = React.useState(false);
   const location = useLocation();
   const getSelected = () => {
@@ -22,7 +25,7 @@ const SideMenuLink = ({ href, title, icon }) => {
   return (
     <div
       className={`side-menu-link`}
-      style={selected ? { backgroundColor: "#0094D9" } : {}}
+      style={selected ? { backgroundColor: user?.school?.color } : {}}
     >
       <div
         className={`side-menu-link-icon ${
