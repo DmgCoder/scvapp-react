@@ -4,7 +4,7 @@ import { selectTheme } from "../../../../features/theme/themeSlice";
 
 import "./dateSelectArrow.css";
 
-const DateSelectArrow = ({ onClick, toLeft }) => {
+const DateSelectArrow = ({ onClick, toLeft, disabled }) => {
   const theme = useSelector(selectTheme);
 
   return (
@@ -12,6 +12,7 @@ const DateSelectArrow = ({ onClick, toLeft }) => {
       onClick={onClick}
       className={`date-select-arrow-meals ${theme}`}
       style={toLeft && { transform: "rotate(180deg)" }}
+      disabled={disabled ?? false}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

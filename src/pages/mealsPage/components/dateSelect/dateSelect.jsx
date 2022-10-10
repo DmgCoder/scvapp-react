@@ -48,7 +48,11 @@ const DateSelect = () => {
 
   return (
     <div className="date-select-meals" ref={scrollRef}>
-      <DateSelectArrow toLeft onClick={() => changeSelectedWeek(-1)} />
+      <DateSelectArrow
+        toLeft
+        onClick={() => changeSelectedWeek(-1)}
+        disabled={selectedWeek === 0}
+      />
       <div className="date-select-boxes-meals">
         {selectedDateBoxes.map((dateBox, i) => (
           <DateSelectBox key={i} date={dateBox.date} />

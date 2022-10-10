@@ -1,4 +1,10 @@
 .date-select-arrow-meals {
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.date-select-arrow-meals:disabled {
+  cursor: not-allowed;
+  filter: opacity(0.3);
 }
