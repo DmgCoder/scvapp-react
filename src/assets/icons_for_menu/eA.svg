@@ -4,9 +4,10 @@
       height="240"
       version="1.1"
       viewBox="0 0 400 240"
+      color="currentColor"
     >
       <g
-        fill="#000"
+        fill="currentColor"
         fillOpacity="1"
         fillRule="nonzero"
         stroke="none"

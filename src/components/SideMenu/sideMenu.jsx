@@ -10,9 +10,9 @@ import AppLogo from "../../assets/app_logo.png";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
-import eAsistentIcon from "../../assets/icons_for_menu/eA.svg";
-import arnesIcon from "../../assets/icons_for_menu/arnes.svg";
-import officeIcon from "../../assets/icons_for_menu/office_365.svg";
+import { ReactComponent as EasistentIcon } from "../../assets/icons_for_menu/eA.svg";
+import { ReactComponent as ArnesIcon } from "../../assets/icons_for_menu/arnes.svg";
+import { ReactComponent as OfficeIcon } from "../../assets/icons_for_menu/office_365.svg";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
@@ -32,7 +32,7 @@ const SideMenu = () => {
           <SideMenuLink
             href="/easistent"
             title="eAsistent"
-            icon={<img src={eAsistentIcon} alt="eAsistent icon" />}
+            icon={<EasistentIcon />}
           />
           <SideMenuLink
             href="/sio-mdm"
@@ -42,12 +42,9 @@ const SideMenu = () => {
           <SideMenuLink
             href="/arnes-ucilnice"
             title="Arnes Učilnice"
-            icon={<img src={arnesIcon} alt="Arnes Icon" />}
+            icon={<ArnesIcon />}
           />
-          <SideMenuLink
-            title="Office Programi"
-            icon={<img src={officeIcon} alt="Office 365 Icon" />}
-          />
+          <SideMenuLink title="Office Programi" icon={<OfficeIcon />} />
         </SideMenuCategory>
         <SideMenuCategory title={"ŠCVAPP"}>
           <SideMenuLink
