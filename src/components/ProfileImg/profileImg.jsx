@@ -11,7 +11,7 @@ const ProfileImg = ({ size }) => {
         alt="Profile Picture"
       />
       <div className="profile-image-status">
-        <StatusIcon name="unknown" />
+        <StatusIcon name="available" />
       </div>
     </div>
   );
