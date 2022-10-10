@@ -13,6 +13,7 @@ import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 import { ReactComponent as EasistentIcon } from "../../assets/icons_for_menu/eA.svg";
 import { ReactComponent as ArnesIcon } from "../../assets/icons_for_menu/arnes.svg";
 import { ReactComponent as OfficeIcon } from "../../assets/icons_for_menu/office_365.svg";
+import SideMenuProfile from "../SideMenuProfile/sideMenuProfile";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
@@ -53,6 +54,9 @@ const SideMenu = () => {
             icon={<SettingsOutlinedIcon />}
           />
         </SideMenuCategory>
+      </div>
+      <div className="side-menu-down">
+        <SideMenuProfile />
       </div>
     </div>
   );

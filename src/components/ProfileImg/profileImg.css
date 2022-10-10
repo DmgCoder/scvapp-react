@@ -1,0 +1,17 @@
+.profile-image {
+  position: relative;
+}
+.profile-image > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-image-status {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  bottom: 2px;
+  right: -1px;
+}
