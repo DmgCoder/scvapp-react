@@ -6,13 +6,14 @@ import { selectTheme } from "../../features/theme/themeSlice";
 import "./homePage.css";
 
 const MealsPage = lazy(() => import("../mealsPage/mealsMain"));
+const SideMenu = lazy(() => import("../../components/SideMenu/sideMenu"));
 
 const HomePage = () => {
   const theme = useSelector(selectTheme);
 
   return (
     <div className={`${theme} homePage`}>
-      {/*Side menu*/}
+      <SideMenu />
       <Routes path="/">
         <Route path="malica" element={<MealsPage />} />
       </Routes>
