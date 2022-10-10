@@ -1,12 +1,14 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router";
 import { selectTheme } from "../../features/theme/themeSlice";
+import LoadingPage from "../LoadingPage";
 
 import "./homePage.css";
 
 const MealsPage = lazy(() => import("../mealsPage/mealsMain"));
 const SideMenu = lazy(() => import("../../components/SideMenu/sideMenu"));
+const NotFoundPage = lazy(() => import("../404page/404page"));
 
 const HomePage = () => {
   const theme = useSelector(selectTheme);
@@ -14,9 +16,12 @@ const HomePage = () => {
   return (
     <div className={`${theme} homePage`}>
       <SideMenu />
-      <Routes path="/">
-        <Route path="malica" element={<MealsPage />} />
-      </Routes>
+      <Suspense fallback={<LoadingPage />}>
+        <Routes>
+          <Route path="/malica" element={<MealsPage />} />
+          <Route path="*" element={<NotFoundPage></NotFoundPage>} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

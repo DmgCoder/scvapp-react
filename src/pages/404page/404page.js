@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../features/theme/themeSlice";
 import "./404page.css";
 
 export default function NotFoundPage() {
+  const theme = useSelector(selectTheme);
   return (
     <div id="notfound">
-      <div className="notfound">
+      <div className={`notfound ${theme}`}>
         <div className="notfound-404">
           <h1>
             4<span></span>4

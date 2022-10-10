@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import DateSelectBox from "../dateSelectBox/dateSelectBox";
 import useWindowDimensions from "../../../../features/useWindowDimensions";
 
@@ -9,6 +9,8 @@ const DateSelect = () => {
   const [selectedDateBoxes, setSelectedDateBoxes] = React.useState([]);
   const { width } = useWindowDimensions();
   const [selectedWeek, setSelectedWeek] = React.useState(0);
+  const scrollRef = useRef();
+
   const generateDateSelectBoxes = (number) => {
     const date = new Date();
     date.setDate(date.getDate() + selectedWeek * number);
@@ -26,7 +28,8 @@ const DateSelect = () => {
   };
 
   const numberOfBoxes = () => {
-    const usableWidth = width - 100;
+    const widthOfElement = scrollRef?.current.offsetWidth ?? width - 300;
+    const usableWidth = widthOfElement - 120;
     const widthOfBox = 120;
     const gapBetweenBoxes = 20;
     const numberOfBoxes = Math.floor(
@@ -44,7 +47,7 @@ const DateSelect = () => {
   useEffect(numberOfBoxes, [width, selectedWeek]);
 
   return (
-    <div className="date-select-meals">
+    <div className="date-select-meals" ref={scrollRef}>
       <DateSelectArrow toLeft onClick={() => changeSelectedWeek(-1)} />
       <div className="date-select-boxes-meals">
         {selectedDateBoxes.map((dateBox, i) => (

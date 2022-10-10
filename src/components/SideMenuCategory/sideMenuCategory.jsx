@@ -1,13 +1,12 @@
 import React from "react";
-import SideMenuLink from "../SideMenuLink/sideMenuLink";
 
 import "./sideMenuCategory.css";
 
-const SideMenuCategory = () => {
+const SideMenuCategory = ({ children, title }) => {
   return (
     <div className="side-menu-category">
-      <p>Naslov kategorije</p>
-      <SideMenuLink />
+      <p className="side-menu-category-title">{title ?? ""}</p>
+      {children}
     </div>
   );
 };
