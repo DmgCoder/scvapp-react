@@ -1,9 +1,15 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import SideMenuCategory from "../SideMenuCategory/sideMenuCategory";
 import { selectTheme } from "../../features/theme/themeSlice";
 import SideMenuLink from "../SideMenuLink/sideMenuLink";
-import { selectSideMenuOpen } from "../../features/sideMenu/sideMenuSlice";
+import {
+  selectSideMenuMini,
+  selectSideMenuOpen,
+  setMiniSideMenu,
+  setOpenSideMenu,
+} from "../../features/sideMenu/sideMenuSlice";
+import useWindowDimensions from "../../features/useWindowDimensions";
 
 import "./sideMenu.css";
 
@@ -15,55 +21,88 @@ import { ReactComponent as EasistentIcon } from "../../assets/icons_for_menu/eA.
 import { ReactComponent as ArnesIcon } from "../../assets/icons_for_menu/arnes.svg";
 import { ReactComponent as OfficeIcon } from "../../assets/icons_for_menu/office_365.svg";
 import SideMenuProfile from "../SideMenuProfile/sideMenuProfile";
+import { useEffect } from "react";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
+  const { width } = useWindowDimensions();
   const sideMenuOpen = useSelector(selectSideMenuOpen);
+  const sideMenuMini = useSelector(selectSideMenuMini);
+  const dispatch = useDispatch();
+
+  const resizeSideMenu = () => {
+    console.log(width);
+    if (width <= 1080) {
+      dispatch(setMiniSideMenu(true));
+    } else {
+      dispatch(setMiniSideMenu(false));
+    }
+  };
+
+  const toggleSideMenu = () => {
+    if (sideMenuMini) {
+      dispatch(setOpenSideMenu(!sideMenuOpen));
+    } else {
+      dispatch(setOpenSideMenu(true));
+    }
+  };
+
+  useEffect(resizeSideMenu, [width]);
 
   return (
-    <div
-      className={`side-menu ${theme} ${!sideMenuOpen && "side-menu-closed"}`}
-    >
-      <div className="side-menu-up">
-        <img className="side-menu-logo" alt="App Logo" src={AppLogo} />
-        <SideMenuCategory title={"SPLETNE STRANI ŠCV"} miniTitle="ŠCV">
-          <SideMenuLink href="/" title="Domača stran" />
-          <SideMenuLink
-            href="/malica"
-            title="Malice"
-            icon={<LocalDiningIcon />}
+    <>
+      {sideMenuMini && <div className="side-menu-spacer"></div>}
+      <div
+        className={`side-menu ${theme} ${!sideMenuOpen && "side-menu-closed"} ${
+          sideMenuMini && "side-menu-mini"
+        }`}
+      >
+        <div className="side-menu-up">
+          <img
+            className="side-menu-logo"
+            alt="App Logo"
+            src={AppLogo}
+            onClick={toggleSideMenu}
           />
-        </SideMenuCategory>
-        <SideMenuCategory title={"OSTALE SPLETNE STRAN"} miniTitle="OSTALO">
-          <SideMenuLink
-            href="/easistent"
-            title="eAsistent"
-            icon={<EasistentIcon />}
-          />
-          <SideMenuLink
-            href="/sio-mdm"
-            title="SIO.MDM Prijava"
-            icon={<OpenInNewOutlinedIcon />}
-          />
-          <SideMenuLink
-            href="/arnes-ucilnice"
-            title="Arnes Učilnice"
-            icon={<ArnesIcon />}
-          />
-          <SideMenuLink title="Office Programi" icon={<OfficeIcon />} />
-        </SideMenuCategory>
-        <SideMenuCategory title={"ŠCVAPP"} miniTitle="ŠCVAPP">
-          <SideMenuLink
-            href="/nastavitve"
-            title="Nastavitve"
-            icon={<SettingsOutlinedIcon />}
-          />
-        </SideMenuCategory>
+          <SideMenuCategory title={"SPLETNE STRANI ŠCV"} miniTitle="ŠCV">
+            <SideMenuLink href="/" title="Domača stran" />
+            <SideMenuLink
+              href="/malica"
+              title="Malice"
+              icon={<LocalDiningIcon />}
+            />
+          </SideMenuCategory>
+          <SideMenuCategory title={"OSTALE SPLETNE STRAN"} miniTitle="OSTALO">
+            <SideMenuLink
+              href="/easistent"
+              title="eAsistent"
+              icon={<EasistentIcon />}
+            />
+            <SideMenuLink
+              href="/sio-mdm"
+              title="SIO.MDM Prijava"
+              icon={<OpenInNewOutlinedIcon />}
+            />
+            <SideMenuLink
+              href="/arnes-ucilnice"
+              title="Arnes Učilnice"
+              icon={<ArnesIcon />}
+            />
+            <SideMenuLink title="Office Programi" icon={<OfficeIcon />} />
+          </SideMenuCategory>
+          <SideMenuCategory title={"ŠCVAPP"} miniTitle="ŠCVAPP">
+            <SideMenuLink
+              href="/nastavitve"
+              title="Nastavitve"
+              icon={<SettingsOutlinedIcon />}
+            />
+          </SideMenuCategory>
+        </div>
+        <div className="side-menu-down">
+          <SideMenuProfile />
+        </div>
       </div>
-      <div className="side-menu-down">
-        <SideMenuProfile />
-      </div>
-    </div>
+    </>
   );
 };
 
