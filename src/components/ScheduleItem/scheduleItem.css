@@ -1,0 +1,17 @@
+.schedule-item {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  gap: 5px;
+}
+
+.schedule-item-info {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

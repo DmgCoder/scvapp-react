@@ -10,6 +10,10 @@ import {
   setOpenSideMenu,
 } from "../../features/sideMenu/sideMenuSlice";
 import useWindowDimensions from "../../features/useWindowDimensions";
+import SideMenuProfile from "../SideMenuProfile/sideMenuProfile";
+import { useEffect } from "react";
+import SideMenuSchedule from "../SideMenuSchedule/sideMenuSchedule";
+import { selectUser } from "../../features/user/userSlice";
 
 import "./sideMenu.css";
 
@@ -17,11 +21,10 @@ import AppLogo from "../../assets/app_logo.png";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import { ReactComponent as EasistentIcon } from "../../assets/icons_for_menu/eA.svg";
 import { ReactComponent as ArnesIcon } from "../../assets/icons_for_menu/arnes.svg";
 import { ReactComponent as OfficeIcon } from "../../assets/icons_for_menu/office_365.svg";
-import SideMenuProfile from "../SideMenuProfile/sideMenuProfile";
-import { useEffect } from "react";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
@@ -29,6 +32,7 @@ const SideMenu = () => {
   const sideMenuOpen = useSelector(selectSideMenuOpen);
   const sideMenuMini = useSelector(selectSideMenuMini);
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const resizeSideMenu = () => {
     if (width <= 1080) {
@@ -107,7 +111,15 @@ const SideMenu = () => {
               title="Nastavitve"
               icon={<SettingsOutlinedIcon />}
             />
+            {user?.isAdmin && (
+              <SideMenuLink
+                href="/admin"
+                title="Admin Portal"
+                icon={<AdminPanelSettingsIcon />}
+              />
+            )}
           </SideMenuCategory>
+          <SideMenuSchedule />
         </div>
         <div className="side-menu-down">
           <SideMenuProfile />
