@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { selectTheme } from "../../features/theme/themeSlice";
 import LoadingPage from "../LoadingPage";
 
@@ -21,6 +21,8 @@ const HomePage = () => {
         <Routes>
           <Route path="/" element={<SchoolHomePage />} />
           <Route path="/malica" element={<MealsPage />} />
+          <Route path="/prijava" element={<Navigate to={"/"} />} />
+          <Route path="/domov" element={<Navigate to={"/"} />} />
           <Route path="*" element={<NotFoundPage></NotFoundPage>} />
         </Routes>
       </Suspense>
