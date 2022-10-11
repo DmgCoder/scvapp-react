@@ -1,3 +1,16 @@
 .side-menu-schedule {
   width: 100%;
 }
+
+.side-menu-schedule .side-menu-category {
+  gap: 10px;
+}
+
+.side-menu-schedule .side-menu-category .side-menu-category-title {
+  margin: 0px;
+}
+
+.side-menu-schedule-text {
+  width: 100%;
+  text-align: center;
+}

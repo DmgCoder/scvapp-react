@@ -13,6 +13,7 @@ import { useEffect } from "react";
 const ScheduleItem = ({ title, classRoom, className, event, classType }) => {
   const user = useSelector(selectUser);
   const [backgroundColor, setBackgroundColor] = useState(null);
+  const [icon, setIcon] = useState(null);
 
   const typesOfClasses = {
     nadomescanje: {
@@ -36,6 +37,7 @@ const ScheduleItem = ({ title, classRoom, className, event, classType }) => {
   const setTypeOfClass = () => {
     if (classType) {
       setBackgroundColor(typesOfClasses[classType].color);
+      setIcon(typesOfClasses[classType].icon);
     }
   };
 
@@ -51,10 +53,17 @@ const ScheduleItem = ({ title, classRoom, className, event, classType }) => {
       <p className="schedule-item-title">{title}</p>
       {!event && (
         <p className="schedule-item-info">
-          <b>{className}</b> V <b>{classRoom}</b>
+          <b>{className ?? "/"}</b> V <b>{classRoom ?? "/"}</b>
         </p>
       )}
       {event && <p className="schedule-item-info">{event}</p>}
+      {icon && (
+        <img
+          src={icon}
+          alt="Icon for schedule"
+          className="schedule-item-icon"
+        />
+      )}
     </div>
   );
 };
