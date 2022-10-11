@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import SideMenuCategory from "../SideMenuCategory/sideMenuCategory";
 import { selectTheme } from "../../features/theme/themeSlice";
 import SideMenuLink from "../SideMenuLink/sideMenuLink";
+import { selectSideMenuOpen } from "../../features/sideMenu/sideMenuSlice";
 
 import "./sideMenu.css";
 
@@ -17,8 +18,12 @@ import SideMenuProfile from "../SideMenuProfile/sideMenuProfile";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
+  const sideMenuOpen = useSelector(selectSideMenuOpen);
+
   return (
-    <div className={`side-menu ${theme}`}>
+    <div
+      className={`side-menu ${theme} ${!sideMenuOpen && "side-menu-closed"}`}
+    >
       <div className="side-menu-up">
         <img className="side-menu-logo" alt="App Logo" src={AppLogo} />
         <SideMenuCategory title={"SPLETNE STRANI ŠCV"}>

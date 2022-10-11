@@ -1,17 +1,20 @@
 import React from "react";
-import {useSelector} from "react-redux";
-import {selectUser} from "../../features/user/userSlice";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/user/userSlice";
 
 import HouseIcon from "@mui/icons-material/House";
 
 import "./sideMenuLink.css";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { selectSideMenuOpen } from "../../features/sideMenu/sideMenuSlice";
 
 const SideMenuLink = ({ href, title, icon }) => {
   const user = useSelector(selectUser);
   const [selected, setSelected] = React.useState(false);
   const location = useLocation();
+  const sideMenuOpen = useSelector(selectSideMenuOpen);
+
   const getSelected = () => {
     if (location.pathname.startsWith(href) && href !== "/") {
       setSelected(true);
@@ -23,7 +26,8 @@ const SideMenuLink = ({ href, title, icon }) => {
   };
   useEffect(getSelected, [location, href]);
   return (
-    <div
+    <Link
+      to={href ?? "/"}
       className={`side-menu-link`}
       style={selected ? { backgroundColor: user?.school?.color } : {}}
     >
@@ -34,15 +38,16 @@ const SideMenuLink = ({ href, title, icon }) => {
       >
         {icon ?? <HouseIcon />}
       </div>
-      <Link
-        to={href ?? "/"}
-        className={`side-menu-link-title ${
-          selected && "side-menu-link-selected"
-        }`}
-      >
-        {title ?? ""}
-      </Link>
-    </div>
+      {sideMenuOpen && (
+        <p
+          className={`side-menu-link-title ${
+            selected && "side-menu-link-selected"
+          }`}
+        >
+          {title ?? ""}
+        </p>
+      )}
+    </Link>
   );
 };
 
