@@ -31,11 +31,21 @@ const SideMenu = () => {
   const dispatch = useDispatch();
 
   const resizeSideMenu = () => {
-    console.log(width);
     if (width <= 1080) {
       dispatch(setMiniSideMenu(true));
     } else {
       dispatch(setMiniSideMenu(false));
+      dispatch(setOpenSideMenu(true));
+    }
+  };
+
+  const resizeOnLoad = () => {
+    if (width <= 1080) {
+      dispatch(setMiniSideMenu(true));
+      dispatch(setOpenSideMenu(false));
+    } else {
+      dispatch(setMiniSideMenu(false));
+      dispatch(setOpenSideMenu(true));
     }
   };
 
@@ -48,6 +58,7 @@ const SideMenu = () => {
   };
 
   useEffect(resizeSideMenu, [width]);
+  useEffect(resizeOnLoad, []);
 
   return (
     <>

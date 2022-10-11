@@ -4,12 +4,19 @@ import useWindowDimensions from "../../../../features/useWindowDimensions";
 
 import "./dateSelect.css";
 import DateSelectArrow from "../dateSelectArrow/dateSelectArrow";
+import { useSelector } from "react-redux";
+import {
+  selectSideMenuMini,
+  selectSideMenuOpen,
+} from "../../../../features/sideMenu/sideMenuSlice";
 
 const DateSelect = () => {
   const [selectedDateBoxes, setSelectedDateBoxes] = React.useState([]);
   const { width } = useWindowDimensions();
   const [selectedWeek, setSelectedWeek] = React.useState(0);
   const scrollRef = useRef();
+  const sideMenuMini = useSelector(selectSideMenuMini);
+  const openSideMenu = useSelector(selectSideMenuOpen);
 
   const generateDateSelectBoxes = (number) => {
     const date = new Date();
@@ -32,8 +39,9 @@ const DateSelect = () => {
     const usableWidth = widthOfElement - 120;
     const widthOfBox = 120;
     const gapBetweenBoxes = 20;
-    const numberOfBoxes = Math.floor(
-      usableWidth / (widthOfBox + gapBetweenBoxes)
+    const numberOfBoxes = Math.max(
+      Math.floor(usableWidth / (widthOfBox + gapBetweenBoxes)),
+      1
     );
     generateDateSelectBoxes(numberOfBoxes);
   };
@@ -44,7 +52,7 @@ const DateSelect = () => {
     }
   };
 
-  useEffect(numberOfBoxes, [width, selectedWeek]);
+  useEffect(numberOfBoxes, [width, selectedWeek, sideMenuMini]);
 
   return (
     <div className="date-select-meals" ref={scrollRef}>

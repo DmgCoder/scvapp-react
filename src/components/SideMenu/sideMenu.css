@@ -19,6 +19,8 @@
   flex-direction: column;
   background-color: var(--side-menu-ligth-color);
   overflow-y: scroll;
+  transition: all 0.5s ease-in-out;
+  z-index: 100;
 }
 
 .side-menu.side-menu-closed {
@@ -34,6 +36,10 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.side-menu.side-menu-mini .side-menu-logo {
+  cursor: pointer;
 }
 
 .side-menu.dark-theme {
