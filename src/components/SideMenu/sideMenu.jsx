@@ -26,7 +26,7 @@ const SideMenu = () => {
     >
       <div className="side-menu-up">
         <img className="side-menu-logo" alt="App Logo" src={AppLogo} />
-        <SideMenuCategory title={"SPLETNE STRANI ŠCV"}>
+        <SideMenuCategory title={"SPLETNE STRANI ŠCV"} miniTitle="ŠCV">
           <SideMenuLink href="/" title="Domača stran" />
           <SideMenuLink
             href="/malica"
@@ -34,7 +34,7 @@ const SideMenu = () => {
             icon={<LocalDiningIcon />}
           />
         </SideMenuCategory>
-        <SideMenuCategory title={"OSTALE SPLETNE STRAN"}>
+        <SideMenuCategory title={"OSTALE SPLETNE STRAN"} miniTitle="OSTALO">
           <SideMenuLink
             href="/easistent"
             title="eAsistent"
@@ -52,7 +52,7 @@ const SideMenu = () => {
           />
           <SideMenuLink title="Office Programi" icon={<OfficeIcon />} />
         </SideMenuCategory>
-        <SideMenuCategory title={"ŠCVAPP"}>
+        <SideMenuCategory title={"ŠCVAPP"} miniTitle="ŠCVAPP">
           <SideMenuLink
             href="/nastavitve"
             title="Nastavitve"

@@ -28,7 +28,7 @@ const SideMenuLink = ({ href, title, icon }) => {
   return (
     <Link
       to={href ?? "/"}
-      className={`side-menu-link`}
+      className={`side-menu-link ${!sideMenuOpen && "side-menu-link-mini"}`}
       style={selected ? { backgroundColor: user?.school?.color } : {}}
     >
       <div

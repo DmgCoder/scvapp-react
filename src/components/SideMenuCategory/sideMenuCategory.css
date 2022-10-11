@@ -1,9 +1,21 @@
 .side-menu-category {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-category.side-menu-category-mini {
+  text-align: center;
+  gap: 10px;
+  justify-content: space-between;
 }
 
 .side-menu-category-title {
   margin-bottom: 5px;
   color: #9fa7d3;
   font-size: 13px;
+}
+
+.side-menu-category.side-menu-category-mini .side-menu-category-title {
+  margin: 0px;
 }
