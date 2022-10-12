@@ -9,11 +9,16 @@ import NadomescanjeIcon from "../../assets/urnik_icons/nadomescanje.png";
 import OdpadloIcon from "../../assets/urnik_icons/odpadlo.png";
 import ZaposlitevIcon from "../../assets/urnik_icons/zaposlitev.png";
 import { useEffect } from "react";
+import { GetClassType } from "../SideMenuSchedule/loadScheduleData";
 
-const ScheduleItem = ({ title, classRoom, className, event, classType }) => {
+const ScheduleItem = ({ title, uraTrajanja }) => {
   const user = useSelector(selectUser);
   const [backgroundColor, setBackgroundColor] = useState(null);
   const [icon, setIcon] = useState(null);
+  const [classType, setClassType] = useState(null);
+  const [classRoom, setClassRoom] = useState(null);
+  const [className, setClassName] = useState(null);
+  const [event, setEvent] = useState(null);
 
   const typesOfClasses = {
     nadomescanje: {
@@ -41,7 +46,17 @@ const ScheduleItem = ({ title, classRoom, className, event, classType }) => {
     }
   };
 
-  useEffect(setTypeOfClass, [classType]);
+  const onLoad = () => {
+    if (uraTrajanja?.ura?.length > 0) {
+      setClassType(GetClassType(uraTrajanja.ura[0]));
+      setClassRoom(uraTrajanja?.ura[0]?.ucilnica);
+      setClassName(uraTrajanja?.ura[0]?.krajsava);
+      setEvent(uraTrajanja?.ura[0]?.dogodek);
+      setTypeOfClass();
+    }
+  };
+
+  useEffect(onLoad, [uraTrajanja]);
 
   return (
     <div
@@ -51,12 +66,12 @@ const ScheduleItem = ({ title, classRoom, className, event, classType }) => {
       }}
     >
       <p className="schedule-item-title">{title}</p>
-      {!event && (
+      {!event && event === "" && (
         <p className="schedule-item-info">
           <b>{className ?? "/"}</b> V <b>{classRoom ?? "/"}</b>
         </p>
       )}
-      {event && <p className="schedule-item-info">{event}</p>}
+      {event !== "" && event && <p className="schedule-item-info">{event}</p>}
       {icon && (
         <img
           src={icon}
