@@ -21,6 +21,8 @@ code {
 }
 :root {
   overflow: hidden;
+  --dark-theme-secondary: #2f2e2e;
+  --light-theme-secondary: #dfdada;
 }
 
 .dark-theme {

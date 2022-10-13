@@ -15,26 +15,43 @@ const MealsLogin = () => {
       <div className="meals-login-container">
         <img alt="school logo" className="meals-login-logo" src={SchoolLogo} />
         <div className="meals-login-form">
-          <p>Prijava v sistem malic</p>
+          <p className="meals-login-title">Prijava v sistem malic</p>
           <StyledTextField
             id="standard-basic"
             label="E-pošta"
             variant="standard"
-            className={theme}
+            className="meals-login-form-input"
             fontColor="currentColor"
+            activeColor="#3f87f3"
           />
           <StyledTextField
             id="standard-basic"
             label="Geslo"
             type={"password"}
             variant="standard"
+            className="meals-login-form-input"
             fontColor="currentColor"
+            activeColor="#3f87f3"
           />
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Zapomni si me"
-          />
+          <FormControlLabel control={<Checkbox />} label="Zapomni si me" />
         </div>
+        <button className="meals-login-button">Prijavi se</button>
+        <a
+          href="https://malice.scv.si"
+          className="meals-login-link"
+          target={"_blank"}
+          rel="noreferrer"
+        >
+          Pozabljeno geslo?
+        </a>
+        <a
+          href="https://malice.scv.si"
+          className="meals-login-link"
+          target={"_blank"}
+          rel="noreferrer"
+        >
+          Navodila za uporabo
+        </a>
       </div>
     </div>
   );
