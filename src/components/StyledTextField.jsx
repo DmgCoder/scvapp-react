@@ -1,39 +1,39 @@
 import { TextField, styled } from "@mui/material";
 const options = {
-  shouldForwardProp: (prop) => prop !== "fontColor",
-  shouldForwardProp: (prop) => prop !== "activeColor",
+  shouldForwardProp: (prop) => prop !== "fontcolor",
+  shouldForwardProp: (prop) => prop !== "activecolor",
 };
 const StyledTextField = styled(
   TextField,
   options
-)(({ activeColor, fontColor }) => ({
+)(({ activecolor, fontcolor }) => ({
   "& .MuiInputBase-root": {
-    color: fontColor,
+    color: fontcolor,
   },
   "& .MuiInput-underline:before": {
-    borderBottomColor: fontColor,
+    borderBottomColor: fontcolor,
   },
   "& .MuiInput-underline:after": {
-    borderBottomColor: activeColor,
+    borderBottomColor: activecolor,
   },
   "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-    borderBottomColor: fontColor,
+    borderBottomColor: fontcolor,
   },
   "& .MuiFormLabel-root": {
-    color: fontColor,
+    color: fontcolor,
   },
   "& .MuiFormLabel-root.Mui-focused": {
-    color: activeColor,
+    color: activecolor,
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: fontColor,
+      borderColor: fontcolor,
     },
     "&:hover fieldset": {
-      borderColor: fontColor,
+      borderColor: fontcolor,
     },
     "&.Mui-focused fieldset": {
-      borderColor: activeColor,
+      borderColor: activecolor,
     },
   },
 }));

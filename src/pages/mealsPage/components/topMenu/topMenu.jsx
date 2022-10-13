@@ -8,20 +8,22 @@ import "./topMenu.css";
 //Import assets
 import ProfilePicture from "../../../../assets/slike_malica/profilePicture.png";
 import { useState } from "react";
+import { selectMealUser } from "../../../../features/mealUser/mealUserSlice";
 
 const TopMenu = () => {
   const [alertInfo, setAlertInfo] = useState("");
+  const mealUser = useSelector(selectMealUser);
   const theme = useSelector(selectTheme);
   return (
     <div className={`top-menu-meals ${theme}`}>
       <div className="user-info-meals">
         <div>
           <p>PIN koda za današnjo malico:</p>
-          <p>1234</p>
+          <p>{mealUser?.pin_number ?? ""}</p>
         </div>
         <div>
           <p>Stanje na vašem računu:</p>
-          <p>4,99€</p>
+          <p>{`${mealUser?.budget}€` ?? ""}</p>
         </div>
       </div>
       {alertInfo !== "" && (
@@ -31,7 +33,9 @@ const TopMenu = () => {
       )}
       <div className="user-profile-meals">
         <img src={ProfilePicture} alt="Profile" />
-        <p>Janez Novak</p>
+        <p>
+          {mealUser?.first_name ?? ""} {mealUser?.last_name ?? ""}
+        </p>
       </div>
     </div>
   );

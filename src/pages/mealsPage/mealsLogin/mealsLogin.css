@@ -68,6 +68,7 @@
   background-color: #3f87f3;
   border: none;
   border-radius: 13px;
+  cursor: pointer;
 }
 
 .meals-login-link {
