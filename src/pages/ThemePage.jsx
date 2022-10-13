@@ -4,11 +4,11 @@ import { setTheme } from "../features/theme/themeSlice";
 import { useSession } from "react-use-session";
 
 const ThemePage = () => {
-  const { session, saveJWT } = useSession("theme", true);
+  const { session, save } = useSession("theme", true);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!session) {
-      saveJWT("light-theme");
+      save("light-theme");
       dispatch(setTheme("light-theme"));
     } else {
       dispatch(setTheme(session));
