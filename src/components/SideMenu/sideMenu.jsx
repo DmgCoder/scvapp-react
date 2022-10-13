@@ -94,9 +94,10 @@ const SideMenu = () => {
               icon={<EasistentIcon />}
             />
             <SideMenuLink
-              href="/sio-mdm"
+              href="https://mdm.arnes.si/Prijava/Login.aspx"
               title="SIO.MDM Prijava"
               icon={<OpenInNewOutlinedIcon />}
+              newTab
             />
             <SideMenuLink
               href="/arnes-ucilnice"

@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { selectSideMenuOpen } from "../../features/sideMenu/sideMenuSlice";
 
-const SideMenuLink = ({ href, title, icon }) => {
+const SideMenuLink = ({ href, title, icon, newTab }) => {
   const user = useSelector(selectUser);
   const [selected, setSelected] = React.useState(false);
   const location = useLocation();
@@ -25,12 +25,40 @@ const SideMenuLink = ({ href, title, icon }) => {
     }
   };
   useEffect(getSelected, [location, href]);
-  return (
+  return !newTab ? (
     <Link
       to={href ?? "/"}
       className={`side-menu-link ${!sideMenuOpen && "side-menu-link-mini"}`}
       style={selected ? { backgroundColor: user?.school?.color } : {}}
     >
+      <SideMenuContent
+        selected={selected}
+        sideMenuOpen={sideMenuOpen}
+        icon={icon}
+        title={title}
+      />
+    </Link>
+  ) : (
+    <a
+      href={href ?? "/"}
+      className={`side-menu-link ${!sideMenuOpen && "side-menu-link-mini"}`}
+      style={selected ? { backgroundColor: user?.school?.color } : {}}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <SideMenuContent
+        selected={selected}
+        sideMenuOpen={sideMenuOpen}
+        icon={icon}
+        title={title}
+      />
+    </a>
+  );
+};
+
+const SideMenuContent = ({ selected, sideMenuOpen, icon, title }) => {
+  return (
+    <>
       <div
         className={`side-menu-link-icon ${
           selected && "side-menu-link-selected"
@@ -47,7 +75,7 @@ const SideMenuLink = ({ href, title, icon }) => {
           {title ?? ""}
         </p>
       )}
-    </Link>
+    </>
   );
 };
 
