@@ -10,6 +10,7 @@ import "./mealsLogin.css";
 import SchoolLogo from "../../../assets/school_logo.svg";
 import StyledTextField from "../../../components/StyledTextField";
 import { setMealUser } from "../../../features/mealUser/mealUserSlice";
+import axios from "axios";
 
 const MealsLogin = () => {
   const theme = useSelector(selectTheme);
@@ -21,12 +22,20 @@ const MealsLogin = () => {
 
   const handleLogin = async () => {
     if (
-      username ||
+      !username ||
       username?.trim() === "" ||
-      password ||
+      !password ||
       password?.trim() === ""
     ) {
-      dispatch(setAlert("Please enter your username and password", "error"));
+      dispatch(
+        setAlert({
+          type: "error",
+          message: "Prosim vnesite uporabniško ime in geslo.",
+          title: "Napaka!",
+          show: true,
+        })
+      );
+      return;
     }
     //Add username and password in form data
     const formData = new FormData();
@@ -34,12 +43,12 @@ const MealsLogin = () => {
     formData.append("password", password);
 
     try {
-      const res = await fetch("https://malice.scv.si/api/v2/auth", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await axios.post(
+        "https://malice.scv.si/api/v2/auth",
+        formData
+      );
       if (res.status === 200) {
-        const data = await res.json();
+        const data = res.data;
         const user = {
           access_token: data.access_token,
           first_name: data.student.first_name,
@@ -48,11 +57,25 @@ const MealsLogin = () => {
           budget: data.student.budget,
         };
         save(user);
-        dispatch(setAlert("Login successful", "success"));
+        dispatch(
+          setAlert({
+            type: "success",
+            message: "Prijava v sistem malic je bila uspešna.",
+            title: "Prijava uspešna!",
+            show: true,
+          })
+        );
         dispatch(setMealUser(user));
       }
     } catch (err) {
-      console.log(err);
+      dispatch(
+        setAlert({
+          type: "error",
+          message: err.response.data.errors ?? "Prišlo je do napake.",
+          title: "Napaka!",
+          show: true,
+        })
+      );
     }
   };
 
@@ -69,7 +92,9 @@ const MealsLogin = () => {
             className="meals-login-form-input"
             fontcolor="currentColor"
             activecolor="#3f87f3"
+            type={"email"}
             value={username}
+            onSubmit={(e) => e.preventDefault()}
             onChange={(e) => setUsername(e.target.value)}
           />
           <StyledTextField
@@ -81,6 +106,7 @@ const MealsLogin = () => {
             fontcolor="currentColor"
             activecolor="#3f87f3"
             value={password}
+            onSubmit={(e) => e.preventDefault()}
             onChange={(e) => setPassword(e.target.value)}
           />
           <FormControlLabel
