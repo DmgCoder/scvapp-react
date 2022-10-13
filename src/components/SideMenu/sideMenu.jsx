@@ -82,7 +82,7 @@ const SideMenu = () => {
           <SideMenuCategory title={"SPLETNE STRANI ŠCV"} miniTitle="ŠCV">
             <SideMenuLink href="/" title="Domača stran" />
             <SideMenuLink
-              href="/malica"
+              href="/malice"
               title="Malice"
               icon={<LocalDiningIcon />}
             />

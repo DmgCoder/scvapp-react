@@ -1,0 +1,21 @@
+.meals-login {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.meals-login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.meals-login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.meals-login.dark-theme .meals-login-form {
+  color: white !important;
+}

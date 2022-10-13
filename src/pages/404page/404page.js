@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../features/theme/themeSlice";
 import "./404page.css";
@@ -15,7 +16,7 @@ export default function NotFoundPage() {
         </div>
         <h2>Ups! Stran ne obstaja</h2>
         <p>Ta spletna stran ne obstaja.</p>
-        <a href="/">Nazaj na domačo stran</a>
+        <Link to="/">Nazaj na domačo stran</Link>
       </div>
     </div>
   );

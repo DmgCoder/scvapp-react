@@ -6,7 +6,7 @@ import LoadingPage from "../LoadingPage";
 
 import "./homePage.css";
 
-const MealsPage = lazy(() => import("../mealsPage/mealsMain"));
+const MealsRoute = lazy(() => import("../../Route/MealsRoute"));
 const SideMenu = lazy(() => import("../../components/SideMenu/sideMenu"));
 const NotFoundPage = lazy(() => import("../404page/404page"));
 const SchoolHomePage = lazy(() => import("../SchoolHomePage"));
@@ -22,7 +22,7 @@ const HomePage = () => {
       <Suspense fallback={<LoadingPage />}>
         <Routes>
           <Route path="/" element={<SchoolHomePage />} />
-          <Route path="/malica" element={<MealsPage />} />
+          <Route path="/malice" element={<MealsRoute />} />
           <Route path="/easistent" element={<EAsistentPage />} />
           <Route path="/arnes-ucilnice" element={<ArnesUcilnice />} />
           <Route path="/prijava" element={<Navigate to={"/"} />} />
