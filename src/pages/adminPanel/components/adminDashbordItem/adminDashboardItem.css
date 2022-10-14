@@ -1,0 +1,27 @@
+.admin-dashboard-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.admin-dashboard-item-icon {
+  width: 150px;
+  height: 150px;
+  background-color: var(--light-theme-secondary);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-dashboard-item-icon > svg {
+  width: 90%;
+  height: 90%;
+}
+
+.admin-dashboard-item.dark-theme .admin-dashboard-item-icon {
+  background-color: var(--dark-theme-secondary);
+}
