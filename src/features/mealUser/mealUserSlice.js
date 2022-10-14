@@ -13,13 +13,17 @@ export const mealUserSlice = createSlice({
     setMealUser(state, action) {
       state.user = action.payload;
     },
+    clearMealUser(state) {
+      state.user = null;
+    },
     setMealLoading(state, action) {
       state.loading = action.payload;
     },
   },
 });
 
-export const { setMealUser, setMealLoading } = mealUserSlice.actions;
+export const { setMealUser, setMealLoading, clearMealUser } =
+  mealUserSlice.actions;
 
 export const selectMealUser = (state) => state.mealUser.user;
 export const selectMealLoading = (state) => state.mealUser.loading;

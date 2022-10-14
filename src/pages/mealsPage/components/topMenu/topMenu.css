@@ -31,6 +31,7 @@
 }
 
 .user-profile-meals {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -46,6 +47,24 @@
   font-weight: bold;
 }
 
+.user-profile-meals-button {
+  background-color: transparent;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  --user-profile-meals-button-rotation: 0deg;
+}
+
+.user-profile-meals-button:hover {
+  animation: shake 0.3s;
+}
+
+.user-profile-meals-button > svg {
+  width: 36px;
+  height: auto;
+}
+
 @media screen and (max-width: 768px) {
   .top-menu-meals {
     flex-direction: column;
@@ -54,5 +73,23 @@
   }
   .user-info-meals {
     width: 100%;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(var(--user-profile-meals-button-rotation));
+  }
+  25% {
+    transform: rotate(calc(var(--user-profile-meals-button-rotation) + 30deg));
+  }
+  50% {
+    transform: rotate(var(--user-profile-meals-button-rotation));
+  }
+  75% {
+    transform: rotate(calc(var(--user-profile-meals-button-rotation) - 30deg));
+  }
+  100% {
+    transform: rotate(var(--user-profile-meals-button-rotation));
   }
 }

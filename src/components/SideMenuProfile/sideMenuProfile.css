@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  cursor: pointer;
   border-top: 2px solid #e5e5e5;
   padding-top: 10px;
 }
@@ -37,4 +36,5 @@
 
 .side-menu-profile-logout {
   color: #c10101;
+  cursor: pointer;
 }
