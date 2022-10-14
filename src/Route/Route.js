@@ -4,6 +4,7 @@ import LoadingPage from "../pages/LoadingPage";
 
 const LoginRoute = lazy(() => import("./LoginRoute"));
 const AboutPage = lazy(() => import("../pages/aboutPage/aboutPage"));
+const AdminRoute = lazy(() => import("./AdminRoute"));
 const ThemePage = lazy(() => import("../pages/ThemePage"));
 const AlertUI = lazy(() => import("../components/AlertUI"));
 
@@ -14,6 +15,7 @@ const RoutePage = () => {
       <Suspense fallback={<LoadingPage />}>
         <Routes>
           <Route path="/o-nas" element={<AboutPage />} />
+          <Route path="/admin/*" element={<AdminRoute />} />
           <Route path="*" element={<LoginRoute />} />
         </Routes>
         <AlertUI />
