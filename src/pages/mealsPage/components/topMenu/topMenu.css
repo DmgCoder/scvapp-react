@@ -57,7 +57,7 @@
 }
 
 .user-profile-meals-button:hover {
-  animation: shake 0.3s;
+  animation: shake-dropdown-btn 0.3s;
 }
 
 .user-profile-meals-button > svg {
@@ -76,7 +76,7 @@
   }
 }
 
-@keyframes shake {
+@keyframes shake-dropdown-btn {
   0% {
     transform: rotate(var(--user-profile-meals-button-rotation));
   }

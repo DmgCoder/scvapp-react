@@ -11,7 +11,12 @@ const DateSelectArrow = ({ onClick, toLeft, disabled }) => {
     <button
       onClick={onClick}
       className={`date-select-arrow-meals ${theme}`}
-      style={toLeft && { transform: "rotate(180deg)" }}
+      style={
+        toLeft && {
+          transform: "rotate(180deg)",
+          "--date-select-arrow-meal-roation": "180deg",
+        }
+      }
       disabled={disabled ?? false}
     >
       <svg
