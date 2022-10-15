@@ -23,7 +23,7 @@ const AdminScheduleEdit = () => {
   return (
     <div className={`admin-schedule-edit ${theme}`}>
       <div className="admin-schedule-edit-select-school">
-        <p>Izbrana šola</p>
+        <p>Izbrana šola:</p>
         <SelectSchoolDropdown
           schools={schools}
           selectedSchool={selectedSchool}
