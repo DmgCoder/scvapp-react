@@ -24,7 +24,7 @@
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-fetch-hook": "^1.9.5",
-    "react-router": "^6.3.0",
+    "react-router": "^6.4.1",
     "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.5",
     "requires": "^1.0.2",
