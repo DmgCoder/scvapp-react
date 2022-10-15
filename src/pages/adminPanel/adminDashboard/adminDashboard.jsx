@@ -7,6 +7,7 @@ import "./adminDashboard.css";
 
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const AdminDashboard = () => {
   const theme = useSelector(selectTheme);
@@ -23,23 +24,9 @@ const AdminDashboard = () => {
         <AdminDashboardItem
           icon={<CalendarMonthIcon />}
           text="Urejanje urnikov"
+          href="edit-schedule"
         />
-        <AdminDashboardItem
-          icon={<CalendarMonthIcon />}
-          text="Urejanje urnikov"
-        />
-        <AdminDashboardItem
-          icon={<CalendarMonthIcon />}
-          text="Urejanje urnikov"
-        />
-        <AdminDashboardItem
-          icon={<CalendarMonthIcon />}
-          text="Urejanje urnikov"
-        />
-        <AdminDashboardItem
-          icon={<CalendarMonthIcon />}
-          text="Urejanje urnikov"
-        />
+        <AdminDashboardItem icon={<ExitToAppIcon />} text="Izhod" to="/" />
       </div>
     </div>
   );

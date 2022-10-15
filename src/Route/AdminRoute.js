@@ -20,7 +20,7 @@ const AdminRoute = () => {
       <Suspense fallback={<LoadingPage />}>
         <Routes path="admin">
           <Route path="/" element={<AdminDashboard />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound location={"/admin"} />} />
         </Routes>
       </Suspense>
     </div>
