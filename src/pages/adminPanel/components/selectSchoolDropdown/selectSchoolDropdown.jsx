@@ -38,6 +38,7 @@ const SelectSchoolDropdown = ({ schools, selectedSchool, selectSchool }) => {
       <div className="admin-select-school-dropdown-main">
         {Object.keys(schools)
           .filter((school) => school !== selectedSchool)
+          .sort((a, b) => (a > b ? 1 : -1))
           .map((school, i) => (
             <p
               key={i}

@@ -1,0 +1,73 @@
+.admin-edit-url {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-edit-url > a {
+  font-size: 22px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: currentColor;
+}
+
+.admin-edit-url > button {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+}
+
+.admin-edit-url-editor {
+  position: absolute;
+  top: calc(100% + 15px);
+  left: 0;
+  background-color: var(--light-theme-secondary);
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.admin-edit-url-editor.dark-theme {
+  background-color: var(--dark-theme-secondary);
+}
+
+.admin-edit-url-editor > textarea {
+  font-size: 15px;
+  color: currentColor;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.admin-edit-url-editor.dark-theme > textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.admin-edit-url-editor-buttons {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  justify-content: flex-end;
+}
+
+.admin-edit-url-editor-buttons > button {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  width: 30px;
+}
+
+.admin-edit-url-editor-buttons > button:hover {
+  scale: 1.3;
+}
+
+.admin-edit-url-editor-buttons > button > svg {
+  width: 100%;
+  height: 100%;
+}
