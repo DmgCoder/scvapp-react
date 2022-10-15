@@ -8,6 +8,9 @@ const AdminDashboard = React.lazy(() =>
   import("../pages/adminPanel/adminDashboard/adminDashboard")
 );
 const NotFound = React.lazy(() => import("../pages/404page/404page"));
+const AdminScheduleEdit = React.lazy(() =>
+  import("../pages/adminPanel/adminScheduleEdit/adminScheduleEdit")
+);
 
 const AdminRoute = () => {
   const user = useSelector(selectUser);
@@ -20,6 +23,7 @@ const AdminRoute = () => {
       <Suspense fallback={<LoadingPage />}>
         <Routes path="admin">
           <Route path="/" element={<AdminDashboard />} />
+          <Route path="schedule-edit" element={<AdminScheduleEdit />} />
           <Route path="*" element={<NotFound location={"/admin"} />} />
         </Routes>
       </Suspense>

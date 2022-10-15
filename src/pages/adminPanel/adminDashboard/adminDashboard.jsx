@@ -24,7 +24,7 @@ const AdminDashboard = () => {
         <AdminDashboardItem
           icon={<CalendarMonthIcon />}
           text="Urejanje urnikov"
-          href="edit-schedule"
+          href="schedule-edit"
         />
         <AdminDashboardItem icon={<ExitToAppIcon />} text="Izhod" to="/" />
       </div>
