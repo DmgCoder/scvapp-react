@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .admin-schedule-edit-select-school {
@@ -18,9 +19,14 @@
   font-weight: bold;
 }
 
-.admin-schedule-edit-link{
+.admin-schedule-edit-link {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
+}
+
+.admin-schedule-edit-link > p {
+  font-size: 22px;
+  font-weight: bold;
 }

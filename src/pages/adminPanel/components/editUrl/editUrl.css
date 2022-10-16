@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+  z-index: 10;
 }
 
 .admin-edit-url-editor.dark-theme {
