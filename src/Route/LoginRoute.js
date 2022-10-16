@@ -8,6 +8,8 @@ import {
 } from "../features/user/userSlice";
 import getUserData from "../features/user/userGetData";
 import { Route, Routes } from "react-router";
+import { useSearchParams } from "react-router-dom";
+import { setAlert } from "../features/alert/alertSlice";
 
 const LoadingPage = lazy(() => import("../pages/LoadingPage"));
 const LoginPage = lazy(() => import("../pages/loginPage/loginPage"));
@@ -16,6 +18,7 @@ const AdminRoute = lazy(() => import("./AdminRoute"));
 
 const LoginRoute = () => {
   const user = useSelector(selectUser);
+  const [searchParams, setSearchParams] = useSearchParams();
   const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
@@ -27,6 +30,24 @@ const LoginRoute = () => {
     }
     loadData();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      const successParameter = searchParams.get("success");
+      if (successParameter === "signin") {
+        searchParams.delete("success");
+        setSearchParams(searchParams);
+        dispatch(
+          setAlert({
+            type: "success",
+            message: "Uspešno ste se prijavili v ŠCVApp",
+            title: "Uspešna prijava",
+            show: true,
+          })
+        );
+      }
+    }
+  }, [user, dispatch]);
 
   return (
     <>
