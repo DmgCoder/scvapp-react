@@ -7,10 +7,12 @@ import {
   setLoading,
 } from "../features/user/userSlice";
 import getUserData from "../features/user/userGetData";
+import { Route, Routes } from "react-router";
 
 const LoadingPage = lazy(() => import("../pages/LoadingPage"));
 const LoginPage = lazy(() => import("../pages/loginPage/loginPage"));
 const HomePage = lazy(() => import("../pages/homePage/homePage"));
+const AdminRoute = lazy(() => import("./AdminRoute"));
 
 const LoginRoute = () => {
   const user = useSelector(selectUser);
@@ -27,7 +29,18 @@ const LoginRoute = () => {
   }, [dispatch]);
 
   return (
-    <>{loading ? <LoadingPage /> : !user ? <LoginPage /> : <HomePage />} </>
+    <>
+      {loading ? (
+        <LoadingPage />
+      ) : !user ? (
+        <LoginPage />
+      ) : (
+        <Routes path="/">
+          <Route path="admin/*" element={<AdminRoute />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      )}{" "}
+    </>
   );
 };
 
