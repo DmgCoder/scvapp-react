@@ -24,7 +24,7 @@ const LoginRoute = () => {
       dispatch(setLoading(false));
     }
     loadData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>{loading ? <LoadingPage /> : !user ? <LoginPage /> : <HomePage />} </>

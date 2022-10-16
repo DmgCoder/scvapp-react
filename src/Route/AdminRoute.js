@@ -15,7 +15,7 @@ const AdminScheduleEdit = React.lazy(() =>
 const AdminRoute = () => {
   const user = useSelector(selectUser);
   const loading = useSelector(selectLoading);
-  if (user?.isAdmin !== true && loading === false) {
+  if (user?.isAdmin !== true) {
     return <Navigate to="/" />;
   }
   return (

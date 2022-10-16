@@ -17,3 +17,10 @@
   font-size: 22px;
   font-weight: bold;
 }
+
+.admin-schedule-edit-link{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
