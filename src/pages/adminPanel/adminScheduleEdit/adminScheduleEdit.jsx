@@ -56,7 +56,7 @@ const AdminScheduleEdit = () => {
         <p>Univerzalni link:</p>
         <EditUrl url={url} changeUrl={changeUrl} />
       </div>
-      <EditClassesIDs />
+      <EditClassesIDs classes={selectedSchool?.classes} url={url} />
     </div>
   );
 };

@@ -3,11 +3,14 @@
   display: flex;
   padding: 5px 0px;
   align-items: center;
+  border-bottom: 1px solid currentColor;
+  padding: 5px 20px;
 }
 
 .admin-edit-class-id > p {
   flex: 1;
   text-align: center;
+  text-decoration: none;
 }
 
 .admin-edit-class-id-editor {
@@ -15,6 +18,12 @@
   display: flex;
   justify-content: center;
   position: relative;
+}
+
+.admin-edit-class-id-editor > a {
+  text-decoration: none;
+  color: currentColor;
+  cursor: pointer;
 }
 
 .admin-edit-class-id-editor > input {

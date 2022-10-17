@@ -1,9 +1,12 @@
 .admin-edit-classes-ids {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 300px;
   background-color: var(--light-theme-secondary);
+  border-radius: 10px;
+  padding: 10px 0px;
 }
 
 .admin-edit-classes-ids.dark-theme {
@@ -15,9 +18,32 @@
   display: flex;
   align-items: center;
   padding: 5px 0px;
+  border-bottom: 1px solid #444444;
+  padding: 5px 20px;
 }
 
 .admin-edit-classes-ids-title > p {
   flex: 1;
   text-align: center;
+}
+
+.admin-edit-classes-ids-navigator {
+  padding-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+
+.admin-edit-classes-ids-navigator > p {
+  font-size: 14px;
+}
+
+.admin-edit-classes-ids-navigator > button {
+  background: none;
+  border: none;
+  color: currentColor;
+  height: 100%;
+  cursor: pointer;
 }
