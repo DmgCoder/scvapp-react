@@ -5,6 +5,7 @@ import SelectSchoolDropdown from "../components/selectSchoolDropdown/selectSchoo
 import EditUrl from "../components/editUrl/editUrl";
 
 import "./adminScheduleEdit.css";
+import EditClassesIDs from "../components/editClassesIDs/editClassesIDs";
 
 const AdminScheduleEdit = () => {
   const theme = useSelector(selectTheme);
@@ -40,6 +41,7 @@ const AdminScheduleEdit = () => {
         <p>Univerzalni link:</p>
         <EditUrl url={url} changeUrl={changeUrl} />
       </div>
+      <EditClassesIDs />
     </div>
   );
 };

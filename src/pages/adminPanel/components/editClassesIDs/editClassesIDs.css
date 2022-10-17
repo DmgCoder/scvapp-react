@@ -1,0 +1,23 @@
+.admin-edit-classes-ids {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  background-color: var(--light-theme-secondary);
+}
+
+.admin-edit-classes-ids.dark-theme {
+  background-color: var(--dark-theme-secondary);
+}
+
+.admin-edit-classes-ids-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+}
+
+.admin-edit-classes-ids-title > p {
+  flex: 1;
+  text-align: center;
+}

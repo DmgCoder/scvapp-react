@@ -23,7 +23,7 @@
 .admin-edit-url-editor {
   position: absolute;
   top: calc(100% + 15px);
-  left: 0;
+  right: 0;
   background-color: var(--light-theme-secondary);
   padding: 20px;
   border-radius: 8px;

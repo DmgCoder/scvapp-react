@@ -1,0 +1,46 @@
+.admin-edit-class-id {
+  width: 100%;
+  display: flex;
+  padding: 5px 0px;
+  align-items: center;
+}
+
+.admin-edit-class-id > p {
+  flex: 1;
+  text-align: center;
+}
+
+.admin-edit-class-id-editor {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.admin-edit-class-id-editor > input {
+  width: 80%;
+  height: 100%;
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+  color: currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.admin-edit-class-id-editor > button {
+  background: none;
+  border: none;
+  color: currentColor;
+  height: 100%;
+  cursor: pointer;
+}
+
+.admin-edit-class-id-editor-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.admin-edit-class-id-editor > button > svg {
+  height: 100%;
+}
