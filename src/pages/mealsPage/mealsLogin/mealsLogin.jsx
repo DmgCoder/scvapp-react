@@ -71,7 +71,7 @@ const MealsLogin = () => {
       dispatch(
         setAlert({
           type: "error",
-          message: err.response.data.errors ?? "Prišlo je do napake.",
+          message: err?.response?.data?.errors ?? "Prišlo je do napake.",
           title: "Napaka!",
           show: true,
         })
@@ -123,7 +123,7 @@ const MealsLogin = () => {
           Prijavi se
         </button>
         <a
-          href="https://malice.scv.si"
+          href="https://malice.scv.si/students/password/new"
           className="meals-login-link"
           target={"_blank"}
           rel="noreferrer"
@@ -131,7 +131,7 @@ const MealsLogin = () => {
           Pozabljeno geslo?
         </a>
         <a
-          href="https://malice.scv.si"
+          href="https://malice.scv.si/instructions"
           className="meals-login-link"
           target={"_blank"}
           rel="noreferrer"

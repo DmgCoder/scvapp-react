@@ -12,7 +12,7 @@
   top: 50%;
   left: 50%;
   min-height: 450px;
-  min-width: 200px;
+  min-width: 250px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
 }
 
 .meals-login-form {
-  width: 250px;
+  width: 325px;
   display: flex;
   flex-direction: column;
   gap: 20px;
