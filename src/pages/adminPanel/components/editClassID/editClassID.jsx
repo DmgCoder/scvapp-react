@@ -33,7 +33,11 @@ const EditClassID = ({ id, name, setId, url }) => {
             {newID}
           </a>
         ) : (
-          <input type="text" value={newID} />
+          <input
+            type="text"
+            value={newID}
+            onChange={(e) => setNewID(e.target.value)}
+          />
         )}
         {!editMode && (
           <button

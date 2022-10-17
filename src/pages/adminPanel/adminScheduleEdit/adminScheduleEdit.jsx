@@ -1,18 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectTheme } from "../../../features/theme/themeSlice";
+import { setAlert } from "../../../features/alert/alertSlice";
 import SelectSchoolDropdown from "../components/selectSchoolDropdown/selectSchoolDropdown";
 import EditUrl from "../components/editUrl/editUrl";
 
 import "./adminScheduleEdit.css";
 import EditClassesIDs from "../components/editClassesIDs/editClassesIDs";
-import { GetScheduleData } from "./scheduleEdit";
+import { GetScheduleData, ChangeScheduleURL } from "./scheduleEdit";
 
 const AdminScheduleEdit = () => {
   const theme = useSelector(selectTheme);
   const [selectedSchool, setSelectedSchool] = React.useState(null);
   const [url, setUrl] = React.useState("");
   const [allData, setAllData] = React.useState(null);
+  const dispatch = useDispatch();
+
   const selectSchool = (e) => {
     const schoolID = e.target.id;
     const school = allData.find((school) => school.id === schoolID);
@@ -29,8 +32,32 @@ const AdminScheduleEdit = () => {
     GIM: "GIM",
   };
 
-  const changeUrl = (url) => {
-    setUrl(url);
+  const changeUrl = async (url) => {
+    if (selectedSchool) {
+      setUrl(url);
+      const data = await ChangeScheduleURL(selectedSchool.id, url);
+      if (data.status === 200) {
+        dispatch(
+          setAlert({
+            type: "success",
+            message: "Povezava je bila uspešno spremenjena.",
+            title: "Uspešno",
+            show: true,
+          })
+        );
+      } else {
+        const message =
+          data.data.message || "Prišlo je do napake. Poskusite znova.";
+        dispatch(
+          setAlert({
+            type: "error",
+            message: message,
+            title: "Napaka",
+            show: true,
+          })
+        );
+      }
+    }
   };
 
   const handleLoad = async () => {

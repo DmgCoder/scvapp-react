@@ -36,10 +36,9 @@ const EditUrl = ({ url, changeUrl }) => {
           <textarea
             rows={5}
             cols={30}
+            value={newUrl}
             onChange={(e) => setNewUrl(e.target.value)}
-          >
-            {newUrl}
-          </textarea>
+          ></textarea>
           <div className="admin-edit-url-editor-buttons">
             <button onClick={confirmEdit}>
               <CheckIcon />

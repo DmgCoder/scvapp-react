@@ -14,4 +14,21 @@ const GetScheduleData = async () => {
   }
 };
 
-export { GetScheduleData };
+const ChangeScheduleURL = async (schoolID, url) => {
+  try {
+    const res = await axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/scheduleSchools/${schoolID}`,
+      {
+        uniLink: url,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    return res;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export { GetScheduleData, ChangeScheduleURL };
