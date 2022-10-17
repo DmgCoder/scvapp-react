@@ -31,4 +31,22 @@ const ChangeScheduleURL = async (schoolID, url) => {
   }
 };
 
-export { GetScheduleData, ChangeScheduleURL };
+const ChangeClassID = async (schoolID, classID, className) => {
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/scheduleSchools/${schoolID}`,
+      {
+        classId: classID,
+        className: className,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    return res;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export { GetScheduleData, ChangeScheduleURL, ChangeClassID };

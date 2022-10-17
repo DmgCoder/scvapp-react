@@ -8,7 +8,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import EditClassID from "../editClassID/editClassID";
 
-const EditClassesIDs = ({ classes, url }) => {
+const EditClassesIDs = ({ classes, url, schoolID }) => {
   const theme = useSelector(selectTheme);
   const [page, setPage] = React.useState(1);
   const [classOnPage, setClassOnPage] = React.useState(null);
@@ -45,7 +45,13 @@ const EditClassesIDs = ({ classes, url }) => {
       </div>
       {classOnPage &&
         Object.keys(classOnPage).map((key) => (
-          <EditClassID key={key} name={key} id={classOnPage[key]} url={url} />
+          <EditClassID
+            key={key}
+            name={key}
+            id={classOnPage[key]}
+            url={url}
+            schoolID={schoolID}
+          />
         ))}
       <div className="admin-edit-classes-ids-navigator">
         <p>{page}. letniki</p>
