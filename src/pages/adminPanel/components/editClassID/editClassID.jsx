@@ -6,18 +6,25 @@ import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 
-const EditClassID = () => {
+const EditClassID = ({ id, name, setId }) => {
   const [editMode, setEditMode] = React.useState(false);
+  const [newID, setNewID] = React.useState(id);
+
+  const handleEdit = () => {
+    setEditMode(false);
+    setId(newID);
+  };
 
   const discardChanges = () => {
     setEditMode(false);
+    setNewID(id);
   };
 
   return (
     <div className="admin-edit-class-id">
-      <p>1.TRB</p>
+      <p>{name}</p>
       <div className="admin-edit-class-id-editor">
-        {!editMode ? <p>223456</p> : <input type="text" value="223456" />}
+        {!editMode ? <p>{newID}</p> : <input type="text" value={newID} />}
         {!editMode && (
           <button
             className="admin-edit-class-id-editor-btn"
@@ -27,7 +34,7 @@ const EditClassID = () => {
           </button>
         )}
         {editMode && (
-          <button>
+          <button onClick={handleEdit}>
             <CheckIcon />
           </button>
         )}

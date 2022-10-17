@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 
@@ -20,6 +20,9 @@ const EditUrl = ({ url, changeUrl }) => {
     setEditMode(false);
     setNewUrl(url);
   };
+  useEffect(() => {
+    setNewUrl(url);
+  }, [url]);
   return (
     <div className="admin-edit-url">
       <a href={url} target="_blank" rel="noreferrer">

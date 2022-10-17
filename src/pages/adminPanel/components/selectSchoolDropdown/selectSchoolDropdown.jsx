@@ -22,7 +22,7 @@ const SelectSchoolDropdown = ({ schools, selectedSchool, selectSchool }) => {
       }`}
     >
       <p className="admin-select-school-dropdown-text">
-        {schools[selectedSchool] ?? "---"}
+        {schools[selectedSchool ?? ""] ?? "---"}
       </p>
       <button
         className="admin-selected-school-dropdown-btn"
