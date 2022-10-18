@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { ChangeClassID } from "../../adminScheduleEdit/scheduleEdit";
-import { setAlert } from "../../../../features/alert/alertSlice";
+import {
+  ChangeClassID,
+  DeleteClassID,
+} from "../../adminScheduleEdit/scheduleEdit";
+import { createAlert } from "../../../../features/alert/alertSlice";
 
 import "./editClassID.css";
 
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const EditClassID = ({ id, name, url, schoolID }) => {
   const [editMode, setEditMode] = React.useState(false);
@@ -16,30 +20,32 @@ const EditClassID = ({ id, name, url, schoolID }) => {
 
   const handleEdit = async () => {
     setEditMode(false);
-    if (newID === id) return;
+    // if (newID === id) return;
 
     const data = await ChangeClassID(schoolID, newID, name);
-    if (data.status === 201) {
-      dispatch(
-        setAlert({
-          type: "success",
-          message: "ID je bil uspešno spremenjen.",
-          title: "Uspešno",
-          show: true,
-        })
-      );
-    } else {
-      const message =
-        data.data.message || "Prišlo je do napake. Poskusite znova.";
-      dispatch(
-        setAlert({
-          type: "error",
-          message: message,
-          title: "Napaka",
-          show: true,
-        })
-      );
-    }
+    dispatch(
+      createAlert({
+        data: data,
+        successStatusCode: 201,
+        successMessage: "Uspešno ste spremenili ID oddelka",
+      })
+    );
+  };
+
+  const handleDelete = async () => {
+    //add confirmation
+    const confirm = window.confirm(
+      `Ali ste prepričani, da želite izbrisati ta razred(${name})?`
+    );
+    if (!confirm) return;
+    const data = await DeleteClassID(schoolID, name);
+    dispatch(
+      createAlert({
+        data: data,
+        successStatusCode: 200,
+        successMessage: "Uspešno ste izbrisali razred",
+      })
+    );
   };
 
   const discardChanges = () => {
@@ -67,12 +73,14 @@ const EditClassID = ({ id, name, url, schoolID }) => {
           />
         )}
         {!editMode && (
-          <button
-            className="admin-edit-class-id-editor-btn"
-            onClick={() => setEditMode(true)}
-          >
-            <EditIcon />
-          </button>
+          <div className="admin-edit-class-id-editor-btns">
+            <button onClick={() => setEditMode(true)}>
+              <EditIcon />
+            </button>
+            <button onClick={handleDelete}>
+              <DeleteIcon />
+            </button>
+          </div>
         )}
         {editMode && (
           <button onClick={handleEdit}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTheme } from "../../../features/theme/themeSlice";
-import { setAlert } from "../../../features/alert/alertSlice";
+import { createAlert } from "../../../features/alert/alertSlice";
 import SelectSchoolDropdown from "../components/selectSchoolDropdown/selectSchoolDropdown";
 import EditUrl from "../components/editUrl/editUrl";
 
@@ -36,27 +36,13 @@ const AdminScheduleEdit = () => {
     if (selectedSchool) {
       setUrl(url);
       const data = await ChangeScheduleURL(selectedSchool.id, url);
-      if (data.status === 200) {
-        dispatch(
-          setAlert({
-            type: "success",
-            message: "Povezava je bila uspešno spremenjena.",
-            title: "Uspešno",
-            show: true,
-          })
-        );
-      } else {
-        const message =
-          data.data.message || "Prišlo je do napake. Poskusite znova.";
-        dispatch(
-          setAlert({
-            type: "error",
-            message: message,
-            title: "Napaka",
-            show: true,
-          })
-        );
-      }
+      dispatch(
+        createAlert({
+          data: data,
+          successStatusCode: 200,
+          successMessage: "Povezava je bila uspešno spremenjena.",
+        })
+      );
     }
   };
 

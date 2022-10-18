@@ -49,4 +49,18 @@ const ChangeClassID = async (schoolID, classID, className) => {
   }
 };
 
-export { GetScheduleData, ChangeScheduleURL, ChangeClassID };
+const DeleteClassID = async (schoolID, className) => {
+  try {
+    const res = await axios.delete(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/scheduleSchools/${schoolID}/${className}`,
+      {
+        withCredentials: true,
+      }
+    );
+    return res;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export { GetScheduleData, ChangeScheduleURL, ChangeClassID, DeleteClassID };
