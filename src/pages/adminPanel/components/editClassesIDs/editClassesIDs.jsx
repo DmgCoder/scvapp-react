@@ -7,6 +7,7 @@ import "./editClassesIDs.css";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import EditClassID from "../editClassID/editClassID";
+import AddClass from "../addClass/addClass";
 
 const EditClassesIDs = ({ classes, url, schoolID }) => {
   const theme = useSelector(selectTheme);
@@ -39,6 +40,7 @@ const EditClassesIDs = ({ classes, url, schoolID }) => {
 
   return (
     <div className={`admin-edit-classes-ids ${theme}`}>
+      <AddClass />
       <div className="admin-edit-classes-ids-title">
         <p>Razred</p>
         <p>ID</p>

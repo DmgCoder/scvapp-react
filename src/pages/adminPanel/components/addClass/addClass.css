@@ -1,0 +1,53 @@
+.admin-edit-schedule-add-class {
+  position: absolute;
+  left: 10px;
+}
+
+.admin-edit-schedule-add-class > button {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  width: 20px;
+}
+
+.admin-edit-schedule-add-class > button > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.admin-edit-schedule-add-class-editor {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-theme-secondary);
+  z-index: 101;
+  width: 190px;
+  gap: 10px;
+  padding: 10px 10px;
+}
+
+.admin-edit-schedule-add-class-editor.dark-theme {
+  background-color: var(--dark-theme-secondary);
+}
+
+.admin-edit-schedule-add-class-editor > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.admin-edit-schedule-add-class-editor > div > button {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.admin-edit-schedule-add-class-editor > div > button:hover {
+  scale: 1.1;
+}
