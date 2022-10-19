@@ -6,6 +6,9 @@ const GetScheduleData = async () => {
       `${process.env.REACT_APP_BACKEND_URL}/admin/scheduleSchools`,
       {
         withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
     return res.data;
@@ -23,9 +26,15 @@ const ChangeScheduleURL = async (schoolID, url) => {
       },
       {
         withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
-    return res;
+    return {
+      status: res.status,
+      data: res.data,
+    };
   } catch (err) {
     return err.response;
   }
@@ -41,9 +50,15 @@ const ChangeClassID = async (schoolID, classID, className) => {
       },
       {
         withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
-    return res;
+    return {
+      status: res.status,
+      data: res.data,
+    };
   } catch (err) {
     return err.response;
   }
@@ -55,12 +70,48 @@ const DeleteClassID = async (schoolID, className) => {
       `${process.env.REACT_APP_BACKEND_URL}/admin/scheduleSchools/${schoolID}/${className}`,
       {
         withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
-    return res;
+    return {
+      status: res.status,
+      data: res.data,
+    };
   } catch (err) {
     return err.response;
   }
 };
 
-export { GetScheduleData, ChangeScheduleURL, ChangeClassID, DeleteClassID };
+const CreateClass = async (schoolID, className, classID) => {
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/scheduleSchools/${schoolID}`,
+      {
+        className: className,
+        classId: classID,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return {
+      status: res.status,
+      data: res.data,
+    };
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export {
+  GetScheduleData,
+  ChangeScheduleURL,
+  ChangeClassID,
+  DeleteClassID,
+  CreateClass,
+};

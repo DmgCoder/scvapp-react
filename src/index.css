@@ -23,6 +23,8 @@ code {
   overflow: hidden;
   --dark-theme-secondary: #2f2e2e;
   --light-theme-secondary: #dfdada;
+  --dark-theme-third: #3c3b3b;
+  --light-theme-third: #e8e0e0;
 }
 
 .dark-theme {

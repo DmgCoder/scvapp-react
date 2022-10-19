@@ -22,15 +22,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--light-theme-secondary);
+  background-color: var(--light-theme-third);
   z-index: 101;
   width: 190px;
   gap: 10px;
-  padding: 10px 10px;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .admin-edit-schedule-add-class-editor.dark-theme {
-  background-color: var(--dark-theme-secondary);
+  background-color: var(--dark-theme-third);
 }
 
 .admin-edit-schedule-add-class-editor > div {

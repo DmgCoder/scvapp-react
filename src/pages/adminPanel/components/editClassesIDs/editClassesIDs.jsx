@@ -40,7 +40,7 @@ const EditClassesIDs = ({ classes, url, schoolID }) => {
 
   return (
     <div className={`admin-edit-classes-ids ${theme}`}>
-      <AddClass />
+      <AddClass schoolID={schoolID} />
       <div className="admin-edit-classes-ids-title">
         <p>Razred</p>
         <p>ID</p>
