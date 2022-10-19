@@ -10,7 +10,7 @@ import "./addClass.css";
 
 import AddIcon from "@mui/icons-material/Add";
 
-const AddClass = ({ schoolID }) => {
+const AddClass = ({ schoolID, reloadData }) => {
   const theme = useSelector(selectTheme);
   const [showEdit, setShowEdit] = React.useState(false);
   const [className, setClassName] = React.useState("");
@@ -35,6 +35,7 @@ const AddClass = ({ schoolID }) => {
     );
     setClassName("");
     setClassID("");
+    reloadData();
   };
 
   return (

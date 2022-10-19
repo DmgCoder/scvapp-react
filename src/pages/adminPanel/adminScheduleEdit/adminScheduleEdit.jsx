@@ -43,6 +43,7 @@ const AdminScheduleEdit = () => {
           successMessage: "Povezava je bila uspešno spremenjena.",
         })
       );
+      handleLoad();
     }
   };
 
@@ -54,6 +55,12 @@ const AdminScheduleEdit = () => {
   React.useEffect(() => {
     handleLoad();
   }, []);
+
+  React.useEffect(() => {
+    if (selectedSchool?.id) {
+      selectSchool({ target: { id: selectedSchool.id } });
+    }
+  }, [allData]);
 
   return (
     <div className={`admin-schedule-edit ${theme}`}>
@@ -73,6 +80,7 @@ const AdminScheduleEdit = () => {
         classes={selectedSchool?.classes}
         url={url}
         schoolID={selectedSchool?.id}
+        reloadData={handleLoad}
       />
     </div>
   );

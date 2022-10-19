@@ -13,14 +13,14 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const EditClassID = ({ id, name, url, schoolID }) => {
+const EditClassID = ({ id, name, url, schoolID, reloadData }) => {
   const [editMode, setEditMode] = React.useState(false);
   const [newID, setNewID] = React.useState(id);
   const dispatch = useDispatch();
 
   const handleEdit = async () => {
     setEditMode(false);
-    // if (newID === id) return;
+    if (newID === id) return;
 
     const data = await ChangeClassID(schoolID, newID, name);
     dispatch(
@@ -30,6 +30,7 @@ const EditClassID = ({ id, name, url, schoolID }) => {
         successMessage: "Uspešno ste spremenili ID oddelka",
       })
     );
+    reloadData();
   };
 
   const handleDelete = async () => {
@@ -46,6 +47,7 @@ const EditClassID = ({ id, name, url, schoolID }) => {
         successMessage: "Uspešno ste izbrisali razred",
       })
     );
+    reloadData();
   };
 
   const discardChanges = () => {

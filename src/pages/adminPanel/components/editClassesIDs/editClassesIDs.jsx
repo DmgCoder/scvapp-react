@@ -9,7 +9,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import EditClassID from "../editClassID/editClassID";
 import AddClass from "../addClass/addClass";
 
-const EditClassesIDs = ({ classes, url, schoolID }) => {
+const EditClassesIDs = ({ classes, url, schoolID, reloadData }) => {
   const theme = useSelector(selectTheme);
   const [page, setPage] = React.useState(1);
   const [classOnPage, setClassOnPage] = React.useState(null);
@@ -40,7 +40,7 @@ const EditClassesIDs = ({ classes, url, schoolID }) => {
 
   return (
     <div className={`admin-edit-classes-ids ${theme}`}>
-      <AddClass schoolID={schoolID} />
+      <AddClass schoolID={schoolID} reloadData={reloadData} />
       <div className="admin-edit-classes-ids-title">
         <p>Razred</p>
         <p>ID</p>
@@ -53,6 +53,7 @@ const EditClassesIDs = ({ classes, url, schoolID }) => {
             id={classOnPage[key]}
             url={url}
             schoolID={schoolID}
+            reloadData={reloadData}
           />
         ))}
       <div className="admin-edit-classes-ids-navigator">
