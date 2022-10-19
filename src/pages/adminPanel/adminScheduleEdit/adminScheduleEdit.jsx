@@ -4,10 +4,11 @@ import { selectTheme } from "../../../features/theme/themeSlice";
 import { createAlert } from "../../../features/alert/alertSlice";
 import SelectSchoolDropdown from "../components/selectSchoolDropdown/selectSchoolDropdown";
 import EditUrl from "../components/editUrl/editUrl";
+import { GetScheduleData, ChangeScheduleURL } from "./scheduleEdit";
+import AdminBackBtn from "../components/adminBackBtn";
 
 import "./adminScheduleEdit.css";
 import EditClassesIDs from "../components/editClassesIDs/editClassesIDs";
-import { GetScheduleData, ChangeScheduleURL } from "./scheduleEdit";
 
 const AdminScheduleEdit = () => {
   const theme = useSelector(selectTheme);
@@ -64,6 +65,7 @@ const AdminScheduleEdit = () => {
 
   return (
     <div className={`admin-schedule-edit ${theme}`}>
+      <AdminBackBtn />
       <div className="admin-schedule-edit-select-school">
         <p>Izbrana šola:</p>
         <SelectSchoolDropdown
