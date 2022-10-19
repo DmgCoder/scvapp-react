@@ -1,0 +1,82 @@
+.meal-select-box {
+  background-color: var(--light-theme-secondary);
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  height: 200px;
+  padding: 20px;
+  border-radius: 14px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
+  box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
+}
+
+.meal-select-box.dark-theme {
+  background-color: var(--dark-theme-secondary);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.meal-select-box-side {
+  display: flex;
+  flex-direction: column;
+  /* width: 50%; */
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.meal-select-box-side-left {
+  align-items: flex-start;
+  height: 75%;
+  padding-right: 20px;
+}
+
+.meal-select-box-img {
+  object-fit: contain;
+  height: 45%;
+  max-height: 45%;
+}
+
+.meal-select-box-btn {
+  background-color: #03a1c3;
+  width: 123px;
+  min-height: 40px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.meal-select-box-btn.meal-selected {
+  background-color: #03c316;
+  cursor: auto;
+}
+
+.meal-select-box-side-description {
+  font-size: 13px;
+}
+
+@media screen and (max-width: 520px) {
+  .meal-select-box-side-left {
+    height: 100%;
+  }
+
+  .meal-select-box-btn {
+    font-size: 14px;
+  }
+  .meal-select-box-img {
+    height: auto;
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .meal-select-box-btn {
+    height: auto;
+    width: 70%;
+  }
+}

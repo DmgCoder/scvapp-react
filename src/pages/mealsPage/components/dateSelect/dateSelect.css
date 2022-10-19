@@ -1,0 +1,12 @@
+.date-select-meals {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.date-select-boxes-meals {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

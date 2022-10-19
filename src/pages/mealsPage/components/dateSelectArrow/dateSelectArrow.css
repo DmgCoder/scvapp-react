@@ -1,0 +1,33 @@
+.date-select-arrow-meals {
+  background: none;
+  border: none;
+  cursor: pointer;
+  --date-select-arrow-meal-roation: 0deg;
+}
+
+.date-select-arrow-meals:disabled {
+  cursor: not-allowed;
+  filter: opacity(0.3);
+}
+
+.date-select-arrow-meals:hover:enabled {
+  animation: shake-select-arrow-btn 0.3s;
+}
+
+@keyframes shake-select-arrow-btn {
+  0% {
+    transform: rotate(var(--date-select-arrow-meal-roation));
+  }
+  25% {
+    transform: rotate(calc(var(--date-select-arrow-meal-roation) + 30deg));
+  }
+  50% {
+    transform: rotate(var(--date-select-arrow-meal-roation));
+  }
+  75% {
+    transform: rotate(calc(var(--date-select-arrow-meal-roation) - 30deg));
+  }
+  100% {
+    transform: rotate(var(--date-select-arrow-meal-roation));
+  }
+}

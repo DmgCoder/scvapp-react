@@ -1,0 +1,66 @@
+:root {
+  --side-menu-ligth-color: #f5f5f5;
+  --side-menu-dark-color: #1e1e1e;
+  --width-of-mini-side-menu: 60px;
+}
+
+.side-menu-spacer {
+  height: 100vh;
+  width: var(--width-of-mini-side-menu);
+}
+
+.side-menu {
+  height: 100%;
+  max-width: 250px;
+  min-width: 250px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: var(--side-menu-ligth-color);
+  overflow-y: scroll;
+  transition: all 0.5s ease-in-out;
+  z-index: 100;
+  gap: 40px;
+}
+
+.side-menu.side-menu-closed {
+  max-width: var(--width-of-mini-side-menu);
+  min-width: var(--width-of-mini-side-menu);
+  padding: 0px;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.side-menu.side-menu-mini {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.side-menu.side-menu-mini .side-menu-logo {
+  cursor: pointer;
+}
+
+.side-menu.dark-theme {
+  background-color: var(--side-menu-dark-color);
+}
+
+.side-menu-up {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.side-menu.side-menu-closed .side-menu-up {
+  align-items: center;
+}
+
+.side-menu-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}

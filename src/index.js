@@ -1,8 +1,15 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import store from "./app/store/store";
+import { Provider } from "react-redux";
+import RoutePage from "./Route/Route";
 
 import "./index.css";
-import RoutePage from "./Route";
+
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<RoutePage />);
+root.render(
+  <Provider store={store}>
+    <RoutePage />
+  </Provider>
+);
