@@ -32,6 +32,7 @@ const Dashboard = () => {
           <SelectDoor
             title={"+"}
             color={theme === "dark-theme" ? "#D1D1D1" : "#a3a2a2"}
+            to={"/admin/door-pass/create"}
           />
         </div>
       </div>

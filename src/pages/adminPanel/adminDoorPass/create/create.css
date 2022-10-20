@@ -1,0 +1,33 @@
+.admin-door-pass-create {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.admin-door-pass-create-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--light-theme-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.admin-door-pass-create.dark-theme .admin-door-pass-create-form {
+  background-color: var(--dark-theme-secondary);
+}
+
+.admin-door-pass-create-form-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-door-pass-create-form-title > svg {
+  width: 70px;
+  height: 70px;
+}
