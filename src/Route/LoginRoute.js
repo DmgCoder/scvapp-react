@@ -8,13 +8,13 @@ import {
 } from "../features/user/userSlice";
 import getUserData from "../features/user/userGetData";
 import { Route, Routes } from "react-router";
-import { Router, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { setAlert } from "../features/alert/alertSlice";
 
 const LoadingPage = lazy(() => import("../pages/LoadingPage"));
 const LoginPage = lazy(() => import("../pages/loginPage/loginPage"));
 const HomePage = lazy(() => import("../pages/homePage/homePage"));
-const AdminRoute = lazy(() => import("./AdminRoute"));
+const AdminRoute = lazy(() => import("./admin/AdminRoute"));
 
 const LoginRoute = () => {
   const user = useSelector(selectUser);
