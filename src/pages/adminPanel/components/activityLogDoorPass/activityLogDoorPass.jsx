@@ -9,6 +9,9 @@ const ActivityLogDoorPass = () => {
   return (
     <div className={`admin-activity-log-door-pass ${theme}`}>
       <p>8.53: C502, ID</p>
+      <p>8.53: C502, ID</p>
+      <p>8.53: C502, ID</p>
+      <p>8.53: C502, ID</p>
     </div>
   );
 };

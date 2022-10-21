@@ -15,12 +15,14 @@ const Show = () => {
   const { name_id } = useParams();
   return (
     <div className={`admin-door-pass-show ${theme}`}>
+      
       <div className="admin-door-pass-show-content">
         <div id="right-side">
           <div className="admin-door-pass-show-content-header">
             <MeetingRoomOutlinedIcon />
             <p>C502</p>
           </div>
+          <button>Kopiraj kodo vrat</button>
         </div>
         <div id="left-side">
           <p>Activity log:</p>
