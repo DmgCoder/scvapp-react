@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 import StyledTextField from "../../../../components/StyledTextField";
 import { useNavigate } from "react-router";
@@ -9,12 +9,16 @@ import "./create.css";
 
 import MeetingRoomOutlinedIcon from "@mui/icons-material/MeetingRoomOutlined";
 import SelectForm from "../../components/selectForm/selectForm";
+import CreateDoorPopUp from "../../components/createDoorPopUp/createDoorPopUp";
+import { createAlert } from "../../../../features/alert/alertSlice";
 
 const Create = () => {
   const theme = useSelector(selectTheme);
   const [name, setName] = React.useState("");
   const [minimumAccessLevel, setMinimumAccessLevel] = React.useState({});
+  const [accessCode, setAccessCode] = React.useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const accessLevelOptions = [
     {
@@ -36,15 +40,32 @@ const Create = () => {
   };
 
   const handleCreate = async () => {
-    const data = CreateDoorPass(name, minimumAccessLevel);
+    const data = await CreateDoorPass(name, minimumAccessLevel);
+    if (data.status === 201) {
+      setAccessCode(data.data.access_secret);
+    }
+    dispatch(
+      createAlert({
+        data: data,
+        successMessage: "Vrata so bila uspešno ustvarjena!",
+        successStatusCode: 201,
+      })
+    );
   };
 
   const handleCancel = () => {
+    setAccessCode(null);
+    setName("");
     navigate("/admin/door-pass");
   };
 
   return (
     <div className={`admin-door-pass-create ${theme}`}>
+      <CreateDoorPopUp
+        code={accessCode}
+        setCode={setAccessCode}
+        close={handleCancel}
+      />
       <div className="admin-door-pass-create-form">
         <div className="admin-door-pass-create-form-title">
           <MeetingRoomOutlinedIcon />
