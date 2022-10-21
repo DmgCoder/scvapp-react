@@ -12,8 +12,11 @@
   background-color: var(--light-theme-secondary);
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 50px;
+  border-radius: 18px;
 }
 
 .admin-door-pass-create.dark-theme .admin-door-pass-create-form {
@@ -22,12 +25,35 @@
 
 .admin-door-pass-create-form-title {
   display: flex;
-  justify-content: flex-start;
+  justify-content: start;
   align-items: center;
   gap: 20px;
+  transform: translate(-10px, 0px);
 }
 
 .admin-door-pass-create-form-title > svg {
   width: 70px;
   height: 70px;
+}
+
+.admin-door-pass-create-form-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-door-pass-create-form-button > button {
+  background-color: #2fb72c;
+  padding: 10px 25px;
+  color: black;
+  border: none;
+  font-size: 24px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.admin-door-pass-create.dark-theme
+  .admin-door-pass-create-form-button
+  > button {
+  color: white;
 }
