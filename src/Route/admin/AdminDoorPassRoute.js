@@ -10,6 +10,10 @@ const AdminDoorPassCreate = lazy(() =>
   import("../../pages/adminPanel/adminDoorPass/create/create")
 );
 
+const AdminDoorPassShow = lazy(() =>
+  import("../../pages/adminPanel/adminDoorPass/show/show")
+);
+
 const AdminDoorPassRoute = () => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
@@ -17,6 +21,7 @@ const AdminDoorPassRoute = () => {
         <Routes path="/door-pass">
           <Route path="/" element={<AdminDoorPassDashboard />} />
           <Route path="/create" element={<AdminDoorPassCreate />} />
+          <Route path="/show/:name_id" element={<AdminDoorPassShow />} />
         </Routes>
       </Suspense>
     </div>

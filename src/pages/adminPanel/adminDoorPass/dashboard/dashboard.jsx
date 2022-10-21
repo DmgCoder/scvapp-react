@@ -27,7 +27,11 @@ const Dashboard = () => {
         <p>Vrata:</p>
         <div className="admin-door-pass-dashboard-menu-doors">
           {doorPasses.map((doorPass) => (
-            <SelectDoor key={doorPass.id} title={doorPass.name_id} />
+            <SelectDoor
+              key={doorPass.id}
+              title={doorPass.name_id}
+              to={`/admin/door-pass/show/${doorPass.name_id}`}
+            />
           ))}
           <SelectDoor
             title={"+"}

@@ -1,0 +1,7 @@
+.admin-activity-log-door-pass {
+  background-color: var(--light-theme-third);
+}
+
+.admin-activity-log-door-pass.dark-theme {
+  background-color: var(--dark-theme-third);
+}
