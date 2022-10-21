@@ -1,6 +1,6 @@
 .admin-select-form {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-self: flex-start;
   gap: 20px;
 }

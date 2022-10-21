@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 import StyledTextField from "../../../../components/StyledTextField";
+import { useNavigate } from "react-router";
+import { CreateDoorPass } from "../adminDoorPassAPI";
 
 import "./create.css";
 
@@ -12,6 +14,7 @@ const Create = () => {
   const theme = useSelector(selectTheme);
   const [name, setName] = React.useState("");
   const [minimumAccessLevel, setMinimumAccessLevel] = React.useState({});
+  const navigate = useNavigate();
 
   const accessLevelOptions = [
     {
@@ -30,6 +33,14 @@ const Create = () => {
 
   const handleAccessLevelChange = (option) => {
     setMinimumAccessLevel(option.id);
+  };
+
+  const handleCreate = async () => {
+    const data = CreateDoorPass(name, minimumAccessLevel);
+  };
+
+  const handleCancel = () => {
+    navigate("/admin/door-pass");
   };
 
   return (
@@ -55,7 +66,12 @@ const Create = () => {
           onChange={handleAccessLevelChange}
         />
         <div className="admin-door-pass-create-form-button">
-          <button>Ustvari</button>
+          <button onClick={handleCancel} id="cancel">
+            Prekliči
+          </button>
+          <button onClick={handleCreate} id="create">
+            Ustvari
+          </button>
         </div>
       </div>
     </div>

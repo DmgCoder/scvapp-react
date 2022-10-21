@@ -14,4 +14,25 @@ const GetAllDoorPasses = async () => {
   }
 };
 
-export { GetAllDoorPasses };
+const CreateDoorPass = async (name_id, minimum_allways_access_level) => {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/pass/create_door`,
+      {
+        name_id,
+        minimum_allways_access_level,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    return {
+      data: response.data,
+      status: response.status,
+    };
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export { GetAllDoorPasses, CreateDoorPass };
