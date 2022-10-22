@@ -28,8 +28,8 @@ const Show = () => {
     const confirmation = window.confirm(
       "Ali ste prepričani, da želite odpreti vrata?"
     );
-    if (!confirmation) return;
-    const data = await OpenDoor(null);
+    if (!confirmation || !doorPass?.code) return;
+    const data = await OpenDoor(doorPass.code);
     dispatch(
       createAlert({
         data: data,
