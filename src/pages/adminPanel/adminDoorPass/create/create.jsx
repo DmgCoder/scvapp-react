@@ -4,19 +4,23 @@ import { selectTheme } from "../../../../features/theme/themeSlice";
 import StyledTextField from "../../../../components/StyledTextField";
 import { useNavigate } from "react-router";
 import { CreateDoorPass } from "../adminDoorPassAPI";
+import { selectDoorPasses } from "../../../../features/doorPasses/doorPassesSlice";
 
 import "./create.css";
 
 import MeetingRoomOutlinedIcon from "@mui/icons-material/MeetingRoomOutlined";
 import SelectForm from "../../components/selectForm/selectForm";
 import CreateDoorPopUp from "../../components/createDoorPopUp/createDoorPopUp";
-import { createAlert } from "../../../../features/alert/alertSlice";
+import { createAlert, setAlert } from "../../../../features/alert/alertSlice";
 
 const Create = () => {
   const theme = useSelector(selectTheme);
   const [name, setName] = React.useState("");
   const [minimumAccessLevel, setMinimumAccessLevel] = React.useState({});
   const [accessCode, setAccessCode] = React.useState(null);
+  const [showErrorForName, setShowErrorForName] = React.useState(null);
+  const doorPasses = useSelector(selectDoorPasses);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,6 +44,17 @@ const Create = () => {
   };
 
   const handleCreate = async () => {
+    if (showErrorForName) {
+      dispatch(
+        setAlert({
+          type: "error",
+          message: "Učilnica z istim imenom že obstaja!",
+          title: "Napaka!",
+          show: true,
+        })
+      );
+      return;
+    }
     const data = await CreateDoorPass(name, minimumAccessLevel);
     if (data.status === 201) {
       setAccessCode(data.data.access_secret);
@@ -59,6 +74,17 @@ const Create = () => {
     navigate("/admin/door-pass");
   };
 
+  const handleNameChange = (e) => {
+    const newName = e.target.value;
+    setName(newName);
+    if (!doorPasses) return;
+    if (doorPasses.find((doorPass) => doorPass.name_id === newName)) {
+      setShowErrorForName("Učilnica s tem imenom že obstaja!");
+    } else {
+      setShowErrorForName(null);
+    }
+  };
+
   return (
     <div className={`admin-door-pass-create ${theme}`}>
       <CreateDoorPopUp
@@ -76,8 +102,10 @@ const Create = () => {
           variant="standard"
           color="primary"
           type="text"
+          error={showErrorForName !== null}
+          helperText={showErrorForName}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleNameChange}
           fontcolor="currentColor"
         />
         <SelectForm
