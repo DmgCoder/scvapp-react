@@ -35,4 +35,18 @@ const CreateDoorPass = async (name_id, minimum_allways_access_level) => {
   }
 };
 
-export { GetAllDoorPasses, CreateDoorPass };
+const OpenDoor = async (code) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/pass/open_door/${code}`,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export { GetAllDoorPasses, CreateDoorPass, OpenDoor };

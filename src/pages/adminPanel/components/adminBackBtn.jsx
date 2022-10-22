@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-const AdminBackBtn = () => {
+const AdminBackBtn = ({ to }) => {
   return (
     <Link
-      to={"/admin"}
+      to={to ?? "/admin"}
       style={{
         position: "absolute",
         top: "10px",
