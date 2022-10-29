@@ -6,12 +6,26 @@ import { useSession } from "react-use-session";
 const ThemePage = () => {
   const { session, save } = useSession("theme", true);
   const dispatch = useDispatch();
+
+  const getSystemTheme = () => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark-theme";
+    } else {
+      return "light-theme";
+    }
+  };
+
   useEffect(() => {
     if (!session) {
-      save("light-theme");
-      dispatch(setTheme("light-theme"));
+      save("system-theme");
+      dispatch(setTheme(getSystemTheme()));
     } else {
-      dispatch(setTheme(session));
+      const theme = session;
+      if (theme === "system-theme") {
+        dispatch(setTheme(getSystemTheme()));
+      } else {
+        dispatch(setTheme(theme));
+      }
     }
   }, []);
   return <></>;
