@@ -29,7 +29,7 @@ const MealsRoute = () => {
   useEffect(getMealUser, []);
 
   return mealsLoading ? (
-    <LoadingPage />
+    <LoadingPage color={"rgb(237, 17, 100)"} />
   ) : mealsUser ? (
     <MealsMain />
   ) : (
