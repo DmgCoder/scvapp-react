@@ -1,0 +1,40 @@
+.settingsPage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.settingsPage .settingsPage-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 100px);
+  height: calc(100% - 100px);
+  background-color: var(--light-theme-secondary);
+  overflow: auto;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settingsPage.dark-theme .settingsPage-main {
+  background-color: var(--dark-theme-secondary);
+}
+
+.settingsPage-main-profile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settingsPage-main-profile > img {
+  width: 150px;
+  height: 150px;
+  border-radius: 7px;
+  object-fit: cover;
+}
