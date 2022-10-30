@@ -17,7 +17,7 @@ const StatusIcon = ({ name }) => {
   const [statusIcon, setStatusIcon] = useState(name);
 
   const getStatusIcon = () => {
-    if (!name) {
+    if (!name || name === "") {
       setStatusIcon(user?.status?.id);
     }
   };

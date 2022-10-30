@@ -1,0 +1,18 @@
+.settingsItem {
+  width: 100%;
+  padding: 15px 40px;
+  border-radius: 17px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.settingsItem-title {
+  font-size: 20px;
+}
+
+.settingsItem-text {
+  font-size: 16px;
+}

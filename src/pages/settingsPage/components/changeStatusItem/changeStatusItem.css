@@ -1,0 +1,17 @@
+.settings-change-status-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 40px;
+}
+
+.settings-change-status-item-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: 15px;
+  height: 15px;
+}
