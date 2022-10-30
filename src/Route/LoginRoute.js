@@ -1,15 +1,9 @@
 import React, { lazy, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectUser,
-  selectLoading,
-  login,
-  setLoading,
-} from "../features/user/userSlice";
-import getUserData from "../features/user/userGetData";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router";
 import { useSearchParams } from "react-router-dom";
 import { setAlert } from "../features/alert/alertSlice";
+import { useUser } from "../features/user/userHook";
 
 const LoadingPage = lazy(() => import("../pages/LoadingPage"));
 const LoginPage = lazy(() => import("../pages/loginPage/loginPage"));
@@ -17,19 +11,9 @@ const HomePage = lazy(() => import("../pages/homePage/homePage"));
 const AdminRoute = lazy(() => import("./admin/AdminRoute"));
 
 const LoginRoute = () => {
-  const user = useSelector(selectUser);
+  const { user, loading } = useUser();
   const [searchParams, setSearchParams] = useSearchParams();
-  const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    async function loadData() {
-      const userData = await getUserData();
-      dispatch(login(userData));
-      dispatch(setLoading(false));
-    }
-    loadData();
-  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
