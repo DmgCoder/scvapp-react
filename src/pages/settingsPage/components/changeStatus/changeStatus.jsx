@@ -50,7 +50,7 @@ const ChangeStatus = () => {
         showDropdown ? "settings-change-status-show-dropdown" : ""
       }`}
     >
-      <ChangeStatusItem name={user?.status.id} title={user?.status?.display} />
+      <ChangeStatusItem title={user?.status?.display} />
       <div
         className="settings-change-status-arrow"
         onClick={handleToggleDropdown}
