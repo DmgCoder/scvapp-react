@@ -4,8 +4,9 @@ import ProfileImg from "../../components/ProfileImg/profileImg";
 import SchoolImg from "../../components/SchoolImg";
 import { selectTheme } from "../../features/theme/themeSlice";
 import { selectUser } from "../../features/user/userSlice";
+import AboutAppItem from "./components/aboutAppItem/aboutAppItem";
 import ChangeStatus from "./components/changeStatus/changeStatus";
-import SettingsItem from "./components/settingsBox/settingsItem";
+import SettingsItem from "./components/settingsItem/settingsItem";
 
 import "./settingsPage.css";
 
@@ -38,6 +39,7 @@ const SettingsPage = () => {
               Kliknite tukaj za odpiranje portala Office
             </a>
           </SettingsItem>
+          <AboutAppItem />
         </div>
       </div>
     </div>
