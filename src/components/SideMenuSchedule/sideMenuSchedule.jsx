@@ -37,7 +37,7 @@ const SideMenuSchedule = () => {
   };
 
   const millisToMinutesAndSeconds = (millis) => {
-    if (millis <= 0) return "0.00";
+    if (millis <= 0 || !millis) return "0.00";
     const minutes = Math.floor(millis / 60000);
     const seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + "." + (seconds < 10 ? "0" : "") + seconds;
