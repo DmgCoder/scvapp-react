@@ -6,6 +6,7 @@ import { selectTheme } from "../../features/theme/themeSlice";
 import { selectUser } from "../../features/user/userSlice";
 import AboutAppItem from "./components/aboutAppItem/aboutAppItem";
 import ChangeStatus from "./components/changeStatus/changeStatus";
+import ChangeTheme from "./components/changeTheme/changeTheme";
 import SettingsItem from "./components/settingsItem/settingsItem";
 
 import "./settingsPage.css";
@@ -29,6 +30,9 @@ const SettingsPage = () => {
             title={"Telefonska številka:"}
             text={user?.mobilePhone ?? "/"}
           />
+          <SettingsItem title={"Tema aplikacije:"}>
+            <ChangeTheme />
+          </SettingsItem>
           <SettingsItem title={"Dodatne informacije o vas:"}>
             <a
               target={"_blank"}
