@@ -8,7 +8,7 @@ import SettingsItem from "../settingsItem/settingsItem";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const AboutAppItem = () => {
-  const [show, setShow] = React.useState(true);
+  const [show, setShow] = React.useState(false);
   const theme = useSelector(selectTheme);
 
   const handleToggle = () => {
