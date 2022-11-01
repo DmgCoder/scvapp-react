@@ -6,6 +6,7 @@
   justify-content: center;
   padding: 7px 0px;
   width: 230px;
+  max-width: 100%;
 }
 
 .settings-change-status-item-icon {
