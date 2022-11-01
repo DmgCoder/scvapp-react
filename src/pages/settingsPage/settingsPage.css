@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: scroll;
 }
 
 .settingsPage .settingsPage-main {
@@ -54,6 +55,12 @@
 .settingsPage-main-settings-link {
   color: #0672bf;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 555px) {
+  .settingsPage-main-profile {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 540px) {
