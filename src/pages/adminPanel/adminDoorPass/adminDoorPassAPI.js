@@ -91,6 +91,25 @@ const ReganerateDoorPassAccessSecret = async (code) => {
   }
 };
 
+const RenameDoorPass = async (code, name_id) => {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/pass/door/rename
+      `,
+      {
+        code,
+        name_id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    return { data: response.data, status: response.status };
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export {
   GetAllDoorPasses,
   CreateDoorPass,
@@ -98,4 +117,5 @@ export {
   DeleteDoorPass,
   ReganerateDoorPassCode,
   ReganerateDoorPassAccessSecret,
+  RenameDoorPass,
 };

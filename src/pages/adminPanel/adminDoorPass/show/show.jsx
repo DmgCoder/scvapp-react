@@ -6,7 +6,9 @@ import { createAlert, setAlert } from "../../../../features/alert/alertSlice";
 import {
   DeleteDoorPass,
   OpenDoor,
+  ReganerateDoorPassAccessSecret,
   ReganerateDoorPassCode,
+  RenameDoorPass,
 } from "../adminDoorPassAPI";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 import CreateDoorPopUp from "../../components/createDoorPopUp/createDoorPopUp";
@@ -100,6 +102,42 @@ const Show = () => {
     refresh();
   };
 
+  const handleGenerateNewSecret = async () => {
+    if (!doorPass) return;
+    const confirmation = window.confirm(
+      "Ali ste prepričani, da želite generirati novo skrivnost?"
+    );
+    if (!confirmation) return;
+    const data = await ReganerateDoorPassAccessSecret(doorPass.code);
+    if (data.status === 200) {
+      setNewDoorSecret(data.data.access_secret);
+    }
+    dispatch(
+      createAlert({
+        data: data,
+        successMessage: "Skrivnost je bila uspešno generirana",
+        successStatusCode: 200,
+      })
+    );
+    refresh();
+  };
+
+  const handleRename = async () => {
+    if (!doorPass) return;
+    const newName = window.prompt("Vnesite novo ime učilnice");
+    if (!newName) return;
+    const data = await RenameDoorPass(doorPass.code, newName);
+
+    dispatch(
+      createAlert({
+        data: data,
+        successMessage: "Učilnica je bila uspešno preimenovana",
+        successStatusCode: 200,
+      })
+    );
+    refresh();
+  };
+
   React.useEffect(handleLoad, [doorPasses]);
 
   return (
@@ -120,7 +158,10 @@ const Show = () => {
           <button onClick={handleOpenDoor}>Oddaljeno odpri vrata</button>
           <button onClick={handleGenerateNewCode}>Ponastavi kodo vrat</button>
           <button onClick={handleDelete}>Izbriši vrata</button>
-          <button>Ponastavi skrivnost vrat</button>
+          <button onClick={handleGenerateNewSecret}>
+            Ponastavi skrivnost vrat
+          </button>
+          <button onClick={handleRename}>Preimenuj vrata</button>
         </div>
         <div id="left-side">
           <p>Activity log:</p>
