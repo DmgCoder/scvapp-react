@@ -49,4 +49,18 @@ const OpenDoor = async (code) => {
   }
 };
 
-export { GetAllDoorPasses, CreateDoorPass, OpenDoor };
+const DeleteDoorPass = async (code) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_BACKEND_URL}/pass/delete_door/${code}`,
+      {
+        withCredentials: true,
+      }
+    );
+    return { data: response.data, status: response.status };
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export { GetAllDoorPasses, CreateDoorPass, OpenDoor, DeleteDoorPass };

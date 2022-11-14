@@ -1,9 +1,7 @@
 import React, { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
 import LoadingPage from "../../pages/LoadingPage";
-import { useDispatch } from "react-redux";
-import { setDoorPasses } from "../../features/doorPasses/doorPassesSlice";
-import { GetAllDoorPasses } from "../../pages/adminPanel/adminDoorPass/adminDoorPassAPI";
+import { useDoorPasses } from "../../features/doorPasses/useDoorPasses";
 
 const AdminDoorPassDashboard = lazy(() =>
   import("../../pages/adminPanel/adminDoorPass/dashboard/dashboard")
@@ -18,18 +16,13 @@ const AdminDoorPassShow = lazy(() =>
 );
 
 const AdminDoorPassRoute = () => {
-  const dispatch = useDispatch();
-
-  const handleLoad = async () => {
-    const data = await GetAllDoorPasses();
-    if (data) {
-      dispatch(setDoorPasses(data));
-    }
-  };
+  const { doorPasses, refresh } = useDoorPasses();
 
   useEffect(() => {
-    handleLoad();
-  }, [dispatch]);
+    if (!doorPasses) {
+      refresh();
+    }
+  }, [refresh, doorPasses]);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>

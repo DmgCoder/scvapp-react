@@ -4,7 +4,7 @@ import { selectTheme } from "../../../../features/theme/themeSlice";
 import StyledTextField from "../../../../components/StyledTextField";
 import { useNavigate } from "react-router";
 import { CreateDoorPass } from "../adminDoorPassAPI";
-import { selectDoorPasses } from "../../../../features/doorPasses/doorPassesSlice";
+import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 
 import "./create.css";
 
@@ -19,7 +19,7 @@ const Create = () => {
   const [minimumAccessLevel, setMinimumAccessLevel] = React.useState({});
   const [accessCode, setAccessCode] = React.useState(null);
   const [showErrorForName, setShowErrorForName] = React.useState(null);
-  const doorPasses = useSelector(selectDoorPasses);
+  const { doorPasses, refresh } = useDoorPasses();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -66,6 +66,8 @@ const Create = () => {
         successStatusCode: 201,
       })
     );
+    refresh();
+    navigate("/admin/door-pass");
   };
 
   const handleCancel = () => {
