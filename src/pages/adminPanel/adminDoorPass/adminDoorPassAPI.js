@@ -63,4 +63,39 @@ const DeleteDoorPass = async (code) => {
   }
 };
 
-export { GetAllDoorPasses, CreateDoorPass, OpenDoor, DeleteDoorPass };
+const ReganerateDoorPassCode = async (code) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/pass/door/regenerate_code/${code}`,
+      {
+        withCredentials: true,
+      }
+    );
+    return { data: response.data, status: response.status };
+  } catch (error) {
+    return error.response;
+  }
+};
+
+const ReganerateDoorPassAccessSecret = async (code) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/pass/door/regenerate_secret/${code}`,
+      {
+        withCredentials: true,
+      }
+    );
+    return { data: response.data, status: response.status };
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export {
+  GetAllDoorPasses,
+  CreateDoorPass,
+  OpenDoor,
+  DeleteDoorPass,
+  ReganerateDoorPassCode,
+  ReganerateDoorPassAccessSecret,
+};

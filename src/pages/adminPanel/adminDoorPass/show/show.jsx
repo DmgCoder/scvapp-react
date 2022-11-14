@@ -3,8 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 import { createAlert, setAlert } from "../../../../features/alert/alertSlice";
-import { DeleteDoorPass, OpenDoor } from "../adminDoorPassAPI";
+import {
+  DeleteDoorPass,
+  OpenDoor,
+  ReganerateDoorPassCode,
+} from "../adminDoorPassAPI";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
+import CreateDoorPopUp from "../../components/createDoorPopUp/createDoorPopUp";
 
 //Import style
 import "./show.css";
@@ -19,6 +24,7 @@ const Show = () => {
   const { name_id } = useParams();
   const [doorPass, setDoorPass] = React.useState(null);
   const { doorPasses, refresh } = useDoorPasses();
+  const [newDoorSecret, setNewDoorSecret] = React.useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -77,10 +83,32 @@ const Show = () => {
     navigate("/admin/door-pass");
   };
 
+  const handleGenerateNewCode = async () => {
+    if (!doorPass) return;
+    const confirmation = window.confirm(
+      "Ali ste prepričani, da želite generirati novo kodo?"
+    );
+    if (!confirmation) return;
+    const data = await ReganerateDoorPassCode(doorPass.code);
+    dispatch(
+      createAlert({
+        data: data,
+        successMessage: "Koda je bila uspešno generirana",
+        successStatusCode: 200,
+      })
+    );
+    refresh();
+  };
+
   React.useEffect(handleLoad, [doorPasses]);
 
   return (
     <div className={`admin-door-pass-show ${theme}`}>
+      <CreateDoorPopUp
+        code={newDoorSecret}
+        setCode={setNewDoorSecret}
+        close={() => {}}
+      />
       <div className="admin-door-pass-show-content">
         <AdminBackBtn to={"/admin/door-pass"} />
         <div id="right-side">
@@ -90,7 +118,7 @@ const Show = () => {
           </div>
           <button onClick={handleCopyCode}>Kopiraj kodo vrat</button>
           <button onClick={handleOpenDoor}>Oddaljeno odpri vrata</button>
-          <button>Ponastavi kodo vrat</button>
+          <button onClick={handleGenerateNewCode}>Ponastavi kodo vrat</button>
           <button onClick={handleDelete}>Izbriši vrata</button>
           <button>Ponastavi skrivnost vrat</button>
         </div>
