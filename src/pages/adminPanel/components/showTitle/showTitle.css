@@ -1,0 +1,23 @@
+.admin-door-pass-show-content-header-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-door-pass-show-content-header-title > p {
+  font-size: 24px;
+}
+
+.admin-door-pass-show-content-header-title > input {
+  font-size: 24px;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  color: currentColor;
+  outline: none;
+  background-color: transparent;
+}
+
+.admin-door-pass-show-content-header-title > svg {
+  cursor: pointer;
+}

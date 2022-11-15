@@ -8,7 +8,6 @@ import {
   OpenDoor,
   ReganerateDoorPassAccessSecret,
   ReganerateDoorPassCode,
-  RenameDoorPass,
 } from "../adminDoorPassAPI";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 import CreateDoorPopUp from "../../components/createDoorPopUp/createDoorPopUp";
@@ -20,6 +19,7 @@ import "./show.css";
 import MeetingRoomOutlinedIcon from "@mui/icons-material/MeetingRoomOutlined";
 import ActivityLogDoorPass from "../../components/activityLogDoorPass/activityLogDoorPass";
 import AdminBackBtn from "../../components/adminBackBtn";
+import ShowTitle from "../../components/showTitle/showTitle";
 
 const Show = () => {
   const theme = useSelector(selectTheme);
@@ -122,22 +122,6 @@ const Show = () => {
     refresh();
   };
 
-  const handleRename = async () => {
-    if (!doorPass) return;
-    const newName = window.prompt("Vnesite novo ime učilnice");
-    if (!newName) return;
-    const data = await RenameDoorPass(doorPass.code, newName);
-
-    dispatch(
-      createAlert({
-        data: data,
-        successMessage: "Učilnica je bila uspešno preimenovana",
-        successStatusCode: 200,
-      })
-    );
-    refresh();
-  };
-
   React.useEffect(handleLoad, [doorPasses]);
 
   return (
@@ -152,7 +136,7 @@ const Show = () => {
         <div id="right-side">
           <div className="admin-door-pass-show-content-header">
             <MeetingRoomOutlinedIcon />
-            <p>{doorPass?.name_id}</p>
+            <ShowTitle doorPass={doorPass} />
           </div>
           <button onClick={handleCopyCode}>Kopiraj kodo vrat</button>
           <button onClick={handleOpenDoor}>Oddaljeno odpri vrata</button>
@@ -161,7 +145,6 @@ const Show = () => {
           <button onClick={handleGenerateNewSecret}>
             Ponastavi skrivnost vrat
           </button>
-          <button onClick={handleRename}>Preimenuj vrata</button>
         </div>
         <div id="left-side">
           <p>Activity log:</p>
