@@ -9,13 +9,8 @@
   font-size: 24px;
 }
 
-.admin-door-pass-show-content-header-title > input {
+.admin-door-pass-show-content-header-title .MuiInputBase-input {
   font-size: 24px;
-  border: none;
-  border-bottom: 1px solid currentColor;
-  color: currentColor;
-  outline: none;
-  background-color: transparent;
 }
 
 .admin-door-pass-show-content-header-title > svg {

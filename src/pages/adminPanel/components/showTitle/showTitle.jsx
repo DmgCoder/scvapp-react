@@ -6,6 +6,7 @@ import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 import { useNavigate } from "react-router";
 
 import "./showTitle.css";
+import StyledTextField from "../../../../components/StyledTextField";
 
 import EditIcon from "@mui/icons-material/Edit";
 import { useEffect } from "react";
@@ -15,7 +16,8 @@ import CloseIcon from "@mui/icons-material/Close";
 const ShowTitle = ({ doorPass }) => {
   const [edit, setEdit] = React.useState(false);
   const [newName, setNewName] = React.useState("");
-  const { refresh } = useDoorPasses();
+  const [showErrorForName, setShowErrorForName] = React.useState(null);
+  const { refresh, doorPasses } = useDoorPasses();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -42,13 +44,30 @@ const ShowTitle = ({ doorPass }) => {
     setNewName(doorPass.name_id);
   };
 
+  const handleNameChange = (e) => {
+    setNewName(e.target.value);
+    const nameExists = doorPasses.find((doorPass) => {
+      return doorPass.name_id === e.target.value;
+    });
+    if (nameExists && doorPass.name_id !== e.target.value) {
+      setShowErrorForName("Ime že obstaja");
+    } else {
+      setShowErrorForName(null);
+    }
+  };
+
   return (
     <div className="admin-door-pass-show-content-header-title">
       {edit ? (
-        <input
+        <StyledTextField
+          variant="standard"
+          color="primary"
           type="text"
+          error={showErrorForName !== null}
+          helperText={showErrorForName}
           value={newName}
-          onChange={(e) => setNewName(e.target.value)}
+          onChange={handleNameChange}
+          fontcolor="currentColor"
         />
       ) : (
         <p>{newName}</p>
