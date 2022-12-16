@@ -67,7 +67,6 @@ const Create = () => {
       })
     );
     refresh();
-    navigate("/admin/door-pass");
   };
 
   const handleCancel = () => {
