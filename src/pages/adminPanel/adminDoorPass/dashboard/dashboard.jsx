@@ -7,6 +7,10 @@ import SelectDoor from "../../components/selectDoor/selectDoor";
 
 import "./dashboard.css";
 
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import ControlCameraIcon from "@mui/icons-material/ControlCamera";
+import { Link } from "react-router-dom";
+
 const Dashboard = () => {
   const theme = useSelector(selectTheme);
   const doorPasses = useSelector(selectDoorPasses);
@@ -15,6 +19,9 @@ const Dashboard = () => {
     <div className={`admin-door-pass-dashboard ${theme}`}>
       <div className="admin-door-pass-dashboard-menu">
         <AdminBackBtn />
+        <div className="admin-door-pass-dashboard-menu-icons">
+          <AccessTimeIcon titleAccess="Time profiles" />
+        </div>
         <p>Vrata:</p>
         <div className="admin-door-pass-dashboard-menu-doors">
           {doorPasses &&

@@ -18,6 +18,18 @@
   gap: 40px;
 }
 
+.admin-door-pass-dashboard-menu-icons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  gap: 10px;
+}
+.admin-door-pass-dashboard-menu-icons > a {
+  cursor: pointer;
+  color: currentColor;
+}
+
 .admin-door-pass-dashboard.dark-theme .admin-door-pass-dashboard-menu {
   background-color: var(--dark-theme-secondary);
 }
