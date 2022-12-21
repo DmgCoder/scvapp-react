@@ -1,38 +1,41 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../../features/theme/themeSlice";
-import AdminDashboardItem from "../components/adminDashbordItem/adminDashboardItem";
 
 import "./adminDashboard.css";
 
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import AppLogo from "../../../assets/app_logo.png";
+import DashboardItem from "../components/adminDashbordItem/adminDashboardItem";
+import HomeIcon from "@mui/icons-material/Home";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import MeetingRoomOutlinedIcon from "@mui/icons-material/MeetingRoomOutlined";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
+import SideMenuProfile from "../../../components/SideMenuProfile/sideMenuProfile";
 
 const AdminDashboard = () => {
   const theme = useSelector(selectTheme);
   return (
     <div className={`admin-dashboard ${theme}`}>
-      <div className="admin-dashboard-header">
-        <div className="admin-dashboard-title">
-          <AdminPanelSettingsIcon />
-          <h1>Nadzorna plošča</h1>
-        </div>
-        <h2>Orodja</h2>
-      </div>
-      <div className="admin-dashboard-content">
-        <AdminDashboardItem
+      <img
+        src={AppLogo}
+        alt="application logo"
+        className="admin-dashboard-logo"
+      />
+      <div className="admin-dashboard-items">
+        <DashboardItem icon={<HomeIcon />} text="Domača stran" href="/" />
+        <DashboardItem
           icon={<CalendarMonthIcon />}
           text="Urejanje urnikov"
           href="schedule-edit"
         />
-        <AdminDashboardItem
-          icon={<MeetingRoomOutlinedIcon />}
-          text="Door pass"
+        <DashboardItem
+          icon={<MeetingRoomIcon />}
+          text="DoorControll"
           href="door-pass"
         />
-        <AdminDashboardItem icon={<ExitToAppIcon />} text="Izhod" to="/" />
+      </div>
+      <div className="admin-dashboard-bottom">
+        <div className="admin-dashboard-bottom-line"></div>
+        <SideMenuProfile />
       </div>
     </div>
   );

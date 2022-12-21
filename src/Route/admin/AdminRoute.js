@@ -19,10 +19,10 @@ const AdminRoute = () => {
     return <Navigate to="/" />;
   }
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "100vh", display: "flex" }}>
+      <AdminDashboard />
       <Suspense fallback={<LoadingPage />}>
         <Routes path="admin">
-          <Route path="/" element={<AdminDashboard />} />
           <Route path="schedule-edit" element={<AdminScheduleEdit />} />
           <Route path="door-pass/*" element={<AdminDoorPassRoute />} />
           <Route path="*" element={<NotFound location={"/admin"} />} />

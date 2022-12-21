@@ -15,6 +15,8 @@ const AdminDoorPassShow = lazy(() =>
   import("../../pages/adminPanel/adminDoorPass/show/show")
 );
 
+const NotFound = lazy(() => import("../../pages/404page/404page"));
+
 const AdminDoorPassRoute = () => {
   const { doorPasses, refresh } = useDoorPasses();
 
@@ -31,6 +33,10 @@ const AdminDoorPassRoute = () => {
           <Route path="/" element={<AdminDoorPassDashboard />} />
           <Route path="/create" element={<AdminDoorPassCreate />} />
           <Route path="/show/:name_id" element={<AdminDoorPassShow />} />
+          <Route
+            path="*"
+            element={<NotFound location={"/admin/door-pass"} />}
+          />
         </Routes>
       </Suspense>
     </div>
