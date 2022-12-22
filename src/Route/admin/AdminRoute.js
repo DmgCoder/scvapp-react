@@ -23,7 +23,11 @@ const AdminRoute = () => {
       <AdminDashboard />
       <Suspense fallback={<LoadingPage />}>
         <Routes path="admin">
-          <Route path="schedule-edit" element={<AdminScheduleEdit />} />
+          <Route
+            path="schedule-edit/:schoolId"
+            element={<AdminScheduleEdit />}
+          />
+          <Route path="schedule-edit/" element={<AdminScheduleEdit />} />
           <Route path="door-pass/*" element={<AdminDoorPassRoute />} />
           <Route path="*" element={<NotFound location={"/admin"} />} />
         </Routes>

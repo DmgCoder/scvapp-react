@@ -25,12 +25,14 @@ const AdminDashboard = () => {
         <DashboardItem
           icon={<CalendarMonthIcon />}
           text="Urejanje urnikov"
-          href="schedule-edit"
+          href="/schedule-edit"
+          subitems={["ERŠ", "SSD", "GIM", "ŠSGO"]}
+          linkForSubItems="schedule-edit/"
         />
         <DashboardItem
           icon={<MeetingRoomIcon />}
           text="DoorControll"
-          href="door-pass"
+          href="/door-pass"
         />
       </div>
       <div className="admin-dashboard-bottom">

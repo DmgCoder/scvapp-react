@@ -1,13 +1,24 @@
 .admin-dashboard-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
   padding-left: 15px;
   gap: 20px;
   text-decoration: none;
+}
+
+.admin-dashboard-item-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start;
+  width: 100%;
   position: relative;
+  text-decoration: none;
+  color: currentColor;
 }
 
 .admin-dashboard-item-text {
@@ -23,8 +34,39 @@
 .admin-dashboard-item-indicator {
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: -15px;
   width: 5px;
   height: 100%;
   background-color: #006fd6;
+}
+
+.admin-dashboard-item-arrow {
+  transition: 0.2s ease-in-out;
+}
+
+.admin-dashboard-item-arrow.open {
+  transform: rotate(180deg);
+}
+
+.admin-dashboard-item-subitems {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  transform: translateX(-15px);
+  list-style: disc;
+  gap: 5px;
+}
+
+.admin-dashboard-item-sub {
+  color: currentColor;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.admin-dashboard-item-sub.active {
+  color: var(--light-theme-secondary);
+}
+
+.admin-dashboard-item.dark-theme .admin-dashboard-item-sub.active {
+  color: var(--dark-theme-secondary);
 }

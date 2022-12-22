@@ -4,16 +4,30 @@ import { useSelector } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 
 import "./adminDashboardItem.css";
+import SubItem from "./subItem";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const AdminDashboardItem = ({ icon, text, href, to }) => {
+const AdminDashboardItem = ({
+  icon,
+  text,
+  href,
+  to,
+  subitems,
+  linkForSubItems,
+}) => {
   const theme = useSelector(selectTheme);
   const [indicator, setIndicator] = useState(false);
   const location = useLocation();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
 
   useEffect(() => {
-    if (location.pathname.startsWith(`/admin/${href}`) && href !== "/") {
+    if (location.pathname.startsWith(`/admin${href}`) && href !== "/") {
       setIndicator(true);
-    } else if (location.pathname === "/admin" && href === "/") {
+    } else if (location.pathname === "/admin/" && href === "/") {
       setIndicator(true);
     } else {
       setIndicator(false);
@@ -21,18 +35,41 @@ const AdminDashboardItem = ({ icon, text, href, to }) => {
   }, [location]);
 
   return (
-    <Link
-      to={href ? `/admin/${href}` : to}
-      className={`admin-dashboard-item ${theme}`}
-    >
-      <div className="admin-dashboard-item-icon">{icon}</div>
-      <p className="admin-dashboard-item-text">{text}</p>
-      {indicator ? (
-        <div className="admin-dashboard-item-indicator"></div>
+    <div className={`admin-dashboard-item ${theme}`}>
+      <Link
+        to={href ? `/admin${href}` : to}
+        className="admin-dashboard-item-main"
+      >
+        <div className="admin-dashboard-item-icon">{icon}</div>
+        <p className="admin-dashboard-item-text">{text}</p>
+        {indicator ? (
+          <div className="admin-dashboard-item-indicator"></div>
+        ) : (
+          <></>
+        )}
+        {subitems ? (
+          <KeyboardArrowDownIcon
+            className={`admin-dashboard-item-arrow ${open ? "open" : ""}`}
+            onClick={handleOpen}
+          />
+        ) : (
+          <></>
+        )}
+      </Link>
+      {subitems && open ? (
+        <ul className="admin-dashboard-item-subitems">
+          {subitems.map((subitem, index) => (
+            <SubItem
+              key={index}
+              link={`${linkForSubItems}${subitem}`}
+              title={subitem}
+            />
+          ))}
+        </ul>
       ) : (
         <></>
       )}
-    </Link>
+    </div>
   );
 };
 
