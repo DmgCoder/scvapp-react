@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTheme } from "../../../features/theme/themeSlice";
 import { createAlert } from "../../../features/alert/alertSlice";
@@ -6,6 +6,7 @@ import SelectSchoolDropdown from "../components/selectSchoolDropdown/selectSchoo
 import EditUrl from "../components/editUrl/editUrl";
 import { GetScheduleData, ChangeScheduleURL } from "./scheduleEdit";
 import AdminBackBtn from "../components/adminBackBtn";
+import { useParams } from "react-router-dom";
 
 import "./adminScheduleEdit.css";
 import EditClassesIDs from "../components/editClassesIDs/editClassesIDs";
@@ -16,9 +17,11 @@ const AdminScheduleEdit = () => {
   const [url, setUrl] = React.useState("");
   const [allData, setAllData] = React.useState(null);
   const dispatch = useDispatch();
+  const { schoolId } = useParams();
 
   const selectSchool = (e) => {
     const schoolID = e.target.id;
+    if (allData === null || schoolID === null) return;
     const school = allData.find((school) => school.id === schoolID);
     if (school) {
       setSelectedSchool(school);
@@ -47,6 +50,17 @@ const AdminScheduleEdit = () => {
       handleLoad();
     }
   };
+
+  useEffect(() => {
+    if (schoolId) {
+      let schoolKey = Object.keys(schools).find(
+        (key) => schools[key] === schoolId
+      );
+      if (schoolKey) {
+        selectSchool({ target: { id: schoolKey } });
+      }
+    }
+  }, [schoolId, allData]);
 
   const handleLoad = async () => {
     const data = await GetScheduleData();

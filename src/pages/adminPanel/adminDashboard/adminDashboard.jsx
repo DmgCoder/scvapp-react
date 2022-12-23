@@ -26,7 +26,7 @@ const AdminDashboard = () => {
           icon={<CalendarMonthIcon />}
           text="Urejanje urnikov"
           href="/schedule-edit"
-          subitems={["ERŠ", "SSD", "GIM", "ŠSGO"]}
+          subitems={["ERŠ", "ŠSD", "GIM", "ŠSGO"]}
           linkForSubItems="schedule-edit/"
         />
         <DashboardItem

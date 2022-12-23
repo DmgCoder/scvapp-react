@@ -1,5 +1,6 @@
 .admin-dashboard {
   width: 280px;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
