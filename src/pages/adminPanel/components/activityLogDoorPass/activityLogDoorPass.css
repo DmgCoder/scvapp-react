@@ -23,3 +23,12 @@
 .admin-activity-log-door-pass > .date {
   font-size: 15px;
 }
+
+.admin-activity-log-door-pass > .fail {
+  color: red;
+}
+
+.admin-activity-log-door-pass > p > a {
+  color: currentColor;
+  text-decoration: none;
+}

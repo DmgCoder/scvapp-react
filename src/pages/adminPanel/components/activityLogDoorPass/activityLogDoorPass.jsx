@@ -65,6 +65,7 @@ const ActivityLogDoorPass = ({ doorPass }) => {
           doorName={doorPass.name_id}
           userID={log.user_pass?.azure_id}
           isDate={log.isDate}
+          status={log.status}
         />
       ))}
     </div>
