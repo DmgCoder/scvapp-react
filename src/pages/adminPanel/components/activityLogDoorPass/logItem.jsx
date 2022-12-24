@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 
-const LogItem = ({ date, doorName, userID }) => {
+const LogItem = ({ date, doorName, userID, isDate }) => {
   const { getUserFromID } = useDoorPasses();
   const [displayName, setDisplayName] = useState("");
   const [displayDate, setDisplayDate] = useState("");
@@ -25,14 +25,21 @@ const LogItem = ({ date, doorName, userID }) => {
       const hours = newDate.getHours();
       const minutes = newDate.getMinutes();
       const seconds = newDate.getSeconds();
-      setDisplayDate(`${day}/${month}/${year} ${hours}:${minutes}:${seconds}`);
+      if (isDate === true) setDisplayDate(`${day}.${month}.${year}`);
+      else setDisplayDate(`${hours}:${minutes}:${seconds}`);
     }
   }, [date]);
 
   return (
-    <p>
-      {displayDate}: {doorName}, {displayName}
-    </p>
+    <>
+      {isDate ? (
+        <p className="date">{displayDate}</p>
+      ) : (
+        <p>
+          {displayDate} - {displayName} - {doorName}
+        </p>
+      )}
+    </>
   );
 };
 

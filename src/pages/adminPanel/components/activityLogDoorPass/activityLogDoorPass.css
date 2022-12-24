@@ -16,4 +16,10 @@
 
 .admin-activity-log-door-pass > p {
   font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+.admin-activity-log-door-pass > .date {
+  font-size: 15px;
 }
