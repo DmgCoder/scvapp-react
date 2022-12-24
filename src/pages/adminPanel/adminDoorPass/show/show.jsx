@@ -148,7 +148,7 @@ const Show = () => {
         </div>
         <div id="left-side">
           <p>Activity log:</p>
-          <ActivityLogDoorPass />
+          <ActivityLogDoorPass doorPass={doorPass}/>
         </div>
       </div>
     </div>

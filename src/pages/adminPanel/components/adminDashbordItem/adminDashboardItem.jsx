@@ -20,7 +20,8 @@ const AdminDashboardItem = ({
   const location = useLocation();
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (e) => {
+    e.preventDefault();
     setOpen(!open);
   };
 
