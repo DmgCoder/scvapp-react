@@ -24,9 +24,9 @@ const ActivityLogDoorPass = ({ doorPass }) => {
 
   return (
     <div className={`admin-activity-log-door-pass ${theme}`}>
-      {logs?.map((log) => (
+      {logs?.map((log, i) => (
         <LogItem
-          key={log._id}
+          key={i}
           date={log.created_at}
           doorName={doorPass.name_id}
           userID={log.user_pass.azure_id}
