@@ -9,7 +9,10 @@ import "./mealsLogin.css";
 
 import SchoolLogo from "../../../assets/school_logo.svg";
 import StyledTextField from "../../../components/StyledTextField";
-import { setMealUser } from "../../../features/mealUser/mealUserSlice";
+import {
+  setMealLoading,
+  setMealUser,
+} from "../../../features/mealUser/mealUserSlice";
 import axios from "axios";
 
 const MealsLogin = () => {
@@ -37,6 +40,7 @@ const MealsLogin = () => {
       );
       return;
     }
+    dispatch(setMealLoading(true));
     //Add username and password in form data
     const formData = new FormData();
     formData.append("email", username);
@@ -47,6 +51,7 @@ const MealsLogin = () => {
         "https://malice.scv.si/api/v2/auth",
         formData
       );
+      dispatch(setMealLoading(false));
       if (res.status === 200) {
         const data = res.data;
         const user = {
@@ -68,6 +73,7 @@ const MealsLogin = () => {
         dispatch(setMealUser(user));
       }
     } catch (err) {
+      dispatch(setMealLoading(false));
       dispatch(
         setAlert({
           type: "error",

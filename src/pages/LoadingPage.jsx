@@ -3,7 +3,7 @@ import React from "react";
 import { selectTheme } from "../features/theme/themeSlice";
 import { useSelector } from "react-redux";
 
-const LoadingPage = () => {
+const LoadingPage = ({ color }) => {
   const theme = useSelector(selectTheme);
 
   return (
@@ -14,6 +14,7 @@ const LoadingPage = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%,-50%)",
+          color: color,
         }}
       />
     </div>

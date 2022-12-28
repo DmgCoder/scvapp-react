@@ -46,13 +46,14 @@ const ScheduleItem = ({ title, uraTrajanja }) => {
     }
   };
 
+  useEffect(setTypeOfClass, [classType]);
+
   const onLoad = () => {
     if (uraTrajanja?.ura?.length > 0) {
       setClassType(GetClassType(uraTrajanja.ura[0]));
       setClassRoom(uraTrajanja?.ura[0]?.ucilnica);
       setClassName(uraTrajanja?.ura[0]?.krajsava);
       setEvent(uraTrajanja?.ura[0]?.dogodek);
-      setTypeOfClass();
     }
   };
 

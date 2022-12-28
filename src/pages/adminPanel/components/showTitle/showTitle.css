@@ -1,0 +1,18 @@
+.admin-door-pass-show-content-header-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-door-pass-show-content-header-title > p {
+  font-size: 24px;
+}
+
+.admin-door-pass-show-content-header-title .MuiInputBase-input {
+  font-size: 24px;
+}
+
+.admin-door-pass-show-content-header-title > svg {
+  cursor: pointer;
+}

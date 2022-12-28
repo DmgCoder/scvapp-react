@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setTheme } from "../features/theme/themeSlice";
 import { useSession } from "react-use-session";
+import { useTheme } from "../features/theme/themeHook";
 
 const ThemePage = () => {
-  const { session, save } = useSession("theme", true);
-  const dispatch = useDispatch();
+  const { session } = useSession("theme", true);
+  const { setAppTheme } = useTheme();
+
   useEffect(() => {
     if (!session) {
-      save("light-theme");
-      dispatch(setTheme("light-theme"));
+      setAppTheme("system-theme");
     } else {
-      dispatch(setTheme(session));
+      setAppTheme(session);
     }
-  }, []);
+  }, [session]);
   return <></>;
 };
 

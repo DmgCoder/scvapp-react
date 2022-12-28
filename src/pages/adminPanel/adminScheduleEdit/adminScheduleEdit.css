@@ -1,5 +1,6 @@
 .admin-schedule-edit {
   height: 100%;
+  width: 100%;
   padding-top: 100px;
   display: flex;
   flex-direction: column;
@@ -7,6 +8,7 @@
   gap: 20px;
   overflow-y: scroll;
   padding-bottom: 90px;
+  position: relative;
 }
 
 .admin-schedule-edit-select-school {

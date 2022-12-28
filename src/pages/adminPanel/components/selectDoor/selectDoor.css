@@ -1,0 +1,27 @@
+.admin-door-pass-dashboard-menu-select-door {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  border-radius: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  color: currentColor;
+}
+
+.admin-door-pass-dashboard-menu-select-door:hover {
+  /* select color */
+  background-color: #3f87f323;
+}
+
+.admin-door-pass-dashboard-menu-select-door > svg {
+  height: 100px;
+  width: 100px;
+}
+
+.admin-door-pass-dashboard-menu-select-door > p {
+  margin: 0;
+  font-size: 24px;
+}

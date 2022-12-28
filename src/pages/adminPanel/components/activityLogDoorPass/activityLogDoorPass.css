@@ -1,0 +1,34 @@
+.admin-activity-log-door-pass {
+  width: 300px;
+  height: calc(100% - 100px);
+  padding: 20px;
+  background-color: var(--light-theme-third);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.admin-activity-log-door-pass.dark-theme {
+  background-color: var(--dark-theme-third);
+}
+
+.admin-activity-log-door-pass > p {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+.admin-activity-log-door-pass > .date {
+  font-size: 15px;
+}
+
+.admin-activity-log-door-pass > .fail {
+  color: red;
+}
+
+.admin-activity-log-door-pass > p > a {
+  color: currentColor;
+  text-decoration: none;
+}
