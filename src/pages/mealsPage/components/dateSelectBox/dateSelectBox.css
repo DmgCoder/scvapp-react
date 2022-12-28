@@ -11,6 +11,7 @@
   -webkit-box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
   -moz-box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
   box-shadow: 4px 4px 5px 0px rgba(198, 198, 198, 1);
+  cursor: pointer;
 }
 
 .date-select-box-meals.dark-theme {
@@ -21,6 +22,7 @@
 
 .date-select-box-meals.box-selected {
   background-color: green;
+  cursor: default;
 }
 
 .dark-theme.date-select-box-meals {

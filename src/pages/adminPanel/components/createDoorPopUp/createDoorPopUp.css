@@ -1,0 +1,53 @@
+.admin-create-door-popup {
+  /* light theme third */
+  background-color: var(--light-theme-third);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 80px;
+  padding: 50px;
+  max-width: 320px;
+  border-radius: 18px;
+}
+
+.admin-create-door-popup.dark-theme {
+  /* dark theme third */
+  background-color: var(--dark-theme-third);
+}
+
+.admin-create-door-popup > #texts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.admin-create-door-popup > #texts > #title {
+  font-size: 22px;
+}
+
+.admin-create-door-popup > #texts > #text {
+  font-size: 14px;
+  overflow: scroll;
+}
+
+.admin-create-door-popup > #buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.admin-create-door-popup > #buttons > button {
+  /* light theme second */
+  color: currentColor;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}

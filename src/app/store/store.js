@@ -4,6 +4,7 @@ import themeReducer from "../../features/theme/themeSlice";
 import alertReducer from "../../features/alert/alertSlice";
 import sideMenuReducer from "../../features/sideMenu/sideMenuSlice";
 import mealUserReducer from "../../features/mealUser/mealUserSlice";
+import doorPassesReducer from "../../features/doorPasses/doorPassesSlice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     alert: alertReducer,
     sideMenu: sideMenuReducer,
     mealUser: mealUserReducer,
+    doorPasses: doorPassesReducer,
   },
 });

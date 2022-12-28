@@ -1,0 +1,41 @@
+.settings-about-app-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+
+.settings-about-app-item-downbtn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.settings-about-app-item.settings-about-app-item-show
+  .settings-about-app-item-downbtn {
+  transform: rotate(90deg);
+}
+
+.settings-about-app-item-content {
+  width: 100%;
+  display: none;
+  padding: 50px;
+  font-size: 18px;
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
+  transform: translateY(-1px);
+}
+
+.settings-about-app-item.settings-about-app-item-show
+  .settings-about-app-item-content {
+  display: block;
+}
+
+.settings-about-app-item .settingsItem {
+  transition: all 0.3s ease;
+}
+
+.settings-about-app-item.settings-about-app-item-show .settingsItem {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}

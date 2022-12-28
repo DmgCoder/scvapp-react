@@ -1,0 +1,29 @@
+.admin-select-form {
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+  gap: 20px;
+}
+
+.admin-select-form > p {
+  font-size: 24px;
+  color: currentColor;
+}
+
+.admin-select-form-options {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  gap: 10px;
+}
+
+.admin-select-form-options > p {
+  font-size: 18px;
+  color: currentColor;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-select-form-options-selected {
+  color: #0acb57 !important;
+}
