@@ -27,7 +27,7 @@ const TopMenu = () => {
         </div>
         <div>
           <p>Stanje na vašem računu:</p>
-          <p>{`${mealUser?.budget}€` ?? ""}</p>
+          <p>{`${mealUser?.budget?.toFixed(2) ?? "----"}€` ?? ""}</p>
         </div>
       </div>
       {alertInfo !== "" && (

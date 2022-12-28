@@ -12,6 +12,7 @@ const NotFoundPage = lazy(() => import("../404page/404page"));
 const SchoolHomePage = lazy(() => import("../SchoolHomePage"));
 const EAsistentPage = lazy(() => import("../eAsistentPage"));
 const ArnesUcilnice = lazy(() => import("../ArnesUcilnice"));
+const SettingsPage = lazy(() => import("../settingsPage/settingsPage"));
 
 const HomePage = () => {
   const theme = useSelector(selectTheme);
@@ -27,6 +28,7 @@ const HomePage = () => {
           <Route path="/arnes-ucilnice" element={<ArnesUcilnice />} />
           <Route path="/prijava" element={<Navigate to={"/"} />} />
           <Route path="/domov" element={<Navigate to={"/"} />} />
+          <Route path="/nastavitve" element={<SettingsPage />} />
           <Route path="*" element={<NotFoundPage></NotFoundPage>} />
         </Routes>
       </Suspense>
