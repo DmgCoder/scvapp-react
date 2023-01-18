@@ -6,6 +6,7 @@
 
 .side-menu-spacer {
   height: 100vh;
+  min-width: var(--width-of-mini-side-menu);
   width: var(--width-of-mini-side-menu);
 }
 
