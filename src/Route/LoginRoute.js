@@ -1,7 +1,6 @@
 import React, { lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Route, Routes } from "react-router-dom";
 import { setAlert } from "../features/alert/alertSlice";
 import { useUser } from "../features/user/userHook";
 

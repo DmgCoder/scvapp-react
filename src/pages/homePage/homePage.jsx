@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import { selectTheme } from "../../features/theme/themeSlice";
 import LoadingPage from "../LoadingPage";
 
