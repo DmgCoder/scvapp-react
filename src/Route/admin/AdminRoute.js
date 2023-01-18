@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router";
+import { Navigate } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import LoadingPage from "../../pages/LoadingPage";

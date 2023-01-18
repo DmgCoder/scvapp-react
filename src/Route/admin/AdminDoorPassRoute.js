@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import LoadingPage from "../../pages/LoadingPage";
 import { useDoorPasses } from "../../features/doorPasses/useDoorPasses";
 
