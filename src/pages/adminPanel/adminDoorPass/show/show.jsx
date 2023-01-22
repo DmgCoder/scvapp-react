@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 import { createAlert, setAlert } from "../../../../features/alert/alertSlice";
 import {
@@ -148,7 +148,7 @@ const Show = () => {
         </div>
         <div id="left-side">
           <p>Activity log:</p>
-          <ActivityLogDoorPass doorPass={doorPass}/>
+          <ActivityLogDoorPass doorPass={doorPass} />
         </div>
       </div>
     </div>

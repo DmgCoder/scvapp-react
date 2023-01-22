@@ -3,7 +3,7 @@ import { RenameDoorPass } from "../../adminDoorPass/adminDoorPassAPI";
 import { useDispatch } from "react-redux";
 import { createAlert } from "../../../../features/alert/alertSlice";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import "./showTitle.css";
 import StyledTextField from "../../../../components/StyledTextField";
