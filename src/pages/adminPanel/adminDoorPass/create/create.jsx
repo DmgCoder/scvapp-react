@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
 import StyledTextField from "../../../../components/StyledTextField";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { CreateDoorPass } from "../adminDoorPassAPI";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 
