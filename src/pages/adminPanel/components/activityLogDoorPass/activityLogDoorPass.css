@@ -5,9 +5,10 @@
   background-color: var(--light-theme-third);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   gap: 5px;
+  overflow-y: scroll;
 }
 
 .admin-activity-log-door-pass.dark-theme {
@@ -31,4 +32,20 @@
 .admin-activity-log-door-pass > p > a {
   color: currentColor;
   text-decoration: none;
+}
+
+.admin-activity-log-door-pass > .load-more-btn {
+  background-color: transparent;
+  color: var(--light-theme-primary);
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding-top: 20px;
+  border: none;
+}
+
+.admin-activity-log-door-pass > .loading-indicator {
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
 }
