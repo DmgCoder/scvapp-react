@@ -14,11 +14,12 @@
   border-radius: 18px;
   background-color: var(--light-theme-secondary);
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 40px;
   border-radius: 18px;
+  overflow-y: scroll;
 }
 
 .admin-door-pass-show.dark-theme .admin-door-pass-show-content {
@@ -26,7 +27,6 @@
 }
 
 .admin-door-pass-show-content > div {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -35,7 +35,6 @@
 
 .admin-door-pass-show-content > #right-side {
   gap: 20px;
-  width: 70%;
 }
 
 .admin-door-pass-show-content > #right-side > button {
@@ -72,6 +71,7 @@
   align-items: center;
   gap: 30px;
   width: fit-content;
+  height: 100%;
 }
 
 .admin-door-pass-show-content > #left-side > p {

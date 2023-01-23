@@ -6,6 +6,8 @@
   align-items: center;
   padding-top: 40px;
   border-right: 1px solid var(--light-theme-third);
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
 }
 
 .admin-dashboard.dark-theme {
@@ -74,4 +76,36 @@
 
 .admin-dashboard-exit > p {
   font-size: 20px;
+}
+
+.admin-dashboard-mini {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+}
+
+.admin-dashboard-minimized {
+  min-width: 60px;
+  width: 60px;
+}
+
+.admin-dashboard-spacer {
+  width: 60px;
+  min-width: 60px;
+  height: 100vh;
+}
+
+.admin-dashboard-minimized .admin-dashboard-logo {
+  width: 60%;
+}
+
+.admin-dashboard-minimized .admin-dashboard-exit > p {
+  display: none;
+}
+
+.admin-dashboard-minimized .admin-dashboard-exit > svg {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
