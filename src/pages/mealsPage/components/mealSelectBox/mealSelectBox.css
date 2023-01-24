@@ -68,7 +68,6 @@
 .meal-select-box-side-description {
   margin-top: 10px;
   font-size: 13px;
-  text-align: justify;
   overflow: scroll;
 }
 
@@ -96,5 +95,9 @@
   .meal-select-box-btn {
     height: auto;
     width: 80%;
+  }
+
+  .meal-select-box-side-description {
+    text-align: center;
   }
 }
