@@ -21,7 +21,6 @@ const DateSelectBox = ({ selected, date }) => {
     "Sobota",
   ];
   const displayData = () => {
-    const dateNow = new Date();
     const dayInWeek = date?.getDay();
     const dayInMonth = date?.getDate();
     const month = date?.getMonth() + 1;
@@ -29,17 +28,25 @@ const DateSelectBox = ({ selected, date }) => {
     setDayInWeekNumber(dayInWeek);
     const monthInString = month < 10 ? `0${month}` : month;
     setDisplayDate(`${dayInMonth}.${monthInString}.${year}`);
-    if (dateNow.getMonth() + 1 === month && dateNow.getFullYear() === year) {
-      if (dateNow.getDate() === dayInMonth) {
-        setTitle("DANES");
-      } else if (dateNow.getDate() === dayInMonth - 1) {
-        setTitle("JUTRI");
-      } else {
-        setTitle(null);
-      }
+    if (isDateToday(date)) {
+      setTitle("DANES");
+    } else if (isDateToday(date, 1)) {
+      setTitle("JUTRI");
+    } else {
+      setTitle(null);
     }
   };
   useEffect(displayData, [date]);
+
+  const isDateToday = (date, dayOffset = 0) => {
+    const dateNow = new Date();
+    dateNow.setDate(dateNow.getDate() + dayOffset);
+    const yearEqual = dateNow.getFullYear() === date?.getFullYear();
+    const monthEqual = dateNow.getMonth() === date?.getMonth();
+    const dayEqual = dateNow.getDate() === date?.getDate();
+    return yearEqual && monthEqual && dayEqual;
+  };
+
   return (
     <div
       className={`date-select-box-meals ${theme} ${selected && "box-selected"}`}
