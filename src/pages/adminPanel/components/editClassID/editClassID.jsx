@@ -62,7 +62,11 @@ const EditClassID = ({ id, name, url, schoolID, reloadData }) => {
   return (
     <div className="admin-edit-class-id">
       <p>{name}</p>
-      <div className="admin-edit-class-id-editor">
+      <div
+        className={`admin-edit-class-id-editor ${
+          editMode ? "admin-edit-class-id-editor-edit" : ""
+        }`}
+      >
         {!editMode ? (
           <a href={`${url}${newID}`} target="_blank" rel="noreferrer">
             {newID}
