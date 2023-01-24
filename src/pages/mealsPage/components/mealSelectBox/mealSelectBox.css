@@ -56,8 +56,20 @@
   cursor: auto;
 }
 
+.meal-select-box-side-right-up {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
 .meal-select-box-side-description {
+  margin-top: 10px;
   font-size: 13px;
+  text-align: justify;
+  overflow: scroll;
 }
 
 @media screen and (max-width: 520px) {
@@ -74,9 +86,15 @@
   }
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 450px) {
+  .meal-select-box {
+    height: auto;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
   .meal-select-box-btn {
     height: auto;
-    width: 70%;
+    width: 80%;
   }
 }
