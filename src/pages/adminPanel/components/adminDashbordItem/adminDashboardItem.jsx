@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
+import { selectSideMenuOpen } from "../../../../features/sideMenu/sideMenuSlice";
 
 import "./adminDashboardItem.css";
 import SubItem from "./subItem";
@@ -19,6 +20,7 @@ const AdminDashboardItem = ({
   const [indicator, setIndicator] = useState(false);
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const sideMenuOpen = useSelector(selectSideMenuOpen);
 
   const handleOpen = (e) => {
     e.preventDefault();
@@ -42,13 +44,13 @@ const AdminDashboardItem = ({
         className="admin-dashboard-item-main"
       >
         <div className="admin-dashboard-item-icon">{icon}</div>
-        <p className="admin-dashboard-item-text">{text}</p>
+        {sideMenuOpen && <p className="admin-dashboard-item-text">{text}</p>}
         {indicator ? (
           <div className="admin-dashboard-item-indicator"></div>
         ) : (
           <></>
         )}
-        {subitems ? (
+        {subitems && sideMenuOpen ? (
           <KeyboardArrowDownIcon
             className={`admin-dashboard-item-arrow ${open ? "open" : ""}`}
             onClick={handleOpen}
@@ -57,7 +59,7 @@ const AdminDashboardItem = ({
           <></>
         )}
       </Link>
-      {subitems && open ? (
+      {subitems && sideMenuOpen && open ? (
         <ul className="admin-dashboard-item-subitems">
           {subitems.map((subitem, index) => (
             <SubItem

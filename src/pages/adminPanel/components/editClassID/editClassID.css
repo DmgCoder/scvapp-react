@@ -20,6 +20,10 @@
   position: relative;
 }
 
+.admin-edit-class-id-editor-edit {
+  transform: translateX(15px);
+}
+
 .admin-edit-class-id-editor > a {
   text-decoration: none;
   color: currentColor;
