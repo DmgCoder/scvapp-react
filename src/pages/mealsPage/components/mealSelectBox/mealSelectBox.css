@@ -38,6 +38,8 @@
   align-items: flex-start;
   height: 75%;
   padding-right: 20px;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .meal-select-box-img {
@@ -81,6 +83,12 @@
 @media screen and (max-width: 520px) {
   .meal-select-box-side-left {
     height: 100%;
+    flex: 1;
+  }
+
+  .meal-select-box-side-right {
+    height: 100%;
+    flex: 1;
   }
 
   .meal-select-box-btn {
