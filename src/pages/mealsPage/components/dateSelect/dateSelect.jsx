@@ -1,16 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import DateSelectBox from "../dateSelectBox/dateSelectBox";
+import React, { useEffect } from "react";
 import useWindowDimensions from "../../../../features/useWindowDimensions";
+import DateSelectBox from "../dateSelectBox/dateSelectBox";
 
-import "./dateSelect.css";
-import DateSelectArrow from "../dateSelectArrow/dateSelectArrow";
 import useSideMenu from "../../../../features/sideMenu/useSideMenu";
+import DateSelectArrow from "../dateSelectArrow/dateSelectArrow";
+import "./dateSelect.css";
 
 const DateSelect = () => {
   const [selectedDateBoxes, setSelectedDateBoxes] = React.useState([]);
   const { width } = useWindowDimensions();
   const [selectedWeek, setSelectedWeek] = React.useState(0);
-  const scrollRef = useRef();
   const { sideMenuMini } = useSideMenu();
 
   const generateDateSelectBoxes = (number) => {
@@ -50,7 +49,7 @@ const DateSelect = () => {
   useEffect(numberOfBoxes, [width, selectedWeek, sideMenuMini]);
 
   return (
-    <div className="date-select-meals" ref={scrollRef}>
+    <div className="date-select-meals">
       <DateSelectArrow
         toLeft
         onClick={() => changeSelectedWeek(-1)}

@@ -18,6 +18,13 @@
   box-shadow: none;
 }
 
+.meal-select-box.meal-select-box-selected {
+  -webkit-box-shadow: 0px 0px 6px 0px #03c316;
+  -moz-box-shadow: 0px 0px 6px 0px #03c316;
+  box-shadow: 0px 0px 6px 0px #03c316;
+  border: 1px solid #03c316;
+}
+
 .meal-select-box-side {
   display: flex;
   flex-direction: column;

@@ -6,6 +6,7 @@ import getWindowDimensions from "../../../../features/useWindowDimensions";
 import "./mealSelectBox.css";
 
 import MesniMeni from "../../../../assets/slike_malica/mesni_meni.png";
+import SelectButton from "./selectButton";
 
 const MealSelectBox = ({ selected }) => {
   const theme = useSelector(selectTheme);
@@ -21,7 +22,11 @@ const MealSelectBox = ({ selected }) => {
   }, [width]);
 
   return (
-    <div className={`meal-select-box ${theme}`}>
+    <div
+      className={`meal-select-box ${theme} ${
+        selected ? "meal-select-box-selected" : ""
+      }`}
+    >
       <div className="meal-select-box-side meal-select-box-side-left">
         {!isMobile && (
           <p>
@@ -33,21 +38,11 @@ const MealSelectBox = ({ selected }) => {
         </p>
       </div>
       <div className="meal-select-box-side meal-select-box-side-right">
-        {!isMobile && (
-          <button
-            className={`${selected && "meal-selected"} meal-select-box-btn`}
-          >
-            {selected ? "Izbrani meni" : "Izberi meni"}
-          </button>
-        )}
+        {!isMobile && <SelectButton selected={selected} />}
         {isMobile && (
           <div className="meal-select-box-side-right-up">
             <b>Mesni meni</b>
-            <button
-              className={`${selected && "meal-selected"} meal-select-box-btn`}
-            >
-              {selected ? "Izbrani meni" : "Izberi meni"}
-            </button>
+            <SelectButton selected={selected} />
           </div>
         )}
         <img src={MesniMeni} alt="mesni meni" className="meal-select-box-img" />
