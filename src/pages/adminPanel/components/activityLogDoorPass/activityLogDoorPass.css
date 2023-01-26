@@ -1,5 +1,6 @@
 .admin-activity-log-door-pass {
   width: 300px;
+  max-width: 100%;
   height: calc(100% - 100px);
   padding: 20px;
   background-color: var(--light-theme-third);
