@@ -33,7 +33,12 @@ const AlertUI = () => {
       {alertObj?.show && (
         <Alert
           severity={alertObj?.type}
-          style={{ position: "absolute", bottom: "20px", right: "0px" }}
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            right: "0px",
+            maxWidth: "calc(100% - 65px)",
+          }}
           onClose={closeAlertManually}
         >
           <AlertTitle>{alertObj?.title}</AlertTitle>
