@@ -50,3 +50,9 @@
   align-items: center;
   gap: 20px;
 }
+
+@media screen and (max-width: 786px) {
+  .admin-door-pass-dashboard-menu {
+    padding-bottom: 90px;
+  }
+}
