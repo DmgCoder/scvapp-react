@@ -1,3 +1,7 @@
+:root {
+  --animation-procentages-for-animation-sliders: 200%;
+}
+
 .date-select-meals {
   width: 100%;
   display: flex;
@@ -24,7 +28,9 @@
 }
 @keyframes slide-in-from-left {
   0% {
-    transform: translateX(-150%);
+    transform: translateX(
+      calc(var(--animation-procentages-for-animation-sliders) * -1)
+    );
   }
   100% {
     transform: translateX(0);
@@ -33,7 +39,7 @@
 
 @keyframes slide-in-from-right {
   0% {
-    transform: translateX(150%);
+    transform: translateX(var(--animation-procentages-for-animation-sliders));
   }
   100% {
     transform: translateX(0);
@@ -45,7 +51,9 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-150%);
+    transform: translateX(
+      calc(var(--animation-procentages-for-animation-sliders) * -1)
+    );
   }
 }
 
@@ -54,6 +62,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(150%);
+    transform: translateX(var(--animation-procentages-for-animation-sliders));
   }
 }
