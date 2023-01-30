@@ -15,7 +15,7 @@ const DateSelect = () => {
   const [showRightSlider, setShowRightSlider] = React.useState(null);
   const [datesForLeftSlider, setDatesForLeftSlider] = React.useState([]);
   const [datesForRightSlider, setDatesForRightSlider] = React.useState([]);
-  const animationTime = 500; // ms
+  const [animationTime, setAnimtionTime] = React.useState(200); // ms
 
   const generateDateSelectBoxes = (number) => {
     const date = new Date();
@@ -64,7 +64,11 @@ const DateSelect = () => {
   };
 
   const changeSelectedWeek = (increment) => {
-    if (selectedWeek + increment >= 0) {
+    if (
+      selectedWeek + increment >= 0 &&
+      showLeftSlider === null &&
+      showRightSlider === null
+    ) {
       handleAnimation(increment);
       setSelectedWeek(selectedWeek + increment);
     }
@@ -83,6 +87,12 @@ const DateSelect = () => {
       setShowRightSlider(null);
     }, animationTime);
   };
+
+  const handleChangeAnimationTime = () => {
+    setAnimtionTime(Math.max(200 * (selectedDateBoxes.length / 7), 200));
+  };
+
+  useEffect(handleChangeAnimationTime, [selectedDateBoxes]);
 
   useEffect(numberOfBoxes, [width, selectedWeek, sideMenuMini]);
 
