@@ -5,7 +5,7 @@ import { selectTheme } from "../../../../features/theme/themeSlice";
 
 import "./dateSelectBox.css";
 
-const DateSelectBox = ({ selected, date }) => {
+const DateSelectBox = ({ selected, date, hidden }) => {
   const theme = useSelector(selectTheme);
   const [displayDate, setDisplayDate] = useState(null);
   const [title, setTitle] = useState(null);
@@ -50,6 +50,7 @@ const DateSelectBox = ({ selected, date }) => {
   return (
     <div
       className={`date-select-box-meals ${theme} ${selected && "box-selected"}`}
+      style={{ visibility: !hidden ? "visible" : "hidden" }}
     >
       <p>{title ?? <span>&nbsp;&nbsp;</span>}</p>
       <p>

@@ -11,10 +11,16 @@ const DateSelect = () => {
   const { width } = useWindowDimensions();
   const [selectedWeek, setSelectedWeek] = React.useState(0);
   const { sideMenuMini } = useSideMenu();
+  const [showLeftSlider, setShowLeftSlider] = React.useState(null);
+  const [showRightSlider, setShowRightSlider] = React.useState(null);
+  const [datesForLeftSlider, setDatesForLeftSlider] = React.useState([]);
+  const [datesForRightSlider, setDatesForRightSlider] = React.useState([]);
+  const animationTime = 500; // ms
 
   const generateDateSelectBoxes = (number) => {
     const date = new Date();
     date.setDate(date.getDate() + selectedWeek * number);
+    setOldDatesForSlider(selectedDateBoxes);
     const startDay = new Date(date);
     // startDay.setDate(date.getDate() - dayInWeek + 1);
     let dateSelectBoxes = [];
@@ -26,6 +32,23 @@ const DateSelect = () => {
       });
     }
     setSelectedDateBoxes(dateSelectBoxes);
+    setNewDatesForSlider(dateSelectBoxes);
+  };
+
+  const setOldDatesForSlider = (oldDates) => {
+    if (showLeftSlider === "slide-out-to-left") {
+      setDatesForLeftSlider(oldDates);
+    } else if (showRightSlider === "slide-out-to-right") {
+      setDatesForRightSlider(oldDates);
+    }
+  };
+
+  const setNewDatesForSlider = (newDates) => {
+    if (showLeftSlider === "slide-in-from-left") {
+      setDatesForLeftSlider(newDates);
+    } else if (showRightSlider === "slide-in-from-right") {
+      setDatesForRightSlider(newDates);
+    }
   };
 
   const numberOfBoxes = () => {
@@ -42,8 +65,23 @@ const DateSelect = () => {
 
   const changeSelectedWeek = (increment) => {
     if (selectedWeek + increment >= 0) {
+      handleAnimation(increment);
       setSelectedWeek(selectedWeek + increment);
     }
+  };
+
+  const handleAnimation = (increment) => {
+    if (increment === -1) {
+      setShowLeftSlider("slide-in-from-left");
+      setShowRightSlider("slide-out-to-right");
+    } else {
+      setShowLeftSlider("slide-out-to-left");
+      setShowRightSlider("slide-in-from-right");
+    }
+    setTimeout(() => {
+      setShowLeftSlider(null);
+      setShowRightSlider(null);
+    }, animationTime);
   };
 
   useEffect(numberOfBoxes, [width, selectedWeek, sideMenuMini]);
@@ -57,8 +95,40 @@ const DateSelect = () => {
       />
       <div className="date-select-boxes-meals">
         {selectedDateBoxes.map((dateBox, i) => (
-          <DateSelectBox key={i} date={dateBox.date} />
+          <DateSelectBox
+            key={i}
+            date={dateBox.date}
+            hidden={showLeftSlider || showRightSlider}
+          />
         ))}
+        {showLeftSlider ? (
+          <div
+            className="date-select-boxes-meals-old-left"
+            style={{
+              animation: `${showLeftSlider} ${animationTime}ms ease-in-out`,
+            }}
+          >
+            {datesForLeftSlider.map((dateBox, i) => (
+              <DateSelectBox key={i} date={dateBox.date} />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
+        {showRightSlider ? (
+          <div
+            className="date-select-boxes-meals-old-right"
+            style={{
+              animation: `${showRightSlider} ${animationTime}ms ease-in-out`,
+            }}
+          >
+            {datesForRightSlider.map((dateBox, i) => (
+              <DateSelectBox key={i} date={dateBox.date} />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <DateSelectArrow onClick={() => changeSelectedWeek(1)} />
     </div>

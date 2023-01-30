@@ -9,4 +9,51 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  position: relative;
+}
+
+.date-select-boxes-meals-old-left,
+.date-select-boxes-meals-old-right {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* animation: slide-in 0.5s ease-in-out; */
+}
+@keyframes slide-in-from-left {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes slide-out-to-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150%);
+  }
 }
