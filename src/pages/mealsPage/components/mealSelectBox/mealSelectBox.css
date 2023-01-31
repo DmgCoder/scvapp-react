@@ -75,9 +75,10 @@
 }
 
 .meal-select-box-side-description {
-  margin-top: 10px;
+  padding-top: 10px;
   font-size: 13px;
   overflow: scroll;
+  min-height: 100%;
 }
 
 @media screen and (max-width: 520px) {

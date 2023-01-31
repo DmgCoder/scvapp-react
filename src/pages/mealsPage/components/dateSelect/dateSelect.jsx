@@ -16,6 +16,7 @@ const DateSelect = () => {
   const [datesForLeftSlider, setDatesForLeftSlider] = React.useState([]);
   const [datesForRightSlider, setDatesForRightSlider] = React.useState([]);
   const [animationTime, setAnimtionTime] = React.useState(200); // ms
+  const [firstClientTouchX, setFirstClientTouchX] = React.useState(null);
 
   const generateDateSelectBoxes = (number) => {
     const date = new Date();
@@ -96,8 +97,27 @@ const DateSelect = () => {
 
   useEffect(numberOfBoxes, [width, selectedWeek, sideMenuMini]);
 
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0] || e.changedTouches[0];
+    if (touch) setFirstClientTouchX(touch.clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchDistance = 30;
+    if (!firstClientTouchX) return;
+    const touch = e.touches[0] || e.changedTouches[0];
+    const diff = touch.clientX - firstClientTouchX;
+    if (diff > touchDistance) changeSelectedWeek(-1);
+    else if (diff < -touchDistance) changeSelectedWeek(1);
+    if (Math.abs(diff) > touchDistance) setFirstClientTouchX(null);
+  };
+
   return (
-    <div className="date-select-meals">
+    <div
+      className="date-select-meals"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
       <DateSelectArrow
         toLeft
         onClick={() => changeSelectedWeek(-1)}
