@@ -20,6 +20,7 @@
   padding: 40px;
   border-radius: 18px;
   overflow-y: scroll;
+  gap: 20px;
 }
 
 .admin-door-pass-show.dark-theme .admin-door-pass-show-content {
@@ -76,4 +77,24 @@
 
 .admin-door-pass-show-content > #left-side > p {
   font-size: 20px;
+}
+
+@media screen and (max-width: 786px) {
+  .admin-door-pass-show-content {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .admin-door-pass-show-content > #right-side {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .admin-door-pass-show-content > #left-side {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 }

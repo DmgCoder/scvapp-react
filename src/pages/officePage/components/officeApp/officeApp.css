@@ -1,0 +1,23 @@
+.office-page-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  z-index: 2;
+  cursor: pointer;
+  color: currentColor;
+  text-decoration: none;
+}
+
+.office-page-app > img {
+  width: 90px;
+  height: 90px;
+}
+
+.office-page-app > p {
+  font-size: 14px;
+  color: currentColor;
+  text-decoration: none;
+}

@@ -1,3 +1,7 @@
+:root {
+  --animation-procentages-for-animation-sliders: 200%;
+}
+
 .date-select-meals {
   width: 100%;
   display: flex;
@@ -9,4 +13,55 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  position: relative;
+}
+
+.date-select-boxes-meals-old-left,
+.date-select-boxes-meals-old-right {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* animation: slide-in 0.5s ease-in-out; */
+}
+@keyframes slide-in-from-left {
+  0% {
+    transform: translateX(
+      calc(var(--animation-procentages-for-animation-sliders) * -1)
+    );
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(var(--animation-procentages-for-animation-sliders));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(var(--animation-procentages-for-animation-sliders) * -1)
+    );
+  }
+}
+
+@keyframes slide-out-to-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--animation-procentages-for-animation-sliders));
+  }
 }

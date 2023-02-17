@@ -1,0 +1,45 @@
+.office-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 150px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 100px;
+  column-gap: 100px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  overflow-y: scroll;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  animation: office-page-apps 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .office-page {
+    padding: 100px 50px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* animation */
+
+@keyframes office-page-apps {
+  0% {
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

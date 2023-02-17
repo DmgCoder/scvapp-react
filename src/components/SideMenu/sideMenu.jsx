@@ -1,28 +1,38 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import SideMenuCategory from "../SideMenuCategory/sideMenuCategory";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../features/theme/themeSlice";
+import { selectUser } from "../../features/user/userSlice";
+import SideMenuCategory from "../SideMenuCategory/sideMenuCategory";
 import SideMenuLink from "../SideMenuLink/sideMenuLink";
 import SideMenuProfile from "../SideMenuProfile/sideMenuProfile";
 import SideMenuSchedule from "../SideMenuSchedule/sideMenuSchedule";
-import { selectUser } from "../../features/user/userSlice";
 
 import "./sideMenu.css";
 
-import AppLogo from "../../assets/app_logo.png";
-import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import { ReactComponent as EasistentIcon } from "../../assets/icons_for_menu/eA.svg";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import AppLogo from "../../assets/app_logo.png";
 import { ReactComponent as ArnesIcon } from "../../assets/icons_for_menu/arnes.svg";
+import { ReactComponent as EasistentIcon } from "../../assets/icons_for_menu/eA.svg";
 import { ReactComponent as OfficeIcon } from "../../assets/icons_for_menu/office_365.svg";
+import {
+  selectOfficeAppsShown,
+  setOfficeAppsShown,
+} from "../../features/apps/appsSlice";
 import useSideMenu from "../../features/sideMenu/useSideMenu";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
   const { sideMenuOpen, sideMenuMini, toggleSideMenu } = useSideMenu();
   const user = useSelector(selectUser);
+  const officeAppsShown = useSelector(selectOfficeAppsShown);
+  const dispatch = useDispatch();
+
+  const handleOfficeClick = () => {
+    dispatch(setOfficeAppsShown(!officeAppsShown));
+  };
 
   return (
     <>
@@ -64,7 +74,12 @@ const SideMenu = () => {
               title="Arnes Učilnice"
               icon={<ArnesIcon />}
             />
-            <SideMenuLink title="Office Programi" icon={<OfficeIcon />} />
+            <SideMenuLink
+              title="Office Programi"
+              icon={<OfficeIcon />}
+              onClick={handleOfficeClick}
+              itemSelected={officeAppsShown}
+            />
           </SideMenuCategory>
           <SideMenuCategory title={"ŠCVAPP"} miniTitle="ŠCVAPP">
             <SideMenuLink

@@ -8,6 +8,7 @@
   border-right: 1px solid var(--light-theme-third);
   z-index: 100;
   transition: all 0.3s ease-in-out;
+  overflow-y: scroll;
 }
 
 .admin-dashboard.dark-theme {
@@ -108,4 +109,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 786px) {
+  .admin-dashboard {
+    padding-bottom: 90px;
+  }
 }
