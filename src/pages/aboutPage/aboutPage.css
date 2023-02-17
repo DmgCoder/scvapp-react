@@ -146,6 +146,10 @@ body {
   width: 100%;
 }
 
+.aboutPage-outro-badges-appstore img > svg {
+  width: 100%;
+}
+
 .aboutPage-outro-badges-google img {
   width: 100%;
 }
