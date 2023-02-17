@@ -64,7 +64,7 @@ const OfficePage = () => {
       />
       <OfficeApp
         icon={Office356Icon}
-        appName="Office 365 portal"
+        appName="Microsoft 365"
         href={`https://www.office.com/?auth=2&username=${user.mail}&login_hint=${user.mail}`}
       />
     </div>
