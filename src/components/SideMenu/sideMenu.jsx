@@ -37,8 +37,12 @@ const SideMenu = () => {
   };
 
   useEffect(() => {
-    dispatch(setOfficeAppsShown(false));
+    closeOfficeApps();
   }, [location, dispatch]);
+
+  const closeOfficeApps = () => {
+    dispatch(setOfficeAppsShown(false));
+  };
 
   return (
     <>
