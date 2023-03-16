@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../features/theme/themeSlice";
 import { selectUser } from "../../features/user/userSlice";
@@ -22,6 +22,7 @@ import {
   setOfficeAppsShown,
 } from "../../features/apps/appsSlice";
 import useSideMenu from "../../features/sideMenu/useSideMenu";
+import { useLocation } from "react-router-dom";
 
 const SideMenu = () => {
   const theme = useSelector(selectTheme);
@@ -29,9 +30,18 @@ const SideMenu = () => {
   const user = useSelector(selectUser);
   const officeAppsShown = useSelector(selectOfficeAppsShown);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const handleOfficeClick = () => {
     dispatch(setOfficeAppsShown(!officeAppsShown));
+  };
+
+  useEffect(() => {
+    closeOfficeApps();
+  }, [location, dispatch]);
+
+  const closeOfficeApps = () => {
+    dispatch(setOfficeAppsShown(false));
   };
 
   return (

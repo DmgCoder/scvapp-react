@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 
 const LogItem = ({ date, doorName, userID, isDate, status }) => {
   const { getUserFromID } = useDoorPasses();
   const [displayName, setDisplayName] = useState("");
   const [displayDate, setDisplayDate] = useState("");
+  const { isLoading, error, data } = useQuery(["user", userID], () =>
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/search/specificUser/${userID}`,
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    ).then((res) => res.json())
+  );
 
-  const handleLoad = async () => {
-    const user = await getUserFromID(userID);
-    if (user) {
-      setDisplayName(user.displayName);
-    }
-  };
   useEffect(() => {
-    handleLoad();
-  }, [userID, getUserFromID]);
+    if (data) {
+      setDisplayName(data.displayName);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (date) {
