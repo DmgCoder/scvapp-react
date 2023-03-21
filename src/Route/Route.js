@@ -11,7 +11,7 @@ const ThemePage = lazy(() => import("../pages/ThemePage"));
 const MobileAppInstall = lazy(() => import("../pages/MobileAppInstall"));
 
 const RoutePage = () => {
-  const theme = useTheme();
+  const { theme } = useTheme();
   return (
     <BrowserRouter>
       <ThemePage />

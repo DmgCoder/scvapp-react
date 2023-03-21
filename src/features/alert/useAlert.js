@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const useAlert = () => {
   const createAlert = async (promiseFunction, successMessage) => {
     const response = await toast.promise(promiseFunction, {
-      pending: "Loading...",
+      pending: "Nalagam...",
       success: successMessage,
       error: (err) => {
         return err.message;
