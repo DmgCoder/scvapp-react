@@ -1,25 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
-import { useDispatch } from "react-redux";
-import { setAlert } from "../../../../features/alert/alertSlice";
 
 import "./createDoorPopUp.css";
+import useAlert from "../../../../features/alert/useAlert";
 
 const CreateDoorPopUp = ({ code, setCode, close }) => {
   const theme = useSelector(selectTheme);
-  const dispatch = useDispatch();
+  const { setAlert } = useAlert();
 
   const handleCopyData = () => {
     navigator.clipboard.writeText(code);
-    dispatch(
-      setAlert({
-        type: "success",
-        message: "Podatki so bili uspešno kopirani!",
-        title: "Uspešno kopirano!",
-        show: true,
-      })
-    );
+    setAlert("Podatki so bili uspešno kopirani!", "success");
   };
   const handleCancel = () => {
     setCode(null);

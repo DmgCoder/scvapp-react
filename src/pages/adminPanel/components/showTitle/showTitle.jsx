@@ -1,38 +1,33 @@
 import React from "react";
-import { RenameDoorPass } from "../../adminDoorPass/adminDoorPassAPI";
-import { useDispatch } from "react-redux";
-import { createAlert } from "../../../../features/alert/alertSlice";
-import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
 import { useNavigate } from "react-router-dom";
+import { useDoorPasses } from "../../../../features/doorPasses/useDoorPasses";
+import { RenameDoorPass } from "../../adminDoorPass/adminDoorPassAPI";
 
-import "./showTitle.css";
 import StyledTextField from "../../../../components/StyledTextField";
+import "./showTitle.css";
 
-import EditIcon from "@mui/icons-material/Edit";
-import { useEffect } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
+import { useEffect } from "react";
+import useAlert from "../../../../features/alert/useAlert";
 
 const ShowTitle = ({ doorPass }) => {
   const [edit, setEdit] = React.useState(false);
   const [newName, setNewName] = React.useState("");
   const [showErrorForName, setShowErrorForName] = React.useState(null);
   const { refresh, doorPasses } = useDoorPasses();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { createAlert } = useAlert();
   useEffect(() => {
     if (doorPass) setNewName(doorPass.name_id);
   }, [doorPass]);
 
   const handleEdit = async () => {
     if (!doorPass) return;
-    const data = await RenameDoorPass(doorPass.code, newName);
-    dispatch(
-      createAlert({
-        data: data,
-        successMessage: "Ime je bilo spremenjeno",
-        successStatusCode: 200,
-      })
+    await createAlert(
+      RenameDoorPass(doorPass.code, newName),
+      "Ime je bilo spremenjeno"
     );
     setEdit(false);
     refresh();

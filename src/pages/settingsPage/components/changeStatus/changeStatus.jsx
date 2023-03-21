@@ -1,20 +1,20 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectTheme } from "../../../../features/theme/themeSlice";
-import { createAlert } from "../../../../features/alert/alertSlice";
 
 import "./changeStatus.css";
 
-import ChangeStatusItem from "../changeStatusItem/changeStatusItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { changeUserStatus } from "../../settingsAPI";
+import useAlert from "../../../../features/alert/useAlert";
 import { useUser } from "../../../../features/user/userHook";
+import { changeUserStatus } from "../../settingsAPI";
+import ChangeStatusItem from "../changeStatusItem/changeStatusItem";
 
 const ChangeStatus = () => {
   const { user, refresh } = useUser();
   const theme = useSelector(selectTheme);
   const [showDropdown, setShowDropdown] = React.useState(false);
-  const dispatch = useDispatch();
+  const { createAlert } = useAlert();
 
   const statusName = {
     available: "Dosegljiv/-a",
@@ -30,18 +30,11 @@ const ChangeStatus = () => {
   };
 
   const handleStatusChange = async (status) => {
-    const data = await changeUserStatus(status);
+    const data = await createAlert(changeUserStatus(status),"Spreminjanje statusa");
     if (data.status === 200) {
       refresh();
     }
     setShowDropdown(false);
-    dispatch(
-      createAlert({
-        data: data,
-        successMessage: "Status uspešno spremenjen",
-        successStatusCode: 200,
-      })
-    );
   };
 
   return (

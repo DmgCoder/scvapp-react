@@ -4,18 +4,18 @@ import { selectTheme } from "../../../../features/theme/themeSlice";
 import StyledTextField from "../../../../components/StyledTextField";
 import { CreateClass } from "../../adminScheduleEdit/scheduleEdit";
 import { useDispatch } from "react-redux";
-import { createAlert } from "../../../../features/alert/alertSlice";
 
 import "./addClass.css";
 
 import AddIcon from "@mui/icons-material/Add";
+import useAlert from "../../../../features/alert/useAlert";
 
 const AddClass = ({ schoolID, reloadData }) => {
   const theme = useSelector(selectTheme);
   const [showEdit, setShowEdit] = React.useState(false);
   const [className, setClassName] = React.useState("");
   const [classID, setClassID] = React.useState("");
-  const dispatch = useDispatch();
+  const { createAlert } = useAlert();
 
   const handleCancel = () => {
     setShowEdit(false);
@@ -25,13 +25,9 @@ const AddClass = ({ schoolID, reloadData }) => {
 
   const handleAdd = async () => {
     setShowEdit(false);
-    const data = await CreateClass(schoolID, className, classID);
-    dispatch(
-      createAlert({
-        data: data,
-        successMessage: "Oddelek je bil uspešno ustvarjen",
-        successStatusCode: 201,
-      })
+    await createAlert(
+      CreateClass(schoolID, className, classID),
+      "Oddelek je bil uspešno ustvarjen"
     );
     setClassName("");
     setClassID("");
