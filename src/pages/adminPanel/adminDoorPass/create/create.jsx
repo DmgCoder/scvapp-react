@@ -11,7 +11,7 @@ import "./create.css";
 import MeetingRoomOutlinedIcon from "@mui/icons-material/MeetingRoomOutlined";
 import SelectForm from "../../components/selectForm/selectForm";
 import CreateDoorPopUp from "../../components/createDoorPopUp/createDoorPopUp";
-import { createAlert, setAlert } from "../../../../features/alert/alertSlice";
+import useAlert from "../../../../features/alert/useAlert";
 
 const Create = () => {
   const theme = useSelector(selectTheme);
@@ -22,7 +22,7 @@ const Create = () => {
   const { doorPasses, refresh } = useDoorPasses();
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { createAlert, setAlert } = useAlert();
 
   const accessLevelOptions = [
     {
@@ -45,27 +45,16 @@ const Create = () => {
 
   const handleCreate = async () => {
     if (showErrorForName) {
-      dispatch(
-        setAlert({
-          type: "error",
-          message: "Učilnica z istim imenom že obstaja!",
-          title: "Napaka!",
-          show: true,
-        })
-      );
+      setAlert("Učilnica s tem imenom že obstaja!", "error");
       return;
     }
-    const data = await CreateDoorPass(name, minimumAccessLevel);
+    const data = await createAlert(
+      CreateDoorPass(name, minimumAccessLevel),
+      "Učilnica je bila uspešno ustvarjena"
+    );
     if (data.status === 201) {
       setAccessCode(data.data.access_secret);
     }
-    dispatch(
-      createAlert({
-        data: data,
-        successMessage: "Vrata so bila uspešno ustvarjena!",
-        successStatusCode: 201,
-      })
-    );
     refresh();
   };
 

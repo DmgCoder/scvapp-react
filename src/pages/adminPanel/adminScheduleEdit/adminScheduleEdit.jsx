@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTheme } from "../../../features/theme/themeSlice";
-import { createAlert } from "../../../features/alert/alertSlice";
 import SelectSchoolDropdown from "../components/selectSchoolDropdown/selectSchoolDropdown";
 import EditUrl from "../components/editUrl/editUrl";
 import { GetScheduleData, ChangeScheduleURL } from "./scheduleEdit";
@@ -10,13 +9,14 @@ import { useParams } from "react-router-dom";
 
 import "./adminScheduleEdit.css";
 import EditClassesIDs from "../components/editClassesIDs/editClassesIDs";
+import useAlert from "../../../features/alert/useAlert";
 
 const AdminScheduleEdit = () => {
   const theme = useSelector(selectTheme);
   const [selectedSchool, setSelectedSchool] = React.useState(null);
   const [url, setUrl] = React.useState("");
   const [allData, setAllData] = React.useState(null);
-  const dispatch = useDispatch();
+  const { createAlert } = useAlert();
   const { schoolId } = useParams();
 
   const selectSchool = (e) => {
@@ -39,13 +39,9 @@ const AdminScheduleEdit = () => {
   const changeUrl = async (url) => {
     if (selectedSchool) {
       setUrl(url);
-      const data = await ChangeScheduleURL(selectedSchool.id, url);
-      dispatch(
-        createAlert({
-          data: data,
-          successStatusCode: 200,
-          successMessage: "Povezava je bila uspešno spremenjena.",
-        })
+      await createAlert(
+        ChangeScheduleURL(selectedSchool.id, url),
+        "Povezava je bila uspešno spremenjena"
       );
       handleLoad();
     }

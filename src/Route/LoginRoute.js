@@ -1,7 +1,7 @@
 import React, { lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSearchParams, Route, Routes } from "react-router-dom";
-import { setAlert } from "../features/alert/alertSlice";
+import { Route, Routes, useSearchParams } from "react-router-dom";
+import useAlert from "../features/alert/useAlert";
 import { useUser } from "../features/user/userHook";
 
 const LoadingPage = lazy(() => import("../pages/LoadingPage"));
@@ -13,6 +13,7 @@ const LoginRoute = () => {
   const { user, loading } = useUser();
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const { setAlert } = useAlert();
 
   useEffect(() => {
     if (user) {
@@ -20,14 +21,7 @@ const LoginRoute = () => {
       if (successParameter === "signin") {
         searchParams.delete("success");
         setSearchParams(searchParams);
-        dispatch(
-          setAlert({
-            type: "success",
-            message: "Uspešno ste se prijavili v ŠCVApp",
-            title: "Uspešna prijava",
-            show: true,
-          })
-        );
+        setAlert("Uspešno ste se prijavili v ŠCVApp", "success");
       }
     }
   }, [user, dispatch, searchParams]);

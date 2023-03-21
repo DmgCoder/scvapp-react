@@ -1,19 +1,19 @@
+import { Checkbox, FormControlLabel } from "@mui/material";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectTheme } from "../../../features/theme/themeSlice";
-import { setAlert } from "../../../features/alert/alertSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useSession } from "react-use-session";
-import { FormControlLabel, Checkbox } from "@mui/material";
+import { selectTheme } from "../../../features/theme/themeSlice";
 
 import "./mealsLogin.css";
 
+import axios from "axios";
 import SchoolLogo from "../../../assets/school_logo.svg";
 import StyledTextField from "../../../components/StyledTextField";
+import useAlert from "../../../features/alert/useAlert";
 import {
   setMealLoading,
-  setMealUser,
+  setMealUser
 } from "../../../features/mealUser/mealUserSlice";
-import axios from "axios";
 
 const MealsLogin = () => {
   const theme = useSelector(selectTheme);
@@ -22,6 +22,7 @@ const MealsLogin = () => {
   const [rememberMe, setRememberMe] = React.useState(false);
   const { save } = useSession("user-meal");
   const dispatch = useDispatch();
+  const { setAlert } = useAlert();
 
   const handleLogin = async () => {
     if (
@@ -30,14 +31,7 @@ const MealsLogin = () => {
       !password ||
       password?.trim() === ""
     ) {
-      dispatch(
-        setAlert({
-          type: "error",
-          message: "Prosim vnesite uporabniško ime in geslo.",
-          title: "Napaka!",
-          show: true,
-        })
-      );
+      setAlert("Prosim vnesite uporabniško ime in geslo.", "error");
       return;
     }
     dispatch(setMealLoading(true));
@@ -62,26 +56,12 @@ const MealsLogin = () => {
           budget: data.student.budget,
         };
         save(user);
-        dispatch(
-          setAlert({
-            type: "success",
-            message: "Prijava v sistem malic je bila uspešna.",
-            title: "Prijava uspešna!",
-            show: true,
-          })
-        );
+        setAlert("Prijava v sistem malic je bila uspešna.", "success");
         dispatch(setMealUser(user));
       }
     } catch (err) {
       dispatch(setMealLoading(false));
-      dispatch(
-        setAlert({
-          type: "error",
-          message: err?.response?.data?.errors ?? "Prišlo je do napake.",
-          title: "Napaka!",
-          show: true,
-        })
-      );
+      setAlert(err?.response?.data?.errors ?? "Prišlo je do napake.", "error");
     }
   };
 

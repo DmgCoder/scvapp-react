@@ -4,7 +4,6 @@ import {
   ChangeClassID,
   DeleteClassID,
 } from "../../adminScheduleEdit/scheduleEdit";
-import { createAlert } from "../../../../features/alert/alertSlice";
 
 import "./editClassID.css";
 
@@ -12,23 +11,20 @@ import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
+import useAlert from "../../../../features/alert/useAlert";
 
 const EditClassID = ({ id, name, url, schoolID, reloadData }) => {
   const [editMode, setEditMode] = React.useState(false);
   const [newID, setNewID] = React.useState(id);
-  const dispatch = useDispatch();
+  const { createAlert } = useAlert();
 
   const handleEdit = async () => {
     setEditMode(false);
     if (newID === id) return;
 
-    const data = await ChangeClassID(schoolID, newID, name);
-    dispatch(
-      createAlert({
-        data: data,
-        successStatusCode: 201,
-        successMessage: "Uspešno ste spremenili ID oddelka",
-      })
+    await createAlert(
+      ChangeClassID(schoolID, newID, name),
+      "Uspešno ste spremenili ID oddelka"
     );
     reloadData();
   };
@@ -39,13 +35,9 @@ const EditClassID = ({ id, name, url, schoolID, reloadData }) => {
       `Ali ste prepričani, da želite izbrisati ta razred(${name})?`
     );
     if (!confirm) return;
-    const data = await DeleteClassID(schoolID, name);
-    dispatch(
-      createAlert({
-        data: data,
-        successStatusCode: 200,
-        successMessage: "Uspešno ste izbrisali razred",
-      })
+    const data = await createAlert(
+      DeleteClassID(schoolID, name),
+      "Uspešno ste izbrisali razred"
     );
     reloadData();
   };
