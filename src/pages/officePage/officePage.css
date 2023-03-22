@@ -1,9 +1,16 @@
-.office-page {
+.office-page-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+}
+
+.office-page {
+  width: 100%;
   padding: 150px 100px;
   display: flex;
   flex-wrap: wrap;
@@ -13,9 +20,6 @@
   align-items: flex-start;
   background-color: transparent;
   overflow-y: scroll;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  z-index: 10;
   animation: office-page-apps 0.5s ease-in-out;
 }
 

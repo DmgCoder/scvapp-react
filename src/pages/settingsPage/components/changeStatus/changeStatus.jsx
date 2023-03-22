@@ -30,7 +30,10 @@ const ChangeStatus = () => {
   };
 
   const handleStatusChange = async (status) => {
-    const data = await createAlert(changeUserStatus(status),"Spreminjanje statusa");
+    const data = await createAlert(
+      changeUserStatus(status),
+      "Status uspešno spremenjen"
+    );
     if (data.status === 200) {
       refresh();
     }
