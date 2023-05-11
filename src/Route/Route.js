@@ -9,6 +9,8 @@ const LoginRoute = lazy(() => import("./LoginRoute"));
 const AboutPage = lazy(() => import("../pages/aboutPage/aboutPage"));
 const ThemePage = lazy(() => import("../pages/ThemePage"));
 const MobileAppInstall = lazy(() => import("../pages/MobileAppInstall"));
+const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
+const AndroidAppInstall = lazy(() => import("../pages/Android/Android"));
 
 const RoutePage = () => {
   const { theme } = useTheme();
@@ -19,6 +21,8 @@ const RoutePage = () => {
         <Routes>
           <Route path="/o-nas" element={<AboutPage />} />
           <Route path="/mobile" element={<MobileAppInstall />} />
+          <Route path="/policy" element={<PrivacyPolicy />} />
+          <Route path="/android" element={<AndroidAppInstall />} />
           <Route path="*" element={<LoginRoute />} />
         </Routes>
         <ToastContainer
