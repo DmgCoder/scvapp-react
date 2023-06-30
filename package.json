@@ -36,7 +36,7 @@
     "react-use-session": "^1.2.0",
     "requires": "^1.0.2",
     "selfsigned": "^2.1.1",
-    "styled-components": "^5.3.6",
+    "styled-components": "^5.3.7",
     "transitive": "^0.0.0-pre31",
     "via": "^0.0.1",
     "web-vitals": "^3.1.0"
